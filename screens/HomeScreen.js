@@ -21,7 +21,13 @@ class HomeScreen extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-          logged: false,
+            logged: false,
+            newUser: false,
+            email: '',
+            number: '',
+            name: '',
+            newPassword: '',
+            confirmPassword: '',
             username: '',
             password: ''
         }
@@ -30,52 +36,113 @@ class HomeScreen extends React.Component {
         nextProps.logged && this.setState({logged:nextProps.logged})
     }
     render() {
-        const {logged} = this.state;
+        const {logged, newUser} = this.state;
         return (
           logged?
-                <View style={styles.container}>
-                    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-                        <View style={styles.welcomeContainer}>
-                            <MonoText> Logged in </MonoText>
-                        </View>
-                    </ScrollView>
-                </View>
-                :<View style={styles.container}>
-                <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-                    <View style={styles.welcomeContainer}>
-                        <IntroSlider/>
-                    </View>
+              // Dashboard Stuff
+              <View style={styles.container}>
+                  <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+                      <View style={styles.welcomeContainer}>
+                          <MonoText> Logged in </MonoText>
+                      </View>
+                  </ScrollView>
+              </View>
+              : newUser ?
+              //Registration Stuff
+              <View style={styles.container}>
+                  <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+                      <View style={styles.welcomeContainer}>
+                          <IntroSlider/>
+                      </View>
 
-                    <View style={styles.helpContainer}>
-                        <TextInput
-                            style={styles.textInput}
-                            value={this.state.username}
-                            onChangeText={username=>this.setState({username})}
-                        />
-                        <TextInput
-                            style={styles.textInput}
-                            value={this.state.password}
-                            onChangeText={password=>this.setState({password})}
-                            secureTextEntry
-                        />
+                      <View style={styles.helpContainer}>
+                          <TextInput
+                              style={styles.registrationTextInput}
+                              value={this.state.type}
+                              onChangeText={type=>this.setState({type})}
+                          />
+                          <TextInput
+                              style={styles.registrationTextInput}
+                              value={this.state.name}
+                              placeHolder={'Name'}
+                              onChangeText={name=>this.setState({name})}
+                          />
+                          <TextInput
+                              style={styles.registrationTextInput}
+                              value={this.state.email}
+                              onChangeText={email=>this.setState({email})}
+                          />
+                          <TextInput
+                              style={styles.registrationTextInput}
+                              value={this.state.number}
+                              onChangeText={number=>this.setState({number})}
+                          />
+                          <TextInput
+                              style={styles.registrationTextInput}
+                              value={this.state.newPassword}
+                              onChangeText={newPassword=>this.setState({newPassword})}
+                          />
+                          <TextInput
+                              style={styles.registrationTextInput}
+                              value={this.state.confirmPassword}
+                              onChangeText={confirmPassword=>this.setState({confirmPassword})}
+                              secureTextEntry
+                          />
 
-                        <TouchableOpacity onPress={this._handleLogin} style={styles.helpLink}>
-                            <Text style={styles.helpLinkText}>Login</Text>
-                        </TouchableOpacity>
-                    </View>
-                </ScrollView>
+                          <TouchableOpacity onPress={this._handleRegisterSubmit} style={styles.helpLink}>
+                              <Text style={styles.helpLinkText}>Register</Text>
+                          </TouchableOpacity>
+                      </View>
+                  </ScrollView>
 
-                <View style={styles.tabBarInfoContainer}>
-                    <Text style={styles.tabBarInfoText}>New User?</Text>
+                  <View style={styles.tabBarInfoContainer}>
+                      <Text style={styles.tabBarInfoText}>Already a user?</Text>
 
-                    <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-                        <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
-                            <MonoText style={styles.codeHighlightText}>Click here to register</MonoText>
-                        </TouchableOpacity>
+                      <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
+                          <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
+                              <MonoText style={styles.codeHighlightText}>Click here to Login</MonoText>
+                          </TouchableOpacity>
 
-                    </View>
-                </View>
-            </View>
+                      </View>
+                  </View>
+              </View>:
+              // Login stuff
+              <View style={styles.container}>
+                  <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+                      <View style={styles.welcomeContainer}>
+                          <IntroSlider/>
+                      </View>
+
+                      <View style={styles.helpContainer}>
+                          <TextInput
+                              style={styles.textInput}
+                              value={this.state.username}
+                              onChangeText={username=>this.setState({username})}
+                          />
+                          <TextInput
+                              style={styles.textInput}
+                              value={this.state.password}
+                              onChangeText={password=>this.setState({password})}
+                              secureTextEntry
+                          />
+
+                          <TouchableOpacity onPress={this._handleLogin} style={styles.helpLink}>
+                              <Text style={styles.helpLinkText}>Login</Text>
+                          </TouchableOpacity>
+                      </View>
+                  </ScrollView>
+
+                  <View style={styles.tabBarInfoContainer}>
+                      <Text style={styles.tabBarInfoText}>New User?</Text>
+
+                      <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
+                          <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
+                              <MonoText style={styles.codeHighlightText}>Click here to register</MonoText>
+                          </TouchableOpacity>
+
+                      </View>
+                  </View>
+              </View>
         );
     }
 
@@ -97,8 +164,13 @@ class HomeScreen extends React.Component {
     };
 
     _handleRegister = () => {
-       this.props.navigation.navigate('Registration')
+        this.setState({newUser: !this.state.newUser})
     };
+    _handleRegisterSubmit = () => {
+        if (this.state.newPassword !== this.state.confirmPassword) {
+
+        }
+    }
 }
 
 const styles = StyleSheet.create({
@@ -190,6 +262,13 @@ const styles = StyleSheet.create({
     },
     textInput: {
         height: '20%',
+        width: '75%',
+        borderWidth: 1,
+        borderColor: '#2e78b7',
+        borderRadius:4
+    },
+    registrationTextInput: {
+        height: '10%',
         width: '75%',
         borderWidth: 1,
         borderColor: '#2e78b7',

@@ -34,7 +34,7 @@ class IntroSlider extends React.Component {
     _renderScene = SceneMap({
         first: this.FirstRoute,
         second: this.SecondRoute,
-        third: this.ThirdRoute 
+        third: this.ThirdRoute
     });
     render () {
         return (
