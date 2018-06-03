@@ -31,7 +31,7 @@ class IntroSlider extends React.Component {
         console.log(this.props)
     }
     _handleIndexChange = index => this.setState({ index });
-    _renderScene = SceneMap({
+    _renderScene = SceneMap({ 
         first: this.FirstRoute,
         second: this.SecondRoute,
         third: this.ThirdRoute
