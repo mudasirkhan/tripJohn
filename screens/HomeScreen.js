@@ -26,6 +26,7 @@ class HomeScreen extends React.Component {
             email: '',
             number: '',
             name: '',
+            mismatch: false,
             newPassword: '',
             confirmPassword: '',
             username: '',
@@ -36,7 +37,7 @@ class HomeScreen extends React.Component {
         nextProps.logged && this.setState({logged:nextProps.logged})
     }
     render() {
-        const {logged, newUser} = this.state;
+        const {logged, newUser, mismatch} = this.state;
         return (
           logged?
               // Dashboard Stuff
@@ -66,6 +67,7 @@ class HomeScreen extends React.Component {
                               value={this.state.name}
                               placeHolder={'Name'}
                               onChangeText={name=>this.setState({name})}
+                              secureTextEntry={false}
                           />
                           <TextInput
                               style={styles.registrationTextInput}
@@ -81,6 +83,7 @@ class HomeScreen extends React.Component {
                               style={styles.registrationTextInput}
                               value={this.state.newPassword}
                               onChangeText={newPassword=>this.setState({newPassword})}
+                              secureTextEntry
                           />
                           <TextInput
                               style={styles.registrationTextInput}
@@ -88,6 +91,7 @@ class HomeScreen extends React.Component {
                               onChangeText={confirmPassword=>this.setState({confirmPassword})}
                               secureTextEntry
                           />
+                          {mismatch && <Text> password doesn't match</Text> }
 
                           <TouchableOpacity onPress={this._handleRegisterSubmit} style={styles.helpLink}>
                               <Text style={styles.helpLinkText}>Register</Text>
@@ -148,27 +152,35 @@ class HomeScreen extends React.Component {
 
 
     _handleLogin = () => {
-        console.log('erds')
+        console.log('erds',"-"+this.state.username+"-", this.state.password)
+        const loadDashboard= this._loadDashboard;
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_access_token', {
             email: this.state.username,
             password: this.state.password
         })
             .then(function (response) {
                 console.log(response);
-                //this.setState({logged: true})
-
+                loadDashboard();
             })
             .catch(function (error) {
                 console.log(error);
             });
     };
 
+    _loadDashboard = () => {
+        this.setState({logged: true})
+    };
+
     _handleRegister = () => {
         this.setState({newUser: !this.state.newUser})
     };
     _handleRegisterSubmit = () => {
-        if (this.state.newPassword !== this.state.confirmPassword) {
-
+        if (this.state.newPassword === this.state.confirmPassword) {
+            this.setState({mismatch: false})
+            // Make the call here
+        }
+        else {
+            this.setState({mismatch: true})
         }
     }
 }
