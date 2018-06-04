@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     dubaiskyline: {
         opacity: .3,
         position: 'absolute',
-        top: '9%'
+        top: '8%'
     },
     cloud: {
         position: 'absolute',
