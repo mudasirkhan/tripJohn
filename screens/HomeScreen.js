@@ -10,6 +10,7 @@ import {
     TextInput
 } from 'react-native';
 import { LinearGradient } from 'expo';
+
 import {connect} from 'react-redux'
 import axios from 'axios'
 import { MonoText } from '../components/StyledText'
@@ -28,6 +29,7 @@ class HomeScreen extends React.Component {
         super(props)
         this.state = {
           logged: false,
+
             username: '',
             password: ''
         }
@@ -112,8 +114,6 @@ class HomeScreen extends React.Component {
             </View>
         );
     }
-
-
     _handleLogin = () => {
         console.log('erds')
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_access_token', {
@@ -129,13 +129,10 @@ class HomeScreen extends React.Component {
                 console.log(error);
             });
     };
-
-    _handleRegister = () => {
+            _handleRegister = () => {
        this.props.navigation.navigate('Registration')
     };
 }
-
-
 const mapStateToProps = (state, ownProps) => ({
     userInfo: state.user,
 })

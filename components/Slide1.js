@@ -30,6 +30,7 @@ export default class Slide1 extends React.Component {
             <View style={{ height: 6, width: 12, borderRadius: 5, backgroundColor: 'green', opacity: .2, margin: 5 }} />
             <View style={{ height: 6, width: 12, borderRadius: 5, backgroundColor: 'green', opacity: .2, margin: 5 }} />
           </View>
+
         </View>
       </View>
     )
