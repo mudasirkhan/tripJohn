@@ -9,10 +9,16 @@ import {
     View,
     TextInput
 } from 'react-native';
+import { LinearGradient } from 'expo';
 import {connect} from 'react-redux'
 import axios from 'axios'
 import { MonoText } from '../components/StyledText'
 import IntroSlider from "../components/introSlider";
+import commonStyles from '../assets/styles/common.js'
+import styles from '../assets/styles/homeScreen.js'
+import SvgUri from 'react-native-svg-uri';
+
+
 
 class HomeScreen extends React.Component {
     static navigationOptions = {
@@ -31,48 +37,76 @@ class HomeScreen extends React.Component {
     }
     render() {
         const {logged} = this.state;
+        const loginbg = '../assets/images/loginbg.png';
+
         return (
           logged?
                 <View style={styles.container}>
-                    <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+                    <View style={styles.container} contentContainerStyle={styles.contentContainer}>
                         <View style={styles.welcomeContainer}>
                             <MonoText> Logged in </MonoText>
                         </View>
-                    </ScrollView>
+                    </View>
                 </View>
                 :<View style={styles.container}>
-                <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+                <View style={styles.container} contentContainerStyle={styles.contentContainer}>
                     <View style={styles.welcomeContainer}>
-                        <IntroSlider/>
+                            <IntroSlider/>
                     </View>
+                    <View style={styles.loginContainer}>
+                        <Image style={styles.loginbg} source={require(loginbg)} />
+                        <View style={styles.loginWrap}>
+                            <View style={styles.regLinkWrap}>
+                                <Text style={styles.regLinkText}>Not registered yet?</Text>
+                                <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
+                                    <Text style={styles.regLinkText}>Register Here.</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={styles.textInputContainer}>
+                                <View style={[styles.textInputWrap, {borderTopLeftRadius: 4, borderTopRightRadius: 4,}]}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={styles.textInputIcon} width="16" height="18" source={require('../assets/icons/user.svg')} />
+                                    </View>
+                                    <TextInput
+                                            underlineColorAndroid="transparent"
+                                            style={[styles.textInput]}
+                                            value={this.state.username}
+                                            onChangeText={username=>this.setState({username})}
+                                            placeholder="Your Username"
+                                            placeholderTextColor="#9B9B9B"
+                                    />
+                                </View>
+                                <View style={commonStyles.graySeparator}>
+                                    <View style={commonStyles.graySeparatorInner}></View>
+                                </View>
+                                <View style={styles.textInputWrap}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14" height="18" source={require('../assets/icons/password.svg')} />
+                                    </View>
+                                        <TextInput
+                                            underlineColorAndroid="transparent"
+                                            style={styles.textInput}
+                                            value={this.state.password}
+                                            onChangeText={password=>this.setState({password})}
+                                            placeholder="........."
+                                            placeholderTextColor="#9B9B9B"
+                                            secureTextEntry
+                                        />
+                                </View>
+                            </View>
+                            <View style={styles.loginBtnShadow}>
 
-                    <View style={styles.helpContainer}>
-                        <TextInput
-                            style={styles.textInput}
-                            value={this.state.username}
-                            onChangeText={username=>this.setState({username})}
-                        />
-                        <TextInput
-                            style={styles.textInput}
-                            value={this.state.password}
-                            onChangeText={password=>this.setState({password})}
-                            secureTextEntry
-                        />
-
-                        <TouchableOpacity onPress={this._handleLogin} style={styles.helpLink}>
-                            <Text style={styles.helpLinkText}>Login</Text>
-                        </TouchableOpacity>
-                    </View>
-                </ScrollView>
-
-                <View style={styles.tabBarInfoContainer}>
-                    <Text style={styles.tabBarInfoText}>New User?</Text>
-
-                    <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>
-                        <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
-                            <MonoText style={styles.codeHighlightText}>Click here to register</MonoText>
-                        </TouchableOpacity>
-
+                                <View style={styles.loginBtn}>
+                                    <LinearGradient start={{ x: 0, y: 0.75 }}
+                                                    end={{ x: 1, y: 1 }} colors={['#F76B1C', '#FAD961']} >
+                                        <TouchableOpacity onPress={this._handleLogin} style={styles.loginBtnInner}>
+                                            <Text style={styles.loginBtnText}>Login</Text>
+                                        </TouchableOpacity>
+                                    </LinearGradient>
+                                </View>
+                            </View>
+                        </View>
+                        <Text style={styles.tnctext}>By logging in you accept our Terms & Conditions</Text>
                     </View>
                 </View>
             </View>
@@ -101,101 +135,7 @@ class HomeScreen extends React.Component {
     };
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-    },
-    developmentModeText: {
-        marginBottom: 20,
-        color: 'rgba(0,0,0,0.4)',
-        fontSize: 14,
-        lineHeight: 19,
-        textAlign: 'center',
-    },
-    contentContainer: {
-        paddingTop: 30,
-    },
-    welcomeContainer: {
-        alignItems: 'center',
-        marginTop: 10,
-        marginBottom: 20,
-    },
-    welcomeImage: {
-        width: 200,
-        height: 280,
-        resizeMode: 'contain',
-        marginTop: 3,
-        marginLeft: -10,
-    },
-    getStartedContainer: {
-        alignItems: 'center',
-        marginHorizontal: 50,
-    },
-    homeScreenFilename: {
-        marginVertical: 7,
-    },
-    codeHighlightText: {
-        color: 'rgba(96,100,109, 0.8)',
-    },
-    codeHighlightContainer: {
-        backgroundColor: 'rgba(0,0,0,0.05)',
-        borderRadius: 3,
-        paddingHorizontal: 4,
-    },
-    getStartedText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        lineHeight: 24,
-        textAlign: 'center',
-    },
-    tabBarInfoContainer: {
-        position: 'absolute',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        ...Platform.select({
-            ios: {
-                shadowColor: 'black',
-                shadowOffset: { height: -3 },
-                shadowOpacity: 0.1,
-                shadowRadius: 3,
-            },
-            android: {
-                elevation: 20,
-            },
-        }),
-        alignItems: 'center',
-        backgroundColor: '#fbfbfb',
-        paddingVertical: 20,
-    },
-    tabBarInfoText: {
-        fontSize: 17,
-        color: 'rgba(96,100,109, 1)',
-        textAlign: 'center',
-    },
-    navigationFilename: {
-        marginTop: 5,
-    },
-    helpContainer: {
-        marginTop: 15,
-        alignItems: 'center',
-    },
-    helpLink: {
-        paddingVertical: 15,
-    },
-    helpLinkText: {
-        fontSize: 14,
-        color: '#2e78b7',
-    },
-    textInput: {
-        height: '20%',
-        width: '75%',
-        borderWidth: 1,
-        borderColor: '#2e78b7',
-        borderRadius:4
-    }
-});
+
 const mapStateToProps = (state, ownProps) => ({
     userInfo: state.user,
 })
