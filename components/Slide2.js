@@ -1,26 +1,35 @@
 import React from 'react'
-import {View, Text, Image, ScrollView, TouchableOpacity, Dimensions} from 'react-native'
+import {View, Text, Image, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
+import styles from '../assets/styles/introSlides.js'
 
 var {height, width} = Dimensions.get('window')
-export default class Slide2 extends React.Component {
+export default class Slide1 extends React.Component {
     render () {
         return (
-            <View style={{flex: 1, backgroundColor: '#00000000', height: '100%', alignItems: 'center'}}>
-                <Image source={require('../assets/images/robot-dev.png')} style={[ {width: '100%'}]} resizeMode='contain'/>
-                <View style={{marginTop: 50}}>
-                    <Text style={{fontSize: 19}}>
-                        jsbc
-                    </Text>
+            <View style={styles.slideContainer}>
+                <View style={styles.blurBgWrap}>
+                    <Image source={require('../assets/images/blurcircle.png')} style={styles.blurBg} resizeMode='contain'/>
                 </View>
-                <View style={{margin: 20}}>
-                    <Text style={{textAlign: 'center', fontSize: 16}}>
-                        s,ndclskdcksndc
-                    </Text>
-                </View>
-                <View style={{ flexDirection: 'row', marginBottom: 20 }}>
-                    <View style={{ height: 10, width: 10, borderRadius: 5, backgroundColor: 'green', opacity: .2, margin: 5 }} />
-                    <View style={{ height: 10, width: 10, borderRadius: 5, backgroundColor: 'green', margin: 5 }} />
-                    <View style={{ height: 10, width: 10, borderRadius: 5, backgroundColor: 'green', opacity: .2, margin: 5 }} />
+                <View style={styles.slideWrap}>
+                    <View>
+                        <Text style={styles.slideTitle}>
+                            Simple, Fast & Secure
+                        </Text>
+                    </View>
+                    <View style={styles.slideContentWrap}>
+                        <Text style={styles.slideContentText}>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.
+                        </Text>
+                    </View>
+                    <View style={styles.paginationWrap}>
+                        <View style={{ height: 6, width: 12, borderRadius: 5, backgroundColor: 'green', opacity: .2, margin: 5 }} />
+                        <View style={{ height: 6, width: 24, borderRadius: 5, backgroundColor: 'white', margin: 5, elevation: 2,
+                            shadowColor: '#000',
+                            shadowOffset: {width: 0,height: 2},
+                            shadowOpacity: .16,
+                            shadowRadius: 4, }} />
+                        <View style={{ height: 6, width: 12, borderRadius: 5, backgroundColor: 'green', opacity: .2, margin: 5 }} />
+                    </View>
                 </View>
             </View>
         )
