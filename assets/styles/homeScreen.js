@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Platform } from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 const styles = StyleSheet.create({
     container: {
@@ -18,10 +18,10 @@ const styles = StyleSheet.create({
         flex: 2,
         elevation: 4,
         shadowColor: '#000',
-        shadowOffset: {width: 0,height: 2},
+        shadowOffset: {width: 0, height: 2},
         shadowOpacity: .31,
         shadowRadius: 5,
-        zIndex:2
+        zIndex: 2
     },
     welcomeGradient: {
         position: 'absolute',
@@ -30,6 +30,22 @@ const styles = StyleSheet.create({
         flex: 1,
         right: 0,
         bottom: 0
+    },
+    registrationContainer: {
+        flex: 2,
+        flexDirection: 'column',
+        backgroundColor: '#F5F6FD'
+    },
+    registrationWrap: {
+        alignSelf: 'center',
+        position: 'relative',
+        width: '85%',
+        flex: 1,
+        marginTop: 40,
+    },
+    regTextInputContainer: {
+        marginBottom: 12,
+        borderRadius: 4,
     },
     getStartedContainer: {
         alignItems: 'center',
@@ -61,7 +77,7 @@ const styles = StyleSheet.create({
         ...Platform.select({
             ios: {
                 shadowColor: 'black',
-                shadowOffset: { height: -3 },
+                shadowOffset: {height: -3},
                 shadowOpacity: 0.1,
                 shadowRadius: 3,
             },
@@ -83,14 +99,14 @@ const styles = StyleSheet.create({
     },
     loginContainer: {
         backgroundColor: '#F3F1F7',
-        flex:1,
+        flex: 1,
         flexDirection: 'column',
         alignItems: 'center',
         overflow: 'hidden',
         position: 'relative',
         justifyContent: 'center',
         paddingVertical: 16,
-        zIndex:1
+        zIndex: 1
     },
     loginWrap: {
         width: '80%',
@@ -115,14 +131,14 @@ const styles = StyleSheet.create({
     },
     loginBtn: {
         width: '100%',
-        borderBottomLeftRadius:4,
-        borderBottomRightRadius:4,
-        overflow:'hidden',
+        borderBottomLeftRadius: 4,
+        borderBottomRightRadius: 4,
+        overflow: 'hidden',
         zIndex: 1,
     },
     loginBtnShadow: {
         shadowColor: '#000',
-        shadowOffset: {width: 0,height: 2},
+        shadowOffset: {width: 0, height: 2},
         shadowOpacity: .11,
         shadowRadius: 4,
         width: '100%'
@@ -140,7 +156,7 @@ const styles = StyleSheet.create({
     textInputContainer: {
         width: '100%',
         shadowColor: '#000',
-        shadowOffset: {width: 0,height: 2},
+        shadowOffset: {width: 0, height: 2},
         shadowOpacity: .11,
         shadowRadius: 4,
         zIndex: 2
@@ -183,8 +199,8 @@ const styles = StyleSheet.create({
         }),
     },
     regLinkWrap: {
-      flexDirection: 'row',
-        justifyContent:'flex-start',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
         width: '100%'
     },
     regLinkText: {
@@ -196,6 +212,25 @@ const styles = StyleSheet.create({
         paddingRight: 4,
         fontFamily: 'SSP-L'
     },
+    backBtn: {
+        backgroundColor: '#F5F6FD',
+        borderRadius: 4,
+        borderWidth: 2,
+        bottom: 8,
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        borderColor: '#ACA8B6',
+        padding: 12
+    },
+    backBtnTouch: {
+        alignItems: 'center'
+    },
+    backBtnText: {
+        fontFamily: 'Lato-R',
+        color: '#7C7B81',
+        fontSize: 16
+    }
 });
 
 export default styles;
