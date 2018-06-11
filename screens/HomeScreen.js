@@ -30,7 +30,7 @@ class HomeScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            logged: true,
+            logged: this.props.logged,
             newUser: false,
             email: '',
             number: '',
@@ -38,11 +38,14 @@ class HomeScreen extends React.Component {
             mismatch: false,
             newPassword: '',
             confirmPassword: '',
-            username: '',
-            password: '',
+            username: __DEV__?'farrukh@alemad.ae':'',
+            password: __DEV__?'123456':'',
             loader: false,
             error: false,
         }
+    }
+    componentDidMount() {
+        console.log(this.props.logged, this.state.logged)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -312,6 +315,7 @@ class HomeScreen extends React.Component {
 
     _loadDashboard = () => {
         this.setState({logged: true, loader: false})
+        this.props.change("LOGIN", true)
     };
 
     _handleRegister = () => {
@@ -328,9 +332,12 @@ class HomeScreen extends React.Component {
     }
 }
 
-
+const mapDispatchToProps = (dispatch) => ({
+    change: (action,value) => { dispatch({ type: action, payload: value }) },
+})
 const mapStateToProps = (state, ownProps) => ({
     userInfo: state.user,
+    logged: state.logged
 })
 
-export default connect(mapStateToProps)(HomeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
