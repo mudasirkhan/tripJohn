@@ -15,6 +15,7 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import {MonoText} from '../components/StyledText'
 import IntroSlider from "../components/introSlider";
+import {DrawerApp} from "../navigation/DrawerApp"
 import commonStyles from '../assets/styles/common.js'
 import styles from '../assets/styles/homeScreen.js'
 import SvgUri from 'react-native-svg-uri';
@@ -29,7 +30,7 @@ class HomeScreen extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            logged: false,
+            logged: true,
             newUser: false,
             email: '',
             number: '',
@@ -54,13 +55,7 @@ class HomeScreen extends React.Component {
 
         return (
             logged ?
-                <View style={styles.container}>
-                    <View style={styles.container} contentContainerStyle={styles.contentContainer}>
-                        <View style={styles.welcomeContainer}>
-                            <MonoText> Logged in </MonoText>
-                        </View>
-                    </View>
-                </View>
+                <DrawerApp />
                 : newUser ?
                 //Registration Stuff
                 <View style={styles.container}>

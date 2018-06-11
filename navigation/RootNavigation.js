@@ -4,6 +4,7 @@ import { createSwitchNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
+import HomeScreen from '../screens/HomeScreen';
 
 const AppNavigator = createSwitchNavigator({
   // You could add another route here for authentication.
@@ -21,7 +22,7 @@ export default class RootNavigation extends React.Component {
   }
 
   render() {
-    return <AppNavigator />;
+    return <HomeScreen />;
   }
 
   _registerForPushNotifications() {
