@@ -23,7 +23,7 @@ const initialLayout = {
     width: Dimensions.get('window').width,
 }
 
-class IntroSlider extends React.Component {
+class welcomeRegistration extends React.Component {
     FirstRoute = () => <Slide1 style={{flex: 1}} next={this._handleIndexChange}  />
     SecondRoute = () => <Slide2 style={{flex: 1}} next={this._handleIndexChange} />
     ThirdRoute = () => <Slide3 style={{flex: 1}} next={this._handleIndexChange} />
@@ -173,4 +173,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default IntroSlider;
+export default welcomeRegistration;

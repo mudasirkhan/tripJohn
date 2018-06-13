@@ -4,6 +4,13 @@ import {TopNav} from "../components/TopNav";
 
 
 export default class Home extends React.Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            title: 'sjot',
+
+        }
+    }
     componentDidMount(){
         console.log(this.props)
     }
@@ -14,7 +21,7 @@ export default class Home extends React.Component {
         return(<View style={{justifyContent: 'center', alignItems: 'center'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <Text>
-                hi
+                {this.state.title}
             </Text>
         </View>)
     }
