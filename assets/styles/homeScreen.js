@@ -126,33 +126,6 @@ const styles = StyleSheet.create({
         top: 0,
         resizeMode: 'stretch'
     },
-    loginBtnGradient: {
-        width: '100%'
-    },
-    loginBtn: {
-        width: '100%',
-        borderBottomLeftRadius: 4,
-        borderBottomRightRadius: 4,
-        overflow: 'hidden',
-        zIndex: 1,
-    },
-    loginBtnShadow: {
-        shadowColor: '#000',
-        shadowOffset: {width: 0, height: 2},
-        shadowOpacity: .11,
-        shadowRadius: 4,
-        width: '100%'
-    },
-    loginBtnInner: {
-        paddingVertical: 14,
-        alignItems: 'center'
-    },
-    loginBtnText: {
-        fontSize: 16,
-        fontStyle: 'italic',
-        fontWeight: 'bold',
-        color: 'white',
-    },
     textInputContainer: {
         width: '100%',
         shadowColor: '#000',

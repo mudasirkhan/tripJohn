@@ -38,12 +38,13 @@ class HomeScreen extends React.Component {
             mismatch: false,
             newPassword: '',
             confirmPassword: '',
-            username: __DEV__?'farrukh@alemad.ae':'',
-            password: __DEV__?'123456':'',
+            username: __DEV__ ? 'farrukh@alemad.ae' : '',
+            password: __DEV__ ? '123456' : '',
             loader: false,
             error: false,
         }
     }
+
     componentDidMount() {
         console.log(this.props.logged, this.state.logged)
     }
@@ -58,7 +59,7 @@ class HomeScreen extends React.Component {
 
         return (
             logged ?
-                <DrawerApp />
+                <DrawerApp/>
                 : newUser ?
                 //Registration Stuff
                 <View style={styles.container}>
@@ -192,13 +193,13 @@ class HomeScreen extends React.Component {
                                     </View>
                                 </View>
                                 {mismatch && <Text> password doesn't match</Text>}
-                                <View style={styles.loginBtnShadow}>
-                                    <View style={styles.loginBtn}>
+                                <View style={styles.orangeBtnShadow}>
+                                    <View style={styles.orangeBtn}>
                                         <LinearGradient start={{x: 0, y: 0.75}}
                                                         end={{x: 1, y: 1}} colors={['#F76B1C', '#FAD961']}>
                                             <TouchableOpacity onPress={this._handleRegisterSubmit}
-                                                              style={styles.loginBtnInner}>
-                                                <Text style={styles.loginBtnText}>Register</Text>
+                                                              style={styles.orangeBtnInner}>
+                                                <Text style={styles.orangeBtnText}>Register</Text>
                                             </TouchableOpacity>
                                         </LinearGradient>
                                     </View>
@@ -273,13 +274,14 @@ class HomeScreen extends React.Component {
                                         />
                                     </View>
                                 </View>
-                                <View style={styles.loginBtnShadow}>
-                                    <View style={styles.loginBtn}>
+                                <View style={commonStyles.orangeBtnShadow}>
+                                    <View style={commonStyles.orangeBtn}>
                                         <LinearGradient start={{x: 0, y: 0.75}}
                                                         end={{x: 1, y: 1}} colors={['#F76B1C', '#FAD961']}>
-                                            <TouchableOpacity onPress={this._handleLogin} style={styles.loginBtnInner}>
-                                                { loader ? <ActivityIndicator/>:
-                                                <Text style={styles.loginBtnText}>Login</Text>}
+                                            <TouchableOpacity onPress={this._handleLogin}
+                                                              style={commonStyles.orangeBtnInner}>
+                                                {loader ? <ActivityIndicator/> :
+                                                    <Text style={commonStyles.orangeBtnText}>Login</Text>}
                                             </TouchableOpacity>
                                         </LinearGradient>
                                         {error && <Text style={{textAlign: 'center', color: 'red'}}>Login failed</Text>}
@@ -301,11 +303,11 @@ class HomeScreen extends React.Component {
             email: this.state.username,
             password: this.state.password
         })
-            .then( (response) => {
+            .then((response) => {
                 console.log(response);
                 loadDashboard();
             })
-            .catch( (error) => {
+            .catch((error) => {
                 console.log(error);
                 this.setState({loader: false, error: true})
 
@@ -333,7 +335,9 @@ class HomeScreen extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    change: (action,value) => { dispatch({ type: action, payload: value }) },
+    change: (action, value) => {
+        dispatch({type: action, payload: value})
+    },
 })
 const mapStateToProps = (state, ownProps) => ({
     userInfo: state.user,
