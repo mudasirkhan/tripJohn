@@ -17,7 +17,22 @@ class Profile extends React.Component {
             email: 'maajidz@yahoo.com',
             profileNameArabic: 'Zain',
             phoneNumber: '+91 7006917548',
-            whatsappNumber: '+91 7006917548'
+            whatsappNumber: '+91 7006917548',
+            currentPassword: 'asasas',
+            newPassword2: '',
+            newPassword: '',
+            arabicAddress: '',
+            emiratesId: '',
+            location: '',
+            arabicPickupAddress: '',
+            officeTimingsEnglish: '',
+            englishAddress: '',
+            englishPickupAddress: '',
+            englishOfficeTimings: '',
+            latitude: '',
+            longitude: '',
+            avatar: '',
+            description: '',
         }
     }
 
@@ -30,6 +45,58 @@ class Profile extends React.Component {
     getDetails = () => {
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
             access_token: this.props.token
+        })
+            .then( response => {
+                console.log(response)
+                const data = response.data.personal_details;
+                this.setState({
+                    profileNameEnglish: data.english_name,
+                    email:data.email,
+                    profileNameArabic: data.arabic_name,
+                    phoneNumber: data.mobile_no,
+                    whatsappNumber: data.whatsapp_number,
+                    emiratesId: data.emirate_id,
+                    location: data.location_id,
+                    arabicAddress: data.arabic_address,
+                    arabicPickupAddress: data.arabic_pickup_address,
+                    officeTimingsEnglish: data.arabic_office_timings,
+                    englishAddress: data.english_address,
+                    englishPickupAddress: data.english_pickup_address,
+                    englishOfficeTimings: data.english_office_timings,
+                    latitude: data.latitude,
+                    longitude: data.longitude,
+                    avatar: data.avatar,
+                    description: data.description
+
+
+                })
+
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+    }
+
+    updateDetails  = () => {
+        const {profileNameEnglish, email, profileNameArabic, phoneNumber, whatsappNumber, emiratesId, location, arabicAddress, englishAddress,englishPickupAddress, arabicPickupAddress, englishOfficeTimings, officeTimingsEnglish, avatar, description} = this.state;
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_personal_details', {
+            access_token: this.props.token,
+            english_name: profileNameEnglish,
+            arabic_name: profileNameArabic,
+            whatsapp_number: whatsappNumber,
+            mobile_no: phoneNumber,
+            emirate_id: emiratesId,
+            location_id: location,
+            english_address: englishAddress,
+            arabic_address: arabicAddress,
+            english_pickup_address: englishPickupAddress,
+            arabic_pickup_address: arabicPickupAddress,
+            english_office_timings: officeTimingsEnglish,
+            arabic_office_timings: englishOfficeTimings,
+            avatar: avatar,
+            description: description,
         })
             .then( response => {
                 console.log(response)
@@ -230,7 +297,8 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.currentPassword}
                                             placeholder="Current Password"
-                                            onChangeText={type => this.setState({type})}
+                                            secureTextEntry
+                                            onChangeText={currentPassword => this.setState({currentPassword})}
                                         />
                                     </View>
                                     <View style={commonStyles.graySeparator}>
@@ -250,8 +318,8 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.newPassword}
                                             placeholder="New Password"
-                                            onChangeText={name => this.setState({name})}
-                                            secureTextEntry={false}
+                                            secureTextEntry
+                                            onChangeText={newPassword => this.setState({newPassword})}
                                         />
                                     </View>
                                     <View style={commonStyles.graySeparator}>
@@ -269,10 +337,10 @@ class Profile extends React.Component {
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={styles.textInput}
-                                            value={this.state.newPassword}
+                                            value={this.state.newPassword2}
                                             placeholder="New Password"
-                                            onChangeText={name => this.setState({name})}
-                                            secureTextEntry={false}
+                                            onChangeText={newPassword2 => this.setState({newPassword2})}
+                                            secureTextEntry
                                         />
                                     </View>
                                 </View>
@@ -293,9 +361,9 @@ class Profile extends React.Component {
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={styles.textInput}
-                                            value={this.state.emirates}
+                                            value={this.state.emiratesId}
                                             placeholder="Emirates"
-                                            onChangeText={type => this.setState({type})}
+                                            onChangeText={emiratesId => this.setState({emiratesId})}
                                         />
                                     </View>
                                     <View style={commonStyles.graySeparator}>
@@ -310,7 +378,7 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.location}
                                             placeholder="Location"
-                                            onChangeText={name => this.setState({name})}
+                                            onChangeText={location => this.setState({location})}
                                             secureTextEntry={false}
                                         />
                                     </View>
@@ -328,7 +396,7 @@ class Profile extends React.Component {
                                                 style={styles.textArea}
                                                 value={this.state.arabicAddress}
                                                 placeholder="Arabic Address"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={arabicAddress => this.setState({arabicAddress})}
                                             />
                                         </View>
                                     </View>
@@ -344,7 +412,7 @@ class Profile extends React.Component {
                                                 style={styles.textArea}
                                                 value={this.state.arabicPickupAddress}
                                                 placeholder="Arabic Pickup Address"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={arabicPickupAddress => this.setState({arabicPickupAddress})}
                                             />
                                         </View>
                                     </View>
@@ -360,7 +428,7 @@ class Profile extends React.Component {
                                                 style={styles.textArea}
                                                 value={this.state.officeTimingsEnglish}
                                                 placeholder="Office Timings (English)"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={officeTimingsEnglish => this.setState({officeTimingsEnglish})}
                                             />
                                         </View>
                                     </View>
@@ -376,7 +444,7 @@ class Profile extends React.Component {
                                                 style={styles.textArea}
                                                 value={this.state.englishAddress}
                                                 placeholder="English Address"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={englishAddress => this.setState({englishAddress})}
                                             />
                                         </View>
                                     </View>
@@ -392,7 +460,7 @@ class Profile extends React.Component {
                                                 style={styles.textArea}
                                                 value={this.state.englishPickupAddress}
                                                 placeholder="English Pickup Address"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={englishPickupAddress => this.setState({englishPickupAddress})}
                                             />
                                         </View>
                                     </View>
@@ -408,7 +476,7 @@ class Profile extends React.Component {
                                                 style={styles.textArea}
                                                 value={this.state.englishOfficeTimings}
                                                 placeholder="Office Timings (English)"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={englishOfficeTimings => this.setState({englishOfficeTimings})}
                                             />
                                         </View>
                                     </View>
@@ -424,7 +492,7 @@ class Profile extends React.Component {
                                                 style={[styles.textInput, {paddingHorizontal: 16}]}
                                                 value={this.state.longitude}
                                                 placeholder="Longitude"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={longitude => this.setState({longitude})}
                                             />
                                         </View>
                                     </View>
@@ -440,7 +508,7 @@ class Profile extends React.Component {
                                                 style={[styles.textInput, {paddingHorizontal: 16}]}
                                                 value={this.state.latitude}
                                                 placeholder="Latitude"
-                                                onChangeText={type => this.setState({type})}
+                                                onChangeText={latitude => this.setState({latitude})}
                                             />
                                         </View>
                                     </View>
