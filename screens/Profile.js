@@ -33,6 +33,9 @@ class Profile extends React.Component {
             longitude: '',
             avatar: '',
             description: '',
+            editPI: false,
+            editPassword: false,
+            editOtherInfo: false,
         }
     }
 
@@ -80,23 +83,22 @@ class Profile extends React.Component {
     }
 
     updateDetails  = () => {
-        const {profileNameEnglish, email, profileNameArabic, phoneNumber, whatsappNumber, emiratesId, location, arabicAddress, englishAddress,englishPickupAddress, arabicPickupAddress, englishOfficeTimings, officeTimingsEnglish, avatar, description} = this.state;
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_personal_details', {
             access_token: this.props.token,
-            english_name: profileNameEnglish,
-            arabic_name: profileNameArabic,
-            whatsapp_number: whatsappNumber,
-            mobile_no: phoneNumber,
-            emirate_id: emiratesId,
-            location_id: location,
-            english_address: englishAddress,
-            arabic_address: arabicAddress,
-            english_pickup_address: englishPickupAddress,
-            arabic_pickup_address: arabicPickupAddress,
-            english_office_timings: officeTimingsEnglish,
-            arabic_office_timings: englishOfficeTimings,
-            avatar: avatar,
-            description: description,
+            english_name: this.state.profileNameEnglish,
+            arabic_name: this.state.profileNameArabic,
+            whatsapp_number: this.state.whatsappNumber,
+            mobile_no: this.state.phoneNumber,
+            emirate_id: this.state.emiratesId,
+            location_id: this.state.location,
+            english_address: this.state.englishAddress,
+            arabic_address: this.state.arabicAddress,
+            english_pickup_address: this.state.englishPickupAddress,
+            arabic_pickup_address: this.state.arabicPickupAddress,
+            english_office_timings: this.state.officeTimingsEnglish,
+            arabic_office_timings: this.state.englishOfficeTimings,
+            avatar: this.state.avatar,
+            description: this.state.description,
         })
             .then( response => {
                 console.log(response)
@@ -138,8 +140,7 @@ class Profile extends React.Component {
                     </View>
                     <View style={styles.topHelpContainer}>
                         <Text style={styles.regTopHelpTextTitle}>You're doing pretty good.</Text>
-                        <Text style={styles.regTopHelpTextDesc}>Lorem ipsum dolor sit amet, consectetur adipiscing
-                            sit amet.</Text>
+                        <Text style={styles.regTopHelpTextDesc}>{this.state.description}</Text>
                     </View>
                 </View>
                 <View style={{flex: 5, zIndex: 9}}>
@@ -147,7 +148,7 @@ class Profile extends React.Component {
                         <View style={styles.profileDescContainer}>
                             <View style={styles.profileTitleInfo}>
                                 <Text style={styles.profileTitleText}>Personal Information</Text>
-                                <Text style={styles.editBtn}>EDIT</Text>
+                                <TouchableOpacity onPress={()=>{this.setState({editPI: !this.state.editPI})}}><Text style={styles.editBtn}>{!this.state.editPI?'EDIT': 'Done'}</Text></TouchableOpacity>
                             </View>
                             <View style={styles.profileInputGroup}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
@@ -164,6 +165,7 @@ class Profile extends React.Component {
                                             underlineColorAndroid="transparent"
                                             style={styles.textInput}
                                             value={this.state.type}
+                                            editable={this.state.editPI}
                                             placeholder="Account Type"
                                             onChangeText={type => this.setState({type})}
                                         />
@@ -185,6 +187,7 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.profileNameEnglish}
                                             placeholder="Full name"
+                                            editable={this.state.editPI}
                                             onChangeText={name => this.setState({name})}
                                             secureTextEntry={false}
                                         />
@@ -206,6 +209,7 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.email}
                                             placeholder="Email Address"
+                                            editable={this.state.editPI}
                                             onChangeText={name => this.setState({name})}
                                             secureTextEntry={false}
                                         />
@@ -227,6 +231,7 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.profileNameArabic}
                                             placeholder="Arabic Name"
+                                            editable={this.state.editPI}
                                             onChangeText={name => this.setState({name})}
                                             secureTextEntry={false}
                                         />
@@ -248,6 +253,7 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.phoneNumber}
                                             placeholder="Phone Number"
+                                            editable={this.state.editPI}
                                             onChangeText={name => this.setState({name})}
                                             secureTextEntry={false}
                                         />
@@ -269,6 +275,7 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.whatsappNumber}
                                             placeholder="Whatsapp Number"
+                                            editable={this.state.editPI}
                                             onChangeText={name => this.setState({name})}
                                             secureTextEntry={false}
                                         />
@@ -348,8 +355,8 @@ class Profile extends React.Component {
                         </View>
                         <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
                             <View style={styles.profileTitleInfo}>
-                                <Text style={styles.profileTitleText}>Other Information</Text>
-                                <Text style={styles.editBtn}>EDIT</Text>
+                                <Text style={styles.profileTitleText}>{'Other Information'}</Text>
+                                <TouchableOpacity onPress={()=>{this.setState({editOtherInfo: !this.state.editOtherInfo})}}><Text style={styles.editBtn}>{!this.state.editOtherInfo?'EDIT':'Done'}</Text></TouchableOpacity>
                             </View>
                             <View style={styles.profileInputGroup}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
@@ -363,6 +370,7 @@ class Profile extends React.Component {
                                             style={styles.textInput}
                                             value={this.state.emiratesId}
                                             placeholder="Emirates"
+                                            editable={this.state.editOtherInfo}
                                             onChangeText={emiratesId => this.setState({emiratesId})}
                                         />
                                     </View>
@@ -377,6 +385,7 @@ class Profile extends React.Component {
                                             underlineColorAndroid="transparent"
                                             style={styles.textInput}
                                             value={this.state.location}
+                                            editable={this.state.editOtherInfo}
                                             placeholder="Location"
                                             onChangeText={location => this.setState({location})}
                                             secureTextEntry={false}
@@ -397,6 +406,7 @@ class Profile extends React.Component {
                                                 value={this.state.arabicAddress}
                                                 placeholder="Arabic Address"
                                                 onChangeText={arabicAddress => this.setState({arabicAddress})}
+                                                editable={this.state.editOtherInfo}
                                             />
                                         </View>
                                     </View>
@@ -408,6 +418,7 @@ class Profile extends React.Component {
                                         }]}>
 
                                             <TextInput
+                                                editable={this.state.editOtherInfo}
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
                                                 value={this.state.arabicPickupAddress}
@@ -424,6 +435,7 @@ class Profile extends React.Component {
                                         }]}>
 
                                             <TextInput
+                                                editable={this.state.editOtherInfo}
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
                                                 value={this.state.officeTimingsEnglish}
@@ -440,6 +452,7 @@ class Profile extends React.Component {
                                         }]}>
 
                                             <TextInput
+                                                editable={this.state.editOtherInfo}
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
                                                 value={this.state.englishAddress}
@@ -459,6 +472,7 @@ class Profile extends React.Component {
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
                                                 value={this.state.englishPickupAddress}
+                                                editable={this.state.editOtherInfo}
                                                 placeholder="English Pickup Address"
                                                 onChangeText={englishPickupAddress => this.setState({englishPickupAddress})}
                                             />
@@ -475,6 +489,7 @@ class Profile extends React.Component {
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
                                                 value={this.state.englishOfficeTimings}
+                                                editable={this.state.editOtherInfo}
                                                 placeholder="Office Timings (English)"
                                                 onChangeText={englishOfficeTimings => this.setState({englishOfficeTimings})}
                                             />
@@ -491,6 +506,7 @@ class Profile extends React.Component {
                                                 underlineColorAndroid="transparent"
                                                 style={[styles.textInput, {paddingHorizontal: 16}]}
                                                 value={this.state.longitude}
+                                                editable={this.state.editOtherInfo}
                                                 placeholder="Longitude"
                                                 onChangeText={longitude => this.setState({longitude})}
                                             />
@@ -507,6 +523,7 @@ class Profile extends React.Component {
                                                 underlineColorAndroid="transparent"
                                                 style={[styles.textInput, {paddingHorizontal: 16}]}
                                                 value={this.state.latitude}
+                                                editable={this.state.editOtherInfo}
                                                 placeholder="Latitude"
                                                 onChangeText={latitude => this.setState({latitude})}
                                             />
@@ -514,12 +531,12 @@ class Profile extends React.Component {
                                     </View>
                                 </View>
                             </View>
-                            <View style={styles.greyBorderBtnWrap}>
-                                <TouchableOpacity style={styles.greyBorderBtn}>
+                            {(this.state.editPI || this.state.editOtherInfo || this.state.editPassword) && <View style={styles.greyBorderBtnWrap}>
+                                <TouchableOpacity style={styles.greyBorderBtn} onPress={()=>{this.updateDetails()}}>
                                     <Text>Save</Text>
                                 </TouchableOpacity>
 
-                            </View>
+                            </View>}
                         </View>
                     </ScrollView>
                 </View>
