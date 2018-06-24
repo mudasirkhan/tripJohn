@@ -5,8 +5,10 @@ import {TopNav} from "../components/TopNav";
 import SvgUri from 'react-native-svg-uri';
 import commonStyles from "../assets/styles/common";
 import styles from "../assets/styles/profileScreen";
+import axios from "axios/index";
+import {connect} from 'react-redux'
 
-export default class Home extends React.Component {
+class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,8 +23,26 @@ export default class Home extends React.Component {
 
     componentDidMount() {
         console.log(this.props)
+        this.getDetails()
+
     }
 
+    getDetails = () => {
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
+            access_token: this.props.token
+        })
+            .then( response => {
+                console.log(response)
+                const data = response.data.personal_details;
+                this.setState({profileNameEnglish: data.english_name, email:data.email, profileNameArabic: data.arabic_name, phoneNumber: data.mobile_no, whatsappNumber: data.whatsapp_number})
+
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+    }
     openDrawer = () => {
         this.props.navigation.openDrawer()
     }
@@ -439,3 +459,13 @@ export default class Home extends React.Component {
         )
     }
 }
+const mapDispatchToProps = (dispatch) => ({
+    change: (action, value) => {
+        dispatch({type: action, payload: value})
+    },
+})
+const mapStateToProps = (state, ownProps) => ({
+    token: state.token,
+    logged: state.logged
+})
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)

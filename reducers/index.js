@@ -4,6 +4,7 @@ import { AsyncStorage } from 'react-native';
 import locationReducer from './location';
 import userReducer from './user';
 import logged from './logged';
+import token from './token';
 
 import paytmReducer from './payments';
 import methodsReducer from './methods';
@@ -11,7 +12,7 @@ import methodsReducer from './methods';
 
 const config = {
     key: 'tripJohnPersistConfig',
-    whitelist: ['user', 'logged'],
+    whitelist: ['user', 'logged','token'],
     storage: AsyncStorage
 };
 
@@ -21,6 +22,7 @@ const reducer = persistCombineReducers(config, {
     payment: paytmReducer,
     methods: methodsReducer,
     logged: logged,
+    token: token,
 });
 
 const store = createStore(reducer);

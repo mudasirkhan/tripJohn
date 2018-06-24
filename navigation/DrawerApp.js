@@ -60,7 +60,7 @@ const DrawerApp = DrawerNavigator(
                     <DrawerItems {...newProps} />
                 </View>
               <View>
-                    <TouchableHighlight onPress={() => {}}>
+                    <TouchableHighlight onPress={props.screenProps.logout}>
                   <View style={{
                             paddingTop: 17, paddingBottom: 17, borderTopColor: '#EEE', borderTopWidth: 1,
                         }}

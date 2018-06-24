@@ -46,11 +46,15 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.logged, this.state.logged)
+        console.log(this.props.logged, this.state.logged, this.props.token)
     }
 
     componentWillReceiveProps(nextProps) {
-        nextProps.logged && this.setState({logged: nextProps.logged})
+        this.setState({logged: nextProps.logged})
+    }
+
+    logout = () => {
+        this.props.change('LOGIN', false)
     }
 
     render() {
@@ -59,7 +63,7 @@ class HomeScreen extends React.Component {
 
         return (
             logged ?
-                <DrawerApp/>
+                <DrawerApp screenProps={{logout: this.logout}}/>
                 : newUser ?
                 //Registration Stuff
                 <View style={styles.container}>
@@ -305,6 +309,7 @@ class HomeScreen extends React.Component {
         })
             .then((response) => {
                 console.log(response);
+                this.props.change("TOKEN", response.data.access_token)
                 loadDashboard();
             })
             .catch((error) => {
@@ -341,7 +346,8 @@ const mapDispatchToProps = (dispatch) => ({
 })
 const mapStateToProps = (state, ownProps) => ({
     userInfo: state.user,
-    logged: state.logged
+    logged: state.logged,
+    token: state.token,
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

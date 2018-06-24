@@ -5,7 +5,7 @@ const INITIAL_USER = false;
 const logged = (state = INITIAL_USER, action) => {
     switch (action.type) {
         case "LOGIN":
-            return true;
+            return action.payload;
         default:
             return state;
     }
