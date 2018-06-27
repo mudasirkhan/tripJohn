@@ -38,7 +38,7 @@ const commonStyles = StyleSheet.create({
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
         overflow: 'hidden',
-        zIndex: 1,
+        zIndex: 9,
     },
     orangeBtnShadow: {
         shadowColor: '#000',

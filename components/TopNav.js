@@ -14,7 +14,7 @@ class TopNav extends React.Component {
     render() {
         return (
             <View style={[styles.topNavContainer]}>
-                <View style={{flexDirection: 'row', flex: 1, }}>
+                <View style={{flexDirection: 'row', flex: 1,}}>
                     <TouchableOpacity
                         onPress={this.props.openDrawer} style={{
                         height: '100%',
@@ -23,13 +23,13 @@ class TopNav extends React.Component {
                     }}
                     >
                         {/*<SvgUri*/}
-                                // source={require('../assets/icons/ham.svg')}/>
+                        // source={require('../assets/icons/ham.svg')}/>
                         <Image source={require('../assets/icons/ham.png')} style={{width: 24, height: 16}}/>
                     </TouchableOpacity>
                     {/*<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>*/}
-                        {/*<Text>*/}
-                            {/*{this.props.title}*/}
-                        {/*</Text>*/}
+                    {/*<Text>*/}
+                    {/*{this.props.title}*/}
+                    {/*</Text>*/}
                     {/*</View>*/}
                 </View>
                 {/*<TouchableHighlight onPress={() => {*/}

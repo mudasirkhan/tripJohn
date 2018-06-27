@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, View, TextInput} from 'react-native'
 import {TopNav} from "../components/TopNav";
+import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import WelcomeRegistration from '../components/welcomeRegistration';
 import HomeTopSection from '../components/homeTopSection'
 
@@ -8,7 +9,16 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            title: 'sjot',
+            index: 0,
+            showLocation: false,
+            routes: [
+                {key: 'first', title: 'Personal'},
+                {key: 'second', title: 'Experience'},
+                {key: 'third', title: 'Go'}
+            ],
+            resp: {},
+            selectedLocation: '',
+            cars: []
         }
     }
 
@@ -22,14 +32,13 @@ export default class Home extends React.Component {
 
     render() {
         return (<View style={{flex: 1, position: 'relative'}}>
-                    <TopNav title={"Home"} openDrawer={this.openDrawer}/>
-                    <HomeTopSection/>
-                    <View style={{flex: 1}}>
-
-                    </View>
-                    {/*<Text>*/}
-                    {/*{this.state.title}*/}
-                    {/*</Text>*/}
-                </View>)
+            <TopNav title={"Home"} openDrawer={this.openDrawer}/>
+            <HomeTopSection/>
+            <View style={{flex: 1}}>
+                <View>
+                    {/*{this.renderCars()}*/}
+                </View>
+            </View>
+        </View>);
     }
 }

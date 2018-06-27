@@ -35,7 +35,6 @@ class HomeTopSection extends React.Component {
                 {key: 'first', title: 'Personal'},
                 {key: 'second', title: 'Experience'},
                 {key: 'third', title: 'Go'}
-
             ]
         }
     }
@@ -43,7 +42,6 @@ class HomeTopSection extends React.Component {
     componentDidMount() {
         console.log(this.props)
     }
-
 
     render() {
         return (
