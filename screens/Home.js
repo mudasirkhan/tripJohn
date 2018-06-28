@@ -4,6 +4,7 @@ import {TopNav} from "../components/TopNav";
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import WelcomeRegistration from '../components/welcomeRegistration';
 import HomeTopSection from '../components/homeTopSection'
+import CarsList from '../components/carsList'
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -34,6 +35,7 @@ export default class Home extends React.Component {
         return (<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <HomeTopSection/>
+            <CarsList />
             <View style={{flex: 1}}>
                 <View>
                     {/*{this.renderCars()}*/}

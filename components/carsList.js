@@ -30,7 +30,7 @@ const initialLayout = {
     width: Dimensions.get('window').width,
 }
 
-class SearchBar extends React.Component {
+class CarsList extends React.Component {
 
     constructor(props) {
         super(props)
@@ -159,54 +159,10 @@ class SearchBar extends React.Component {
 
     render() {
         return <View style={styles.container}>
-            <Text style={[commonStyles.smallWhiteText, {paddingBottom: 8}]}>Our featured cars are here now!</Text>
-            <View style={styles.searchWrap}>
-                <TextInput
-                    underlineColorAndroid="transparent"
-                    style={[commonStyles.textInput, styles.searchTextInput]}
-                    value={this.state.name}
-                    placeholder="Honda Accord, Suzuki, Alfala Company..."
-                    onChangeText={name => this.setState({name})}
-                    secureTextEntry={false}
-                />
-                <View style={commonStyles.graySeparator}>
-                    <View style={commonStyles.graySeparatorInner}></View>
-                </View>
-                <View style={styles.selectLocationContainer}>
-                    <TouchableOpacity onPress={() => {
-                        this.renderLocations()
-                    }} style={styles.selectLocationWrap}>
-                        <Text
-                            style={styles.selectLocationText}>{this.state.selectedLocation === '' ? 'Select Location' : this.state.selectedLocation}</Text>
-                        <SvgUri source={require('../assets/icons/rightThinChevron.svg')} style={styles.chevronDown}/>
-                    </TouchableOpacity>
-                    {this.state.showLocation &&
-                    <View style={styles.locationListContainer}>
-                        <ScrollView style={styles.locationList}>
-                            <View style={styles.locationListWrap}>
-                                {this.renderLocationOptions()}
-                            </View>
-                        </ScrollView>
-                    </View>}
-                    <View style={[styles.nearMeWrap, commonStyles.center]}>
-                        <Text style={styles.nearMeText}>
-                            Near me
-                        </Text>
-                    </View>
-                </View>
-            </View>
-            <View style={commonStyles.orangeBtnShadow}>
-                <View style={commonStyles.orangeBtn}>
-                    <LinearGradient start={{x: 0, y: 0.75}}
-                                    end={{x: 1, y: 1}} colors={['#ddd', '#ddd']}>
-                        <TouchableOpacity onPress={this._handleLogin} style={commonStyles.orangeBtnInner}>
-                            <Text style={commonStyles.orangeBtnText}>Login</Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
-                    {/*{error && <Text style={{textAlign: 'center', color: 'red'}}>Login failed</Text>}*/}
-                </View>
-            </View>
             <View>
+                <ScrollView style={{width: '100%', height: 800, zIndex: 9}}>
+                    {this.renderCars()}
+                </ScrollView>
             </View>
         </View>
     }
@@ -222,4 +178,4 @@ const mapStateToProps = (state, ownProps) => ({
     logged: state.logged
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps, mapDispatchToProps)(CarsList);
