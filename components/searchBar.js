@@ -207,6 +207,9 @@ class SearchBar extends React.Component {
                 </View>
             </View>
             <View>
+                <ScrollView style={{width: '100%', height: 800, zIndex: 9}}>
+                    {this.renderCars()}
+                </ScrollView>
             </View>
         </View>
     }
