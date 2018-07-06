@@ -36,11 +36,7 @@ export default class Home extends React.Component {
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <HomeTopSection/>
             <CarsList />
-            <View style={{flex: 1}}>
-                <View>
-                    {/*{this.renderCars()}*/}
-                </View>
-            </View>
+
         </View>);
     }
 }
