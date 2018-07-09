@@ -47,6 +47,10 @@ class CarsList extends React.Component {
             cars: []
         }
     }
+    static navigationOptions = {
+        drawerLabel: () => null,
+    }
+
 
     componentDidMount() {
         console.log(this.props, this.state, this.props.navigation.getParam('car', {}))
