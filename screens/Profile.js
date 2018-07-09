@@ -38,6 +38,15 @@ class Profile extends React.Component {
             editOtherInfo: false,
         }
     }
+    static navigationOptions = {
+        drawerLabel: () => 'Profile',
+        drawerIcon: ({tintColor}) => (
+            <Image
+                source={require('../assets/images/car.png')}
+                style={[styles.icon, {tintColor: tintColor}]}
+            />
+        ),
+    }
 
     componentDidMount() {
         console.log(this.props)

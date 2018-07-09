@@ -1,13 +1,13 @@
 import React from 'react'
 import { View, TouchableHighlight, Text, Image, Platform, Dimensions } from 'react-native'
-import { DrawerNavigator, DrawerItems } from 'react-navigation'
+import { createDrawerNavigator, DrawerItems } from 'react-navigation'
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Vip from '../components/Vip';
 
 const dimen = Dimensions.get('window')
-const DrawerApp = DrawerNavigator(
+const DrawerApp = createDrawerNavigator(
     {
         Home: {
             path: '/',

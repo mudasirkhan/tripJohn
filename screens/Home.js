@@ -1,9 +1,10 @@
 import React from 'react';
-import {Text, View, TextInput} from 'react-native'
+import {Text, View, TextInput, Image} from 'react-native'
 import {TopNav} from "../components/TopNav";
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
+import styles from "../assets/styles/profileScreen";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -15,6 +16,15 @@ export default class Home extends React.Component {
             selectedLocation: '',
             cars: []
         }
+    }
+    static navigationOptions = {
+        drawerLabel: () => 'Home',
+        drawerIcon: ({tintColor}) => (
+            <Image
+                source={require('../assets/images/car.png')}
+                style={[styles.icon, {tintColor: tintColor}]}
+            />
+        ),
     }
 
     componentDidMount() {
