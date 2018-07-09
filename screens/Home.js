@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, View, TextInput} from 'react-native'
 import {TopNav} from "../components/TopNav";
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
-import WelcomeRegistration from '../components/welcomeRegistration';
 import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
 
