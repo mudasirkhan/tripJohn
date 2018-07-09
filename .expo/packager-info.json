@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 1202,
+  "packagerPort": 19003,
+  "packagerPid": 12988,
   "expoServerNgrokUrl": "https://jz-euq.maajidz.tripjohn.exp.direct",
   "packagerNgrokUrl": "https://packager.jz-euq.maajidz.tripjohn.exp.direct",
-  "ngrokPid": 1228
+  "ngrokPid": 13012
 }

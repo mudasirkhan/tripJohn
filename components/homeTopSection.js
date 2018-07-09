@@ -1,80 +1,51 @@
-import React from 'react'
-import {
-    View,
-    TouchableHighlight,
-    Text,
-    TextInput,
-    ScrollView,
-    StyleSheet,
-    Dimensions,
-    Image,
-    Platform
-} from 'react-native'
-import {LinearGradient} from 'expo';
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
-import Slide1 from '../components/Slide1'
-import Slide2 from '../components/Slide2'
-import Slide3 from '../components/Slide3.js'
-import SvgUri from 'react-native-svg-uri';
-import SearchBar from '../components/searchBar';
-import styles from '../assets/styles/homeTopSection';
-
-
-const initialLayout = {
-    height: 0,
-    width: Dimensions.get('window').width,
-}
-
-class HomeTopSection extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            index: 0,
-            routes: [
-                {key: 'first', title: 'Personal'},
-                {key: 'second', title: 'Experience'},
-                {key: 'third', title: 'Go'}
-            ]
-        }
-    }
-
-    componentDidMount() {
-        console.log(this.props)
-    }
-
-    render() {
-        return (
-            <View style={styles.welcomeContainer}>
-                <LinearGradient colors={['#9F19A9', '#F20C46']}
-                                start={{x: 0, y: 0.25}}
-                                end={{x: 1, y: 1}}
-                                style={styles.welcomeGradient}/>
-                <Image source={require('../assets/images/sunwaves.png')} style={styles.sunwaves}/>
-                <Image style={styles.cloud} source={require('../assets/icons/cloud.png')}/>
-                {/*<SvgUri style={styles.cloud} width="40" height="14" source={require('../assets/icons/cloud.png')} />*/}
-                <SvgUri style={styles.dubaiskyline} width="400" height="200"
-                        source={require('../assets/icons/dubaiskyline.svg')}/>
-                <View style={styles.blackTint}/>
-                <View style={{
-                    elevation: 4,
-                    zIndex: 99,
-                    overflow: 'visible',
-                    flex: 1,
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    width: '100%',
-                    flexDirection: 'row'
-                }}>
-                    <View style={styles.headlineWrap}>
-                        <Text style={styles.boldLine}>HEY!</Text>
-                        <Text style={styles.boldLineOrange}>AWESOME GUY</Text>
-                        <Text style={styles.boldLine}>HURRY UP.</Text>
+renderCars = () => {
+    if (this.state.cars.length > 0) {
+        let resArr = Object.keys(this.state.cars);
+        return resArr.map(resArr => {
+            return (<TouchableOpacity key={resArr} style={{borderColor: 'red', borderWidth: 1}}
+                                      style={styles.carListCard}
+                                      onPress={() => {
+                                          this.setState({
+                                              selectedLocation: this.state.resp[resArr].english_name,
+                                              showLocation: !this.state.showLocation
+                                          })
+                                      }}>
+                    <View style={styles.oneHalfSection}>
+                        <Image
+                            // source={{uri: 'https://tripjhon.insightssoftwares.com//api/v1/' + this.state.cars[resArr].car_image}}
+                            source={require('../assets/images/car.png')}
+                            style={{height: 50, width: 120}}
+                        />
+                        <View style={styles.carProviderContainer}>
+                            <Text style={styles.providedByText}>Provided by:</Text>
+                            <View style={styles.carProviderWrap}>
+                                <SvgUri source={require('../assets/icons/car-n-key.svg')} style={styles.carKey}/>
+                                <Text style={styles.providerName}>Al Jumeirah Travels</Text>
+                            </View>
+                        </View>
                     </View>
-                </View>
-                <SearchBar/>
-            </View>)
+                    <View style={styles.oneHalfSection}>
+                        <Text style={styles.carTitle}>{this.state.cars[resArr].english_name}</Text>
+                        <View style={styles.carPriceWrap}>
+                            <Text style={styles.carPriceMonth}>{this.state.cars[resArr].price_per_month}</Text>
+                            <Text>{this.state.cars[resArr].price_per_week}</Text>
+                            {/*{/<Text>{this.state.cars[resArr].description}</Text>/}*/}
+                            {/*{/<Text>{this.state.cars[resArr].security_deposit}</Text>/}*/}
+                        </View>
+                        <View style={styles.carProviderContainer}>
+                            <View style={styles.carProviderWrap}>
+                                <SvgUri source={require('../assets/icons/pin.svg')} style={styles.pin}/>
+                                <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
+                                <Text>
+
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+
+
+                </TouchableOpacity>
+            )
+        })
     }
 };
-
-export default HomeTopSection;
