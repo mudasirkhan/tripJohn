@@ -116,8 +116,6 @@ class CarsList extends React.Component {
                             </View>
                         </View>
                     </View>
-
-
                 </TouchableOpacity>
             )
         })

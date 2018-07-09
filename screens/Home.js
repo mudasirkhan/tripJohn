@@ -35,8 +35,7 @@ export default class Home extends React.Component {
         return (<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <HomeTopSection/>
-            <CarsList />
-
+            <CarsList/>
         </View>);
     }
 }
