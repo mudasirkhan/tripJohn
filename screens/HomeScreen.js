@@ -49,6 +49,9 @@ class HomeScreen extends React.Component {
         console.log(this.props.logged, this.state.logged, this.props.token)
     }
 
+    componentDidCatch(err) {
+        console.log(err)
+    }
     componentWillReceiveProps(nextProps) {
         this.setState({logged: nextProps.logged})
     }

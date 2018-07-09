@@ -49,11 +49,12 @@ class CarsList extends React.Component {
     }
 
     componentDidMount() {
-        this.getList();
         this.getCars();
-        console.log(this.props.token)
+        console.log(this.props, this.state)
     }
-
+    componentDidCatch(err) {
+        console.log(err)
+    }
     renderLocations = () => {
         this.setState({showLocation: !this.state.showLocation})
     };
@@ -74,69 +75,44 @@ class CarsList extends React.Component {
         })
     };
     renderCars = () => {
-        let resArr = Object.keys(this.state.cars);
-        return resArr.map(resArr => {
-            return (<TouchableOpacity key={resArr} style={{borderColor: 'red', borderWidth: 1}}
-                                      style={styles.carListCard}
-                                      onPress={() => {
-                                          this.setState({
-                                              selectedLocation: this.state.resp[resArr].english_name,
-                                              showLocation: !this.state.showLocation
-                                          })
-                                      }}>
-                    <View style={styles.oneHalfSection}>
-                        <Image
-                            // source={{uri: 'https://tripjhon.insightssoftwares.com//api/v1/' + this.state.cars[resArr].car_image}}
-                            source={require('../assets/images/car.png')}
-                            style={{height: 50, width: 120}}
-                        />
-                        <View style={styles.carProviderContainer}>
-                            <Text style={styles.providedByText}>Provided by:</Text>
-                            <View style={styles.carProviderWrap}>
-                                <SvgUri source={require('../assets/icons/car-n-key.svg')} style={styles.carKey}/>
-                                <Text style={styles.providerName}>Al Jumeirah Travels</Text>
+        if (this.state.cars && this.state.cars.length > 0) {
+            let resArr = Object.keys(this.state.cars);
+            return resArr.map(resArr => {
+                return (<TouchableOpacity key={resArr} style={{borderColor: 'red', borderWidth: 1}}
+                                          style={styles.carListCard}
+                                          onPress={() => { this.props.navigation.navigate('Vip',{car: this.state.cars[resArr] })}}>
+                        <View style={styles.oneHalfSection}>
+                            <Image
+                                // source={{uri: 'https://tripjhon.insightssoftwares.com//api/v1/' + this.state.cars[resArr].car_image}}
+                                source={require('../assets/images/car.png')}
+                                style={{height: 50, width: 120}}
+                            />
+                            <View style={styles.carProviderContainer}>
+                                <Text style={styles.providedByText}>Provided by:</Text>
+                                <View style={styles.carProviderWrap}>
+                                    <SvgUri source={require('../assets/icons/car-n-key.svg')} style={styles.carKey}/>
+                                    <Text style={styles.providerName}>Al Jumeirah Travels</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                    <View style={styles.oneHalfSection}>
-                        <Text style={styles.carTitle}>{this.state.cars[resArr].english_name}</Text>
-                        <View style={styles.carPriceWrap}>
-                            <Text style={styles.carPriceMonth}>{this.state.cars[resArr].price_per_month}</Text>
-                            <Text>{this.state.cars[resArr].price_per_week}</Text>
-                            {/*<Text>{this.state.cars[resArr].description}</Text>*/}
-                            {/*<Text>{this.state.cars[resArr].security_deposit}</Text>*/}
-                        </View>
-                        <View style={styles.carProviderContainer}>
-                            <View style={styles.carProviderWrap}>
-                                <SvgUri source={require('../assets/icons/pin.svg')} style={styles.pin}/>
-                                <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
-                                <Text>
-
-                                </Text>
+                        <View style={styles.oneHalfSection}>
+                            <Text style={styles.carTitle}>{this.state.cars[resArr].english_name}</Text>
+                            <View style={styles.carPriceWrap}>
+                                <Text style={styles.carPriceMonth}>{this.state.cars[resArr].price_per_month}</Text>
+                                <Text>{this.state.cars[resArr].price_per_week}</Text>
+                            </View>
+                            <View style={styles.carProviderContainer}>
+                                <View style={styles.carProviderWrap}>
+                                    <SvgUri source={require('../assets/icons/pin.svg')} style={styles.pin}/>
+                                    <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
+                                </View>
                             </View>
                         </View>
-                    </View>
-                </TouchableOpacity>
-            )
-        })
-    };
-
-    getList = async () => {
-        let resp = {};
-        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_emirates', {
-            access_token: this.props.token
-        })
-            .then(response => {
-                resp = response.data.emirates;
+                    </TouchableOpacity>
+                )
             })
-            .catch((error) => {
-                console.log(error);
-                this.setState({loader: false, error: true})
-
-            });
-        console.log(resp);
-        this.setState({resp});
-    }
+        }
+    };
 
     getCars = async () => {
         let resp = {};
@@ -151,8 +127,8 @@ class CarsList extends React.Component {
                 this.setState({loader: false, error: true})
 
             });
-        console.log(resp);
-        this.setState({cars: resp});
+        console.log(resp, this.props.token);
+        resp !== undefined && this.setState({cars: resp});
     }
 
     render() {

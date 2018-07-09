@@ -12,11 +12,6 @@ export default class Home extends React.Component {
         this.state = {
             index: 0,
             showLocation: false,
-            routes: [
-                {key: 'first', title: 'Personal'},
-                {key: 'second', title: 'Experience'},
-                {key: 'third', title: 'Go'}
-            ],
             resp: {},
             selectedLocation: '',
             cars: []
@@ -26,7 +21,9 @@ export default class Home extends React.Component {
     componentDidMount() {
         console.log(this.props)
     }
-
+    componentDidCatch(err) {
+        console.log(err)
+    }
     openDrawer = () => {
         this.props.navigation.openDrawer()
     }
@@ -35,7 +32,7 @@ export default class Home extends React.Component {
         return (<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <HomeTopSection/>
-            <CarsList/>
-        </View>);
+            <CarsList navigation={this.props.navigation}/>
+        </View>)
     }
 }

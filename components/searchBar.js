@@ -44,7 +44,6 @@ class SearchBar extends React.Component {
             ],
             resp: {},
             selectedLocation: '',
-            cars: []
         }
     }
 
@@ -52,25 +51,30 @@ class SearchBar extends React.Component {
         this.getList();
         console.log(this.props.token)
     }
+    componentDidCatch(err) {
+        console.log(err)
+    }
 
     renderLocations = () => {
         this.setState({showLocation: !this.state.showLocation})
     };
 
     renderLocationOptions = () => {
-        let resArr = Object.keys(this.state.resp);
-        return resArr.map(resArr => {
-            return (<TouchableOpacity
-                style={styles.locationListTouch}
-                onPress={() => {
-                    this.setState({
-                        selectedLocation: this.state.resp[resArr].english_name,
-                        showLocation: !this.state.showLocation
-                    })
-                }}>
-                <Text style={styles.locationListItem}>{this.state.resp[resArr].english_name}</Text>
-            </TouchableOpacity>)
-        })
+        if(this.state.resp && this.state.resp.length > 0) {
+            let resArr = Object.keys(this.state.resp);
+            return resArr.map(resArr => {
+                return (<TouchableOpacity
+                    style={styles.locationListTouch}
+                    onPress={() => {
+                        this.setState({
+                            selectedLocation: this.state.resp[resArr].english_name,
+                            showLocation: !this.state.showLocation
+                        })
+                    }}>
+                    <Text style={styles.locationListItem}>{this.state.resp[resArr].english_name}</Text>
+                </TouchableOpacity>)
+            })
+        }
     };
 
     getList = async () => {
@@ -79,6 +83,7 @@ class SearchBar extends React.Component {
             access_token: this.props.token
         })
             .then(response => {
+                console.log(response)
                 resp = response.data.emirates;
             })
             .catch((error) => {
@@ -87,7 +92,7 @@ class SearchBar extends React.Component {
 
             });
         console.log(resp);
-        this.setState({resp});
+        resp !== undefined && this.setState({resp});
     }
 
     render() {
@@ -103,7 +108,7 @@ class SearchBar extends React.Component {
                     secureTextEntry={false}
                 />
                 <View style={commonStyles.graySeparator}>
-                    <View style={commonStyles.graySeparatorInner}></View>
+                    <View style={commonStyles.graySeparatorInner} />
                 </View>
                 <View style={styles.selectLocationContainer}>
                     <TouchableOpacity onPress={() => {
@@ -136,7 +141,6 @@ class SearchBar extends React.Component {
                             <Text style={commonStyles.orangeBtnText}>Login</Text>
                         </TouchableOpacity>
                     </LinearGradient>
-                    {/*{error && <Text style={{textAlign: 'center', color: 'red'}}>Login failed</Text>}*/}
                 </View>
             </View>
             <View>

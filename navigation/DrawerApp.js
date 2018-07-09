@@ -4,6 +4,7 @@ import { DrawerNavigator, DrawerItems } from 'react-navigation'
 
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
+import Vip from '../components/Vip';
 
 const dimen = Dimensions.get('window')
 const DrawerApp = DrawerNavigator(
@@ -15,7 +16,10 @@ const DrawerApp = DrawerNavigator(
         Profile: {
             path: '/',
             screen: Profile,
-
+        },
+        Vip: {
+            path: '/',
+            screen: Vip
         }
 
     },
