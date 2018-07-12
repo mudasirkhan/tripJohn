@@ -127,6 +127,9 @@ class SearchBar extends React.Component {
                             </View>
                         </ScrollView>
                     </View>}
+                    <View style={commonStyles.graySeparatorVertical}>
+                        <View style={commonStyles.graySeparatorVerInner}/>
+                    </View>
                     <View style={[styles.nearMeWrap, commonStyles.center]}>
                         <SvgUri source={require('../assets/icons/near-me.svg')} styles={styles.nearMeIcon}/>
                         <Text style={styles.nearMeText}>
@@ -136,14 +139,14 @@ class SearchBar extends React.Component {
                 </View>
             </View>
             {/*<View style={commonStyles.orangeBtnShadow}>*/}
-                {/*<View style={commonStyles.orangeBtn}>*/}
-                    {/*<LinearGradient start={{x: 0, y: 0.75}}*/}
-                                    {/*end={{x: 1, y: 1}} colors={['#ddd', '#ddd']}>*/}
-                        {/*<TouchableOpacity onPress={this._handleLogin} style={commonStyles.orangeBtnInner}>*/}
-                            {/*<Text style={commonStyles.orangeBtnText}>Login</Text>*/}
-                        {/*</TouchableOpacity>*/}
-                    {/*</LinearGradient>*/}
-                {/*</View>*/}
+            {/*<View style={commonStyles.orangeBtn}>*/}
+            {/*<LinearGradient start={{x: 0, y: 0.75}}*/}
+            {/*end={{x: 1, y: 1}} colors={['#ddd', '#ddd']}>*/}
+            {/*<TouchableOpacity onPress={this._handleLogin} style={commonStyles.orangeBtnInner}>*/}
+            {/*<Text style={commonStyles.orangeBtnText}>Login</Text>*/}
+            {/*</TouchableOpacity>*/}
+            {/*</LinearGradient>*/}
+            {/*</View>*/}
             {/*</View>*/}
         </View>
     }

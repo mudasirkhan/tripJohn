@@ -5,6 +5,7 @@ import {createDrawerNavigator, DrawerItems} from 'react-navigation'
 import Home from "../screens/Home";
 import Profile from "../screens/Profile";
 import Vip from '../components/Vip';
+import styles from '../assets/styles/drawer';
 
 const dimen = Dimensions.get('window')
 const DrawerApp = createDrawerNavigator(
@@ -21,7 +22,6 @@ const DrawerApp = createDrawerNavigator(
             path: '/',
             screen: Vip
         }
-
     },
     {
         contentComponent: (props) => {
@@ -36,8 +36,14 @@ const DrawerApp = createDrawerNavigator(
                 },
             }
             return (<View style={{flexDirection: 'column', flex: 1}}>
-                <View style={{height: '19.25%', width: '100%'}}>
-                    <View style={{paddingTop: 28, paddingBottom: 23, flexDirection: 'row'}}>
+                <View style={{width: '100%', backgroundColor: 'gray', flex: .25, justifyContent: 'center'}}>
+                    <Image source={require('../assets/images/drawerbg.jpg')} style={styles.drawerTopBg}/>
+                    <View style={styles.blackTint}/>
+                    <View style={{
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        justifyContent: 'flex-start'
+                    }}>
                         <Image
                             style={{
                                 marginLeft: 23,
@@ -46,21 +52,13 @@ const DrawerApp = createDrawerNavigator(
                                 borderRadius: 30,
                                 borderWidth: 1,
                                 borderColor: 'rgb(128, 77, 156)',
-                            }} source={{uri: 'https://www.gsmarena.com/xiaomi_mi_8-pictures-9065.php'}}
+                            }} source={require('../assets/images/photo.jpg')}/>
                         />
-                        <View style={{flexDirection: 'column', marginLeft: 14, flex: 1}}>
+                        <View style={styles.profileInfoWrap}>
                             <Text
-                                numberOfLines={1} style={{
-                                backgroundColor: 'transparent', color: 'white',
-                            }}
-                            >Mudasir
-                            </Text>
+                                numberOfLines={1} style={styles.profileName}>Abdul Majid</Text>
                             <Text
-                                numberOfLines={1} style={{
-                                backgroundColor: 'transparent', color: 'white', marginTop: 6,
-                            }}
-                            >emailID
-                            </Text>
+                                numberOfLines={1} style={styles.profileEmail}>maajidz@yahoo.com</Text>
                         </View>
                     </View>
                 </View>

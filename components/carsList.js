@@ -109,7 +109,7 @@ class CarsList extends React.Component {
                             </View>
                             <View style={styles.bottomHalfSection}>
                                 <View style={styles.carProviderContainer}>
-                                    <View style={styles.carProviderWrap}>
+                                    <View style={[styles.carProviderWrap, {paddingRight: 24}]}>
                                         <Text style={styles.providedByText}>Provided by:</Text>
                                         <View style={{flexDirection: 'row'}}>
                                             <SvgUri source={require('../assets/icons/car-n-key.svg')}
@@ -153,7 +153,7 @@ class CarsList extends React.Component {
     render() {
         return <View style={styles.container}>
             <View>
-                <ScrollView style={{width: '100%', height: 800, zIndex: 9}}>
+                <ScrollView style={{width: '100%', height: '100%', zIndex: 9}}>
                     {this.renderCars()}
                 </ScrollView>
             </View>

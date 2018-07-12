@@ -48,10 +48,9 @@ const styles = StyleSheet.create({
         // transform: ([{rotateX: '65deg'}, {origin: '50% 50%'}]),
     },
     locationListContainer: {
-        flex: 1,
+        width: '50%',
         position: 'absolute',
         left: 0,
-        width: '100%',
         top: 48,
         zIndex: 9999999,
         right: 0,
@@ -91,7 +90,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     nearMeWrap: {
-        flex: 1,
+        width: '50%',
         flexDirection: 'row'
     },
     nearMeText: {
@@ -143,6 +142,7 @@ const styles = StyleSheet.create({
         overflow: 'visible',
         backgroundColor: 'white',
         paddingBottom: 10,
+        marginTop: 16,
         paddingTop: 14,
         borderRadius: 4,
         ...Platform.select({
@@ -155,7 +155,6 @@ const styles = StyleSheet.create({
                 elevation: 4,
             },
         }),
-        marginBottom: 16
     },
     carListCardContainer: {
         paddingHorizontal: 28,
@@ -189,6 +188,7 @@ const styles = StyleSheet.create({
     carPriceMonth: {
         color: '#483F61',
         fontFamily: 'SSP-EL',
+        paddingRight: 6,
         ...Platform.select({
             ios: {
                 fontSize: 38,

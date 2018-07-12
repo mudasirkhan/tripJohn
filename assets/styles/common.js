@@ -14,6 +14,18 @@ const commonStyles = StyleSheet.create({
         alignSelf: 'center',
         backgroundColor: '#F5F5F5'
     },
+    graySeparatorVertical: {
+        width: 1,
+        height: '100%',
+        alignSelf: 'center',
+        backgroundColor: '#ffffff'
+    },
+    graySeparatorVerInner: {
+        width: 1,
+        height: '90%',
+        alignSelf: 'center',
+        backgroundColor: '#F5F5F5'
+    },
     smallWhiteText: {
         fontFamily: 'Lato-L',
         color: 'white',
