@@ -52,9 +52,11 @@ class CarsList extends React.Component {
         this.getCars();
         console.log(this.props, this.state)
     }
+
     componentDidCatch(err) {
         console.log(err)
     }
+
     renderLocations = () => {
         this.setState({showLocation: !this.state.showLocation})
     };
@@ -78,37 +80,54 @@ class CarsList extends React.Component {
         if (this.state.cars && this.state.cars.length > 0) {
             let resArr = Object.keys(this.state.cars);
             return resArr.map(resArr => {
-                return (<TouchableOpacity key={resArr} style={{borderColor: 'red', borderWidth: 1}}
+                return (<View style={styles.carListCardContainer}>
+                        <TouchableOpacity key={resArr}
+                                          activeOpacity=".7"
                                           style={styles.carListCard}
-                                          onPress={() => { this.props.navigation.navigate('Vip',{car: this.state.cars[resArr] })}}>
-                        <View style={styles.oneHalfSection}>
-                            <Image
-                                // source={{uri: 'https://tripjhon.insightssoftwares.com//api/v1/' + this.state.cars[resArr].car_image}}
-                                source={require('../assets/images/car.png')}
-                                style={{height: 50, width: 120}}
-                            />
-                            <View style={styles.carProviderContainer}>
-                                <Text style={styles.providedByText}>Provided by:</Text>
-                                <View style={styles.carProviderWrap}>
-                                    <SvgUri source={require('../assets/icons/car-n-key.svg')} style={styles.carKey}/>
-                                    <Text style={styles.providerName}>Al Jumeirah Travels</Text>
+                                          onPress={() => {
+                                              this.props.navigation.navigate('Vip', {car: this.state.cars[resArr]})
+                                          }}>
+                            <View style={styles.topHalfSection}>
+                                <Image
+                                    source={{uri: 'https://tripjhon.insightssoftwares.com//api/v1/' + this.state.cars[resArr].car_image}}
+                                    source={require('../assets/images/car.png')}
+                                    style={{height: 50, width: 120, marginTop: 6}}
+                                />
+                                <View style={styles.rightSection}>
+                                    <Text style={styles.carTitle}>{this.state.cars[resArr].english_name}</Text>
+                                    <View style={styles.carPriceWrap}>
+                                        <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
+                                            <Text
+                                                style={styles.carPriceMonth}>{this.state.cars[resArr].price_per_month}</Text><Text
+                                            style={styles.carPriceMonthCurrency}>AED
+                                            / month</Text>
+                                        </View>
+                                        <Text style={styles.carPriceWeek}>AED {this.state.cars[resArr].price_per_week}/Week,
+                                            AED 100/Day</Text>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
-                        <View style={styles.oneHalfSection}>
-                            <Text style={styles.carTitle}>{this.state.cars[resArr].english_name}</Text>
-                            <View style={styles.carPriceWrap}>
-                                <Text style={styles.carPriceMonth}>{this.state.cars[resArr].price_per_month}</Text>
-                                <Text>{this.state.cars[resArr].price_per_week}</Text>
-                            </View>
-                            <View style={styles.carProviderContainer}>
-                                <View style={styles.carProviderWrap}>
-                                    <SvgUri source={require('../assets/icons/pin.svg')} style={styles.pin}/>
-                                    <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
+                            <View style={styles.bottomHalfSection}>
+                                <View style={styles.carProviderContainer}>
+                                    <View style={styles.carProviderWrap}>
+                                        <Text style={styles.providedByText}>Provided by:</Text>
+                                        <View style={{flexDirection: 'row'}}>
+                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
+                                                    style={styles.carKey}/>
+                                            <Text style={styles.providerName}>Al Jumeirah Travels</Text>
+                                        </View>
+                                    </View>
+                                    <View style={styles.carProviderWrap}>
+                                        <View style={{flexDirection: 'row'}}>
+                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
+                                                    style={styles.carKey}/>
+                                            <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
+                                        </View>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
-                    </TouchableOpacity>
+                        </TouchableOpacity>
+                    </View>
                 )
             })
         }

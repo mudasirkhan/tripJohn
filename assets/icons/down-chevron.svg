@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14.3px" height="8.8px" viewBox="0 0 13 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51 (57462) - http://www.bohemiancoding.com/sketch -->
+    <title>down-chevron</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="search-home" transform="translate(-115.000000, -73.000000)" fill="#AAAAAA" fill-rule="nonzero" stroke="#FFFFFF" stroke-width="0.5">
+            <g id="search">
+                <g id="down-chevron" transform="translate(115.500000, 74.000000)">
+                    <path d="M6.01103743,6.69773262 C5.8344385,6.69773262 5.65854545,6.63073797 5.5237861,6.49636364 L0.265989305,1.23856684 C-0.00314438503,0.969112299 -0.00314438503,0.533197861 0.265989305,0.264449198 C0.535122995,-0.00500534759 0.971037433,-0.00500534759 1.24010695,0.264449198 L6.01103743,5.03499465 L10.7819679,0.264449198 C11.0511016,-0.00500534759 11.487016,-0.00500534759 11.7560856,0.264449198 C12.0252193,0.533582888 12.0252193,0.969112299 11.7560856,1.23856684 L6.49796791,6.49636364 C6.36359358,6.63073797 6.18731551,6.69773262 6.01103743,6.69773262 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

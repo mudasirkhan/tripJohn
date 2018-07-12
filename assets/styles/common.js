@@ -45,11 +45,13 @@ const commonStyles = StyleSheet.create({
         shadowOffset: {width: 0, height: 2},
         shadowOpacity: .11,
         shadowRadius: 4,
+        zIndex:9,
         width: '100%'
     },
     orangeBtnInner: {
         paddingVertical: 14,
-        alignItems: 'center'
+        alignItems: 'center',
+        zIndex:9,
     },
     orangeBtnText: {
         fontSize: 16,

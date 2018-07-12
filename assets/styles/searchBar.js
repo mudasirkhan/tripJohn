@@ -29,18 +29,22 @@ const styles = StyleSheet.create({
     },
     selectLocationWrap: {
         flex: 1,
+        // backgroundColor: 'red',
         flexDirection: 'row',
         paddingHorizontal: 16,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
     },
     selectLocationText: {
         fontFamily: 'SSP-L',
         fontSize: 16,
-        flex: 1,
+        // backgroundColor: 'green',
+        paddingRight: 10,
+        // alignSelf: 'left',
         color: '#9B9B9B',
     },
     chevronDown: {
+        top: 1.5
         // transform: ([{rotateX: '65deg'}, {origin: '50% 50%'}]),
     },
     locationListContainer: {
@@ -49,7 +53,7 @@ const styles = StyleSheet.create({
         left: 0,
         width: '100%',
         top: 48,
-        zIndex: 999,
+        zIndex: 9999999,
         right: 0,
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
@@ -67,31 +71,61 @@ const styles = StyleSheet.create({
     },
     locationList: {
         flex: 1,
-        zIndex: 999,
+        zIndex: 9999999,
     },
     locationListWrap: {
         paddingHorizontal: 16,
         paddingVertical: 4,
-        zIndex: 999,
+        zIndex: 9999999,
     },
     locationListTouch: {
         borderBottomColor: '#f5f5f5',
         borderBottomWidth: 1,
-        zIndex: 999,
+        zIndex: 9999999,
     },
     locationListItem: {
         paddingVertical: 8,
         color: '#4A4A4A',
+        zIndex: 9999999,
         fontFamily: 'SSP-R',
         fontSize: 16,
     },
     nearMeWrap: {
-        flex: 1
+        flex: 1,
+        flexDirection: 'row'
     },
     nearMeText: {
         color: '#777278',
         fontFamily: 'SSP-R',
-        fontSize: 14
+        paddingLeft: 12,
+        ...Platform.select({
+            ios: {
+                fontSize: 15
+            },
+            android: {
+                fontSize: 14,
+            },
+        }),
+    },
+    nearMeIcon: {
+        marginBottom: -2
+    },
+    topHalfSection: {
+        flex: 1,
+        flexDirection: 'row',
+        // backgroundColor: 'green',
+        justifyContent: 'space-between'
+    },
+    bottomHalfSection: {
+        flexDirection: 'column',
+        // backgroundColor: 'green',
+        marginTop: 8,
+        justifyContent: 'space-between'
+    },
+    rightSection: {
+        flex: .85,
+        // backgroundColor:'red',
+        justifyContent: 'space-between'
     },
     oneHalfSection: {
         flex: 1,
@@ -99,16 +133,21 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     carListCard: {
-        flexDirection: 'row',
-        borderWidth: 1,
-        borderColor: 'black',
-        height: 150,
+        flexDirection: 'column',
+        alignSelf: 'center',
+        borderWidth: .5,
+        flex: 1,
+        borderColor: '#f0f0f0',
+        height: 160,
+        paddingLeft: 20,
+        overflow: 'visible',
         backgroundColor: 'white',
-        paddingVertical: 10,
+        paddingBottom: 10,
+        paddingTop: 14,
         borderRadius: 4,
         ...Platform.select({
             ios: {
-                shadowColor: 'rgba(0,0,0,0.16)',
+                shadowColor: 'rgba(0,0,0, 0.9)',
                 shadowRadius: 4,
                 shadowOffset: {width: 0, height: 2}
             },
@@ -118,8 +157,16 @@ const styles = StyleSheet.create({
         }),
         marginBottom: 16
     },
+    carListCardContainer: {
+        paddingHorizontal: 28,
+        flexDirection: 'row',
+        width: '100%',
+        alignSelf: 'center'
+    },
     carPriceWrap: {
         backgroundColor: '#F5F6FD',
+        width: '100%',
+        alignSelf: 'flex-end',
         borderTopLeftRadius: 4,
         borderBottomLeftRadius: 4,
         paddingHorizontal: 14,
@@ -144,12 +191,33 @@ const styles = StyleSheet.create({
         fontFamily: 'SSP-EL',
         ...Platform.select({
             ios: {
-                fontSize: 38
+                fontSize: 38,
+                marginBottom: -8
             },
             android: {
                 fontSize: 36,
             },
         }),
+    },
+    carPriceWeek: {
+        color: '#483F61',
+        marginTop: 8,
+        marginBottom: 10,
+        paddingLeft: 3,
+        fontFamily: 'SSP-L',
+        ...Platform.select({
+            ios: {
+                fontSize: 12,
+            },
+            android: {
+                fontSize: 10,
+            },
+        }),
+    },
+    carPriceMonthCurrency: {
+        fontSize: 12,
+        color: '#483F61',
+        fontFamily: 'SSP-L'
     },
     carPriceCurrency: {
         color: '#483F61',
@@ -174,9 +242,10 @@ const styles = StyleSheet.create({
         marginRight: 4
     },
     carProviderContainer: {
-        paddingHorizontal: 16,
-        flexDirection: 'column',
-        // backgroundColor: 'red',
+        flexDirection: 'row',
+        width: '80%',
+        alignItems: 'flex-end',
+        justifyContent: 'space-between',
         alignSelf: 'flex-start'
     },
     providedByText: {
@@ -193,8 +262,7 @@ const styles = StyleSheet.create({
         }),
     },
     carProviderWrap: {
-        flexDirection: 'row',
-        width: '100%'
+        flexDirection: 'column',
     },
     providerName: {
         fontFamily: 'SSP-R',

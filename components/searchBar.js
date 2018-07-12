@@ -51,6 +51,7 @@ class SearchBar extends React.Component {
         this.getList();
         console.log(this.props.token)
     }
+
     componentDidCatch(err) {
         console.log(err)
     }
@@ -60,7 +61,7 @@ class SearchBar extends React.Component {
     };
 
     renderLocationOptions = () => {
-        if(this.state.resp && this.state.resp.length > 0) {
+        if (this.state.resp && this.state.resp.length > 0) {
             let resArr = Object.keys(this.state.resp);
             return resArr.map(resArr => {
                 return (<TouchableOpacity
@@ -108,7 +109,7 @@ class SearchBar extends React.Component {
                     secureTextEntry={false}
                 />
                 <View style={commonStyles.graySeparator}>
-                    <View style={commonStyles.graySeparatorInner} />
+                    <View style={commonStyles.graySeparatorInner}/>
                 </View>
                 <View style={styles.selectLocationContainer}>
                     <TouchableOpacity onPress={() => {
@@ -116,7 +117,7 @@ class SearchBar extends React.Component {
                     }} style={styles.selectLocationWrap}>
                         <Text
                             style={styles.selectLocationText}>{this.state.selectedLocation === '' ? 'Select Location' : this.state.selectedLocation}</Text>
-                        <SvgUri source={require('../assets/icons/rightThinChevron.svg')} style={styles.chevronDown}/>
+                        <SvgUri source={require('../assets/icons/down-chevron.svg')} style={styles.chevronDown}/>
                     </TouchableOpacity>
                     {this.state.showLocation &&
                     <View style={styles.locationListContainer}>
@@ -127,27 +128,25 @@ class SearchBar extends React.Component {
                         </ScrollView>
                     </View>}
                     <View style={[styles.nearMeWrap, commonStyles.center]}>
+                        <SvgUri source={require('../assets/icons/near-me.svg')} styles={styles.nearMeIcon}/>
                         <Text style={styles.nearMeText}>
                             Near me
                         </Text>
                     </View>
                 </View>
             </View>
-            <View style={commonStyles.orangeBtnShadow}>
-                <View style={commonStyles.orangeBtn}>
-                    <LinearGradient start={{x: 0, y: 0.75}}
-                                    end={{x: 1, y: 1}} colors={['#ddd', '#ddd']}>
-                        <TouchableOpacity onPress={this._handleLogin} style={commonStyles.orangeBtnInner}>
-                            <Text style={commonStyles.orangeBtnText}>Login</Text>
-                        </TouchableOpacity>
-                    </LinearGradient>
-                </View>
-            </View>
-            <View>
-            </View>
+            {/*<View style={commonStyles.orangeBtnShadow}>*/}
+                {/*<View style={commonStyles.orangeBtn}>*/}
+                    {/*<LinearGradient start={{x: 0, y: 0.75}}*/}
+                                    {/*end={{x: 1, y: 1}} colors={['#ddd', '#ddd']}>*/}
+                        {/*<TouchableOpacity onPress={this._handleLogin} style={commonStyles.orangeBtnInner}>*/}
+                            {/*<Text style={commonStyles.orangeBtnText}>Login</Text>*/}
+                        {/*</TouchableOpacity>*/}
+                    {/*</LinearGradient>*/}
+                {/*</View>*/}
+            {/*</View>*/}
         </View>
     }
-
 };
 const mapDispatchToProps = (dispatch) => ({
     change: (action, value) => {

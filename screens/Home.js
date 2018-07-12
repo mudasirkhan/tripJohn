@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, Image} from 'react-native'
+import {Text, View, TextInput, Image, ScrollView} from 'react-native'
 import {TopNav} from "../components/TopNav";
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
@@ -17,6 +17,7 @@ export default class Home extends React.Component {
             cars: []
         }
     }
+
     static navigationOptions = {
         drawerLabel: () => 'Home',
         drawerIcon: ({tintColor}) => (
@@ -30,9 +31,11 @@ export default class Home extends React.Component {
     componentDidMount() {
         console.log(this.props)
     }
+
     componentDidCatch(err) {
         console.log(err)
     }
+
     openDrawer = () => {
         this.props.navigation.openDrawer()
     }
@@ -41,7 +44,14 @@ export default class Home extends React.Component {
         return (<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <HomeTopSection/>
-            <CarsList navigation={this.props.navigation}/>
+            <ScrollView style={{paddingTop: 16, flex: 1,}} contentContainerStyle={{flex:1}}>
+                <CarsList navigation={this.props.navigation}/>
+                {/*<Image*/}
+                    {/*source={require('../assets/images/ad.png')}*/}
+                    {/*width="280"*/}
+
+                {/*/>*/}
+            </ScrollView>
         </View>)
     }
 }

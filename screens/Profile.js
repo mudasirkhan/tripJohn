@@ -38,6 +38,7 @@ class Profile extends React.Component {
             editOtherInfo: false,
         }
     }
+
     static navigationOptions = {
         drawerLabel: () => 'Profile',
         drawerIcon: ({tintColor}) => (
@@ -58,12 +59,12 @@ class Profile extends React.Component {
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
             access_token: this.props.token
         })
-            .then( response => {
+            .then(response => {
                 console.log(response)
                 const data = response.data.personal_details;
                 this.setState({
                     profileNameEnglish: data.english_name,
-                    email:data.email,
+                    email: data.email,
                     profileNameArabic: data.arabic_name,
                     phoneNumber: data.mobile_no,
                     whatsappNumber: data.whatsapp_number,
@@ -91,7 +92,7 @@ class Profile extends React.Component {
             });
     }
 
-    updateDetails  = () => {
+    updateDetails = () => {
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_personal_details', {
             access_token: this.props.token,
             english_name: this.state.profileNameEnglish,
@@ -109,10 +110,16 @@ class Profile extends React.Component {
             avatar: this.state.avatar,
             description: this.state.description,
         })
-            .then( response => {
+            .then(response => {
                 console.log(response)
                 const data = response.data.personal_details;
-                this.setState({profileNameEnglish: data.english_name, email:data.email, profileNameArabic: data.arabic_name, phoneNumber: data.mobile_no, whatsappNumber: data.whatsapp_number})
+                this.setState({
+                    profileNameEnglish: data.english_name,
+                    email: data.email,
+                    profileNameArabic: data.arabic_name,
+                    phoneNumber: data.mobile_no,
+                    whatsappNumber: data.whatsapp_number
+                })
 
             })
             .catch((error) => {
@@ -145,11 +152,10 @@ class Profile extends React.Component {
                             <Text style={styles.profileNameText}>{this.state.profileNameEnglish}</Text>
                             <Text style={styles.profileTypeText}>{this.state.profileType}</Text>
                         </View>
-                        {/*</View>*/}
                     </View>
                     <View style={styles.topHelpContainer}>
                         <Text style={styles.regTopHelpTextTitle}>You're doing pretty good.</Text>
-                        <Text style={styles.regTopHelpTextDesc}>{this.state.description}</Text>
+                        <Text style={styles.regTopHelpTextDesc} numberOfLines='1'>{this.state.description} </Text>
                     </View>
                 </View>
                 <View style={{flex: 5, zIndex: 9}}>
@@ -157,7 +163,10 @@ class Profile extends React.Component {
                         <View style={styles.profileDescContainer}>
                             <View style={styles.profileTitleInfo}>
                                 <Text style={styles.profileTitleText}>Personal Information</Text>
-                                <TouchableOpacity onPress={()=>{this.setState({editPI: !this.state.editPI})}}><Text style={styles.editBtn}>{!this.state.editPI?'EDIT': 'Done'}</Text></TouchableOpacity>
+                                <TouchableOpacity onPress={() => {
+                                    this.setState({editPI: !this.state.editPI})
+                                }}><Text
+                                    style={styles.editBtn}>{!this.state.editPI ? 'EDIT' : 'Done'}</Text></TouchableOpacity>
                             </View>
                             <View style={styles.profileInputGroup}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
@@ -365,7 +374,10 @@ class Profile extends React.Component {
                         <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
                             <View style={styles.profileTitleInfo}>
                                 <Text style={styles.profileTitleText}>{'Other Information'}</Text>
-                                <TouchableOpacity onPress={()=>{this.setState({editOtherInfo: !this.state.editOtherInfo})}}><Text style={styles.editBtn}>{!this.state.editOtherInfo?'EDIT':'Done'}</Text></TouchableOpacity>
+                                <TouchableOpacity onPress={() => {
+                                    this.setState({editOtherInfo: !this.state.editOtherInfo})
+                                }}><Text
+                                    style={styles.editBtn}>{!this.state.editOtherInfo ? 'EDIT' : 'Done'}</Text></TouchableOpacity>
                             </View>
                             <View style={styles.profileInputGroup}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
@@ -540,8 +552,11 @@ class Profile extends React.Component {
                                     </View>
                                 </View>
                             </View>
-                            {(this.state.editPI || this.state.editOtherInfo || this.state.editPassword) && <View style={styles.greyBorderBtnWrap}>
-                                <TouchableOpacity style={styles.greyBorderBtn} onPress={()=>{this.updateDetails()}}>
+                            {(this.state.editPI || this.state.editOtherInfo || this.state.editPassword) &&
+                            <View style={styles.greyBorderBtnWrap}>
+                                <TouchableOpacity style={styles.greyBorderBtn} onPress={() => {
+                                    this.updateDetails()
+                                }}>
                                     <Text>Save</Text>
                                 </TouchableOpacity>
 
@@ -553,6 +568,7 @@ class Profile extends React.Component {
         )
     }
 }
+
 const mapDispatchToProps = (dispatch) => ({
     change: (action, value) => {
         dispatch({type: action, payload: value})
