@@ -61,7 +61,8 @@ class SearchBar extends React.Component {
     };
 
     renderLocationOptions = () => {
-        if (this.state.resp && this.state.resp.length > 0) {
+        console.log(this.state.resp, this.state.resp.length !== {})
+        if (this.state.resp && this.state.resp.length !== {}) {
             let resArr = Object.keys(this.state.resp);
             return resArr.map(resArr => {
                 return (<TouchableOpacity
@@ -124,6 +125,7 @@ class SearchBar extends React.Component {
                         <ScrollView style={styles.locationList}>
                             <View style={styles.locationListWrap}>
                                 {this.renderLocationOptions()}
+                                <Text>skjdnsdjn</Text>
                             </View>
                         </ScrollView>
                     </View>}
