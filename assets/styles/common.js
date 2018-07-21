@@ -67,7 +67,8 @@ const commonStyles = StyleSheet.create({
     },
     orangeBtnText: {
         fontSize: 16,
-        fontStyle: 'italic',
+        fontFamily:'SSP-SB',
+        // fontStyle: 'italic',
         fontWeight: 'bold',
         color: 'white',
     },

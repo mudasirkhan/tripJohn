@@ -8,8 +8,8 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
-        zIndex: 9,
-        height: 56,
+        zIndex: 99999,
+        height: 60,
         paddingHorizontal: 28,
         justifyContent: 'space-between'
     }

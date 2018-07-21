@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 29653,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "packagerPort": 19001,
+  "packagerPid": 2974,
+  "expoServerNgrokUrl": "https://ky-c9g.maajidz.tripjohn.exp.direct",
+  "packagerNgrokUrl": "https://packager.ky-c9g.maajidz.tripjohn.exp.direct",
+  "ngrokPid": 2998
 }

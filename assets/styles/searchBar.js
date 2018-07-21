@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         height: 100,
         width: '100%',
+        zIndex: 99999,
         // justifyContent: 'center',
         // alignItems: 'center'
     },
@@ -51,8 +52,8 @@ const styles = StyleSheet.create({
         width: '50%',
         position: 'absolute',
         left: 0,
-        top: 48,
-        zIndex: 9999999,
+        top: 49,
+        zIndex: 99999,
         right: 0,
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4,
@@ -70,22 +71,22 @@ const styles = StyleSheet.create({
     },
     locationList: {
         flex: 1,
-        zIndex: 9999999,
+        zIndex: 99999,
     },
     locationListWrap: {
         paddingHorizontal: 16,
         paddingVertical: 4,
-        zIndex: 9999999,
+        zIndex: 99999,
     },
     locationListTouch: {
         borderBottomColor: '#f5f5f5',
         borderBottomWidth: 1,
-        zIndex: 9999999,
+        zIndex: 99999,
     },
     locationListItem: {
         paddingVertical: 8,
         color: '#4A4A4A',
-        zIndex: 9999999,
+        zIndex: 99999,
         fontFamily: 'SSP-R',
         fontSize: 16,
     },
@@ -133,6 +134,7 @@ const styles = StyleSheet.create({
     },
     carListCard: {
         flexDirection: 'column',
+        zIndex: 9,
         alignSelf: 'center',
         borderWidth: .5,
         flex: 1,
@@ -160,6 +162,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 28,
         flexDirection: 'row',
         width: '100%',
+        zIndex: 9,
         alignSelf: 'center'
     },
     carPriceWrap: {

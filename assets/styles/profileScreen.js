@@ -4,7 +4,8 @@ import {StyleSheet, Platform} from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        position: 'relative'
     },
     profileDescContainer: {
         flex: 3,
@@ -58,12 +59,13 @@ const styles = StyleSheet.create({
         height: 80
     },
     welcomeContainer: {
-        flex: 1.75,
+        flex: 2.5,
         width: '100%',
         position: 'relative',
         flexDirection: 'column',
         padding: 30,
         justifyContent: 'flex-end',
+        alignItems: 'flex-start',
         zIndex: 99,
         ...Platform.select({
             ios: {
@@ -77,16 +79,13 @@ const styles = StyleSheet.create({
             },
         }),
     },
-    container: {
-        flex: 1,
-        backgroundColor: 'white'
-    },
     topHelpContainer: {
-        flex: 1,
+        width: '100%',
         justifyContent: 'flex-end'
     },
     profileInfoTop: {
         flexDirection: 'row',
+        marginBottom: 24,
         justifyContent: 'center',
         alignItems: 'center'
     },

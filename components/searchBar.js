@@ -125,7 +125,6 @@ class SearchBar extends React.Component {
                         <ScrollView style={styles.locationList}>
                             <View style={styles.locationListWrap}>
                                 {this.renderLocationOptions()}
-                                <Text>skjdnsdjn</Text>
                             </View>
                         </ScrollView>
                     </View>}
@@ -140,16 +139,16 @@ class SearchBar extends React.Component {
                     </View>
                 </View>
             </View>
-            {/*<View style={commonStyles.orangeBtnShadow}>*/}
-            {/*<View style={commonStyles.orangeBtn}>*/}
-            {/*<LinearGradient start={{x: 0, y: 0.75}}*/}
-            {/*end={{x: 1, y: 1}} colors={['#ddd', '#ddd']}>*/}
-            {/*<TouchableOpacity onPress={this._handleLogin} style={commonStyles.orangeBtnInner}>*/}
-            {/*<Text style={commonStyles.orangeBtnText}>Login</Text>*/}
-            {/*</TouchableOpacity>*/}
-            {/*</LinearGradient>*/}
-            {/*</View>*/}
-            {/*</View>*/}
+            <View style={commonStyles.orangeBtnShadow}>
+                <View style={commonStyles.orangeBtn}>
+                    <LinearGradient start={{x: 0, y: 0.75}}
+                                    end={{x: 1, y: 1}} colors={['#ddd', '#ddd']}>
+                        <TouchableOpacity onPress={this._handleLogin} style={commonStyles.orangeBtnInner}>
+                            <Text style={commonStyles.orangeBtnText}>Search</Text>
+                        </TouchableOpacity>
+                    </LinearGradient>
+                </View>
+            </View>
         </View>
     }
 };

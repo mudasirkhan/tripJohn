@@ -44,8 +44,8 @@ export default class Home extends React.Component {
         return (<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <HomeTopSection/>
-            <ScrollView style={{paddingBottom: 16, flex: 1,}} contentContainerStyle={{flex:1}}>
-                <CarsList navigation={this.props.navigation}/>
+            <ScrollView style={{paddingBottom: 16, flex: 1, zIndex: 9}} contentContainerStyle={{flex:1}}>
+                <CarsList navigation={this.props.navigation} style={{zIndex: 9}}/>
                 {/*<Image*/}
                     {/*source={require('../assets/images/ad.png')}*/}
                     {/*width="280"*/}
