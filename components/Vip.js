@@ -110,15 +110,18 @@ class CarsList extends React.Component {
                                 </View>
                             </View>
                         </View>
-                        <View style={styles.orangeBtnShadow}>
-                            <View style={styles.orangeBtn}>
-                                <LinearGradient start={{x: 1, y: 1}}
-                                                end={{x: 0, y: 0}} colors={['#F76B1C', '#FFC800']}>
-                                    <TouchableOpacity onPress={this._handleLogin} style={styles.orangeBtnInner}>
-                                        <Text style={styles.orangeBtnText}>View Contact No.</Text>
-                                    </TouchableOpacity>
-                                </LinearGradient>
+                        <View style={{alignItems: 'center'}}>
+                            <View style={styles.orangeBtnShadow}>
+                                <View style={styles.orangeBtn}>
+                                    <LinearGradient start={{x: 1, y: 1}}
+                                                    end={{x: 0, y: 0}} colors={['#F76B1C', '#FFC800']}>
+                                        <TouchableOpacity onPress={this._handleLogin} style={styles.orangeBtnInner}>
+                                            <Text style={styles.orangeBtnText}>View Contact No.</Text>
+                                        </TouchableOpacity>
+                                    </LinearGradient>
+                                </View>
                             </View>
+                            <Text style={styles.requestCallbackText}>Request a callback?</Text>
                         </View>
                     </View>
                     <View style={styles.rightSection}>
