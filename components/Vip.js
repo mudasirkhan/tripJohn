@@ -44,7 +44,7 @@ class CarsList extends React.Component {
             ],
             resp: {},
             selectedLocation: '',
-            cars: []
+            car: []
         }
     }
 
@@ -53,13 +53,27 @@ class CarsList extends React.Component {
     }
 
 
-    componentDidMount() {
-        console.log(this.props, this.state, this.props.navigation.getParam('car', {}))
-        let a = [];
-        a.push(this.props.navigation.getParam('car', {}));
-        this.setState({cars: a}, () => {
-            console.log(this.state.cars)
+    async componentDidMount() {
+        console.log(this.props, this.state, this.props.navigation.getParam('token', ''))
+        let token = await this.props.navigation.getParam('token', '');
+        let id = await this.props.navigation.getParam('id', '');
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_cars_details', {
+            car_id: id,
+            access_token: token
         })
+            .then(response => {
+                const data = response.data.car_details;
+                console.log(data)
+                this.setState({
+                    car: data
+                })
+
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
     }
 
     componentDidCatch(err) {

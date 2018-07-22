@@ -1,26 +1,15 @@
 import React from 'react'
 import {
     View,
-    TouchableHighlight,
     TouchableOpacity,
-    ActivityIndicator,
     Text,
-    TextInput,
     ScrollView,
-    StyleSheet,
     Dimensions,
-    Image,
-    Platform
+    Image
 } from 'react-native'
-import {LinearGradient} from 'expo';
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
-import * as _ from 'lodash';
 import {connect} from 'react-redux'
-import Slide1 from '../components/Slide1'
-import Slide2 from '../components/Slide2'
-import Slide3 from '../components/Slide3.js'
 import SvgUri from 'react-native-svg-uri';
-import commonStyles from '../assets/styles/common';
 import styles from '../assets/styles/searchBar';
 import axios from "axios/index";
 
@@ -56,26 +45,6 @@ class CarsList extends React.Component {
     componentDidCatch(err) {
         console.log(err)
     }
-
-    renderLocations = () => {
-        this.setState({showLocation: !this.state.showLocation})
-    };
-
-    renderLocationOptions = () => {
-        let resArr = Object.keys(this.state.resp);
-        return resArr.map(resArr => {
-            return (<TouchableOpacity
-                style={styles.locationListTouch}
-                onPress={() => {
-                    this.setState({
-                        selectedLocation: this.state.resp[resArr].english_name,
-                        showLocation: !this.state.showLocation
-                    })
-                }}>
-                <Text style={styles.locationListItem}>{this.state.resp[resArr].english_name}</Text>
-            </TouchableOpacity>)
-        })
-    };
     renderCars = () => {
         if (this.state.cars && this.state.cars.length > 0) {
             let resArr = Object.keys(this.state.cars);
@@ -85,12 +54,11 @@ class CarsList extends React.Component {
                                           activeOpacity=".7"
                                           style={styles.carListCard}
                                           onPress={() => {
-                                              this.props.navigation.navigate('Vip', {car: this.state.cars[resArr]})
+                                              this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
                                           }}>
                             <View style={styles.topHalfSection}>
                                 <Image
                                     source={{uri: 'https://tripjhon.insightssoftwares.com//api/v1/' + this.state.cars[resArr].car_image}}
-                                    source={require('../assets/images/car.png')}
                                     style={{height: 50, width: 120, marginTop: 6}}
                                 />
                                 <View style={styles.rightSection}>
