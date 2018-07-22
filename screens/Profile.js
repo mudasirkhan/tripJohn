@@ -42,9 +42,8 @@ class Profile extends React.Component {
     static navigationOptions = {
         drawerLabel: () => 'Profile',
         drawerIcon: ({tintColor}) => (
-            <Image
-                source={require('../assets/images/car.png')}
-                style={[styles.icon, {tintColor: tintColor}]}
+            <SvgUri
+                source={require('../assets/icons/user.svg')}
             />
         ),
     }

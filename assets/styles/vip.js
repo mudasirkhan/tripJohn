@@ -110,7 +110,8 @@ const styles = StyleSheet.create({
         width: '100%'
     },
     orangeBtnInner: {
-        paddingVertical: 14,
+        paddingVertical: 12,
+        paddingHorizontal: 24,
         alignItems: 'center',
         zIndex: 9,
     },
@@ -125,6 +126,18 @@ const styles = StyleSheet.create({
         }),
         fontFamily: 'Lato-R',
         color: 'white',
+    },
+    requestCallbackText: {
+        fontFamily: 'OS-L',
+        color: '#483F61',
+        ...Platform.select({
+            ios: {
+                fontSize: 12,
+            },
+            android: {
+                fontSize: 10,
+            },
+        }),
     },
     taxText: {
         fontFamily: 'Lato-L',
