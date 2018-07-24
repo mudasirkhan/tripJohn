@@ -126,6 +126,8 @@ const styles = StyleSheet.create({
         }),
         fontFamily: 'Lato-R',
         color: 'white',
+        minWidth: 120,
+        textAlign: 'center'
     },
     requestCallbackText: {
         fontFamily: 'OS-L',

@@ -5,13 +5,15 @@ import {
     Text,
     ScrollView,
     Dimensions,
-    Image
+    Image,
+    Modal
 } from 'react-native'
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import {connect} from 'react-redux'
 import SvgUri from 'react-native-svg-uri';
 import styles from '../assets/styles/searchBar';
 import axios from "axios/index";
+import AddCar from './addCar'
 
 
 const initialLayout = {
@@ -33,7 +35,8 @@ class CarsList extends React.Component {
             ],
             resp: {},
             selectedLocation: '',
-            cars: []
+            cars: [],
+            modalVisible: false,
         }
     }
 
@@ -117,10 +120,39 @@ class CarsList extends React.Component {
         console.log(resp, this.props.token);
         resp !== undefined && this.setState({cars: resp});
     }
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+    }
 
     render() {
         return <View style={styles.container}>
             <View>
+                <Modal
+                    animationType="slide"
+                    transparent={false}
+                    presentationStyle="formSheet"
+                    visible={this.state.modalVisible}
+                    onRequestClose={() => {
+                        alert('Modal has been closed.');
+                    }}>
+                    <View style={{marginTop: 44 , justifyContent: 'center', alignItems: 'center', flex: 1}}>
+                        <View style={{flex: 1}}>
+
+                            <TouchableOpacity
+                                onPress={() => {
+                                    this.setModalVisible(!this.state.modalVisible);
+                                }}>
+                                <Text>Hide Modal</Text>
+                            </TouchableOpacity>
+                            <AddCar setModalVisible={this.setModalVisible} token={this.props.token} />
+                        </View>
+                    </View>
+                </Modal>
+                <TouchableOpacity onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                }}>
+                    <Text style={styles.requestCallbackText}>Add Car</Text>
+                </TouchableOpacity>
                 <ScrollView style={{width: '100%', height: '100%', zIndex: 9}}>
                     {this.renderCars()}
                 </ScrollView>
