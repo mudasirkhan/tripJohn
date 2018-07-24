@@ -218,10 +218,12 @@ class UpdateCar extends React.Component {
 
         })
             .then(response => {
-                console.log(response, "car added successfully")
+                console.log(response, "car updated successfully")
+                alert("car updated successfully")
             })
             .catch((error) => {
                 console.log(error);
+                alert("car update failed")
                 this.setState({loader: false, error: true})
 
             });

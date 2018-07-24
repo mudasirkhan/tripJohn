@@ -215,9 +215,11 @@ class AddCar extends React.Component {
         })
             .then(response => {
                 console.log(response, "car added successfully")
+                alert("car added successfully")
             })
             .catch((error) => {
                 console.log(error);
+                alert("car add failed")
                 this.setState({loader: false, error: true})
 
             });
