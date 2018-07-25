@@ -3,6 +3,7 @@ import {View, TouchableHighlight, Text, Image, Platform, Dimensions} from 'react
 import {createDrawerNavigator, DrawerItems} from 'react-navigation'
 
 import Home from "../screens/Home";
+import Car from "../screens/Cars";
 import Profile from "../screens/Profile";
 import Vip from '../components/Vip';
 import styles from '../assets/styles/drawer';
@@ -13,6 +14,10 @@ const DrawerApp = createDrawerNavigator(
         Home: {
             path: '/',
             screen: Home,
+        },
+        Car: {
+            path: '/',
+            screen: Car,
         },
         Profile: {
             path: '/',

@@ -8,7 +8,7 @@ import LeadsList from '../screens/Leads'
 import SvgUri from 'react-native-svg-uri';
 import styles from "../assets/styles/profileScreen";
 
-export default class Home extends React.Component {
+export default class Car extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,7 +21,7 @@ export default class Home extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Home',
+        drawerLabel: () => 'Car',
         drawerIcon: ({tintColor}) => (
             <SvgUri
                 source={require('../assets/icons/home.svg')}
@@ -46,7 +46,7 @@ export default class Home extends React.Component {
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             <HomeTopSection/>
             <ScrollView style={{paddingBottom: 16, flex: 1, zIndex: 9}} contentContainerStyle={{flex: 1}}>
-                <LeadsList navigation={this.props.navigation} style={{zIndex: 9}}/>
+                <CarsList navigation={this.props.navigation} style={{zIndex: 9}}/>
 
                 {/*<Image*/}
                 {/*source={require('../assets/images/ad.png')}*/}
