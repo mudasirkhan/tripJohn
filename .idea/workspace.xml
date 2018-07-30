@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f40fb138-442f-4f6b-95fa-324d25f13051" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/carBigImg.jpg/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/carFullSize.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/vip.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/common.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/profileScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/profileScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/searchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/searchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/topNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/topNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Vip.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Vip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/searchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/searchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Profile.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -32,15 +20,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/screens/Home.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="14" selection-start-line="2" selection-end-line="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="carsList.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/carsList.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -53,8 +32,8 @@
       <file leaf-file-name="Vip.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/components/Vip.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+            <state relative-caret-position="292">
+              <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
               <folding>
                 <element signature="e#0#25#0" expanded="true" />
                 <element signature="e#635#677#0" expanded="true" />
@@ -66,13 +45,30 @@
       <file leaf-file-name="vip.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/assets/styles/vip.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+            <state relative-caret-position="209">
+              <caret line="97" column="16" lean-forward="true" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="16" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Home.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/screens/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.svg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/icons/user.svg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
       <file leaf-file-name="searchBar.js" pinned="false" current-in-tab="false">
@@ -98,8 +94,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>select</find>
-      <find>renderLocationOptions</find>
       <find>top</find>
       <find>description</find>
       <find>chevr</find>
@@ -128,6 +122,8 @@
       <find>comm</find>
       <find>red</find>
       <find>blue</find>
+      <find>orang</find>
+      <find>orange</find>
     </findStrings>
     <replaceStrings>
       <replace>borderRadius: 4</replace>
@@ -169,18 +165,18 @@
         <option value="$PROJECT_DIR$/screens/HomeScreen.js" />
         <option value="$PROJECT_DIR$/components/TopNav.js" />
         <option value="$PROJECT_DIR$/assets/icons/pin.svg" />
-        <option value="$PROJECT_DIR$/assets/icons/home.svg" />
         <option value="$PROJECT_DIR$/assets/icons/down-chevron.svg" />
         <option value="$PROJECT_DIR$/components/carsList.js" />
         <option value="$PROJECT_DIR$/assets/styles/drawer.js" />
         <option value="$PROJECT_DIR$/navigation/DrawerApp.js" />
-        <option value="$PROJECT_DIR$/screens/Home.js" />
         <option value="$PROJECT_DIR$/assets/styles/profileScreen.js" />
         <option value="$PROJECT_DIR$/assets/styles/topNav.js" />
-        <option value="$PROJECT_DIR$/screens/Profile.js" />
         <option value="$PROJECT_DIR$/components/searchBar.js" />
         <option value="$PROJECT_DIR$/assets/styles/common.js" />
         <option value="$PROJECT_DIR$/assets/styles/searchBar.js" />
+        <option value="$PROJECT_DIR$/assets/icons/home.svg" />
+        <option value="$PROJECT_DIR$/screens/Home.js" />
+        <option value="$PROJECT_DIR$/screens/Profile.js" />
         <option value="$PROJECT_DIR$/components/Vip.js" />
         <option value="$PROJECT_DIR$/assets/styles/vip.js" />
       </list>
@@ -229,6 +225,12 @@
               <item name="tripJohn" type="b2602c69:ProjectViewProjectNode" />
               <item name="tripJohn" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="tripJohn" type="b2602c69:ProjectViewProjectNode" />
+              <item name="tripJohn" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
               <item name="images" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -260,7 +262,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="app&#9;FILE&#9;file:///tripjohn/tripJohn/App.js&#10;topna&#9;FILE&#9;file:///tripjohn/tripJohn/components/TopNav.js" />
+    <property name="SearchEverywhereHistoryKey" value="profil&#9;FILE&#9;file:///tripjohn/tripJohn/screens/Profile.js&#10;app&#9;FILE&#9;file:///tripjohn/tripJohn/App.js&#10;topna&#9;FILE&#9;file:///tripjohn/tripJohn/components/TopNav.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
@@ -273,8 +275,8 @@
       <recent name="$PROJECT_DIR$/assets/icons" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/icons" />
+      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/screens" />
       <recent name="$PROJECT_DIR$/components" />
       <recent name="$PROJECT_DIR$/navigation" />
@@ -322,7 +324,7 @@
       <workItem from="1531411418898" duration="7872000" />
       <workItem from="1531535765750" duration="1680000" />
       <workItem from="1531808770200" duration="2919000" />
-      <workItem from="1532142632270" duration="5131000" />
+      <workItem from="1532142632270" duration="7604000" />
     </task>
     <task id="LOCAL-00001" summary="Added login screen styles">
       <created>1528134387763</created>
@@ -359,11 +361,18 @@
       <option name="project" value="LOCAL" />
       <updated>1531423849727</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added VIP">
+      <created>1532161807767</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1532161807768</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95266000" />
+    <option name="totallyTimeSpent" value="97739000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -377,7 +386,7 @@
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49939394" visible="true" weight="0.20366456" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49939394" visible="true" weight="0.20366456" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5546159" side_tool="true" weight="0.20484848" />
@@ -385,7 +394,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.4453841" weight="0.20484848" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" sideWeight="0.4453841" visible="true" weight="0.20484848" />
       <window_info id="Favorites" order="3" sideWeight="0.50060606" side_tool="true" weight="0.20366456" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -432,7 +441,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Profile/Home Style Bug Fix" />
     <MESSAGE value="Added login screen styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added login screen styles" />
+    <MESSAGE value="Added VIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added VIP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -450,20 +460,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/Slide1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/introSlides.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/reducers/user.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -546,9 +542,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/screens/SettingsScreen.js">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/icons/home.svg">
-      <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/icons/near-me.svg">
       <provider selected="true" editor-type-id="images" />
@@ -668,19 +661,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/images/car.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/screens/Profile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8250">
-          <caret line="558" column="35" lean-forward="true" selection-start-line="558" selection-start-column="35" selection-end-line="558" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/introSlider.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="673">
@@ -737,13 +717,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/screens/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="14" selection-start-line="2" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/components/searchBar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
@@ -761,10 +734,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/car.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/icons/car-n-key.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/icons/home.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/icons/user.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/Profile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="309">
+          <caret line="33" column="23" lean-forward="true" selection-start-line="33" selection-start-column="23" selection-end-line="33" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/screens/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/components/Vip.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="75" column="58" selection-start-line="75" selection-start-column="58" selection-end-line="75" selection-end-column="58" />
+        <state relative-caret-position="292">
+          <caret line="90" column="46" selection-start-line="90" selection-start-column="46" selection-end-line="90" selection-end-column="46" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
             <element signature="e#635#677#0" expanded="true" />
@@ -774,8 +779,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/styles/vip.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="28" lean-forward="true" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
+        <state relative-caret-position="209">
+          <caret line="97" column="16" lean-forward="true" selection-start-line="97" selection-start-column="16" selection-end-line="97" selection-end-column="16" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
