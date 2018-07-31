@@ -1,11 +1,13 @@
 import React from 'react';
-import {Text, View, TextInput, Image, ScrollView} from 'react-native'
+import {Text, View, TextInput, Image, ScrollView, TouchableOpacity} from 'react-native'
 import {TopNav} from "../components/TopNav";
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
+import LeadsList from '../screens/Leads'
 import SvgUri from 'react-native-svg-uri';
-import styles from "../assets/styles/profileScreen";
+import styles from "../assets/styles/dashboard";
+import commonStyles from "../assets/styles/common";
 
 export default class Home extends React.Component {
     constructor(props) {
@@ -43,15 +45,58 @@ export default class Home extends React.Component {
     render() {
         return (<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
-            <HomeTopSection/>
-            <ScrollView style={{paddingBottom: 16, flex: 1, zIndex: 9}} contentContainerStyle={{flex: 1}}>
-                <CarsList navigation={this.props.navigation} style={{zIndex: 9}}/>
-                {/*<Image*/}
-                {/*source={require('../assets/images/ad.png')}*/}
-                {/*width="280"*/}
+            {/*<HomeTopSection/>*/}
 
-                {/*/>*/}
-            </ScrollView>
+
+            <View style={styles.topContainer}>
+
+                <View style={styles.topInfo}>
+                    <View style={styles.planNameWrap}>
+                        <Text style={styles.planName}>GOLD PLAN</Text>
+                    </View>
+                    <View style={commonStyles.graySeparator}>
+                        <View style={commonStyles.graySeparatorInner}/>
+                    </View>
+                    <View style={styles.planDetailsWrap}>
+                        <View styles={styles.planDetailsItem}>
+                            <Text style={styles.planDetailsText}>Total cars you can add - 20</Text>
+                        </View>
+                        <View styles={styles.planDetailsItem}>
+                            <Text style={styles.planDetailsText}>Deals per month - 100</Text>
+                        </View>
+                        <View styles={styles.planDetailsItem}>
+                            <Text style={styles.planDetailsText}>Highlight Deals per month - 5</Text>
+                        </View>
+                    </View>
+
+                    <View style={[styles.smallGreyBorderBtnWrap, {alignSelf: 'flex-end',}]}>
+                        <TouchableOpacity style={styles.smallGreyBorderBtn} onPress={() => {
+                            this.updateDetails()
+                        }}>
+                            <Text style={styles.smallBtnText}>Change Plan</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+            <View style={styles.bottomContainer}>
+                <View style={styles.leadsListHeader}>
+                    <Text style={styles.listHeaderTitle}>Your Leaderboard</Text>
+                    <View style={styles.listSortBtn}>
+                        <Text style={styles.listSortBtnText}>All Leads</Text>
+                    </View>
+                </View>
+                <ScrollView
+                    style={{ alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
+                    contentContainerStyle={{flex: 1}}>
+                    <LeadsList navigation={this.props.navigation} style={{zIndex: 9}}/>
+
+                    {/*<Image*/}
+                    {/*source={require('../assets/images/ad.png')}*/}
+                    {/*width="280"*/}
+
+                    {/*/>*/}
+                </ScrollView>
+            </View>
         </View>)
     }
 }

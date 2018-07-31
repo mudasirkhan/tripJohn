@@ -10,7 +10,8 @@ import {
     StyleSheet,
     Dimensions,
     Image,
-    Platform
+    Platform,
+    Modal
 } from 'react-native'
 import {LinearGradient} from 'expo';
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
@@ -23,6 +24,7 @@ import SvgUri from 'react-native-svg-uri';
 // import commonStyles from '../assets/styles/common';
 import styles from '../assets/styles/vip';
 import axios from "axios/index";
+import UpadateCar from './updateCar'
 
 
 const initialLayout = {
@@ -44,7 +46,9 @@ class CarsList extends React.Component {
             ],
             resp: {},
             selectedLocation: '',
-            cars: []
+            car: [],
+            showNumber: false,
+            modalVisible: false,
         }
     }
 
@@ -53,21 +57,63 @@ class CarsList extends React.Component {
     }
 
 
-    componentDidMount() {
-        console.log(this.props, this.state, this.props.navigation.getParam('car', {}))
-        let a = [];
-        a.push(this.props.navigation.getParam('car', {}));
-        this.setState({cars: a}, () => {
-            console.log(this.state.cars)
+    async componentDidMount() {
+        console.log(this.props, this.state, this.props.navigation.getParam('token', ''))
+        let token = await this.props.navigation.getParam('token', '');
+        let id = await this.props.navigation.getParam('id', '');
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_cars_details', {
+            car_id: id,
+            access_token: token
         })
-    }
+            .then(response => {
+                const data = response.data.car_details;
+                console.log(data)
+                this.setState({
+                    car: data
+                })
 
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+    }
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+    }
+    showNumber = () =>{
+        this.setState({showNumber: true})
+    }
     componentDidCatch(err) {
         console.log(err)
     }
 
     render() {
+        let token = this.props.navigation.getParam('token', '');
         return <View style={styles.container}>
+            <Modal
+                animationType="slide"
+                transparent={false}
+                presentationStyle="formSheet"
+                visible={this.state.modalVisible}
+                onRequestClose={() => {
+                    alert('Modal has been closed.');
+                }}>
+                <View style={{marginTop: 44 , justifyContent: 'center', alignItems: 'center', flex: 1}}>
+                    <View style={{flex: 1}}>
+
+                        <TouchableHighlight
+                            onPress={() => {
+                                this.setModalVisible(!this.state.modalVisible);
+                            }}>
+                            <Text>Hide Modal</Text>
+                        </TouchableHighlight>
+                        <UpadateCar setModalVisible={this.setModalVisible} token={token} details={this.state.car}/>
+                    </View>
+                </View>
+            </Modal>
+
             <View style={styles.carImageContainer}>
                 <Image style={styles.carFullSizeImage} source={require('../assets/images/carFullSize.png')}/>
             </View>
@@ -101,13 +147,17 @@ class CarsList extends React.Component {
                                 <View style={styles.orangeBtn}>
                                     <LinearGradient start={{x: 1, y: 1}}
                                                     end={{x: 0, y: 0}} colors={['#F76B1C', '#FFC800']}>
-                                        <TouchableOpacity onPress={this._handleLogin} style={styles.orangeBtnInner}>
-                                            <Text style={styles.orangeBtnText}>View Contact No.</Text>
+                                        <TouchableOpacity onPress={this.showNumber} style={styles.orangeBtnInner}>
+                                            <Text style={styles.orangeBtnText}>{this.state.showNumber?"  9875543211  ":"View Contact No."}</Text>
                                         </TouchableOpacity>
                                     </LinearGradient>
                                 </View>
                             </View>
-                            <Text style={styles.requestCallbackText}>Request a callback?</Text>
+                            <TouchableOpacity onPress={() => {
+                                this.setModalVisible(!this.state.modalVisible);
+                            }}>
+                            <Text style={styles.requestCallbackText}>Update Car</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.rightSection}>
@@ -119,9 +169,11 @@ class CarsList extends React.Component {
                             <Text style={styles.carPriceWeek}>AED 124/Week</Text>
                             <Text style={styles.taxText}>+ 5% VAT applicable</Text>
                         </View>
-                        <View style={styles.bargainBtn}>
+                        <TouchableOpacity onPress={() => {
+                            this.setModalVisible(!this.state.modalVisible);
+                        }} style={styles.bargainBtn}>
                             <Text style={styles.bargainBtnText}>Want to bargain?</Text>
-                        </View>
+                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
