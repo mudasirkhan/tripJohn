@@ -11,6 +11,7 @@ import {
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import {connect} from 'react-redux'
 import SvgUri from 'react-native-svg-uri';
+import modalStyles from '../assets/styles/modal';
 import styles from '../assets/styles/searchBar';
 import axios from "axios/index";
 import AddCar from './addCar'
@@ -48,6 +49,7 @@ class CarsList extends React.Component {
     componentDidCatch(err) {
         console.log(err)
     }
+
     renderCars = () => {
         if (this.state.cars && this.state.cars.length > 0) {
             let resArr = Object.keys(this.state.cars);
@@ -57,7 +59,10 @@ class CarsList extends React.Component {
                                           activeOpacity=".7"
                                           style={styles.carListCard}
                                           onPress={() => {
-                                              this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
+                                              this.props.navigation.navigate('Vip', {
+                                                  token: this.props.token,
+                                                  id: this.state.cars[resArr].id
+                                              })
                                           }}>
                             <View style={styles.topHalfSection}>
                                 <Image
@@ -120,43 +125,55 @@ class CarsList extends React.Component {
         console.log(resp, this.props.token);
         resp !== undefined && this.setState({cars: resp});
     }
+
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
     }
 
     render() {
         return <View style={styles.container}>
-            <View>
-                <Modal
-                    animationType="slide"
-                    transparent={false}
-                    presentationStyle="formSheet"
-                    visible={this.state.modalVisible}
-                    onRequestClose={() => {
-                        alert('Modal has been closed.');
-                    }}>
-                    <View style={{marginTop: 44 , justifyContent: 'center', alignItems: 'center', flex: 1}}>
-                        <View style={{flex: 1}}>
-
+            <Modal
+                animationType="slide"
+                transparent={false}
+                presentationStyle="formSheet"
+                visible={this.state.modalVisible}
+                onRequestClose={() => {
+                    alert('Modal has been closed.');
+                }}>
+                <View style={modalStyles.modalWrap}>
+                    <View style={{flex: 1}}>
+                        <View style={modalStyles.modalTopBar}>
+                            {/*<View styles={modalStyles.backButton}>*/}
                             <TouchableOpacity
+                                style={modalStyles.backButton}
                                 onPress={() => {
                                     this.setModalVisible(!this.state.modalVisible);
                                 }}>
-                                <Text>Hide Modal</Text>
+
+                                <SvgUri source={require('../assets/icons/arrow-back.svg')}
+                                        height='20.9'
+                                        width='18.7'
+                                        style={modalStyles.arrowBack}/>
                             </TouchableOpacity>
-                            <AddCar setModalVisible={this.setModalVisible} token={this.props.token} />
+                            {/*</View>*/}
+                            <View styles={{paddingLeft: 16}}>
+                                <Text style={modalStyles.modalTitleText}>Add a car</Text>
+                            </View>
                         </View>
+                        <AddCar setModalVisible={this.setModalVisible} token={this.props.token}/>
                     </View>
-                </Modal>
-                <TouchableOpacity onPress={() => {
-                    this.setModalVisible(!this.state.modalVisible);
-                }}>
-                    <Text style={styles.requestCallbackText}>Add Car</Text>
-                </TouchableOpacity>
-                <ScrollView style={{width: '100%', height: '100%', zIndex: 9}}>
-                    {this.renderCars()}
-                </ScrollView>
-            </View>
+                </View>
+            </Modal>
+            <TouchableOpacity onPress={() => {
+                this.setModalVisible(!this.state.modalVisible);
+            }}
+            style={styles.addCarBtn}
+            >
+                <Text style={styles.addCarBtnText}>Add new car</Text>
+            </TouchableOpacity>
+            <ScrollView style={{width: '100%', height: '100%', zIndex: 9}}>
+                {this.renderCars()}
+            </ScrollView>
         </View>
     }
 
