@@ -278,6 +278,32 @@ const styles = StyleSheet.create({
                 fontSize: 10,
             },
         }),
+    },
+    addCarBtn: {
+        marginVertical: 12,
+        width: 140,
+        marginLeft: 30,
+        paddingVertical: 12,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 4,
+        backgroundColor: '#483F61'
+    },
+    addCarBtnText: {
+        fontFamily: 'Lato-R',
+        color: '#fff',
+        ...Platform.select({
+            ios: {
+                fontSize: 15,
+                shadowColor: 'rgba(0,0,0,0.11)',
+                shadowRadius: 5,
+                shadowOffset: {width: 0, height: 2}
+            },
+            android: {
+                fontSize: 14,
+                elevation: 4
+            },
+        }),
     }
 });
 

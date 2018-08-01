@@ -9,7 +9,6 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginBottom: 32,
         position: 'relative',
-        paddingHorizontal: 16,
         borderRadius: 4,
         width: '95%',
         alignSelf: 'center',
@@ -68,7 +67,8 @@ const styles = StyleSheet.create({
     extraInfoWrap: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginVertical: 14
+        marginTop: 14,
+        marginBottom: 4
     },
     extraInfoText: {
         color: '#483F61',
@@ -83,7 +83,9 @@ const styles = StyleSheet.create({
         }),
     },
     bottomBtnWrap: {
-        height: 40,
+        height: 44,
+        borderTopColor: '#F5F6FD',
+        borderTopWidth: 1,
         flexDirection: 'row',
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4

@@ -130,18 +130,18 @@ class LeadsList extends React.Component {
                                     </View>
                                 </View>
                             </View>
-                            <View style={styles.bottomBtnWrap}>
-                                <View style={styles.oneHalfSection}>
-                                    <Text style={styles.btnText}>Approve</Text>
-                                </View>
-                                <View style={commonStyles.graySeparatorVertical}>
-                                    <View style={commonStyles.graySeparatorVerInner}/>
-                                </View>
-                                <View style={styles.oneHalfSection}>
-                                    <Text style={styles.btnText}>Decline</Text>
-                                </View>
-                            </View>
                         </TouchableOpacity>
+                        <View style={styles.bottomBtnWrap}>
+                            <View style={styles.oneHalfSection}>
+                                <Text style={styles.btnText}>Approve</Text>
+                            </View>
+                            <View style={commonStyles.graySeparatorVertical}>
+                                <View style={commonStyles.graySeparatorVerInner}/>
+                            </View>
+                            <View style={styles.oneHalfSection}>
+                                <Text style={styles.btnText}>Decline</Text>
+                            </View>
+                        </View>
                     </View>
                 )
             })

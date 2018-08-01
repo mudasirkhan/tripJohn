@@ -83,10 +83,23 @@ export default class Home extends React.Component {
                     <Text style={styles.listHeaderTitle}>Your Leaderboard</Text>
                     <View style={styles.listSortBtn}>
                         <Text style={styles.listSortBtnText}>All Leads</Text>
+                        <SvgUri source={require('../assets/icons/down-chevron.svg')} style={styles.chevronDown}/>
+                    </View>
+                    <View style={styles.sortListWrap}>
+                        <View style={styles.sortListItem}>
+                            <Text style={styles.sortListText}>
+                                New leads
+                            </Text>
+                        </View>
+                        <View style={styles.sortListItem}>
+                            <Text style={styles.sortListText}>
+                                Completed leads
+                            </Text>
+                        </View>
                     </View>
                 </View>
                 <ScrollView
-                    style={{ alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
+                    style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
                     contentContainerStyle={{flex: 1}}>
                     <LeadsList navigation={this.props.navigation} style={{zIndex: 9}}/>
 

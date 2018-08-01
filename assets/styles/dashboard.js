@@ -110,6 +110,7 @@ const styles = StyleSheet.create({
     leadsListHeader: {
         height: 44,
         zIndex: 99,
+        position: 'relative',
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
@@ -142,11 +143,16 @@ const styles = StyleSheet.create({
         }),
     },
     listSortBtn: {
-
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
+    chevronDown: {
+        top: 2
     },
     listSortBtnText: {
         fontFamily: 'Lato-R',
         color: '#483F61',
+        marginRight: 8,
         ...Platform.select({
             ios: {
                 fontSize: 14
@@ -155,7 +161,44 @@ const styles = StyleSheet.create({
                 fontSize: 12
             },
         }),
-    }
+    },
+    sortListWrap: {
+        borderBottomLeftRadius: 3,
+        borderBottomRightRadius: 3,
+        position: 'absolute',
+        top: '100%',
+        right: 24,
+        backgroundColor: 'white',
+        ...Platform.select({
+            ios: {
+                shadowColor: '#000',
+                shadowOffset: {width: 0, height: 2},
+                shadowOpacity: .11,
+                shadowRadius: 5,
+            },
+            android: {
+                elevation: 4
+            },
+        }),
+    },
+    sortListItem: {
+      borderBottomColor: '#eee',
+      borderBottomWidth: 1,
+    },
+    sortListText: {
+        color: '#7C7B81',
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+        fontFamily: 'SSP-R',
+        ...Platform.select({
+            ios: {
+                fontSize: 14
+            },
+            android: {
+                fontSize: 12
+            },
+        }),
+    },
 });
 
 export default styles;
