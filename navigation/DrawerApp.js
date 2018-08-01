@@ -1,11 +1,12 @@
 import React from 'react'
-import {View, TouchableHighlight, Text, Image, Platform, Dimensions} from 'react-native'
+import {View, TouchableHighlight, Text, Image, Dimensions} from 'react-native'
 import {createDrawerNavigator, DrawerItems} from 'react-navigation'
 
 import Home from "../screens/Home";
 import Car from "../screens/Cars";
 import Profile from "../screens/Profile";
 import Vip from '../components/Vip';
+import Deals from '../components/AddDeal'
 import styles from '../assets/styles/drawer';
 
 const dimen = Dimensions.get('window')
@@ -26,7 +27,12 @@ const DrawerApp = createDrawerNavigator(
         Vip: {
             path: '/',
             screen: Vip
+        },
+        Deals: {
+            path: '/',
+            screen: Deals
         }
+
     },
     {
         contentComponent: (props) => {
