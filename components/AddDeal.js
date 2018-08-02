@@ -6,7 +6,7 @@ import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
 import LeadsList from '../screens/Leads'
 import SvgUri from 'react-native-svg-uri';
-import styles from "../assets/styles/profileScreen";
+import styles from '../assets/styles/deals';
 import {connect} from "react-redux";
 import axios from "axios/index";
 import * as _ from "lodash";
@@ -66,10 +66,12 @@ class Deals extends React.Component {
     }
     renderStatusOptions = (statusMethods) => {
         return _.map(statusMethods, item => {
-            return <TouchableOpacity onPress={() => {
-                this.setState({status: item})
-            }}>
-                <Text>
+            return <TouchableOpacity
+                style={this.state.status === item ? styles.selectedStatusOption : styles.statusOptions}
+                onPress={() => {
+                    this.setState({status: item})
+                }}>
+                <Text style={styles.statusOptionsText}>
                     {item}
                 </Text>
             </TouchableOpacity>
@@ -81,6 +83,7 @@ class Deals extends React.Component {
             <TopNav title={"Add deal"} openDrawer={this.openDrawer}/>
             <View style={{marginTop: 44, justifyContent: 'center', alignContent: 'center', flex: 1}}>
                 <View style={[styles.profileInputGroup, {alignSelf: 'center'}]}>
+                    <Text style={styles.sectionTitle}> Car deals information </Text>
                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                         <View style={[styles.textInputWrap, {
                             borderTopLeftRadius: 4,
@@ -104,13 +107,17 @@ class Deals extends React.Component {
                         }]}><TextInput placeholder={"end date (YYYY-MM-DD)"} value={this.state.end_date}
                                        style={styles.textInput}
                                        onChangeText={end_date => this.setState({end_date})}/></View>
+
                         <TouchableOpacity onPress={() => {
                             this.renderStatusOptions(this.state.statusTypes)
-                        }}><Text> {this.state.status ? this.state.status : 'Select Status'} </Text></TouchableOpacity>
-                        <View style={{flexDirection: 'row'}}>{this.renderStatusOptions(this.state.statusTypes)}</View>
+                        }}><Text style={styles.sectionTitle}> {!this.state.status ? 'Select Status' : null} </Text></TouchableOpacity>
+
+                        <View style={{ width: '100%', borderRadius: 4, overflow: 'hidden'}}>{this.renderStatusOptions(this.state.statusTypes)}</View>
+
                         <TouchableOpacity onPress={() => {
                             this.submitDeal()
-                        }}><Text> Add Deal</Text></TouchableOpacity>
+                        }} style={styles.addDealBtn}><Text style={styles.addDealBtnText}>Add Deal</Text></TouchableOpacity>
+
                     </View>
                 </View>
             </View>
