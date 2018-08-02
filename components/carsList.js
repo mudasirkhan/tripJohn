@@ -135,7 +135,7 @@ class CarsList extends React.Component {
             <Modal
                 animationType="slide"
                 transparent={false}
-                presentationStyle="formSheet"
+                presentationStyle="fullScreen"
                 visible={this.state.modalVisible}
                 onRequestClose={() => {
                     alert('Modal has been closed.');
@@ -149,7 +149,6 @@ class CarsList extends React.Component {
                                 onPress={() => {
                                     this.setModalVisible(!this.state.modalVisible);
                                 }}>
-
                                 <SvgUri source={require('../assets/icons/arrow-back.svg')}
                                         height='20.9'
                                         width='18.7'

@@ -24,7 +24,7 @@ export default class Car extends React.Component {
         drawerLabel: () => 'Car',
         drawerIcon: ({tintColor}) => (
             <SvgUri
-                source={require('../assets/icons/home.svg')}
+                source={require('../assets/icons/nav-icon-car.svg')}
             />
         ),
     }

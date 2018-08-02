@@ -9,18 +9,6 @@ const styles = StyleSheet.create({
         width: '100%',
         backgroundColor: 'white',
         paddingBottom: 6,
-        height: 54,
-        ...Platform.select({
-            ios: {
-                shadowColor: '#000',
-                shadowOffset: {width: 0, height: 2},
-                shadowOpacity: .11,
-                shadowRadius: 5,
-            },
-            android: {
-                elevation: 4
-            },
-        }),
     },
     arrowBack: {
         // height: 20,
@@ -32,6 +20,18 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         width: '100%',
         alignItems: 'center',
+        overflow: 'visible',
+        ...Platform.select({
+            ios: {
+                shadowColor: '#000',
+                shadowOffset: {width: 0, height: 2},
+                shadowOpacity: .11,
+                shadowRadius: 5,
+            },
+            android: {
+                elevation: 4
+            },
+        }),
     },
     backButton: {
         width: 54,

@@ -25,7 +25,7 @@ export default class Home extends React.Component {
         drawerLabel: () => 'Home',
         drawerIcon: ({tintColor}) => (
             <SvgUri
-                source={require('../assets/icons/home.svg')}
+                source={require('../assets/icons/nav-icon-home.svg')}
             />
         ),
     }

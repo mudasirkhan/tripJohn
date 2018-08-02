@@ -43,7 +43,7 @@ class Profile extends React.Component {
         drawerLabel: () => 'Profile',
         drawerIcon: ({tintColor}) => (
             <SvgUri
-                source={require('../assets/icons/user.svg')}
+                source={require('../assets/icons/nav-icon-profile.svg')}
             />
         ),
     }
