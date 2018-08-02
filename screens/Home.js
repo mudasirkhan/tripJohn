@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, Image, ScrollView, TouchableOpacity} from 'react-native'
+import {Text, View, TextInput, Image, ScrollView, TouchableOpacity, WebView} from 'react-native'
 import {TopNav} from "../components/TopNav";
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
@@ -17,7 +17,9 @@ export default class Home extends React.Component {
             showLocation: false,
             resp: {},
             selectedLocation: '',
-            cars: []
+            cars: [],
+            leadType: 'all',
+            showWebView: false
         }
     }
 
@@ -43,7 +45,11 @@ export default class Home extends React.Component {
     }
 
     render() {
-        return (<View style={{flex: 1, position: 'relative'}}>
+        return (this.state.showWebView? <WebView
+            source={{uri: 'https://www.google.com'}}
+            style={{marginTop: 20}}
+        />
+            :<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
             {/*<HomeTopSection/>*/}
 
@@ -53,7 +59,8 @@ export default class Home extends React.Component {
                     <TouchableOpacity
                         style={styles.changePlanBtn}
                         onPress={() => {
-                        this.updateDetails()
+                            this.setState({showWebView: true})
+
                     }}>
                         <Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>
                     </TouchableOpacity>
@@ -100,27 +107,33 @@ export default class Home extends React.Component {
             <View style={styles.bottomContainer}>
                 <View style={styles.leadsListHeader}>
                     <Text style={styles.listHeaderTitle}>Your Leaderboard</Text>
-                    <View style={styles.listSortBtn}>
-                        <Text style={styles.listSortBtnText}>All Leads</Text>
+                    <TouchableOpacity onPress={()=>{this.setState({showTypes: !this.state.showTypes})}} style={styles.listSortBtn}>
+                        <Text style={styles.listSortBtnText}>{this.state.leadType !== 'all' ?this.state.leadType === 'cancelled' ? 'Cancelled':'New':'All'} Leads</Text>
                         <SvgUri source={require('../assets/icons/down-chevron.svg')} style={styles.chevronDown}/>
-                    </View>
-                    <View style={styles.sortListWrap}>
-                        <View style={styles.sortListItem}>
+                    </TouchableOpacity>
+
+                    {this.state.showTypes?<View style={styles.sortListWrap}>
+                        <TouchableOpacity onPress={()=>{this.setState({leadType:'new', showTypes: false})}} style={styles.sortListItem}>
                             <Text style={styles.sortListText}>
                                 New leads
                             </Text>
-                        </View>
-                        <View style={styles.sortListItem}>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{this.setState({leadType:'cancelled', showTypes: false})}} style={styles.sortListItem}>
                             <Text style={styles.sortListText}>
-                                Completed leads
+                                Cancelled leads
                             </Text>
-                        </View>
-                    </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{this.setState({leadType:'all', showTypes: false})}} style={styles.sortListItem}>
+                            <Text style={styles.sortListText}>
+                                All leads
+                            </Text>
+                        </TouchableOpacity>
+                    </View>: null}
                 </View>
                 <ScrollView
                     style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
                     contentContainerStyle={{flex: 1}}>
-                    <LeadsList navigation={this.props.navigation} style={{zIndex: 9}}/>
+                    <LeadsList navigation={this.props.navigation} style={{zIndex: 9}} leadType={this.state.leadType}/>
 
                     {/*<Image*/}
                     {/*source={require('../assets/images/ad.png')}*/}

@@ -38,7 +38,7 @@ class LeadsList extends React.Component {
             modalVisible: false,
             approved_leads: [],
             canceled_leads: [],
-            new_leads: []
+            new_leads: [],
         }
     }
 
@@ -223,7 +223,9 @@ class LeadsList extends React.Component {
         return <View style={styles.container}>
             <View>
                 <ScrollView style={{paddingTop: 32, width: '100%', height: '100%', zIndex: 9}}>
-                    {this.renderNewLeads()}
+                    {/*{this.renderNewLeads()}*/}
+                    {this.props.leadType !== 'all' ? this.props.leadType === 'cancelled' ? this.renderCanceledLeads(): this.renderNewLeads() : this.renderLeads()}
+
                     {/*{this.renderLeads()}*/}
                     {/*{this.renderCanceledLeads()}*/}
                 </ScrollView>
