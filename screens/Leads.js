@@ -5,8 +5,6 @@ import {
     Text,
     ScrollView,
     Dimensions,
-    Image,
-    Modal
 } from 'react-native'
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import {connect} from 'react-redux'
@@ -56,9 +54,9 @@ class LeadsList extends React.Component {
     renderCanceledLeads = () => {
         if (this.state.canceled_leads && this.state.canceled_leads.length > 0) {
             return this.state.canceled_leads.map(resArr => {
-                return (<View style={styles.carListCardContainer}>
+                return (<View style={styles.carListCardContainer} key={resArr.id}>
 
-                        <TouchableOpacity key={resArr.id}
+                        <TouchableOpacity
                                           activeOpacity=".7"
                                           style={styles.carListCard}
                                           onPress={() => {
@@ -152,9 +150,9 @@ class LeadsList extends React.Component {
     renderLeads = () => {
         if (this.state.approved_leads && this.state.approved_leads.length > 0) {
             return this.state.approved_leads.map(resArr => {
-                return (<View style={styles.carListCardContainer}>
+                return (<View style={styles.carListCardContainer} key={resArr.id}>
 
-                        <TouchableOpacity key={resArr.id}
+                        <TouchableOpacity
                                           activeOpacity=".7"
                                           style={styles.carListCard}
                                           onPress={() => {
