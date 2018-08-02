@@ -28,7 +28,7 @@ class Deals extends React.Component {
         drawerLabel: () => 'Deals',
         drawerIcon: ({tintColor}) => (
             <SvgUri
-                source={require('../assets/icons/home.svg')}
+                source={require('../assets/icons/nav-icon-deals.svg')}
             />
         ),
     }
@@ -74,7 +74,7 @@ class Deals extends React.Component {
         })
     }
     render() {
-        return (<View style={{flex: 1, position: 'relative',backgroundColor: 'red'}}>
+        return (<View style={{flex: 1, position: 'relative',backgroundColor: '#f5f5f5'}}>
             <TopNav title={"Add deal"} openDrawer={this.openDrawer}/>
             <View style={{marginTop: 44}}>
                 <View><TextInput placeholder={"Car Id"} value={this.state.car_id} onChangeText={car_id => this.setState({car_id})}/></View>

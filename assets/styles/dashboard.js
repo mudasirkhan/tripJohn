@@ -4,29 +4,45 @@ import {StyleSheet, Platform} from 'react-native';
 const styles = StyleSheet.create({
     topContainer: {
         flex: 1,
-        position: 'relative'
+        position: 'relative',
     },
     topInfo: {
         flex: 3,
-        backgroundColor: '#F5F6FD',
+        backgroundColor: '#483F61',
         flexDirection: 'column',
         alignItems: 'center',
         paddingHorizontal: 28,
         justifyContent: 'center'
+    },
+    changePlanBtn: {
+        alignSelf: 'flex-end',
+        marginBottom: 12
+    },
+    changePlanBtnText: {
+        fontFamily: 'Lato-R',
+        color: '#fff',
+        ...Platform.select({
+            ios: {
+                fontSize: 14
+            },
+            android: {
+                fontSize: 12,
+            },
+        }),
     },
     planNameWrap: {
         borderTopLeftRadius: 4,
         borderTopRightRadius: 4,
         width: '100%',
         backgroundColor: 'white',
-        paddingVertical: 24,
+        paddingVertical: 18,
         alignItems: 'center',
         justifyContent: 'center',
         ...Platform.select({
             ios: {
                 shadowColor: '#000',
                 shadowOffset: {width: 0, height: 4},
-                shadowOpacity: .07,
+                shadowOpacity: .50,
                 shadowRadius: 5,
             },
             android: {
@@ -37,12 +53,13 @@ const styles = StyleSheet.create({
     },
     planName: {
         fontFamily: 'Lato-L',
+        color: '#483F61',
         ...Platform.select({
             ios: {
-                fontSize: 20
+                fontSize: 22
             },
             android: {
-                fontSize: 18
+                fontSize: 20
             },
         }),
     },
@@ -66,7 +83,8 @@ const styles = StyleSheet.create({
         }),
     },
     planDetailsItem: {
-        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center'
     },
     planDetailsText: {
         fontFamily: 'SSP-R',
@@ -77,6 +95,26 @@ const styles = StyleSheet.create({
             },
             android: {
                 fontSize: 14,
+            },
+        }),
+    },
+    numberBadge: {
+        borderRadius: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5F6FD',
+        paddingVertical: 6,
+        paddingHorizontal: 8
+    },
+    numberBadgeText: {
+        fontFamily: 'SSP-R',
+        color: '#483F61',
+        ...Platform.select({
+            ios: {
+                fontSize: 14
+            },
+            android: {
+                fontSize: 12,
             },
         }),
     },
@@ -182,8 +220,8 @@ const styles = StyleSheet.create({
         }),
     },
     sortListItem: {
-      borderBottomColor: '#eee',
-      borderBottomWidth: 1,
+        borderBottomColor: '#eee',
+        borderBottomWidth: 1,
     },
     sortListText: {
         color: '#7C7B81',

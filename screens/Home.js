@@ -49,8 +49,14 @@ export default class Home extends React.Component {
 
 
             <View style={styles.topContainer}>
-
                 <View style={styles.topInfo}>
+                    <TouchableOpacity
+                        style={styles.changePlanBtn}
+                        onPress={() => {
+                        this.updateDetails()
+                    }}>
+                        <Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>
+                    </TouchableOpacity>
                     <View style={styles.planNameWrap}>
                         <Text style={styles.planName}>GOLD PLAN</Text>
                     </View>
@@ -59,22 +65,35 @@ export default class Home extends React.Component {
                     </View>
                     <View style={styles.planDetailsWrap}>
                         <View styles={styles.planDetailsItem}>
-                            <Text style={styles.planDetailsText}>Total cars you can add - 20</Text>
+                            <View style={styles.planDetailsTextWrap}>
+                                <Text style={styles.planDetailsText}>Total cars you can add</Text>
+                            </View>
+                            <View style={styles.numberBadge}>
+                                <Text style={styles.numberBadgeText}>
+                                    8
+                                </Text>
+                            </View>
                         </View>
                         <View styles={styles.planDetailsItem}>
-                            <Text style={styles.planDetailsText}>Deals per month - 100</Text>
+                            <View style={styles.planDetailsTextWrap}>
+                                <Text style={styles.planDetailsText}>Total cars you can remove</Text>
+                            </View>
+                            <View style={styles.numberBadge}>
+                                <Text style={styles.numberBadgeText}>
+                                    12
+                                </Text>
+                            </View>
                         </View>
                         <View styles={styles.planDetailsItem}>
-                            <Text style={styles.planDetailsText}>Highlight Deals per month - 5</Text>
+                            <View style={styles.planDetailsTextWrap}>
+                                <Text style={styles.planDetailsText}>Total cars you can ...</Text>
+                            </View>
+                            <View style={styles.numberBadge}>
+                                <Text style={styles.numberBadgeText}>
+                                    20
+                                </Text>
+                            </View>
                         </View>
-                    </View>
-
-                    <View style={[styles.smallGreyBorderBtnWrap, {alignSelf: 'flex-end',}]}>
-                        <TouchableOpacity style={styles.smallGreyBorderBtn} onPress={() => {
-                            this.updateDetails()
-                        }}>
-                            <Text style={styles.smallBtnText}>Change Plan</Text>
-                        </TouchableOpacity>
                     </View>
                 </View>
             </View>
