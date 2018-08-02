@@ -65,30 +65,61 @@ class Deals extends React.Component {
         this.props.navigation.openDrawer()
     }
     renderStatusOptions = (statusMethods) => {
-        return _.map(statusMethods, item=> {
-            return <TouchableOpacity onPress={() => {this.setState({status: item})}}>
+        return _.map(statusMethods, item => {
+            return <TouchableOpacity onPress={() => {
+                this.setState({status: item})
+            }}>
                 <Text>
                     {item}
                 </Text>
             </TouchableOpacity>
         })
     }
+
     render() {
-        return (<View style={{flex: 1, position: 'relative',backgroundColor: '#f5f5f5'}}>
+        return (<View style={{flex: 1, position: 'relative', backgroundColor: '#483F61'}}>
             <TopNav title={"Add deal"} openDrawer={this.openDrawer}/>
-            <View style={{marginTop: 44}}>
-                <View><TextInput placeholder={"Car Id"} value={this.state.car_id} onChangeText={car_id => this.setState({car_id})}/></View>
-                <View><TextInput placeholder={"discount"} value={this.state.discount} onChangeText={discount => this.setState({discount})}/></View>
-                <View><TextInput placeholder={"start date (YYYY-MM-DD)"} value={this.state.start_date} onChangeText={start_date => this.setState({start_date})}/></View>
-                <View><TextInput placeholder={"end date (YYYY-MM-DD)"} value={this.state.end_date} onChangeText={end_date => this.setState({end_date})}/></View>
-                <TouchableOpacity onPress={()=>{this.renderStatusOptions(this.state.statusTypes)}}><Text> {this.state.status? this.state.status: 'Select Status'} </Text></TouchableOpacity>
-                <View style={{ flexDirection: 'row'}}>{this.renderStatusOptions(this.state.statusTypes)}</View>
-                <TouchableOpacity onPress={()=> {this.submitDeal()}}><Text> Add Deal</Text></TouchableOpacity>
+            <View style={{marginTop: 44, justifyContent: 'center', alignContent: 'center', flex: 1}}>
+                <View style={[styles.profileInputGroup, {alignSelf: 'center'}]}>
+                    <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                        <View style={[styles.textInputWrap, {
+                            borderTopLeftRadius: 4,
+                            borderTopRightRadius: 4
+                        }]}>
+                            <TextInput placeholder={"Car Id"} value={this.state.car_id}
+                                       style={styles.textInput}
+                                       onChangeText={car_id => this.setState({car_id})}/>
+                        </View>
+                        <View style={styles.textInputWrap}><TextInput placeholder={"discount"}
+                                                                      value={this.state.discount}
+                                                                      style={styles.textInput}
+                                                                      onChangeText={discount => this.setState({discount})}/></View>
+                        <View style={styles.textInputWrap}><TextInput placeholder={"start date (YYYY-MM-DD)"}
+                                                                      value={this.state.start_date}
+                                                                      style={styles.textInput}
+                                                                      onChangeText={start_date => this.setState({start_date})}/></View>
+                        <View style={[styles.textInputWrap, {
+                            borderBottomLeftRadius: 4,
+                            borderBottomRightRadius: 4
+                        }]}><TextInput placeholder={"end date (YYYY-MM-DD)"} value={this.state.end_date}
+                                       style={styles.textInput}
+                                       onChangeText={end_date => this.setState({end_date})}/></View>
+                        <TouchableOpacity onPress={() => {
+                            this.renderStatusOptions(this.state.statusTypes)
+                        }}><Text> {this.state.status ? this.state.status : 'Select Status'} </Text></TouchableOpacity>
+                        <View style={{flexDirection: 'row'}}>{this.renderStatusOptions(this.state.statusTypes)}</View>
+                        <TouchableOpacity onPress={() => {
+                            this.submitDeal()
+                        }}><Text> Add Deal</Text></TouchableOpacity>
+                    </View>
+                </View>
             </View>
 
         </View>)
     }
-}const mapDispatchToProps = (dispatch) => ({
+}
+
+const mapDispatchToProps = (dispatch) => ({
     change: (action, value) => {
         dispatch({type: action, payload: value})
     },

@@ -55,7 +55,6 @@ class LeadsList extends React.Component {
         if (this.state.canceled_leads && this.state.canceled_leads.length > 0) {
             return this.state.canceled_leads.map(resArr => {
                 return (<View style={styles.carListCardContainer} key={resArr.id}>
-
                         <TouchableOpacity
                                           activeOpacity=".7"
                                           style={styles.carListCard}
