@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
         position: 'relative',
         flexDirection: 'column',
         padding: 30,
+        paddingTop: 48,
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
         zIndex: 99,
@@ -241,6 +242,14 @@ const styles = StyleSheet.create({
         }),
         fontFamily: 'SSP-L'
     },
+    saveProfileButton: {
+        backgroundColor: '#333',
+        flex: 1,
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        paddingVertical: 18
+    },
     greyBorderBtnWrap: {
         borderWidth: 1,
         alignSelf: 'center',
@@ -255,7 +264,20 @@ const styles = StyleSheet.create({
         paddingHorizontal: 12,
         alignItems: 'center',
         justifyContent: 'center'
+    },
+    saveBtnText: {
+        color: '#fff',
+        ...Platform.select({
+            ios: {
+                fontSize: 16,
+            },
+            android: {
+                fontSize: 14,
+            },
+        }),
+        fontFamily: 'Lato-R'
     }
+
 });
 
 export default styles;

@@ -279,10 +279,26 @@ const styles = StyleSheet.create({
             },
         }),
     },
+    addCarWrap: {
+        width: '100%',
+        paddingVertical: 12,
+        zIndex:99,
+        overflow: 'visible',
+        paddingHorizontal: 30,
+        ...Platform.select({
+            ios: {
+                shadowColor: '#000',
+                shadowRadius: 5,
+                shadowOpacity: 0.11,
+                shadowOffset: {width: 0, height: 2}
+            },
+            android: {
+                elevation: 4
+            },
+        }),
+    },
     addCarBtn: {
-        marginVertical: 12,
         width: 140,
-        marginLeft: 30,
         paddingVertical: 12,
         justifyContent: 'center',
         alignItems: 'center',
@@ -295,7 +311,8 @@ const styles = StyleSheet.create({
         ...Platform.select({
             ios: {
                 fontSize: 15,
-                shadowColor: 'rgba(0,0,0,0.11)',
+                shadowColor: '#ACA8B6',
+                shadowOpacity: .20,
                 shadowRadius: 5,
                 shadowOffset: {width: 0, height: 2}
             },

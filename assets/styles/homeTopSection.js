@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     headlineWrap: {
         overflow: 'visible',
         position: 'absolute',
-        top: 56,
+        top: 42,
         left: 0,
     },
     boldLine: {

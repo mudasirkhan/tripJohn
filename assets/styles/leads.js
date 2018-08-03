@@ -144,6 +144,25 @@ const styles = StyleSheet.create({
         height: 16,
         paddingHorizontal: 9
     },
+    topDateBadgeGradient: {
+        borderTopLeftRadius: 3,
+        borderTopRightRadius: 3,
+        position: 'absolute',
+        left: 0,
+        top: -16,
+        flexDirection: 'row',
+        alignItems: 'center',
+        overflow: 'hidden',
+        height: 16,
+    },
+    topDateBadgeGradientInner: {
+        borderTopLeftRadius: 3,
+        borderTopRightRadius: 3,
+        flexDirection: 'row',
+        alignItems: 'center',
+        height: 16,
+        paddingHorizontal: 9
+    },
     dateText: {
         color: '#fff',
         fontFamily: 'Lato-R',

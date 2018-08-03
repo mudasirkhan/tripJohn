@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
                 shadowRadius: 5,
             },
             android: {
-                fontSize: 16,
                 elevation: 4
             },
         }),
@@ -189,7 +188,7 @@ const styles = StyleSheet.create({
     },
     listSortBtnText: {
         fontFamily: 'Lato-R',
-        color: '#483F61',
+        color: '#7C7B81',
         marginRight: 8,
         ...Platform.select({
             ios: {
@@ -220,13 +219,13 @@ const styles = StyleSheet.create({
         }),
     },
     sortListItem: {
-        borderBottomColor: '#eee',
+        borderBottomColor: '#f5f5f5',
         borderBottomWidth: 1,
     },
     sortListText: {
         color: '#7C7B81',
         paddingVertical: 12,
-        paddingHorizontal: 16,
+        paddingHorizontal: 18,
         fontFamily: 'SSP-R',
         ...Platform.select({
             ios: {

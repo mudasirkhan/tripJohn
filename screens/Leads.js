@@ -11,6 +11,7 @@ import {connect} from 'react-redux'
 import SvgUri from 'react-native-svg-uri';
 import styles from '../assets/styles/leads';
 import axios from "axios/index";
+import {LinearGradient} from 'expo';
 import AddCar from '../components/addCar'
 import commonStyles from "../assets/styles/common";
 
@@ -54,47 +55,42 @@ class LeadsList extends React.Component {
     renderCanceledLeads = () => {
         if (this.state.canceled_leads && this.state.canceled_leads.length > 0) {
             return this.state.canceled_leads.map(resArr => {
-                return (<View style={styles.carListCardContainer} key={resArr.id}>
-                        <TouchableOpacity
+                return (<View style={styles.leadsListCardContainer}>
+                        <View style={styles.topDateBadge}>
+                            <View><Text style={styles.dateText}>6th May, 2018</Text></View>
+                            <View style={styles.topInfoSeparator}></View>
+                            <View><Text style={styles.statusText}>CANC</Text></View>
+                        </View>
+                        <TouchableOpacity key={resArr.id}
                                           activeOpacity=".7"
-                                          style={styles.carListCard}
+                                          style={styles.leadsListCard}
                                           onPress={() => {
                                               // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
                                           }}>
-                            <View style={styles.topHalfSection}>
-                                <View style={styles.rightSection}>
-                                    <Text style={styles.carTitle}>{resArr.name}</Text>
-                                    <View style={styles.carPriceWrap}>
-                                        <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                                            <Text
-                                                style={styles.carPriceMonth}>{resArr.contact_number}</Text><Text
-                                            style={styles.carPriceMonthCurrency}>AED
-                                            / month</Text>
-                                        </View>
-                                        <Text style={styles.carPriceWeek}>{resArr.message}</Text>
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.bottomHalfSection}>
-                                <View style={styles.carProviderContainer}>
-                                    <View style={[styles.carProviderWrap, {paddingRight: 24}]}>
-                                        <Text style={styles.providedByText}>Provided by:</Text>
-                                        <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                    style={styles.carKey}/>
-                                            <Text style={styles.providerName}>Al Jumeirah Travels</Text>
-                                        </View>
-                                    </View>
-                                    <View style={styles.carProviderWrap}>
-                                        <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                    style={styles.carKey}/>
-                                            <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
-                                        </View>
+                            <View>
+                                <View>
+                                    <Text style={styles.carName}>Kia Sportage 2018</Text>
+                                    {/*<Text>{resArr.contact_number}</Text>*/}
+                                    <Text style={styles.carMessage}>{resArr.message}</Text>
+                                    <View style={styles.extraInfoWrap}>
+                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
                                     </View>
                                 </View>
                             </View>
                         </TouchableOpacity>
+                        <View style={styles.bottomBtnWrap}>
+                            <View style={styles.oneHalfSection}>
+                                <Text style={styles.btnText}>Approve</Text>
+                            </View>
+                            <View style={commonStyles.graySeparatorVertical}>
+                                <View style={commonStyles.graySeparatorVerInner}/>
+                            </View>
+                            <View style={styles.oneHalfSection}>
+                                <Text style={styles.btnText}>Decline</Text>
+                            </View>
+                        </View>
                     </View>
                 )
             })
@@ -104,7 +100,7 @@ class LeadsList extends React.Component {
         if (this.state.new_leads && this.state.new_leads.length > 0) {
             return this.state.new_leads.map(resArr => {
                 return (<View style={styles.leadsListCardContainer}>
-                        <View style={styles.topDateBadge}>
+                        <View style={[styles.topDateBadge, {backgroundColor: '#4A90E2'}]}>
                             <View><Text style={styles.dateText}>6th May, 2018</Text></View>
                             <View style={styles.topInfoSeparator}></View>
                             <View><Text style={styles.statusText}>NEW</Text></View>
@@ -149,48 +145,45 @@ class LeadsList extends React.Component {
     renderLeads = () => {
         if (this.state.approved_leads && this.state.approved_leads.length > 0) {
             return this.state.approved_leads.map(resArr => {
-                return (<View style={styles.carListCardContainer} key={resArr.id}>
-
-                        <TouchableOpacity
+                return (<View style={styles.leadsListCardContainer}>
+                        <View style={[styles.topDateBadgeGradient]}>
+                            <LinearGradient start={{x: 0, y: 0.75}} end={{x: 1, y: 1}} colors={['#FAD961', '#F76B1C']}
+                                            style={[styles.topDateBadgeGradientInner]}>
+                                <View><Text style={styles.dateText}>6th May, 2018</Text></View>
+                                <View style={styles.topInfoSeparator}></View>
+                                <View><Text style={styles.statusText}>DONE</Text></View>
+                            </LinearGradient>
+                        </View>
+                        <TouchableOpacity key={resArr.id}
                                           activeOpacity=".7"
-                                          style={styles.carListCard}
+                                          style={styles.leadsListCard}
                                           onPress={() => {
                                               // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
                                           }}>
-                            <View style={styles.topHalfSection}>
-                                <View style={styles.rightSection}>
-                                    <Text style={styles.carTitle}>{resArr.name}</Text>
-                                    <View style={styles.carPriceWrap}>
-                                        <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
-                                            <Text
-                                                style={styles.carPriceMonth}>{resArr.contact_number}</Text><Text
-                                            style={styles.carPriceMonthCurrency}>AED
-                                            / month</Text>
-                                        </View>
-                                        <Text style={styles.carPriceWeek}>{resArr.message}</Text>
-                                    </View>
-                                </View>
-                            </View>
-                            <View style={styles.bottomHalfSection}>
-                                <View style={styles.carProviderContainer}>
-                                    <View style={[styles.carProviderWrap, {paddingRight: 24}]}>
-                                        <Text style={styles.providedByText}>Provided by:</Text>
-                                        <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                    style={styles.carKey}/>
-                                            <Text style={styles.providerName}>Al Jumeirah Travels</Text>
-                                        </View>
-                                    </View>
-                                    <View style={styles.carProviderWrap}>
-                                        <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                    style={styles.carKey}/>
-                                            <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
-                                        </View>
+                            <View>
+                                <View>
+                                    <Text style={styles.carName}>Kia Sportage 2018</Text>
+                                    {/*<Text>{resArr.contact_number}</Text>*/}
+                                    <Text style={styles.carMessage}>{resArr.message}</Text>
+                                    <View style={styles.extraInfoWrap}>
+                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
                                     </View>
                                 </View>
                             </View>
                         </TouchableOpacity>
+                        <View style={styles.bottomBtnWrap}>
+                            <View style={styles.oneHalfSection}>
+                                <Text style={styles.btnText}>Approve</Text>
+                            </View>
+                            <View style={commonStyles.graySeparatorVertical}>
+                                <View style={commonStyles.graySeparatorVerInner}/>
+                            </View>
+                            <View style={styles.oneHalfSection}>
+                                <Text style={styles.btnText}>Decline</Text>
+                            </View>
+                        </View>
                     </View>
                 )
             })
@@ -224,7 +217,7 @@ class LeadsList extends React.Component {
             <View>
                 <ScrollView style={{paddingTop: 32, width: '100%', height: '100%', zIndex: 9}}>
                     {/*{this.renderNewLeads()}*/}
-                    {this.props.leadType !== 'all' ? this.props.leadType === 'cancelled' ? this.renderCanceledLeads(): this.renderNewLeads() : this.renderLeads()}
+                    {this.props.leadType !== 'all' ? this.props.leadType === 'cancelled' ? this.renderCanceledLeads() : this.renderNewLeads() : this.renderLeads()}
 
                     {/*{this.renderLeads()}*/}
                     {/*{this.renderCanceledLeads()}*/}

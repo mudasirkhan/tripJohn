@@ -370,7 +370,7 @@ class Profile extends React.Component {
                                 </View>
                             </View>
                         </View>
-                        <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
+                        <View style={[styles.profileDescContainer, {paddingBottom: 64}]}>
                             <View style={styles.profileTitleInfo}>
                                 <Text style={styles.profileTitleText}>{'Other Information'}</Text>
                                 <TouchableOpacity onPress={() => {
@@ -551,18 +551,19 @@ class Profile extends React.Component {
                                     </View>
                                 </View>
                             </View>
-                            {(this.state.editPI || this.state.editOtherInfo || this.state.editPassword) &&
-                            <View style={styles.greyBorderBtnWrap}>
-                                <TouchableOpacity style={styles.greyBorderBtn} onPress={() => {
-                                    this.updateDetails()
-                                }}>
-                                    <Text>Save</Text>
-                                </TouchableOpacity>
-
-                            </View>}
                         </View>
                     </ScrollView>
                 </View>
+                {(this.state.editPI || this.state.editOtherInfo || this.state.editPassword) &&
+                <View style={[styles.saveProfileButton, {position: 'absolute', bottom: 0, zIndex: 9999999}]}>
+                    <TouchableOpacity style={styles.greyBorderBtn} onPress={() => {
+                        this.updateDetails()
+                    }}>
+                        <Text style={styles.saveBtnText}>Save</Text>
+                    </TouchableOpacity>
+
+                </View>
+                }
             </View>
         )
     }

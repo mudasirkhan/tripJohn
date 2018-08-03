@@ -163,13 +163,13 @@ class CarsList extends React.Component {
                     </View>
                 </View>
             </Modal>
-            <TouchableOpacity onPress={() => {
-                this.setModalVisible(!this.state.modalVisible);
-            }}
-            style={styles.addCarBtn}
-            >
-                <Text style={styles.addCarBtnText}>Add new car</Text>
-            </TouchableOpacity>
+            <View style={styles.addCarWrap}>
+                <TouchableOpacity onPress={() => {
+                    this.setModalVisible(!this.state.modalVisible);
+                }} style={styles.addCarBtn}>
+                    <Text style={styles.addCarBtnText}>Add new car</Text>
+                </TouchableOpacity>
+            </View>
             <ScrollView style={{width: '100%', height: '100%', zIndex: 9}}>
                 {this.renderCars()}
             </ScrollView>
