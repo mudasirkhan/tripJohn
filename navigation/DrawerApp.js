@@ -64,7 +64,6 @@ const DrawerApp = createDrawerNavigator(
                                 borderWidth: 1,
                                 borderColor: 'rgb(128, 77, 156)',
                             }} source={require('../assets/images/photo.jpg')}/>
-                        />
                         <View style={styles.profileInfoWrap}>
                             <Text
                                 numberOfLines={1} style={styles.profileName}>Abdul Majid</Text>

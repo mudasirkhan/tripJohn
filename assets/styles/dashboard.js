@@ -46,7 +46,6 @@ const styles = StyleSheet.create({
                 shadowRadius: 5,
             },
             android: {
-                fontSize: 16,
                 elevation: 4
             },
         }),

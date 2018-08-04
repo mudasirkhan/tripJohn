@@ -51,97 +51,88 @@ export default class Home extends React.Component {
         />
             :<View style={{flex: 1, position: 'relative'}}>
             <TopNav title={"Home"} openDrawer={this.openDrawer}/>
-            {/*<HomeTopSection/>*/}
+                <View style={styles.topContainer}>
+                    <View style={styles.topInfo}>
+                        <TouchableOpacity
+                            style={styles.changePlanBtn}
+                            onPress={() => {
+                                this.setState({showWebView: true})
 
-
-            <View style={styles.topContainer}>
-                <View style={styles.topInfo}>
-                    <TouchableOpacity
-                        style={styles.changePlanBtn}
-                        onPress={() => {
-                            this.setState({showWebView: true})
-
-                    }}>
-                        <Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>
-                    </TouchableOpacity>
-                    <View style={styles.planNameWrap}>
-                        <Text style={styles.planName}>GOLD PLAN</Text>
-                    </View>
-                    <View style={commonStyles.graySeparator}>
-                        <View style={commonStyles.graySeparatorInner}/>
-                    </View>
-                    <View style={styles.planDetailsWrap}>
-                        <View styles={styles.planDetailsItem}>
-                            <View style={styles.planDetailsTextWrap}>
-                                <Text style={styles.planDetailsText}>Total cars you can add</Text>
-                            </View>
-                            <View style={styles.numberBadge}>
-                                <Text style={styles.numberBadgeText}>
-                                    8
-                                </Text>
-                            </View>
+                            }}>
+                            <Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>
+                        </TouchableOpacity>
+                        <View style={styles.planNameWrap}>
+                            <Text style={styles.planName}>GOLD PLAN</Text>
                         </View>
-                        <View styles={styles.planDetailsItem}>
-                            <View style={styles.planDetailsTextWrap}>
-                                <Text style={styles.planDetailsText}>Total cars you can remove</Text>
-                            </View>
-                            <View style={styles.numberBadge}>
-                                <Text style={styles.numberBadgeText}>
-                                    12
-                                </Text>
-                            </View>
+                        <View style={commonStyles.graySeparator}>
+                            <View style={commonStyles.graySeparatorInner}/>
                         </View>
-                        <View styles={styles.planDetailsItem}>
-                            <View style={styles.planDetailsTextWrap}>
-                                <Text style={styles.planDetailsText}>Total cars you can ...</Text>
+                        <View style={styles.planDetailsWrap}>
+                            <View styles={styles.planDetailsItem}>
+                                <View style={styles.planDetailsTextWrap}>
+                                    <Text style={styles.planDetailsText}>Total cars you can add</Text>
+                                </View>
+                                <View style={styles.numberBadge}>
+                                    <Text style={styles.numberBadgeText}>
+                                        8
+                                    </Text>
+                                </View>
                             </View>
-                            <View style={styles.numberBadge}>
-                                <Text style={styles.numberBadgeText}>
-                                    20
-                                </Text>
+                            <View styles={styles.planDetailsItem}>
+                                <View style={styles.planDetailsTextWrap}>
+                                    <Text style={styles.planDetailsText}>Total cars you can remove</Text>
+                                </View>
+                                <View style={styles.numberBadge}>
+                                    <Text style={styles.numberBadgeText}>
+                                        12
+                                    </Text>
+                                </View>
+                            </View>
+                            <View styles={styles.planDetailsItem}>
+                                <View style={styles.planDetailsTextWrap}>
+                                    <Text style={styles.planDetailsText}>Total cars you can ...</Text>
+                                </View>
+                                <View style={styles.numberBadge}>
+                                    <Text style={styles.numberBadgeText}>
+                                        20
+                                    </Text>
+                                </View>
                             </View>
                         </View>
                     </View>
                 </View>
-            </View>
-            <View style={styles.bottomContainer}>
-                <View style={styles.leadsListHeader}>
-                    <Text style={styles.listHeaderTitle}>Your Leaderboard</Text>
-                    <TouchableOpacity onPress={()=>{this.setState({showTypes: !this.state.showTypes})}} style={styles.listSortBtn}>
-                        <Text style={styles.listSortBtnText}>{this.state.leadType !== 'all' ?this.state.leadType === 'cancelled' ? 'Cancelled':'New':'All'} Leads</Text>
-                        <SvgUri source={require('../assets/icons/down-chevron.svg')} style={styles.chevronDown}/>
-                    </TouchableOpacity>
+                <View style={styles.bottomContainer}>
+                    <View style={styles.leadsListHeader}>
+                        <Text style={styles.listHeaderTitle}>Your Leaderboard</Text>
+                        <TouchableOpacity onPress={()=>{this.setState({showTypes: !this.state.showTypes})}} style={styles.listSortBtn}>
+                            <Text style={styles.listSortBtnText}>{this.state.leadType !== 'all' ? this.state.leadType === 'cancelled' ? 'Cancelled Leads':'New Leads':'All Leads'}</Text>
+                            <SvgUri source={require('../assets/icons/down-chevron.svg')} style={styles.chevronDown}/>
+                        </TouchableOpacity>
 
-                    {this.state.showTypes?<View style={styles.sortListWrap}>
-                        <TouchableOpacity onPress={()=>{this.setState({leadType:'new', showTypes: false})}} style={styles.sortListItem}>
-                            <Text style={styles.sortListText}>
-                                New leads
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>{this.setState({leadType:'cancelled', showTypes: false})}} style={styles.sortListItem}>
-                            <Text style={styles.sortListText}>
-                                Cancelled leads
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>{this.setState({leadType:'all', showTypes: false})}} style={styles.sortListItem}>
-                            <Text style={styles.sortListText}>
-                                All leads
-                            </Text>
-                        </TouchableOpacity>
-                    </View>: null}
+                        {this.state.showTypes?<View style={styles.sortListWrap}>
+                            <TouchableOpacity onPress={()=>{this.setState({leadType:'new', showTypes: false})}} style={styles.sortListItem}>
+                                <Text style={styles.sortListText}>
+                                    New leads
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>{this.setState({leadType:'cancelled', showTypes: false})}} style={styles.sortListItem}>
+                                <Text style={styles.sortListText}>
+                                    Cancelled leads
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={()=>{this.setState({leadType:'all', showTypes: false})}} style={styles.sortListItem}>
+                                <Text style={styles.sortListText}>
+                                    All leads
+                                </Text>
+                            </TouchableOpacity>
+                        </View>: null}
+                    </View>
+                    <ScrollView
+                        style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
+                        contentContainerStyle={{flex: 1}}>
+                        <LeadsList navigation={this.props.navigation} style={{zIndex: 9}} leadType={this.state.leadType}/>
+                    </ScrollView>
                 </View>
-                <ScrollView
-                    style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
-                    contentContainerStyle={{flex: 1}}>
-                    <LeadsList navigation={this.props.navigation} style={{zIndex: 9}} leadType={this.state.leadType}/>
-
-                    {/*<Image*/}
-                    {/*source={require('../assets/images/ad.png')}*/}
-                    {/*width="280"*/}
-
-                    {/*/>*/}
-                </ScrollView>
-            </View>
-        </View>)
+            </View>)
     }
 }
