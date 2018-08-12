@@ -133,7 +133,7 @@ class Profile extends React.Component {
 
     render() {
         return (<View style={styles.container}>
-                <TopNav title={"Home"} openDrawer={this.openDrawer}/>
+                <TopNav title={""} openDrawer={this.openDrawer} style={{zIndex: 9999999}}/>
                 <View style={styles.welcomeContainer}>
                     <LinearGradient colors={['#9F19A9', '#F20C46']}
                                     start={{x: 0, y: 0.25}}
@@ -154,7 +154,7 @@ class Profile extends React.Component {
                     </View>
                     <View style={styles.topHelpContainer}>
                         <Text style={styles.regTopHelpTextTitle}>You're doing pretty good.</Text>
-                        <Text style={styles.regTopHelpTextDesc} numberOfLines='1'>{this.state.description} </Text>
+                        <Text style={styles.regTopHelpTextDesc} numberOfLines={1}>{this.state.description} </Text>
                     </View>
                 </View>
                 <View style={{flex: 6, zIndex: 9}}>

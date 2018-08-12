@@ -14,7 +14,7 @@ class TopNav extends React.Component {
     render() {
         return (
             <View style={[styles.topNavContainer]}>
-                <View style={{flexDirection: 'row', flex: 1,}}>
+                <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
                     <TouchableOpacity
                         onPress={this.props.openDrawer} style={{
                         height: '100%',
@@ -24,6 +24,7 @@ class TopNav extends React.Component {
                     >
                         <Image source={require('../assets/icons/ham.png')} style={{width: 24, height: 16}}/>
                     </TouchableOpacity>
+                    <Text style={{alignContent: 'center', fontFamily: 'Lato-R', fontSize: 16, marginLeft: 24, color: '#fff'}}>{this.props.title}</Text>
                 </View>
             </View>
         )

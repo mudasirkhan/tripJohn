@@ -5,6 +5,7 @@ import {
     Text,
     ScrollView,
     Dimensions,
+    PixelRatio,
     Image,
     Modal
 } from 'react-native'
@@ -75,8 +76,7 @@ class CarsList extends React.Component {
                                         <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
                                             <Text
                                                 style={styles.carPriceMonth}>{this.state.cars[resArr].price_per_month}</Text><Text
-                                            style={styles.carPriceMonthCurrency}>AED
-                                            / month</Text>
+                                            style={styles.carPriceMonthCurrency}>AED / month</Text>
                                         </View>
                                         <Text style={styles.carPriceWeek}>AED {this.state.cars[resArr].price_per_week}/Week,
                                             AED 100/Day</Text>

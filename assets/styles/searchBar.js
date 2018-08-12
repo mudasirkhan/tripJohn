@@ -1,5 +1,17 @@
 import React from 'react';
-import {StyleSheet, Platform} from 'react-native';
+import {StyleSheet, Platform, PixelRatio} from 'react-native';
+
+var flexSize   = 1;
+
+if (PixelRatio.get() === 1) {
+    flexSize = 1;
+}
+if (PixelRatio.get() === 1.5) {
+    flexSize = 1;
+}
+if (PixelRatio.get() === 3) {
+    flexSize = .85;
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -123,7 +135,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     rightSection: {
-        flex: .85,
+        flex: flexSize,
         // backgroundColor:'red',
         justifyContent: 'space-between'
     },
@@ -144,7 +156,7 @@ const styles = StyleSheet.create({
         overflow: 'visible',
         backgroundColor: 'white',
         paddingBottom: 10,
-        marginTop: 16,
+        marginVertical: 5,
         paddingTop: 14,
         borderRadius: 4,
         ...Platform.select({
@@ -154,7 +166,7 @@ const styles = StyleSheet.create({
                 shadowOffset: {width: 0, height: 2}
             },
             android: {
-                elevation: 4,
+                elevation: 2,
             },
         }),
     },
@@ -162,6 +174,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 28,
         flexDirection: 'row',
         width: '100%',
+        paddingTop: 8,
         zIndex: 9,
         alignSelf: 'center'
     },
@@ -192,10 +205,10 @@ const styles = StyleSheet.create({
         color: '#483F61',
         fontFamily: 'SSP-EL',
         paddingRight: 6,
+        marginBottom: -8,
         ...Platform.select({
             ios: {
                 fontSize: 38,
-                marginBottom: -8
             },
             android: {
                 fontSize: 36,
@@ -281,8 +294,10 @@ const styles = StyleSheet.create({
     },
     addCarWrap: {
         width: '100%',
-        paddingVertical: 12,
-        zIndex:99,
+        paddingBottom: 12,
+        paddingTop: 60,
+        backgroundColor: '#483F61',
+        zIndex: 99,
         overflow: 'visible',
         paddingHorizontal: 30,
         ...Platform.select({
@@ -293,21 +308,24 @@ const styles = StyleSheet.create({
                 shadowOffset: {width: 0, height: 2}
             },
             android: {
-                elevation: 4
+                elevation: 2
             },
         }),
     },
     addCarBtn: {
-        width: 140,
-        paddingVertical: 12,
+        width: '100%',
+        paddingVertical: 14,
+        elevation: 4,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 4,
-        backgroundColor: '#483F61'
+        alignSelf: 'center',
+        zIndex: 99999999,
+        backgroundColor: '#fff'
     },
     addCarBtnText: {
         fontFamily: 'Lato-R',
-        color: '#fff',
+        color: '#483F61',
         ...Platform.select({
             ios: {
                 fontSize: 15,

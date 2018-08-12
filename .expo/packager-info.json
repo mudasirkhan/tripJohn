@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19002,
-  "packagerPid": 5488,
-  "expoServerNgrokUrl": "https://3d-cs8.maajidz.tripjohn.exp.direct",
-  "packagerNgrokUrl": "https://packager.3d-cs8.maajidz.tripjohn.exp.direct",
-  "ngrokPid": 5512
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

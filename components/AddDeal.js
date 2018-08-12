@@ -36,11 +36,11 @@ class Deals extends React.Component {
     submitDeal() {
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/add_deal', {
             access_token: this.props.token,
-            car_id: 7,
-            discount: 2.3,
-            start_date: "1992-05-23",
-            end_date: "1992-05-23",
-            status: "newdeal",
+            car_id: this.state.car_id,
+            discount: this.state.discount,
+            start_date: this.state.start_date,
+            end_date: this.state.end_date,
+            status: this.state.statusTypes,
         })
             .then(response => {
                 const data = response;
@@ -91,32 +91,42 @@ class Deals extends React.Component {
                         }]}>
                             <TextInput placeholder={"Car Id"} value={this.state.car_id}
                                        style={styles.textInput}
+                                       underlineColorAndroid="transparent"
                                        onChangeText={car_id => this.setState({car_id})}/>
                         </View>
                         <View style={styles.textInputWrap}><TextInput placeholder={"discount"}
                                                                       value={this.state.discount}
                                                                       style={styles.textInput}
+                                                                      underlineColorAndroid="transparent"
                                                                       onChangeText={discount => this.setState({discount})}/></View>
                         <View style={styles.textInputWrap}><TextInput placeholder={"start date (YYYY-MM-DD)"}
                                                                       value={this.state.start_date}
                                                                       style={styles.textInput}
+                                                                      underlineColorAndroid="transparent"
                                                                       onChangeText={start_date => this.setState({start_date})}/></View>
                         <View style={[styles.textInputWrap, {
                             borderBottomLeftRadius: 4,
                             borderBottomRightRadius: 4
                         }]}><TextInput placeholder={"end date (YYYY-MM-DD)"} value={this.state.end_date}
                                        style={styles.textInput}
+                                       underlineColorAndroid="transparent"
                                        onChangeText={end_date => this.setState({end_date})}/></View>
 
                         <TouchableOpacity onPress={() => {
                             this.renderStatusOptions(this.state.statusTypes)
-                        }}><Text style={styles.sectionTitle}> {!this.state.status ? 'Select Status' : null} </Text></TouchableOpacity>
+                        }}><Text
+                            style={styles.sectionTitle}> {!this.state.status ? 'Select Status' : null} </Text></TouchableOpacity>
 
-                        <View style={{ width: '100%', borderRadius: 4, overflow: 'hidden'}}>{this.renderStatusOptions(this.state.statusTypes)}</View>
+                        <View style={{
+                            width: '100%',
+                            borderRadius: 4,
+                            overflow: 'hidden'
+                        }}>{this.renderStatusOptions(this.state.statusTypes)}</View>
 
                         <TouchableOpacity onPress={() => {
                             this.submitDeal()
-                        }} style={styles.addDealBtn}><Text style={styles.addDealBtnText}>Add Deal</Text></TouchableOpacity>
+                        }} style={styles.addDealBtn}><Text style={styles.addDealBtnText}>Add
+                            Deal</Text></TouchableOpacity>
 
                     </View>
                 </View>

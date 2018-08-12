@@ -55,40 +55,45 @@ class LeadsList extends React.Component {
     renderCanceledLeads = () => {
         if (this.state.canceled_leads && this.state.canceled_leads.length > 0) {
             return this.state.canceled_leads.map(resArr => {
-                return (<View style={styles.leadsListCardContainer}>
+                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}}>
                         <View style={styles.topDateBadge}>
                             <View><Text style={styles.dateText}>6th May, 2018</Text></View>
                             <View style={styles.topInfoSeparator}></View>
                             <View><Text style={styles.statusText}>CANC</Text></View>
                         </View>
-                        <TouchableOpacity key={resArr.id}
-                                          activeOpacity=".7"
-                                          style={styles.leadsListCard}
-                                          onPress={() => {
-                                              // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
-                                          }}>
-                            <View>
+                        <View style={styles.leadsListCardContainer}>
+                            <TouchableOpacity key={resArr.id}
+                                              activeOpacity=".7"
+                                              style={styles.leadsListCard}
+                                              onPress={() => {
+                                                  this.props.navigation.navigate('Vip', {
+                                                      token: this.props.token,
+                                                      id: this.state.cars[resArr].id
+                                                  })
+                                              }}>
                                 <View>
-                                    <Text style={styles.carName}>Kia Sportage 2018</Text>
-                                    {/*<Text>{resArr.contact_number}</Text>*/}
-                                    <Text style={styles.carMessage}>{resArr.message}</Text>
-                                    <View style={styles.extraInfoWrap}>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                    <View>
+                                        <Text style={styles.carName}>Kia Sportage 2018</Text>
+                                        {/*<Text>{resArr.contact_number}</Text>*/}
+                                        <Text style={styles.carMessage}>{resArr.message}</Text>
+                                        <View style={styles.extraInfoWrap}>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                        </View>
                                     </View>
                                 </View>
-                            </View>
-                        </TouchableOpacity>
-                        <View style={styles.bottomBtnWrap}>
-                            <View style={styles.oneHalfSection}>
-                                <Text style={styles.btnText}>Approve</Text>
-                            </View>
-                            <View style={commonStyles.graySeparatorVertical}>
-                                <View style={commonStyles.graySeparatorVerInner}/>
-                            </View>
-                            <View style={styles.oneHalfSection}>
-                                <Text style={styles.btnText}>Decline</Text>
+                            </TouchableOpacity>
+                            <View style={styles.bottomBtnWrap}>
+                                <View style={styles.oneHalfSection}>
+                                    <Text style={styles.btnText}>Approve</Text>
+                                </View>
+                                <View style={commonStyles.graySeparatorVertical}>
+                                    <View style={commonStyles.graySeparatorVerInner}/>
+                                </View>
+                                <View style={styles.oneHalfSection}>
+                                    <Text style={styles.btnText}>Decline</Text>
+                                </View>
                             </View>
                         </View>
                     </View>
@@ -99,40 +104,42 @@ class LeadsList extends React.Component {
     renderNewLeads = () => {
         if (this.state.new_leads && this.state.new_leads.length > 0) {
             return this.state.new_leads.map(resArr => {
-                return (<View style={styles.leadsListCardContainer}>
+                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}}>
                         <View style={[styles.topDateBadge, {backgroundColor: '#4A90E2'}]}>
                             <View><Text style={styles.dateText}>6th May, 2018</Text></View>
                             <View style={styles.topInfoSeparator}></View>
-                            <View><Text style={styles.statusText}>NEW</Text></View>
+                            <View><Text style={styles.statusText}>CANC</Text></View>
                         </View>
-                        <TouchableOpacity key={resArr.id}
-                                          activeOpacity=".7"
-                                          style={styles.leadsListCard}
-                                          onPress={() => {
-                                              // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
-                                          }}>
-                            <View>
+                        <View style={styles.leadsListCardContainer}>
+                            <TouchableOpacity key={resArr.id}
+                                              activeOpacity=".7"
+                                              style={styles.leadsListCard}
+                                              onPress={() => {
+                                                  // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
+                                              }}>
                                 <View>
-                                    <Text style={styles.carName}>Kia Sportage 2018</Text>
-                                    {/*<Text>{resArr.contact_number}</Text>*/}
-                                    <Text style={styles.carMessage}>{resArr.message}</Text>
-                                    <View style={styles.extraInfoWrap}>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                    <View>
+                                        <Text style={styles.carName}>Kia Sportage 2018</Text>
+                                        {/*<Text>{resArr.contact_number}</Text>*/}
+                                        <Text style={styles.carMessage}>{resArr.message}</Text>
+                                        <View style={styles.extraInfoWrap}>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                        </View>
                                     </View>
                                 </View>
-                            </View>
-                        </TouchableOpacity>
-                        <View style={styles.bottomBtnWrap}>
-                            <View style={styles.oneHalfSection}>
-                                <Text style={styles.btnText}>Approve</Text>
-                            </View>
-                            <View style={commonStyles.graySeparatorVertical}>
-                                <View style={commonStyles.graySeparatorVerInner}/>
-                            </View>
-                            <View style={styles.oneHalfSection}>
-                                <Text style={styles.btnText}>Decline</Text>
+                            </TouchableOpacity>
+                            <View style={styles.bottomBtnWrap}>
+                                <View style={styles.oneHalfSection}>
+                                    <Text style={styles.btnText}>Approve</Text>
+                                </View>
+                                <View style={commonStyles.graySeparatorVertical}>
+                                    <View style={commonStyles.graySeparatorVerInner}/>
+                                </View>
+                                <View style={styles.oneHalfSection}>
+                                    <Text style={styles.btnText}>Decline</Text>
+                                </View>
                             </View>
                         </View>
                     </View>
@@ -145,7 +152,7 @@ class LeadsList extends React.Component {
     renderLeads = () => {
         if (this.state.approved_leads && this.state.approved_leads.length > 0) {
             return this.state.approved_leads.map(resArr => {
-                return (<View style={styles.leadsListCardContainer}>
+                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}}>
                         <View style={[styles.topDateBadgeGradient]}>
                             <LinearGradient start={{x: 0, y: 0.75}} end={{x: 1, y: 1}} colors={['#FAD961', '#F76B1C']}
                                             style={[styles.topDateBadgeGradientInner]}>
@@ -154,34 +161,37 @@ class LeadsList extends React.Component {
                                 <View><Text style={styles.statusText}>DONE</Text></View>
                             </LinearGradient>
                         </View>
-                        <TouchableOpacity key={resArr.id}
-                                          activeOpacity=".7"
-                                          style={styles.leadsListCard}
-                                          onPress={() => {
-                                              // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
-                                          }}>
-                            <View>
+                        <View style={styles.leadsListCardContainer}>
+                            {/*<View style={styles.leadsListCardContainer}>*/}
+                            <TouchableOpacity key={resArr.id}
+                                              activeOpacity=".7"
+                                              style={styles.leadsListCard}
+                                              onPress={() => {
+                                                  // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
+                                              }}>
                                 <View>
-                                    <Text style={styles.carName}>Kia Sportage 2018</Text>
-                                    {/*<Text>{resArr.contact_number}</Text>*/}
-                                    <Text style={styles.carMessage}>{resArr.message}</Text>
-                                    <View style={styles.extraInfoWrap}>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                    <View>
+                                        <Text style={styles.carName}>Kia Sportage 2018</Text>
+                                        {/*<Text>{resArr.contact_number}</Text>*/}
+                                        <Text style={styles.carMessage}>{resArr.message}</Text>
+                                        <View style={styles.extraInfoWrap}>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
+                                        </View>
                                     </View>
                                 </View>
-                            </View>
-                        </TouchableOpacity>
-                        <View style={styles.bottomBtnWrap}>
-                            <View style={styles.oneHalfSection}>
-                                <Text style={styles.btnText}>Approve</Text>
-                            </View>
-                            <View style={commonStyles.graySeparatorVertical}>
-                                <View style={commonStyles.graySeparatorVerInner}/>
-                            </View>
-                            <View style={styles.oneHalfSection}>
-                                <Text style={styles.btnText}>Decline</Text>
+                            </TouchableOpacity>
+                            <View style={styles.bottomBtnWrap}>
+                                <View style={styles.oneHalfSection}>
+                                    <Text style={styles.btnText}>Approve</Text>
+                                </View>
+                                <View style={commonStyles.graySeparatorVertical}>
+                                    <View style={commonStyles.graySeparatorVerInner}/>
+                                </View>
+                                <View style={styles.oneHalfSection}>
+                                    <Text style={styles.btnText}>Decline</Text>
+                                </View>
                             </View>
                         </View>
                     </View>
@@ -215,7 +225,7 @@ class LeadsList extends React.Component {
     render() {
         return <View style={styles.container}>
             <View>
-                <ScrollView style={{paddingTop: 32, width: '100%', height: '100%', zIndex: 9}}>
+                <ScrollView style={{paddingTop: 16, width: '100%', height: '100%', zIndex: 9}}>
                     {/*{this.renderNewLeads()}*/}
                     {this.props.leadType !== 'all' ? this.props.leadType === 'cancelled' ? this.renderCanceledLeads() : this.renderNewLeads() : this.renderLeads()}
 
