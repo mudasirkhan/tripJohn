@@ -50,7 +50,7 @@ export default class Home extends React.Component {
             style={{marginTop: 20}}
         />
             :<View style={{flex: 1, position: 'relative'}}>
-            <TopNav title={"Home"} openDrawer={this.openDrawer}/>
+            <TopNav title={""} openDrawer={this.openDrawer}/>
                 <View style={styles.topContainer}>
                     <View style={styles.topInfo}>
                         <TouchableOpacity
@@ -106,32 +106,33 @@ export default class Home extends React.Component {
                         <Text style={styles.listHeaderTitle}>Your Leaderboard</Text>
                         <TouchableOpacity onPress={()=>{this.setState({showTypes: !this.state.showTypes})}} style={styles.listSortBtn}>
                             <Text style={styles.listSortBtnText}>{this.state.leadType !== 'all' ? this.state.leadType === 'cancelled' ? 'Cancelled Leads':'New Leads':'All Leads'}</Text>
-                            <SvgUri source={require('../assets/icons/down-chevron.svg')} style={styles.chevronDown}/>
+                            <SvgUri source={require('../assets/icons/down-chevron.svg')} />
                         </TouchableOpacity>
-
-                        {this.state.showTypes?<View style={styles.sortListWrap}>
-                            <TouchableOpacity onPress={()=>{this.setState({leadType:'new', showTypes: false})}} style={styles.sortListItem}>
-                                <Text style={styles.sortListText}>
-                                    New leads
-                                </Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={()=>{this.setState({leadType:'cancelled', showTypes: false})}} style={styles.sortListItem}>
-                                <Text style={styles.sortListText}>
-                                    Cancelled leads
-                                </Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={()=>{this.setState({leadType:'all', showTypes: false})}} style={styles.sortListItem}>
-                                <Text style={styles.sortListText}>
-                                    All leads
-                                </Text>
-                            </TouchableOpacity>
-                        </View>: null}
                     </View>
                     <ScrollView
                         style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
                         contentContainerStyle={{flex: 1}}>
                         <LeadsList navigation={this.props.navigation} style={{zIndex: 9}} leadType={this.state.leadType}/>
                     </ScrollView>
+
+                    {this.state.showTypes?<View style={styles.sortListWrap}>
+                        <TouchableOpacity onPress={()=>{this.setState({leadType:'new', showTypes: false})}} style={styles.sortListItem}>
+                            <Text style={styles.sortListText}>
+                                New leads
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{this.setState({leadType:'cancelled', showTypes: false})}} style={styles.sortListItem}>
+                            <Text style={styles.sortListText}>
+                                Cancelled leads
+                            </Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{this.setState({leadType:'all', showTypes: false})}} style={styles.sortListItem}>
+                            <Text style={styles.sortListText}>
+                                All leads
+                            </Text>
+                        </TouchableOpacity>
+                    </View>: null}
+
                 </View>
             </View>)
     }

@@ -4,7 +4,7 @@ import axios from "axios/index"
 import * as _ from 'lodash'
 import SvgUri from 'react-native-svg-uri';
 import commonStyles from "../assets/styles/common";
-import styles from "../assets/styles/profileScreen";
+import styles from "../assets/styles/addCar";
 
 class AddCar extends React.Component {
     constructor(props) {
@@ -66,7 +66,9 @@ class AddCar extends React.Component {
 
     renderPaymentOptions = (paymentMethods) => {
         return _.map(paymentMethods, item => {
-            return <TouchableOpacity onPress={() => {
+            return <TouchableOpacity
+                key={item}
+                onPress={() => {
                 this.setState({accept_in: item})
             }}>
                 <Text>
@@ -77,10 +79,12 @@ class AddCar extends React.Component {
     }
     renderInsuranceOptions = (insuranceTypes) => {
         return _.map(insuranceTypes, item => {
-            return <TouchableOpacity onPress={() => {
+            return <TouchableOpacity
+                key={item}
+                onPress={() => {
                 this.setState({insurance_included: item})
             }}>
-                <Text>
+                <Text style={styles.statusOptionsText}>
                     {item}
                 </Text>
             </TouchableOpacity>
@@ -88,10 +92,13 @@ class AddCar extends React.Component {
     }
     renderFeaturedOptions = (featuredMethods) => {
         return _.map(featuredMethods, item => {
-            return <TouchableOpacity onPress={() => {
-                this.setState({is_featured: item})
-            }}>
-                <Text>
+            return <TouchableOpacity
+                key={item}
+                style={this.state.is_featured !== item ? styles.statusOptions : styles.selectedStatusOption}
+                onPress={() => {
+                    this.setState({is_featured: item})
+                }}>
+                <Text style={styles.statusOptionsText}>
                     {item}
                 </Text>
             </TouchableOpacity>
@@ -99,10 +106,13 @@ class AddCar extends React.Component {
     }
     renderStatusOptions = (statusMethods) => {
         return _.map(statusMethods, item => {
-            return <TouchableOpacity onPress={() => {
-                this.setState({status: item})
-            }}>
-                <Text>
+            return <TouchableOpacity
+                key={item}
+                style={this.state.status !== item ? styles.statusOptions : styles.selectedStatusOption}
+                onPress={() => {
+                    this.setState({status: item})
+                }}>
+                <Text style={styles.statusOptionsText}>
                     {item}
                 </Text>
             </TouchableOpacity>
@@ -110,10 +120,13 @@ class AddCar extends React.Component {
     }
     renderDriverOptions = (driverMethods) => {
         return _.map(driverMethods, item => {
-            return <TouchableOpacity onPress={() => {
-                this.setState({driver: item})
-            }}>
-                <Text>
+            return <TouchableOpacity
+                key={item}
+                style={this.state.driver !== item ? styles.statusOptions : styles.selectedStatusOption}
+                onPress={() => {
+                    this.setState({driver: item})
+                }}>
+                <Text style={styles.statusOptionsText}>
                     {item}
                 </Text>
             </TouchableOpacity>
@@ -231,7 +244,7 @@ class AddCar extends React.Component {
         })
             .then(response => {
                 console.log(response, "car added successfully")
-                alert("car added successfully")
+                alert("car added successfully" + JSON.stringify(response))
             })
             .catch((error) => {
                 console.log(error);
@@ -467,59 +480,85 @@ class AddCar extends React.Component {
                         </View>
                     </View>
 
-                    {/*<View style={[styles.profileDescContainer, {paddingBottom: 16}]}>*/}
-                    {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                    {/*<View style={[styles.textInputWrap, {*/}
-                    {/*borderBottomLeftRadius: 4,*/}
-                    {/*borderBottomRightRadius: 4*/}
-                    {/*}]}>*/}
-                    {/*<Text>Driver</Text> <Text>{this.state.driver}</Text>*/}
-                    {/*{this.renderDriverOptions(this.state.driverTypes)}*/}
-                    {/*<TextInput*/}
-                    {/*placeholder="car_type_id" value={this.state.car_type_id}*/}
-                    {/*onChangeText={car_type_id => {*/}
-                    {/*this.setState({car_type_id})*/}
-                    {/*}}*/}
-                    {/*underlineColorAndroid="transparent"*/}
-                    {/*style={styles.textInput}*/}
-                    {/*secureTextEntry={false}*/}
-                    {/*/>*/}
-                    {/*</View>*/}
-                    {/*</View>*/}
-                    {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                    {/*<Text>Payment Options</Text> <Text>{this.state.accept_in}</Text>*/}
-                    {/*<View style={[styles.textInputWrap, {*/}
-                    {/*borderTopLeftRadius: 4,*/}
-                    {/*borderTopRightRadius: 4*/}
-                    {/*}]}>*/}
-                    {/*<Text>Insurance Options</Text> <Text>{this.state.insurance_included}</Text>*/}
-                    {/*{this.renderInsuranceOptions(this.state.insuranceTypes)}*/}
-                    {/*<TextInput*/}
-                    {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
-                    {/*onChangeText={security_deposit => {*/}
-                    {/*this.setState({security_deposit})*/}
-                    {/*}}*/}
-                    {/*underlineColorAndroid="transparent"*/}
-                    {/*style={styles.textInput}*/}
-                    {/*/>*/}
-                    {/*</View>*/}
-                    {/*<View style={commonStyles.graySeparator}>*/}
-                    {/*<View style={commonStyles.graySeparatorInner}></View>*/}
-                    {/*</View>*/}
-                    {/*{this.renderPaymentOptions(this.state.paymentMethods)}*/}
-                    {/*</View>*/}
-                    {/*<Text>Featured</Text> <Text>{this.state.is_featured}</Text>*/}
-                    {/*{this.renderFeaturedOptions(this.state.isFeaturedTypes)}*/}
-                    {/*<Text>Status</Text> <Text>{this.state.status}</Text>*/}
-                    {/*{this.renderStatusOptions(this.state.statusTypes)}*/}
-                    {/*</View>*/}
+                    <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
+                        <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                            <View style={[styles.textInputWrap, {
+                                borderBottomLeftRadius: 4,
+                                borderBottomRightRadius: 4
+                            }]}>
+                                <TextInput
+                                    placeholder="car_type_id" value={this.state.car_type_id}
+                                    onChangeText={car_type_id => {
+                                        this.setState({car_type_id})
+                                    }}
+                                    underlineColorAndroid="transparent"
+                                    style={styles.textInput}
+                                    secureTextEntry={false}
+                                />
+                            </View>
+                        </View>
+                        <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                            <Text>Payment Options</Text> <Text>{this.state.accept_in}</Text>
+                            <View style={[styles.textInputWrap, {
+                                borderTopLeftRadius: 4,
+                                borderTopRightRadius: 4
+                            }]}>
+                                <Text>Insurance Options</Text> <Text>{this.state.insurance_included}</Text>
+                                {this.renderInsuranceOptions(this.state.insuranceTypes)}
+                                <TextInput
+                                    placeholder="security_deposit" value={this.state.security_deposit}
+                                    onChangeText={security_deposit => {
+                                        this.setState({security_deposit})
+                                    }}
+                                    underlineColorAndroid="transparent"
+                                    style={styles.textInput}
+                                />
+                            </View>
+                            <View style={commonStyles.graySeparator}>
+                                <View style={commonStyles.graySeparatorInner}></View>
+                            </View>
+                            {this.renderPaymentOptions(this.state.paymentMethods)}
+                        </View>
+                        <View style={styles.profileTitleInfo}>
+                            <Text style={styles.profileTitleText}>Drivers</Text>
+                        </View>
+                        <View style={[styles.textInputWrap, {
+                            borderTopLeftRadius: 4,
+                            borderTopRightRadius: 4
+                        }]}>
+                            {this.renderDriverOptions(this.state.driverTypes)}
+                        </View>
+
+                        <View style={styles.profileTitleInfo}>
+                            <Text style={styles.profileTitleText}>Featured</Text>
+                        </View>
+                        <View style={[styles.textInputWrap, {
+                            borderTopLeftRadius: 4,
+                            borderTopRightRadius: 4
+                        }]}>
+                            {this.renderFeaturedOptions(this.state.isFeaturedTypes)}
+                        </View>
+
+                        <View style={styles.profileTitleInfo}>
+                            <Text style={styles.profileTitleText}>Status</Text>
+                        </View>
+                        <View style={[styles.textInputWrap, {
+                            borderTopLeftRadius: 4,
+                            borderTopRightRadius: 4
+                        }]}>
+                            {this.renderStatusOptions(this.state.statusTypes)}
+                        </View>
+
+                    </View>
 
 
                     <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
                         <View style={styles.profileTitleInfo}>
                             <Text style={styles.profileTitleText}>{'Extra Information'}</Text>
 
-                            <TouchableOpacity onPress={() => {this.setState({editOtherInfo: !this.state.editOtherInfo})}}>
+                            <TouchableOpacity onPress={() => {
+                                this.setState({editOtherInfo: !this.state.editOtherInfo})
+                            }}>
                                 {/*<Text style={styles.editBtn}>{!this.state.editOtherInfo ? 'EDIT' : 'Done'}</Text>*/}
                             </TouchableOpacity>
 

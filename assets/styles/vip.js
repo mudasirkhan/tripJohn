@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     requestCallbackText: {
-        fontFamily: 'OS-L',
+        fontFamily: 'SSP-L',
         color: '#483F61',
         ...Platform.select({
             ios: {

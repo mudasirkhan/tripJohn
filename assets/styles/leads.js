@@ -7,10 +7,11 @@ const styles = StyleSheet.create({
     },
     leadsListCardContainer: {
         backgroundColor: 'white',
-        marginBottom: 32,
+        marginBottom: 16,
         position: 'relative',
         borderRadius: 4,
-        width: '95%',
+        borderTopLeftRadius: 0,
+        width: '100%',
         alignSelf: 'center',
         ...Platform.select({
             ios: {
@@ -20,12 +21,12 @@ const styles = StyleSheet.create({
                 shadowRadius: 5,
             },
             android: {
-                elevation: 4
+                elevation: 2
             },
         }),
     },
     leadsListCard: {
-        paddingHorizontal: 16,
+        paddingHorizontal: 24,
         paddingVertical: 8,
         ...Platform.select({
             ios: {
@@ -86,6 +87,7 @@ const styles = StyleSheet.create({
         height: 44,
         borderTopColor: '#F5F6FD',
         borderTopWidth: 1,
+        // backgroundColor: 'red',
         flexDirection: 'row',
         borderBottomLeftRadius: 4,
         borderBottomRightRadius: 4
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5F6FD'
     },
     graySeparatorInner: {
-        width: '90%',
+        width: '100%',
         height: 1,
         alignSelf: 'center',
         backgroundColor: '#F5F5F5'
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     },
     graySeparatorVerInner: {
         width: 1,
-        height: '90%',
+        height: '100%',
         alignSelf: 'center',
         backgroundColor: '#F5F6FD'
     },
@@ -136,9 +138,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#EF446F',
         borderTopLeftRadius: 3,
         borderTopRightRadius: 3,
-        position: 'absolute',
-        left: 0,
-        top: -16,
+        zIndex: 999,
+        // position: 'absolute',
+        // left: 0,
+        // top: -16,
+        width: 108,
         flexDirection: 'row',
         alignItems: 'center',
         height: 16,
@@ -147,9 +151,10 @@ const styles = StyleSheet.create({
     topDateBadgeGradient: {
         borderTopLeftRadius: 3,
         borderTopRightRadius: 3,
-        position: 'absolute',
-        left: 0,
-        top: -16,
+        zIndex: 999,
+        // position: 'absolute',
+        // left: 0,
+        // top: -16,
         flexDirection: 'row',
         alignItems: 'center',
         overflow: 'hidden',

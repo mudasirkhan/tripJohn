@@ -43,8 +43,8 @@ export default class Car extends React.Component {
 
     render() {
         return (<View style={{flex: 1, position: 'relative'}}>
-            <TopNav title={"Home"} openDrawer={this.openDrawer}/>
-            <HomeTopSection/>
+            <TopNav title={"All your cars"} openDrawer={this.openDrawer} />
+            {/*<HomeTopSection/>*/}
             <ScrollView style={{paddingBottom: 16, flex: 1, zIndex: 9}} contentContainerStyle={{flex: 1}}>
                 <CarsList navigation={this.props.navigation} style={{zIndex: 9}}/>
 

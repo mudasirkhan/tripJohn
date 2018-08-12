@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
                 shadowRadius: 5,
             },
             android: {
-                fontSize: 16,
                 elevation: 4
             },
         }),
@@ -143,12 +142,15 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         flex: 1,
+        overflow: 'visible',
+        position: 'relative'
     },
     leadsListHeader: {
         height: 44,
         zIndex: 99,
         position: 'relative',
         flexDirection: 'row',
+        overflow: 'visible',
         alignItems: 'center',
         width: '100%',
         justifyContent: 'space-between',
@@ -162,7 +164,7 @@ const styles = StyleSheet.create({
                 shadowRadius: 5,
             },
             android: {
-                elevation: 4
+                elevation: 2,
             },
         }),
     },
@@ -180,7 +182,8 @@ const styles = StyleSheet.create({
     },
     listSortBtn: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        height: '100%',
     },
     chevronDown: {
         top: 2
@@ -202,9 +205,10 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 3,
         borderBottomRightRadius: 3,
         position: 'absolute',
-        top: '100%',
         right: 24,
+        top: 0,
         backgroundColor: 'white',
+        zIndex: 99999999999,
         ...Platform.select({
             ios: {
                 shadowColor: '#000',
@@ -213,7 +217,7 @@ const styles = StyleSheet.create({
                 shadowRadius: 5,
             },
             android: {
-                elevation: 4
+                elevation: 4,
             },
         }),
     },

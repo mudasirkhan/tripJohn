@@ -5,6 +5,7 @@ import {
     Text,
     ScrollView,
     Dimensions,
+    PixelRatio,
     Image,
     Modal
 } from 'react-native'
@@ -54,9 +55,9 @@ class CarsList extends React.Component {
         if (this.state.cars && this.state.cars.length > 0) {
             let resArr = Object.keys(this.state.cars);
             return resArr.map(resArr => {
-                return (<View style={styles.carListCardContainer}>
-                        <TouchableOpacity key={resArr}
-                                          activeOpacity=".7"
+                return (<View style={styles.carListCardContainer} key={resArr}>
+                        <TouchableOpacity
+                                          activeOpacity={.7}
                                           style={styles.carListCard}
                                           onPress={() => {
                                               this.props.navigation.navigate('Vip', {
@@ -75,8 +76,7 @@ class CarsList extends React.Component {
                                         <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
                                             <Text
                                                 style={styles.carPriceMonth}>{this.state.cars[resArr].price_per_month}</Text><Text
-                                            style={styles.carPriceMonthCurrency}>AED
-                                            / month</Text>
+                                            style={styles.carPriceMonthCurrency}>AED / month</Text>
                                         </View>
                                         <Text style={styles.carPriceWeek}>AED {this.state.cars[resArr].price_per_week}/Week,
                                             AED 100/Day</Text>
