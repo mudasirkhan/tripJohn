@@ -145,7 +145,7 @@ class LeadsList extends React.Component {
     renderLeads = () => {
         if (this.state.approved_leads && this.state.approved_leads.length > 0) {
             return this.state.approved_leads.map(resArr => {
-                return (<View style={styles.leadsListCardContainer}>
+                return (<View style={styles.leadsListCardContainer}  key={resArr.id}>
                         <View style={[styles.topDateBadgeGradient]}>
                             <LinearGradient start={{x: 0, y: 0.75}} end={{x: 1, y: 1}} colors={['#FAD961', '#F76B1C']}
                                             style={[styles.topDateBadgeGradientInner]}>
@@ -154,8 +154,8 @@ class LeadsList extends React.Component {
                                 <View><Text style={styles.statusText}>DONE</Text></View>
                             </LinearGradient>
                         </View>
-                        <TouchableOpacity key={resArr.id}
-                                          activeOpacity=".7"
+                        <TouchableOpacity
+                                          activeOpacity={.7}
                                           style={styles.leadsListCard}
                                           onPress={() => {
                                               // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
