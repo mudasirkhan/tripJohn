@@ -55,15 +55,14 @@ class LeadsList extends React.Component {
     renderCanceledLeads = () => {
         if (this.state.canceled_leads && this.state.canceled_leads.length > 0) {
             return this.state.canceled_leads.map(resArr => {
-                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}}>
+                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}} key={resArr.id}>
                         <View style={styles.topDateBadge}>
                             <View><Text style={styles.dateText}>6th May, 2018</Text></View>
                             <View style={styles.topInfoSeparator}></View>
                             <View><Text style={styles.statusText}>CANC</Text></View>
                         </View>
                         <View style={styles.leadsListCardContainer}>
-                            <TouchableOpacity key={resArr.id}
-                                              activeOpacity=".7"
+                            <TouchableOpacity activeOpacity={.7}
                                               style={styles.leadsListCard}
                                               onPress={() => {
                                                   this.props.navigation.navigate('Vip', {
@@ -104,15 +103,15 @@ class LeadsList extends React.Component {
     renderNewLeads = () => {
         if (this.state.new_leads && this.state.new_leads.length > 0) {
             return this.state.new_leads.map(resArr => {
-                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}}>
+                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}} key={resArr.id}>
                         <View style={[styles.topDateBadge, {backgroundColor: '#4A90E2'}]}>
                             <View><Text style={styles.dateText}>6th May, 2018</Text></View>
                             <View style={styles.topInfoSeparator}></View>
                             <View><Text style={styles.statusText}>CANC</Text></View>
                         </View>
                         <View style={styles.leadsListCardContainer}>
-                            <TouchableOpacity key={resArr.id}
-                                              activeOpacity=".7"
+                            <TouchableOpacity
+                                              activeOpacity={.7}
                                               style={styles.leadsListCard}
                                               onPress={() => {
                                                   // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
