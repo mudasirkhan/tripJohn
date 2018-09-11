@@ -69,8 +69,8 @@ class AddCar extends React.Component {
             return <TouchableOpacity
                 key={item}
                 onPress={() => {
-                this.setState({accept_in: item})
-            }}>
+                    this.setState({accept_in: item})
+                }}>
                 <Text>
                     {item}
                 </Text>
@@ -82,8 +82,8 @@ class AddCar extends React.Component {
             return <TouchableOpacity
                 key={item}
                 onPress={() => {
-                this.setState({insurance_included: item})
-            }}>
+                    this.setState({insurance_included: item})
+                }}>
                 <Text style={styles.statusOptionsText}>
                     {item}
                 </Text>
@@ -268,15 +268,11 @@ class AddCar extends React.Component {
                         </View>
                         <View style={styles.profileInputGroup}>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                <View style={[styles.textInputWrap, {
-                                    borderTopLeftRadius: 4,
-                                    borderTopRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
-                                    </View>
+
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Car name (English)</Text>
+                                </View>
+                                <View style={[styles.textInputWrap]}>
                                     <TextInput
                                         placeholder="English Name" value={this.state.english_name}
                                         onChangeText={english_name => {
@@ -285,18 +281,16 @@ class AddCar extends React.Component {
                                         style={styles.textInput}
                                     />
                                 </View>
-                                <View style={commonStyles.graySeparator}>
-                                    <View style={commonStyles.graySeparatorInner}></View>
+
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Car name (Arabic)</Text>
                                 </View>
-                                <View style={[styles.textInputWrap, {
-                                    borderBottomLeftRadius: 4,
-                                    borderBottomRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
-                                    </View>
+                                <View style={[styles.textInputWrap]}>
+                                    {/*<View style={styles.iconWrap}>*/}
+                                    {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                    {/*height="18"*/}
+                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                    {/*</View>*/}
                                     <TextInput
                                         underlineColorAndroid="transparent"
                                         style={styles.textInput}
@@ -320,15 +314,11 @@ class AddCar extends React.Component {
                         </View>
                         <View style={styles.profileInputGroup}>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                <View style={[styles.textInputWrap, {
-                                    borderBottomLeftRadius: 4,
-                                    borderBottomRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/user.svg')}/>
-                                    </View>
+
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Price per day</Text>
+                                </View>
+                                <View style={[styles.textInputWrap]}>
                                     <TextInput
                                         placeholder="price_per_day" value={this.state.price_per_day}
                                         onChangeText={price_per_day => {
@@ -339,18 +329,12 @@ class AddCar extends React.Component {
                                         secureTextEntry={false}
                                     />
                                 </View>
-                                <View style={commonStyles.graySeparator}>
-                                    <View style={commonStyles.graySeparatorInner}></View>
+
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Price per week</Text>
                                 </View>
-                                <View style={[styles.textInputWrap, {
-                                    borderBottomLeftRadius: 4,
-                                    borderBottomRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
-                                    </View>
+                                <View style={[styles.textInputWrap]}>
+
                                     <TextInput
                                         style={styles.textInput}
                                         placeholder="price_per_week" value={this.state.price_per_week}
@@ -360,18 +344,11 @@ class AddCar extends React.Component {
                                         secureTextEntry={false}
                                     />
                                 </View>
-                                <View style={commonStyles.graySeparator}>
-                                    <View style={commonStyles.graySeparatorInner}></View>
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Price per month</Text>
                                 </View>
-                                <View style={[styles.textInputWrap, {
-                                    borderBottomLeftRadius: 4,
-                                    borderBottomRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
-                                    </View>
+                                <View style={[styles.textInputWrap]}>
+
                                     <TextInput
                                         placeholder="price_per_month" value={this.state.price_per_month}
                                         onChangeText={price_per_month => {
@@ -392,15 +369,11 @@ class AddCar extends React.Component {
                             {/*<Text style={styles.editBtn}>EDIT</Text>*/}
                         </View>
                         <View style={styles.profileInputGroup}>
-                            <View style={[styles.textInputWrap, {
-                                borderBottomLeftRadius: 4,
-                                borderBottomRightRadius: 4
-                            }]}>
-                                <View style={styles.iconWrap}>
-                                    <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                            height="18"
-                                            source={require('../assets/icons/password.svg')}/>
-                                </View>
+                            <View style={styles.labelWrap}>
+                                <Text style={styles.inputLabelText}>Additional Mileage Charge</Text>
+                            </View>
+                            <View style={[styles.textInputWrap]}>
+
                                 <TextInput
                                     placeholder="additional_mileage_charge"
                                     value={this.state.additional_mileage_charge}
@@ -413,15 +386,12 @@ class AddCar extends React.Component {
                                 />
                             </View>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                <View style={[styles.textInputWrap, {
-                                    borderTopLeftRadius: 4,
-                                    borderTopRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
-                                    </View>
+
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Mileage limit (Daily)</Text>
+                                </View>
+                                <View style={[styles.textInputWrap]}>
+
                                     <TextInput
                                         placeholder="mileage_limit_daily" value={this.state.mileage_limit_daily}
                                         onChangeText={mileage_limit_daily => {
@@ -432,18 +402,11 @@ class AddCar extends React.Component {
                                         secureTextEntry
                                     />
                                 </View>
-                                <View style={commonStyles.graySeparator}>
-                                    <View style={commonStyles.graySeparatorInner}></View>
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Mileage limit (Monthly)</Text>
                                 </View>
-                                <View style={[styles.textInputWrap, {
-                                    borderBottomLeftRadius: 4,
-                                    borderBottomRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
-                                    </View>
+                                <View style={[styles.textInputWrap]}>
+
                                     <TextInput
                                         placeholder="mileage_limit_monthly" value={this.state.mileage_limit_monthly}
                                         onChangeText={mileage_limit_monthly => {
@@ -454,18 +417,12 @@ class AddCar extends React.Component {
                                         secureTextEntry
                                     />
                                 </View>
-                                <View style={commonStyles.graySeparator}>
-                                    <View style={commonStyles.graySeparatorInner}></View>
+
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Mileage limit (Weekly)</Text>
                                 </View>
-                                <View style={[styles.textInputWrap, {
-                                    borderBottomLeftRadius: 4,
-                                    borderBottomRightRadius: 4
-                                }]}>
-                                    <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
-                                    </View>
+                                <View style={[styles.textInputWrap]}>
+
                                     <TextInput
                                         placeholder="mileage_limit_weekly" value={this.state.mileage_limit_weekly}
                                         onChangeText={mileage_limit_weekly => {
@@ -481,76 +438,105 @@ class AddCar extends React.Component {
                     </View>
 
                     <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
-                        <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                            <View style={[styles.textInputWrap, {
-                                borderBottomLeftRadius: 4,
-                                borderBottomRightRadius: 4
-                            }]}>
-                                <TextInput
-                                    placeholder="car_type_id" value={this.state.car_type_id}
-                                    onChangeText={car_type_id => {
-                                        this.setState({car_type_id})
-                                    }}
-                                    underlineColorAndroid="transparent"
-                                    style={styles.textInput}
-                                    secureTextEntry={false}
-                                />
+
+                        <View style={styles.profileInputGroup}>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                <View style={styles.labelWrap}>
+                                    <Text style={styles.inputLabelText}>Card Type</Text>
+                                </View>
+                                <View style={[styles.textInputWrap]}>
+                                    <TextInput
+                                        placeholder="car_type_id" value={this.state.car_type_id}
+                                        onChangeText={car_type_id => {
+                                            this.setState({car_type_id})
+                                        }}
+                                        underlineColorAndroid="transparent"
+                                        style={styles.textInput}
+                                        secureTextEntry={false}
+                                    />
+                                </View>
                             </View>
                         </View>
-                        <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                            <Text>Payment Options</Text> <Text>{this.state.accept_in}</Text>
-                            <View style={[styles.textInputWrap, {
-                                borderTopLeftRadius: 4,
-                                borderTopRightRadius: 4
-                            }]}>
-                                <Text>Insurance Options</Text> <Text>{this.state.insurance_included}</Text>
+                        <View style={styles.profileInputGroup}>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                <View style={styles.profileTitleInfo}>
+                                    <Text style={styles.profileTitleText}>Insurance Options</Text>
+                                    {/*<Text style={styles.editBtn}>EDIT</Text>*/}
+                                </View>
+                                {/*<Text>{this.state.accept_in}</Text>*/}
+                                {/*{this.renderPaymentOptions(this.state.paymentMethods)}*/}
+
+                                <Text>{this.state.insurance_included}</Text>
                                 {this.renderInsuranceOptions(this.state.insuranceTypes)}
-                                <TextInput
-                                    placeholder="security_deposit" value={this.state.security_deposit}
-                                    onChangeText={security_deposit => {
-                                        this.setState({security_deposit})
-                                    }}
-                                    underlineColorAndroid="transparent"
-                                    style={styles.textInput}
-                                />
+
+
+                                {/*<View style={[styles.textInputWrap]}>*/}
+                                {/*<TextInput*/}
+                                {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
+                                {/*onChangeText={security_deposit => {*/}
+                                {/*this.setState({security_deposit})*/}
+                                {/*}}*/}
+                                {/*underlineColorAndroid="transparent"*/}
+                                {/*style={styles.textInput}*/}
+                                {/*/>*/}
+                                {/*</View>*/}
                             </View>
-                            <View style={commonStyles.graySeparator}>
-                                <View style={commonStyles.graySeparatorInner}></View>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                <View style={styles.profileTitleInfo}>
+                                    <Text style={styles.profileTitleText}>Payment Method</Text>
+                                    {/*<Text style={styles.editBtn}>EDIT</Text>*/}
+                                </View>
+                                <Text>{this.state.accept_in}</Text>
+                                {this.renderPaymentOptions(this.state.paymentMethods)}
+
+                                {/*<View style={[styles.textInputWrap]}>*/}
+                                {/*<TextInput*/}
+                                {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
+                                {/*onChangeText={security_deposit => {*/}
+                                {/*this.setState({security_deposit})*/}
+                                {/*}}*/}
+                                {/*underlineColorAndroid="transparent"*/}
+                                {/*style={styles.textInput}*/}
+                                {/*/>*/}
+                                {/*</View>*/}
                             </View>
-                            {this.renderPaymentOptions(this.state.paymentMethods)}
                         </View>
-                        <View style={styles.profileTitleInfo}>
-                            <Text style={styles.profileTitleText}>Drivers</Text>
-                        </View>
-                        <View style={[styles.textInputWrap, {
-                            borderTopLeftRadius: 4,
-                            borderTopRightRadius: 4
-                        }]}>
-                            {this.renderDriverOptions(this.state.driverTypes)}
-                        </View>
+                        <View style={styles.profileInputGroup}>
 
-                        <View style={styles.profileTitleInfo}>
-                            <Text style={styles.profileTitleText}>Featured</Text>
-                        </View>
-                        <View style={[styles.textInputWrap, {
-                            borderTopLeftRadius: 4,
-                            borderTopRightRadius: 4
-                        }]}>
-                            {this.renderFeaturedOptions(this.state.isFeaturedTypes)}
-                        </View>
+                            <View style={styles.profileTitleInfo}>
+                                <Text style={styles.profileTitleText}>Drivers</Text>
+                            </View>
 
-                        <View style={styles.profileTitleInfo}>
-                            <Text style={styles.profileTitleText}>Status</Text>
-                        </View>
-                        <View style={[styles.textInputWrap, {
-                            borderTopLeftRadius: 4,
-                            borderTopRightRadius: 4
-                        }]}>
-                            {this.renderStatusOptions(this.state.statusTypes)}
-                        </View>
+                            <View style={styles.labelWrap}>
+                                <Text style={styles.inputLabelText}>Car name</Text>
+                            </View>
+                            <View style={[styles.textInputWrap]}>
+                                {this.renderDriverOptions(this.state.driverTypes)}
+                            </View>
 
+                            <View style={styles.profileTitleInfo}>
+                                <Text style={styles.profileTitleText}>Featured</Text>
+                            </View>
+
+                            <View style={styles.labelWrap}>
+                                <Text style={styles.inputLabelText}>Car name</Text>
+                            </View>
+                            <View style={[styles.textInputWrap]}>
+                                {this.renderFeaturedOptions(this.state.isFeaturedTypes)}
+                            </View>
+
+                            <View style={styles.profileTitleInfo}>
+                                <Text style={styles.profileTitleText}>Status</Text>
+                            </View>
+
+                            <View style={styles.labelWrap}>
+                                <Text style={styles.inputLabelText}>Car name</Text>
+                            </View>
+                            <View style={[styles.textInputWrap]}>
+                                {this.renderStatusOptions(this.state.statusTypes)}
+                            </View>
+                        </View>
                     </View>
-
 
                     <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
                         <View style={styles.profileTitleInfo}>
@@ -630,13 +616,13 @@ class AddCar extends React.Component {
                                 </View>
                             </View>
 
-                            <View style={styles.greyBorderBtnWrap}>
+                            <View style={[styles.greyBorderBtnWrap, {backgroundColor: 'black', borderColor: 'black'}]}>
                                 <TouchableOpacity style={styles.greyBorderBtn}
                                                   onPress={() => {
                                                       this.addCar();
                                                       // this.props.setModalVisible(false);
                                                   }}>
-                                    <Text>Update</Text>
+                                    <Text style={{color: 'white'}}>Update</Text>
                                 </TouchableOpacity>
                             </View>
 

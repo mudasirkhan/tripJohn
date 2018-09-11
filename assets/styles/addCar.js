@@ -8,8 +8,9 @@ const styles = StyleSheet.create({
         position: 'relative'
     },
     profileDescContainer: {
-        flex: 3,
-        backgroundColor: '#F5F6FD',
+        flex: 1,
+        width: '100%',
+        backgroundColor: '#AC2733',
         flexDirection: 'column',
         alignItems: 'center'
     },
@@ -29,8 +30,16 @@ const styles = StyleSheet.create({
         shadowRadius: 4,
         zIndex: 2
     },
+    labelWrap: {
+        marginTop: 16,
+        marginBottom: 4,
+    },
+    inputLabelText: {
+        color: '#fff'
+    },
     textInputWrap: {
         width: '100%',
+        borderRadius: 4,
         backgroundColor: 'white',
         position: 'relative',
     },
@@ -48,7 +57,7 @@ const styles = StyleSheet.create({
     textInput: {
         fontSize: 16,
         paddingVertical: 12,
-        paddingHorizontal: 46,
+        paddingHorizontal: 16,
         width: '100%'
     },
     textArea: {
@@ -123,9 +132,9 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
     profileTitleText: {
-        fontFamily: 'Lato-L',
-        fontSize: 14,
-        color: '#7b7b7b'
+        fontFamily: 'Lato-B',
+        fontSize: 18,
+        color: '#fff'
     },
     profileNameWrap: {
         flex: 1,

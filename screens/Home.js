@@ -45,12 +45,12 @@ export default class Home extends React.Component {
     }
 
     render() {
-        return (this.state.showWebView? <WebView
-            source={{uri: 'https://www.google.com'}}
-            style={{marginTop: 20}}
-        />
-            :<View style={{flex: 1, position: 'relative'}}>
-            <TopNav title={""} openDrawer={this.openDrawer}/>
+        return (this.state.showWebView ? <WebView
+                source={{uri: 'https://www.google.com'}}
+                style={{marginTop: 20}}
+            />
+            : <View style={{flex: 1, position: 'relative'}}>
+                <TopNav title={""} openDrawer={this.openDrawer}/>
                 <View style={styles.topContainer}>
                     <View style={styles.topInfo}>
                         <TouchableOpacity
@@ -62,25 +62,23 @@ export default class Home extends React.Component {
                             <Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>
                         </TouchableOpacity>
                         <View style={styles.planNameWrap}>
-                            <Text style={styles.planName}>GOLD PLAN</Text>
+                            <Text style={{color: '#666'}}>Your current plan</Text>
+                            <Text style={styles.planName}>GOLD</Text>
+                            <Text>View all plans</Text>
                         </View>
-                        <View style={commonStyles.graySeparator}>
-                            <View style={commonStyles.graySeparatorInner}/>
-                        </View>
+                        {/*<View style={commonStyles.graySeparator}>*/}
+                        {/*<View style={commonStyles.graySeparatorInner}/>*/}
+                        {/*</View>*/}
                         <View style={styles.planDetailsWrap}>
-                            <View styles={styles.planDetailsItem}>
-                                <View style={styles.planDetailsTextWrap}>
-                                    <Text style={styles.planDetailsText}>Total cars you can add</Text>
-                                </View>
-                                <View style={styles.numberBadge}>
-                                    <Text style={styles.numberBadgeText}>
-                                        8
-                                    </Text>
-                                </View>
+                            <View style={styles.planDetailsItem}>
+                                <Text style={styles.planDetailsText}>Totals cars you can add</Text>
+                                <Text style={styles.numberBadgeText}>
+                                    8
+                                </Text>
                             </View>
-                            <View styles={styles.planDetailsItem}>
+                            <View style={styles.planDetailsItem}>
                                 <View style={styles.planDetailsTextWrap}>
-                                    <Text style={styles.planDetailsText}>Total cars you can remove</Text>
+                                    <Text style={styles.planDetailsText}>Total deals per month</Text>
                                 </View>
                                 <View style={styles.numberBadge}>
                                     <Text style={styles.numberBadgeText}>
@@ -88,50 +86,50 @@ export default class Home extends React.Component {
                                     </Text>
                                 </View>
                             </View>
-                            <View styles={styles.planDetailsItem}>
-                                <View style={styles.planDetailsTextWrap}>
-                                    <Text style={styles.planDetailsText}>Total cars you can ...</Text>
-                                </View>
-                                <View style={styles.numberBadge}>
-                                    <Text style={styles.numberBadgeText}>
-                                        20
-                                    </Text>
-                                </View>
-                            </View>
                         </View>
                     </View>
                 </View>
                 <View style={styles.bottomContainer}>
-                    <View style={styles.leadsListHeader}>
-                        <Text style={styles.listHeaderTitle}>Your Leaderboard</Text>
-                        <TouchableOpacity onPress={()=>{this.setState({showTypes: !this.state.showTypes})}} style={styles.listSortBtn}>
-                            <Text style={styles.listSortBtnText}>{this.state.leadType !== 'all' ? this.state.leadType === 'cancelled' ? 'Cancelled Leads':'New Leads':'All Leads'}</Text>
-                            <SvgUri source={require('../assets/icons/down-chevron.svg')} />
-                        </TouchableOpacity>
-                    </View>
+                    {/*<View style={styles.leadsListHeader}>*/}
+                    {/*<Text style={styles.listHeaderTitle}>Recent leads</Text>*/}
+                    {/*<TouchableOpacity onPress={() => {*/}
+                    {/*this.setState({showTypes: !this.state.showTypes})*/}
+                    {/*}} style={styles.listSortBtn}>*/}
+                    {/*<Text*/}
+                    {/*style={styles.listSortBtnText}>{this.state.leadType !== 'all' ? this.state.leadType === 'cancelled' ? 'Cancelled Leads' : 'New Leads' : 'All Leads'}</Text>*/}
+                    {/*<SvgUri source={require('../assets/icons/down-chevron.svg')}/>*/}
+                    {/*</TouchableOpacity>*/}
+                    {/*</View>*/}
                     <ScrollView
                         style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
                         contentContainerStyle={{flex: 1}}>
-                        <LeadsList navigation={this.props.navigation} style={{zIndex: 9}} leadType={this.state.leadType}/>
+                        <LeadsList navigation={this.props.navigation} style={{zIndex: 9}}
+                                   leadType={this.state.leadType}/>
                     </ScrollView>
 
-                    {this.state.showTypes?<View style={styles.sortListWrap}>
-                        <TouchableOpacity onPress={()=>{this.setState({leadType:'new', showTypes: false})}} style={styles.sortListItem}>
-                            <Text style={styles.sortListText}>
-                                New leads
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>{this.setState({leadType:'cancelled', showTypes: false})}} style={styles.sortListItem}>
-                            <Text style={styles.sortListText}>
-                                Cancelled leads
-                            </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity onPress={()=>{this.setState({leadType:'all', showTypes: false})}} style={styles.sortListItem}>
-                            <Text style={styles.sortListText}>
-                                All leads
-                            </Text>
-                        </TouchableOpacity>
-                    </View>: null}
+                    {/*{this.state.showTypes ? <View style={styles.sortListWrap}>*/}
+                    {/*<TouchableOpacity onPress={() => {*/}
+                    {/*this.setState({leadType: 'new', showTypes: false})*/}
+                    {/*}} style={styles.sortListItem}>*/}
+                    {/*<Text style={styles.sortListText}>*/}
+                    {/*New leads*/}
+                    {/*</Text>*/}
+                    {/*</TouchableOpacity>*/}
+                    {/*<TouchableOpacity onPress={() => {*/}
+                    {/*this.setState({leadType: 'cancelled', showTypes: false})*/}
+                    {/*}} style={styles.sortListItem}>*/}
+                    {/*<Text style={styles.sortListText}>*/}
+                    {/*Cancelled leads*/}
+                    {/*</Text>*/}
+                    {/*</TouchableOpacity>*/}
+                    {/*<TouchableOpacity onPress={() => {*/}
+                    {/*this.setState({leadType: 'all', showTypes: false})*/}
+                    {/*}} style={styles.sortListItem}>*/}
+                    {/*<Text style={styles.sortListText}>*/}
+                    {/*All leads*/}
+                    {/*</Text>*/}
+                    {/*</TouchableOpacity>*/}
+                    {/*</View> : null}*/}
 
                 </View>
             </View>)

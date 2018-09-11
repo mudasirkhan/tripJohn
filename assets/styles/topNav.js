@@ -8,7 +8,9 @@ const styles = StyleSheet.create({
         top: 0,
         left: 0,
         right: 0,
+        width: '100%',
         zIndex: 99999,
+        backgroundColor: '#AC2733',
         height: 60,
         paddingHorizontal: 28,
         justifyContent: 'space-between'

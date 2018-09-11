@@ -14,17 +14,18 @@ class TopNav extends React.Component {
     render() {
         return (
             <View style={[styles.topNavContainer]}>
-                <View style={{flexDirection: 'row', flex: 1, alignItems: 'center'}}>
+                <View style={{flexDirection: 'row', flex: 1, alignItems: 'center', justifyContent: 'space-between',}}>
+                    <Image source={require('../assets/images/logo.png')} style={{width: 90, resizeMode: 'contain'}}/>
                     <TouchableOpacity
                         onPress={this.props.openDrawer} style={{
                         height: '100%',
-                        alignItems: 'flex-start',
+                        alignSelf: 'flex-end',
                         justifyContent: 'center'
                     }}
                     >
                         <Image source={require('../assets/icons/ham.png')} style={{width: 24, height: 16}}/>
                     </TouchableOpacity>
-                    <Text style={{alignContent: 'center', fontFamily: 'Lato-R', fontSize: 16, marginLeft: 24, color: '#fff'}}>{this.props.title}</Text>
+                    {/*<Text style={{alignContent: 'center', fontFamily: 'Lato-R', fontSize: 16, marginLeft: 24, color: '#fff'}}>{this.props.title}</Text>*/}
                 </View>
             </View>
         )

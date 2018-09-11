@@ -6,8 +6,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     leadsListCardContainer: {
-        backgroundColor: 'white',
-        marginBottom: 16,
+        backgroundColor: '#70161D',
         position: 'relative',
         borderRadius: 4,
         borderTopLeftRadius: 0,
@@ -26,8 +25,8 @@ const styles = StyleSheet.create({
         }),
     },
     leadsListCard: {
-        paddingHorizontal: 24,
-        paddingVertical: 8,
+        position: 'relative',
+        flexDirection: 'row',
         ...Platform.select({
             ios: {
                 // shadowColor: '#000',
@@ -42,7 +41,7 @@ const styles = StyleSheet.create({
     },
     carName: {
         fontFamily: 'Lato-R',
-        color: '#483F61',
+        color: '#fff',
         ...Platform.select({
             ios: {
                 fontSize: 14
@@ -53,7 +52,7 @@ const styles = StyleSheet.create({
         }),
     },
     carMessage: {
-        color: '#7C7B81',
+        color: '#fff',
         marginTop: 6,
         fontFamily: 'Lato-R',
         ...Platform.select({
@@ -72,7 +71,7 @@ const styles = StyleSheet.create({
         marginBottom: 4
     },
     extraInfoText: {
-        color: '#483F61',
+        color: '#fff',
         fontFamily: 'Lato-R',
         ...Platform.select({
             ios: {
@@ -168,6 +167,16 @@ const styles = StyleSheet.create({
         height: 16,
         paddingHorizontal: 9
     },
+    cardLeftSide: {
+        backgroundColor: '#8C1E24',
+        padding: 8,
+        borderTopLeftRadius: 4,
+        borderBottomLeftRadius: 4
+    },
+    cardRightSide:{
+        borderRadius: 4,
+        padding: 8,
+    },
     dateText: {
         color: '#fff',
         fontFamily: 'Lato-R',
@@ -178,6 +187,19 @@ const styles = StyleSheet.create({
             },
             android: {
                 fontSize: 8
+            },
+        }),
+    },
+    timeText: {
+        color: 'white',
+        paddingTop: 8,
+        ...Platform.select({
+            ios: {
+                fontSize: 26,
+
+            },
+            android: {
+                fontSize: 24
             },
         }),
     },
@@ -193,6 +215,15 @@ const styles = StyleSheet.create({
                 fontSize: 8
             },
         }),
+    },
+    buttonWrap: {
+        position: 'absolute',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        bottom: 14,
+        width: 60,
+        height: 24,
+        right: 12
     },
     topInfoSeparator: {
         width: 1,

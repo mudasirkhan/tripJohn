@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
         width: '100%',
         paddingBottom: 12,
         paddingTop: 60,
-        backgroundColor: '#483F61',
+        backgroundColor: '#AC2733',
         zIndex: 99,
         overflow: 'visible',
         paddingHorizontal: 30,

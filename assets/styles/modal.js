@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flex: 1,
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: '#AC2733',
         paddingBottom: 6,
     },
     arrowBack: {
@@ -17,21 +17,22 @@ const styles = StyleSheet.create({
     },
     modalTopBar: {
         height: 54,
+        backgroundColor: '#AC2733',
         flexDirection: 'row',
         width: '100%',
         alignItems: 'center',
         overflow: 'visible',
-        ...Platform.select({
-            ios: {
-                shadowColor: '#000',
-                shadowOffset: {width: 0, height: 2},
-                shadowOpacity: .11,
-                shadowRadius: 5,
-            },
-            android: {
-                elevation: 4
-            },
-        }),
+        // ...Platform.select({
+        //     ios: {
+        //         shadowColor: '#000',
+        //         shadowOffset: {width: 0, height: 2},
+        //         shadowOpacity: .11,
+        //         shadowRadius: 5,
+        //     },
+        //     android: {
+        //         elevation: 4
+        //     },
+        // }),
     },
     backButton: {
         width: 54,
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
         marginTop: -1,
         paddingRight: 16,
         fontFamily: 'Lato-R',
-        color: '#483F61',
+        color: '#fff',
         ...Platform.select({
             ios: {
                 fontSize: 18

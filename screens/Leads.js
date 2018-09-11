@@ -72,6 +72,10 @@ class LeadsList extends React.Component {
                                               }}>
                                 <View>
                                     <View>
+                                        <Text style={styles.dateText}>6th May, 2018</Text>
+                                        <Text style={styles.timeText}>20:18</Text>
+                                    </View>
+                                    <View>
                                         <Text style={styles.carName}>Kia Sportage 2018</Text>
                                         {/*<Text>{resArr.contact_number}</Text>*/}
                                         <Text style={styles.carMessage}>{resArr.message}</Text>
@@ -104,19 +108,23 @@ class LeadsList extends React.Component {
         if (this.state.new_leads && this.state.new_leads.length > 0) {
             return this.state.new_leads.map(resArr => {
                 return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}} key={resArr.id}>
-                        <View style={[styles.topDateBadge, {backgroundColor: '#4A90E2'}]}>
-                            <View><Text style={styles.dateText}>6th May, 2018</Text></View>
-                            <View style={styles.topInfoSeparator}></View>
-                            <View><Text style={styles.statusText}>CANC</Text></View>
-                        </View>
+                        {/*<View style={[styles.topDateBadge, {backgroundColor: '#4A90E2'}]}>*/}
+                        {/*<View><Text style={styles.dateText}>6th May, 2018</Text></View>*/}
+                        {/*<View style={styles.topInfoSeparator}></View>*/}
+                        {/*<View><Text style={styles.statusText}>CANC</Text></View>*/}
+                        {/*</View>*/}
                         <View style={styles.leadsListCardContainer}>
                             <TouchableOpacity
-                                              activeOpacity={.7}
-                                              style={styles.leadsListCard}
-                                              onPress={() => {
-                                                  // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
-                                              }}>
+                                activeOpacity={.7}
+                                style={styles.leadsListCard}
+                                onPress={() => {
+                                    // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
+                                }}>
                                 <View>
+                                    <View>
+                                        <Text style={styles.dateText}>6th May, 2018</Text>
+                                        <Text style={styles.timeText}>20:18</Text>
+                                    </View>
                                     <View>
                                         <Text style={styles.carName}>Kia Sportage 2018</Text>
                                         {/*<Text>{resArr.contact_number}</Text>*/}
@@ -151,46 +159,39 @@ class LeadsList extends React.Component {
     renderLeads = () => {
         if (this.state.approved_leads && this.state.approved_leads.length > 0) {
             return this.state.approved_leads.map(resArr => {
-                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}}  key={resArr.id}>
+                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}} key={resArr.id}>
                         <View style={[styles.topDateBadgeGradient]}>
-                            <LinearGradient start={{x: 0, y: 0.75}} end={{x: 1, y: 1}} colors={['#FAD961', '#F76B1C']}
-                                            style={[styles.topDateBadgeGradientInner]}>
-                                <View><Text style={styles.dateText}>6th May, 2018</Text></View>
-                                <View style={styles.topInfoSeparator}></View>
-                                <View><Text style={styles.statusText}>DONE</Text></View>
-                            </LinearGradient>
+                            <View style={styles.topInfoSeparator}></View>
+                            {/*<View><Text style={styles.statusText}>DONE</Text></View>*/}
                         </View>
-                    <View style={styles.leadsListCardContainer}>
-                        <TouchableOpacity
-                                          activeOpacity={.7}
-                                          style={styles.leadsListCard}
-                                          onPress={() => {
-                                              // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
-                                          }}>
-                                <View>
-                                    <View>
-                                        <Text style={styles.carName}>Kia Sportage 2018</Text>
-                                        {/*<Text>{resArr.contact_number}</Text>*/}
-                                        <Text style={styles.carMessage}>{resArr.message}</Text>
-                                        <View style={styles.extraInfoWrap}>
-                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                            <Text style={styles.extraInfoText}>{resArr.name}</Text>
-                                        </View>
+                        <View style={styles.leadsListCardContainer}>
+                            <TouchableOpacity
+                                activeOpacity={.7}
+                                style={styles.leadsListCard}
+                                onPress={() => {
+                                    // this.props.navigation.navigate('Vip', {token: this.props.token, id: this.state.cars[resArr].id})
+                                }}>
+                                <View style={styles.cardLeftSide}>
+                                    <Text style={styles.dateText}>6th May, 2018</Text>
+                                    <Text style={styles.timeText}>20:18</Text>
+                                </View>
+                                <View style={styles.cardRightSide}>
+                                    <Text style={styles.carName}>Kia Sportage 2018</Text>
+                                    {/*<Text>{resArr.contact_number}</Text>*/}
+                                    <Text style={styles.carMessage}>{resArr.message}</Text>
+                                    <View style={styles.extraInfoWrap}>
+                                        <Text style={styles.extraInfoText}>{resArr.name}</Text>
                                     </View>
                                 </View>
+                                <View style={styles.buttonWrap}>
+                                    <SvgUri width="21"
+                                            height="27"
+                                            source={require('../assets/icons/approve.svg')}/>
+                                    <SvgUri width="21"
+                                            height="27"
+                                            source={require('../assets/icons/delete.svg')}/>
+                                </View>
                             </TouchableOpacity>
-                            <View style={styles.bottomBtnWrap}>
-                                <View style={styles.oneHalfSection}>
-                                    <Text style={styles.btnText}>Approve</Text>
-                                </View>
-                                <View style={commonStyles.graySeparatorVertical}>
-                                    <View style={commonStyles.graySeparatorVerInner}/>
-                                </View>
-                                <View style={styles.oneHalfSection}>
-                                    <Text style={styles.btnText}>Decline</Text>
-                                </View>
-                            </View>
                         </View>
                     </View>
                 )
@@ -223,9 +224,20 @@ class LeadsList extends React.Component {
     render() {
         return <View style={styles.container}>
             <View>
-                <ScrollView style={{paddingTop: 16, width: '100%', height: '100%', zIndex: 9}}>
+                <ScrollView style={{
+                    paddingVertical: 16,
+                    paddingHorizontal: 12,
+                    alignSelf: 'center',
+                    backgroundColor: '#821B24',
+                    width: '92%',
+                    height: '100%',
+                    zIndex: 9,
+                    borderRadius: 12
+                }}>
                     {/*{this.renderNewLeads()}*/}
-                    {this.props.leadType !== 'all' ? this.props.leadType === 'cancelled' ? this.renderCanceledLeads() : this.renderNewLeads() : this.renderLeads()}
+                    <Text style={{color: 'white'}}>Recent Leads</Text>
+                    {/*{this.props.leadType !== 'all' ? this.props.leadType === 'cancelled' ? this.renderCanceledLeads() : this.renderNewLeads() : this.renderLeads()}*/}
+                    {this.renderLeads()}
 
                     {/*{this.renderLeads()}*/}
                     {/*{this.renderCanceledLeads()}*/}

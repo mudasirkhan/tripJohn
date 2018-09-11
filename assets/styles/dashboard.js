@@ -3,12 +3,13 @@ import {StyleSheet, Platform} from 'react-native';
 
 const styles = StyleSheet.create({
     topContainer: {
-        flex: 1,
+        flex: 2,
         position: 'relative',
     },
     topInfo: {
-        flex: 3,
-        backgroundColor: '#483F61',
+        flex: 2,
+        paddingTop: 32,
+        backgroundColor: '#AC2733',
         flexDirection: 'column',
         alignItems: 'center',
         paddingHorizontal: 28,
@@ -31,13 +32,13 @@ const styles = StyleSheet.create({
         }),
     },
     planNameWrap: {
-        borderTopLeftRadius: 4,
-        borderTopRightRadius: 4,
+        borderRadius: 8,
+        paddingHorizontal: 24,
         width: '100%',
-        backgroundColor: 'white',
+        backgroundColor: '#F9C947',
         paddingVertical: 18,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: 'flex-start',
+        justifyContent: 'flex-start',
         ...Platform.select({
             ios: {
                 shadowColor: '#000',
@@ -51,23 +52,37 @@ const styles = StyleSheet.create({
         }),
     },
     planName: {
-        fontFamily: 'Lato-L',
-        color: '#483F61',
+        fontFamily: 'Lato-Black',
+        color: '#fff',
+        textShadowColor: '#000',
+        shadowOpacity: 0.1,
+        textShadowOffset: {width: 0, height: 6},
+        shadowRadius: 0,
         ...Platform.select({
             ios: {
-                fontSize: 22
+                fontSize: 74
             },
             android: {
-                fontSize: 20
+                fontSize: 72
             },
         }),
     },
     planDetailsWrap: {
-        padding: 16,
-        borderBottomLeftRadius: 4,
-        borderBottomRightRadius: 4,
+        justifyContent: 'space-between',
+        marginTop: 24,
+        flexDirection: 'row',
         width: '100%',
-        backgroundColor: 'white',
+    },
+    planDetailsTextWrap: {
+       // backgroundColor: 'transparent'
+    },
+    planDetailsItem: {
+        justifyContent: 'flex-start',
+        borderRadius: 8,
+        width: '45%',
+        padding: 16,
+        alignItems: 'flex-start',
+        backgroundColor: '#ffffff',
         ...Platform.select({
             ios: {
                 shadowColor: '#000',
@@ -79,14 +94,12 @@ const styles = StyleSheet.create({
                 elevation: 4
             },
         }),
-    },
-    planDetailsItem: {
-        justifyContent: 'center',
-        alignItems: 'center'
+
     },
     planDetailsText: {
         fontFamily: 'SSP-R',
-        color: '#484848',
+        color: '#333',
+        alignSelf: 'flex-start',
         ...Platform.select({
             ios: {
                 fontSize: 16
@@ -97,22 +110,20 @@ const styles = StyleSheet.create({
         }),
     },
     numberBadge: {
-        borderRadius: 2,
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#F5F6FD',
         paddingVertical: 6,
         paddingHorizontal: 8
     },
     numberBadgeText: {
-        fontFamily: 'SSP-R',
+        fontFamily: 'SSP-L',
         color: '#483F61',
         ...Platform.select({
             ios: {
-                fontSize: 14
+                fontSize: 44
             },
             android: {
-                fontSize: 12,
+                fontSize: 42,
             },
         }),
     },
@@ -142,6 +153,7 @@ const styles = StyleSheet.create({
     },
     bottomContainer: {
         flex: 1,
+        backgroundColor: '#AC2733',
         overflow: 'visible',
         position: 'relative'
     },
