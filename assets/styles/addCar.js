@@ -287,7 +287,7 @@ const styles = StyleSheet.create({
         }),
     },
     selectedStatusOption: {
-        backgroundColor: '#483F61',
+        backgroundColor: '#70161D',
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 16,

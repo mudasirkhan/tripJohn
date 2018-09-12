@@ -148,13 +148,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         zIndex: 9,
         alignSelf: 'center',
-        borderWidth: .5,
         flex: 1,
-        borderColor: '#f0f0f0',
         height: 160,
         paddingLeft: 20,
         overflow: 'visible',
-        backgroundColor: 'white',
+        backgroundColor: '#821B24',
         paddingBottom: 10,
         marginVertical: 5,
         paddingTop: 14,
@@ -179,7 +177,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     carPriceWrap: {
-        backgroundColor: '#F5F6FD',
+        backgroundColor: '#70161D',
         width: '100%',
         alignSelf: 'flex-end',
         borderTopLeftRadius: 4,
@@ -189,7 +187,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     carTitle: {
-        color: '#483F61',
+        color: '#fff',
         paddingBottom: 8,
         fontFamily: 'Lato-B',
         ...Platform.select({
@@ -202,7 +200,7 @@ const styles = StyleSheet.create({
         }),
     },
     carPriceMonth: {
-        color: '#483F61',
+        color: '#fff',
         fontFamily: 'SSP-EL',
         paddingRight: 6,
         marginBottom: -8,
@@ -216,7 +214,7 @@ const styles = StyleSheet.create({
         }),
     },
     carPriceWeek: {
-        color: '#483F61',
+        color: '#fff',
         marginTop: 8,
         marginBottom: 10,
         paddingLeft: 3,
@@ -232,11 +230,11 @@ const styles = StyleSheet.create({
     },
     carPriceMonthCurrency: {
         fontSize: 12,
-        color: '#483F61',
+        color: '#fff',
         fontFamily: 'SSP-L'
     },
     carPriceCurrency: {
-        color: '#483F61',
+        color: '#fff',
         fontFamily: 'SSP-L',
         ...Platform.select({
             ios: {
@@ -265,7 +263,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start'
     },
     providedByText: {
-        color: '#7C7B81',
+        color: '#f5f5f5',
         fontFamily: 'Lato-R',
         paddingBottom: 4,
         ...Platform.select({
@@ -282,7 +280,7 @@ const styles = StyleSheet.create({
     },
     providerName: {
         fontFamily: 'SSP-R',
-        color: '#7C7B81',
+        color: '#f5f5f5',
         ...Platform.select({
             ios: {
                 fontSize: 12
