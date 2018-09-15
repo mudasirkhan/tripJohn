@@ -21,7 +21,7 @@ export default class Car extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Car',
+        drawerLabel: () => 'Your cars',
         drawerIcon: ({tintColor}) => (
             <SvgUri
                 source={require('../assets/icons/nav-icon-car.svg')}

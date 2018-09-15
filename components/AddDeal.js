@@ -89,7 +89,7 @@ class Deals extends React.Component {
     }
 
     render() {
-        return (<View style={{flex: 1, position: 'relative', backgroundColor: '#483F61'}}>
+        return (<View style={{flex: 1, position: 'relative', backgroundColor: '#AC2733'}}>
             <TopNav title={"Add deal"} openDrawer={this.openDrawer}/>
             <View style={{marginTop: 44, justifyContent: 'center', alignContent: 'center', flex: 1}}>
                 <View style={[styles.profileInputGroup, {alignSelf: 'center'}]}>

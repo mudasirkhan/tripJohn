@@ -530,7 +530,7 @@ class AddCar extends React.Component {
                             </View>
 
                             <View style={styles.labelWrap}>
-                                <Text style={styles.inputLabelText}>Car name</Text>
+                                <Text style={styles.inputLabelText}>Car Status</Text>
                             </View>
                             <View style={[styles.textInputWrap]}>
                                 {this.renderStatusOptions(this.state.statusTypes)}
