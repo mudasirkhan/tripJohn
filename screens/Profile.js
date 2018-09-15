@@ -18,7 +18,7 @@ class Profile extends React.Component {
             profileNameArabic: 'Zain',
             phoneNumber: '+91 7006917548',
             whatsappNumber: '+91 7006917548',
-            currentPassword: 'asasas',
+            currentPassword: '',
             newPassword2: '',
             newPassword: '',
             arabicAddress: '',
@@ -465,40 +465,40 @@ class Profile extends React.Component {
                                         </View>
                                     </View>
                                 </View>
-                                <View style={[styles.profileInputGroup, {width: '100%'}]}>
-                                    <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                        <View style={[styles.textInputWrap, {
-                                            borderRadius: 4
-                                        }]}>
+                                {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
+                                    {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                                        {/*<View style={[styles.textInputWrap, {*/}
+                                            {/*borderRadius: 4*/}
+                                        {/*}]}>*/}
 
-                                            <TextInput
-                                                editable={this.state.editOtherInfo}
-                                                underlineColorAndroid="transparent"
-                                                style={styles.textArea}
-                                                value={this.state.englishAddress}
-                                                placeholder="English Address"
-                                                onChangeText={englishAddress => this.setState({englishAddress})}
-                                            />
-                                        </View>
-                                    </View>
-                                </View>
-                                <View style={[styles.profileInputGroup, {width: '100%'}]}>
-                                    <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                        <View style={[styles.textInputWrap, {
-                                            borderRadius: 4
-                                        }]}>
+                                            {/*<TextInput*/}
+                                                {/*editable={this.state.editOtherInfo}*/}
+                                                {/*underlineColorAndroid="transparent"*/}
+                                                {/*style={styles.textArea}*/}
+                                                {/*value={this.state.englishAddress}*/}
+                                                {/*placeholder="English Address"*/}
+                                                {/*onChangeText={englishAddress => this.setState({englishAddress})}*/}
+                                            {/*/>*/}
+                                        {/*</View>*/}
+                                    {/*</View>*/}
+                                {/*</View>*/}
+                                {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
+                                    {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                                        {/*<View style={[styles.textInputWrap, {*/}
+                                            {/*borderRadius: 4*/}
+                                        {/*}]}>*/}
 
-                                            <TextInput
-                                                underlineColorAndroid="transparent"
-                                                style={styles.textArea}
-                                                value={this.state.englishPickupAddress}
-                                                editable={this.state.editOtherInfo}
-                                                placeholder="English Pickup Address"
-                                                onChangeText={englishPickupAddress => this.setState({englishPickupAddress})}
-                                            />
-                                        </View>
-                                    </View>
-                                </View>
+                                            {/*<TextInput*/}
+                                                {/*underlineColorAndroid="transparent"*/}
+                                                {/*style={styles.textArea}*/}
+                                                {/*value={this.state.englishPickupAddress}*/}
+                                                {/*editable={this.state.editOtherInfo}*/}
+                                                {/*placeholder="English Pickup Address"*/}
+                                                {/*onChangeText={englishPickupAddress => this.setState({englishPickupAddress})}*/}
+                                            {/*/>*/}
+                                        {/*</View>*/}
+                                    {/*</View>*/}
+                                {/*</View>*/}
                                 <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                         <View style={[styles.textInputWrap, {
