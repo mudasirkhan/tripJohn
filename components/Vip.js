@@ -79,12 +79,15 @@ class CarsList extends React.Component {
 
             });
     }
+
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
     }
-    showNumber = () =>{
+
+    showNumber = () => {
         this.setState({showNumber: true})
     }
+
     componentDidCatch(err) {
         console.log(err)
     }
@@ -100,10 +103,10 @@ class CarsList extends React.Component {
                 onRequestClose={() => {
                     alert('Modal has been closed.');
                 }}>
-                <View style={{marginTop: 44 , justifyContent: 'center', alignItems: 'center', flex: 1}}>
+                <View style={{marginTop: 44, justifyContent: 'center', alignItems: 'center', flex: 1}}>
                     <View style={{flex: 1}}>
-
                         <TouchableHighlight
+                            style={styles.modalTopBar}
                             onPress={() => {
                                 this.setModalVisible(!this.state.modalVisible);
                             }}>
@@ -113,7 +116,6 @@ class CarsList extends React.Component {
                     </View>
                 </View>
             </Modal>
-
             <View style={styles.carImageContainer}>
                 <Image style={styles.carFullSizeImage} source={require('../assets/images/carFullSize.png')}/>
             </View>
@@ -142,21 +144,24 @@ class CarsList extends React.Component {
                                 </View>
                             </View>
                         </View>
-                        <View style={{alignItems: 'center'}}>
+                        <View style={{alignItems: 'center', marginVertical: 12}}>
                             <View style={styles.orangeBtnShadow}>
                                 <View style={styles.orangeBtn}>
                                     <LinearGradient start={{x: 1, y: 1}}
                                                     end={{x: 0, y: 0}} colors={['#F76B1C', '#FFC800']}>
                                         <TouchableOpacity onPress={this.showNumber} style={styles.orangeBtnInner}>
-                                            <Text style={styles.orangeBtnText}>{this.state.showNumber?"  9875543211  ":"View Contact No."}</Text>
+                                            <Text
+                                                style={styles.orangeBtnText}>{this.state.showNumber ? "  9875543211  " : "View Contact No."}</Text>
                                         </TouchableOpacity>
                                     </LinearGradient>
                                 </View>
                             </View>
-                            <TouchableOpacity onPress={() => {
-                                this.setModalVisible(!this.state.modalVisible);
-                            }}>
-                            <Text style={styles.requestCallbackText}>Update Car</Text>
+                            <TouchableOpacity
+                                style={{paddingVertical: 12}}
+                                onPress={() => {
+                                    this.setModalVisible(!this.state.modalVisible);
+                                }}>
+                                <Text style={styles.requestCallbackText}>Update Car</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -177,7 +182,6 @@ class CarsList extends React.Component {
                     </View>
                 </View>
             </View>
-
         </View>
     }
 

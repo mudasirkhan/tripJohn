@@ -68,6 +68,7 @@ class AddCar extends React.Component {
         return _.map(paymentMethods, item => {
             return <TouchableOpacity
                 key={item}
+                style={this.state.paymentMethods !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
                     this.setState({accept_in: item})
                 }}>
@@ -81,6 +82,7 @@ class AddCar extends React.Component {
         return _.map(insuranceTypes, item => {
             return <TouchableOpacity
                 key={item}
+                style={this.state.insuranceTypes !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
                     this.setState({insurance_included: item})
                 }}>
@@ -466,10 +468,8 @@ class AddCar extends React.Component {
                                 {/*<Text>{this.state.accept_in}</Text>*/}
                                 {/*{this.renderPaymentOptions(this.state.paymentMethods)}*/}
 
-                                <Text>{this.state.insurance_included}</Text>
+                                {/*<Text>{this.state.insurance_included}</Text>*/}
                                 {this.renderInsuranceOptions(this.state.insuranceTypes)}
-
-
                                 {/*<View style={[styles.textInputWrap]}>*/}
                                 {/*<TextInput*/}
                                 {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
@@ -486,7 +486,7 @@ class AddCar extends React.Component {
                                     <Text style={styles.profileTitleText}>Payment Method</Text>
                                     {/*<Text style={styles.editBtn}>EDIT</Text>*/}
                                 </View>
-                                <Text>{this.state.accept_in}</Text>
+                                {/*<Text>{this.state.accept_in}</Text>*/}
                                 {this.renderPaymentOptions(this.state.paymentMethods)}
 
                                 {/*<View style={[styles.textInputWrap]}>*/}

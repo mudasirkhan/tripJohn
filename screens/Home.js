@@ -53,14 +53,13 @@ export default class Home extends React.Component {
                 <TopNav title={""} openDrawer={this.openDrawer}/>
                 <View style={styles.topContainer}>
                     <View style={styles.topInfo}>
-                        <TouchableOpacity
-                            style={styles.changePlanBtn}
-                            onPress={() => {
-                                this.setState({showWebView: true})
-
-                            }}>
-                            <Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>
-                        </TouchableOpacity>
+                        {/*<TouchableOpacity*/}
+                        {/*style={styles.changePlanBtn}*/}
+                        {/*onPress={() => {*/}
+                        {/*this.setState({showWebView: true})*/}
+                        {/*}}>*/}
+                        {/*<Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>*/}
+                        {/*</TouchableOpacity>*/}
                         <View style={styles.planNameWrap}>
                             <Text style={{color: '#666'}}>Your current plan</Text>
                             <Text style={styles.planName}>GOLD</Text>

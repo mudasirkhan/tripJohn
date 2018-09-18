@@ -4,16 +4,17 @@ import {StyleSheet, Platform} from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: '#AC2733'
     },
     carImageContainer: {
         height: 200,
-        paddingHorizontal: 12,
         justifyContent: 'center',
         width: '100%'
     },
     carFullSizeImage: {
         width: '100%',
         alignSelf: 'center',
+        marginTop: -12,
         height: '100%',
         resizeMode: 'contain'
     },
@@ -36,7 +37,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     carTitle: {
-        color: '#483F61',
+        color: '#fff',
         paddingBottom: 8,
         fontFamily: 'SSP-R',
         ...Platform.select({
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         alignSelf: 'flex-start',
     },
     providedByText: {
-        color: '#7C7B81',
+        color: '#fff',
         fontFamily: 'Lato-R',
         paddingBottom: 4,
         ...Platform.select({
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
     },
     providerName: {
         fontFamily: 'SSP-R',
-        color: '#7C7B81',
+        color: '#fff',
         ...Platform.select({
             ios: {
                 fontSize: 12
@@ -131,20 +132,20 @@ const styles = StyleSheet.create({
     },
     requestCallbackText: {
         fontFamily: 'SSP-L',
-        color: '#483F61',
+        color: '#fff',
         ...Platform.select({
             ios: {
-                fontSize: 12,
+                fontSize: 14,
             },
             android: {
-                fontSize: 10,
+                fontSize: 12,
             },
         }),
     },
     taxText: {
         fontFamily: 'Lato-L',
         fontSize: 7,
-        color: '#483F61',
+        color: '#fff',
     },
     rightSection: {
         flex: .7,
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
         // backgroundColor:'red',
     },
     carPriceWrap: {
-        backgroundColor: '#F5F6FD',
+        backgroundColor: '#821B24',
         width: '100%',
         alignSelf: 'flex-end',
         borderTopLeftRadius: 4,
@@ -164,7 +165,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     carPriceMonth: {
-        color: '#483F61',
+        color: '#fff',
         fontFamily: 'SSP-SB',
         paddingRight: 6,
         ...Platform.select({
@@ -178,7 +179,7 @@ const styles = StyleSheet.create({
         }),
     },
     carPriceWeek: {
-        color: '#483F61',
+        color: '#fff',
         marginTop: 8,
         marginBottom: 10,
         paddingLeft: 1,
@@ -194,11 +195,11 @@ const styles = StyleSheet.create({
     },
     carPriceMonthCurrency: {
         fontSize: 12,
-        color: '#483F61',
+        color: '#fff',
         fontFamily: 'SSP-L'
     },
     carPriceCurrency: {
-        color: '#483F61',
+        color: '#fff',
         fontFamily: 'SSP-L',
         ...Platform.select({
             ios: {
@@ -229,7 +230,7 @@ const styles = StyleSheet.create({
     },
     bargainBtnText: {
         fontFamily: 'SSP-L',
-        color: '#483F61',
+        color: '#333',
         ...Platform.select({
             ios: {
                 fontSize: 13,
