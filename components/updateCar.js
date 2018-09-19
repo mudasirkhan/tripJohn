@@ -452,9 +452,9 @@ class UpdateCar extends React.Component {
                             {/*<Text style={styles.editBtn}>EDIT</Text>*/}
                         </View>
                         {/*<Text>{this.state.accept_in}</Text>*/}
-                        {/*{this.renderPaymentOptions(this.state.paymentMethods)}*/}
+                        {this.renderPaymentOptions(this.state.paymentMethods)}
 
-                        {/*<Text>{this.state.insurance_included}</Text>*/}
+                        <Text>{this.state.insurance_included}</Text>
                         {this.renderInsuranceOptions(this.state.insuranceTypes)}
                         {/*<View style={[styles.textInputWrap]}>*/}
                         {/*<TextInput*/}

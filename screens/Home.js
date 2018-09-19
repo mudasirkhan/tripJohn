@@ -115,13 +115,13 @@ class Home extends React.Component {
                 <View style={styles.bottomContainer}>
                     {/*<View style={styles.leadsListHeader}>*/}
                     {/*<Text style={styles.listHeaderTitle}>Recent leads</Text>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*this.setState({showTypes: !this.state.showTypes})*/}
-                    {/*}} style={styles.listSortBtn}>*/}
-                    {/*<Text*/}
-                    {/*style={styles.listSortBtnText}>{this.state.leadType !== 'all' ? this.state.leadType === 'cancelled' ? 'Cancelled Leads' : 'New Leads' : 'All Leads'}</Text>*/}
-                    {/*<SvgUri source={require('../assets/icons/down-chevron.svg')}/>*/}
-                    {/*</TouchableOpacity>*/}
+                    {/*/!*<TouchableOpacity onPress={() => {*!/*/}
+                    {/*/!*this.setState({showTypes: !this.state.showTypes})*!/*/}
+                    {/*/!*}} style={styles.listSortBtn}>*!/*/}
+                    {/*/!*<Text*!/*/}
+                    {/*/!*style={styles.listSortBtnText}>{this.state.leadType !== 'all' ? this.state.leadType === 'cancelled' ? 'Cancelled Leads' : 'New Leads' : 'All Leads'}</Text>*!/*/}
+                    {/*/!*<SvgUri source={require('../assets/icons/down-chevron.svg')}/>*!/*/}
+                    {/*/!*</TouchableOpacity>*!/*/}
                     {/*</View>*/}
                     <ScrollView
                         style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
@@ -130,28 +130,31 @@ class Home extends React.Component {
                                    leadType={this.state.leadType}/>
                     </ScrollView>
 
-                    {/*{this.state.showTypes ? <View style={styles.sortListWrap}>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*this.setState({leadType: 'new', showTypes: false})*/}
-                    {/*}} style={styles.sortListItem}>*/}
-                    {/*<Text style={styles.sortListText}>*/}
-                    {/*New leads*/}
-                    {/*</Text>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*this.setState({leadType: 'cancelled', showTypes: false})*/}
-                    {/*}} style={styles.sortListItem}>*/}
-                    {/*<Text style={styles.sortListText}>*/}
-                    {/*Cancelled leads*/}
-                    {/*</Text>*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*<TouchableOpacity onPress={() => {*/}
-                    {/*this.setState({leadType: 'all', showTypes: false})*/}
-                    {/*}} style={styles.sortListItem}>*/}
-                    {/*<Text style={styles.sortListText}>*/}
-                    {/*All leads*/}
-                    {/*</TouchableOpacity>*/}
-                    {/*</View> : null}*/}
+                    {/*{this.state.showTypes ?*/}
+                        {/*<View style={styles.sortListWrap}>*/}
+                            {/*<TouchableOpacity onPress={() => {*/}
+                                {/*this.setState({leadType: 'new', showTypes: false})*/}
+                            {/*}} style={styles.sortListItem}>*/}
+                                {/*<Text style={styles.sortListText}>*/}
+                                    {/*New leads*/}
+                                {/*</Text>*/}
+                            {/*</TouchableOpacity>*/}
+                            {/*<TouchableOpacity onPress={() => {*/}
+                                {/*this.setState({leadType: 'cancelled', showTypes: false})*/}
+                            {/*}} style={styles.sortListItem}>*/}
+                                {/*<Text style={styles.sortListText}>*/}
+                                    {/*Cancelled leads*/}
+                                {/*</Text>*/}
+                            {/*</TouchableOpacity>*/}
+                            {/*<TouchableOpacity onPress={() => {*/}
+                                {/*this.setState({leadType: 'all', showTypes: false})*/}
+                            {/*}} style={styles.sortListItem}>*/}
+                                {/*<Text style={styles.sortListText}>*/}
+                                    {/*All leads*/}
+                                {/*</Text>*/}
+                            {/*</TouchableOpacity>*/}
+                        {/*</View>*/}
+                        {/*: null}*/}
 
                  </View>
             </View>)

@@ -174,11 +174,11 @@ class CarsList extends React.Component {
                             <Text style={styles.carPriceWeek}>AED 124/Week</Text>
                             <Text style={styles.taxText}>+ 5% VAT applicable</Text>
                         </View>
-                        <TouchableOpacity onPress={() => {
-                            this.setModalVisible(!this.state.modalVisible);
-                        }} style={styles.bargainBtn}>
-                            <Text style={styles.bargainBtnText}>Want to bargain?</Text>
-                        </TouchableOpacity>
+                        {/*<TouchableOpacity onPress={() => {*/}
+                            {/*this.setModalVisible(!this.state.modalVisible);*/}
+                        {/*}} style={styles.bargainBtn}>*/}
+                            {/*<Text style={styles.bargainBtnText}>Want to bargain?</Text>*/}
+                        {/*</TouchableOpacity>*/}
                     </View>
                 </View>
             </View>
