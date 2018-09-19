@@ -1,9 +1,7 @@
 import React from 'react';
 import {
     Image,
-    Platform,
     ScrollView,
-    StyleSheet,
     Text,
     TouchableOpacity,
     View,
@@ -46,7 +44,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.logged, this.state.logged, this.props.token)
+        console.log(this.props.logged, this.state.logged, this.props.token);
     }
 
     componentDidCatch(err) {
@@ -59,6 +57,10 @@ class HomeScreen extends React.Component {
     logout = () => {
         this.props.change('LOGIN', false)
     }
+
+
+
+
 
     render() {
         const {logged, newUser, mismatch, loader, error} = this.state;
