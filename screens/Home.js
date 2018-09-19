@@ -77,14 +77,14 @@ class Home extends React.Component {
                     {this.state.plans &&
                     <View style={styles.topInfo}>
                         {/*<TouchableOpacity*/}
-                            {/*style={styles.changePlanBtn}*/}
-                            {/*onPress={() => {*/}
-                                {/*this.setState({showWebView: true})*/}
-
-                            {/*}}>*/}
-                            {/*<Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>*/}
+                        {/*style={styles.changePlanBtn}*/}
+                        {/*onPress={() => {*/}
+                        {/*this.setState({showWebView: true})*/}
+                        {/*}}>*/}
+                        {/*<Text style={styles.changePlanBtnText}>CHANGE PLAN</Text>*/}
                         {/*</TouchableOpacity>*/}
-                       <View style={styles.planNameWrap}>
+                        <View style={styles.planNameWrap}>
+
                             <Text style={{color: '#666'}}>Your current plan</Text>
                             <Text style={styles.planName}>{this.state.plans[this.state.currentPlan].english_name}</Text>
                             {/*<Text>View all plans</Text>*/}
@@ -150,11 +150,10 @@ class Home extends React.Component {
                     {/*}} style={styles.sortListItem}>*/}
                     {/*<Text style={styles.sortListText}>*/}
                     {/*All leads*/}
-                    {/*</Text>*/}
                     {/*</TouchableOpacity>*/}
                     {/*</View> : null}*/}
 
-                </View>
+                 </View>
             </View>)
     }
 }
