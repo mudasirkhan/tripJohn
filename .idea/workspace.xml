@@ -1,26 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f40fb138-442f-4f6b-95fa-324d25f13051" name="Default" comment="Added login screen styles">
-      <change afterPath="$PROJECT_DIR$/assets/icons/approve.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icons/delete.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/logo.png" afterDir="false" />
+    <list default="true" id="f40fb138-442f-4f6b-95fa-324d25f13051" name="Default" comment="Theme changes">
       <change beforePath="$PROJECT_DIR$/.expo/packager-info.json" beforeDir="false" afterPath="$PROJECT_DIR$/.expo/packager-info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/arrow-back.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/arrow-back.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/icons/ham.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/ham.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/approve.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/approve.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/icons/delete.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/delete.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/icons/ham.svg" beforeDir="false" afterPath="$PROJECT_DIR$/assets/icons/ham.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/addCar.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/addCar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/leads.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/modal.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/searchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/searchBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/topNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/topNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/TopNav.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/TopNav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/addCar.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/addCar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Cars.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Cars.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/Leads.js" beforeDir="false" afterPath="$PROJECT_DIR$/screens/Leads.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,37 +21,41 @@
     <session id="-1740692690">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="8" />
+          <entry key="project.closed" value="12" />
           <entry key="project.open.time.10" value="5" />
-          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.11" value="3" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="9" />
+          <entry key="project.opened" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="2272" />
-          <entry key="svg" value="78" />
+          <entry key="js" value="2661" />
+          <entry key="svg" value="81" />
+          <entry key="txt" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JavaScript" value="2272" />
-          <entry key="SVG" value="78" />
+          <entry key="JavaScript" value="2661" />
+          <entry key="PLAIN_TEXT" value="15" />
+          <entry key="SVG" value="81" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="js" value="20" />
-          <entry key="svg" value="10" />
+          <entry key="js" value="33" />
+          <entry key="svg" value="11" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JavaScript" value="20" />
-          <entry key="SVG" value="10" />
+          <entry key="JavaScript" value="33" />
+          <entry key="SVG" value="11" />
         </counts>
       </usages-collector>
     </session>
@@ -73,76 +63,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/carsList.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="284">
-              <caret line="165" column="38" selection-start-line="165" selection-start-column="38" selection-end-line="165" selection-end-column="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/searchBar.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="603">
-              <caret line="298" column="33" selection-start-line="298" selection-start-column="33" selection-end-line="298" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/components/TopNav.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/modal.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/screens/Leads.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/topNav.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="12" column="8" selection-start-line="12" selection-start-column="8" selection-end-line="12" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/dashboard.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2310">
-              <caret line="155" column="8" selection-start-line="155" selection-start-column="8" selection-end-line="155" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/screens/Cars.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+            <state relative-caret-position="345">
+              <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -150,20 +74,83 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/components/addCar.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/AddDeal.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="332" column="40" selection-start-line="332" selection-start-column="40" selection-end-line="332" selection-end-column="40" />
+            <state relative-caret-position="1020">
+              <caret line="79" column="66" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/styles/addCar.js">
+        <entry file="file://$PROJECT_DIR$/assets/styles/deals.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="12" column="33" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="33" />
+            <state relative-caret-position="1725">
+              <caret line="116" column="28" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/styles/vip.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/Vip.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1410">
+              <caret line="118" column="43" selection-start-line="118" selection-start-column="43" selection-end-line="118" selection-end-column="43" />
+              <folding>
+                <element signature="e#646#688#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/styles/modal.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/screens/Home.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="55" column="44" lean-forward="true" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/updateCar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3510">
+              <caret line="238" column="35" lean-forward="true" selection-start-line="238" selection-start-column="35" selection-end-line="238" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/updateCar-backup.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -179,40 +166,41 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>right</find>
-      <find>cardr</find>
-      <find>name</find>
-      <find>rights</find>
-      <find>SvgUri</find>
-      <find>car nam</find>
-      <find>add a c</find>
-      <find>fill</find>
-      <find>&lt;View style={[styles.textInputWrap]}&gt;</find>
-      <find>horizon</find>
-      <find>mileage in</find>
-      <find>insurance o</find>
-      <find>label</find>
-      <find>price per day</find>
-      <find>car type</find>
-      <find>car typ</find>
-      <find>car_typ</find>
-      <find>sepa</find>
-      <find>separa</find>
-      <find>mileage limit</find>
-      <find>payment optio</find>
-      <find>payment</find>
-      <find>payment op</find>
-      <find>unava</find>
-      <find>driver</find>
-      <find>unpubli</find>
       <find>driverTypes</find>
       <find>update</find>
       <find>add new</find>
       <find>price_per_d</find>
+      <find>car name</find>
+      <find>status</find>
+      <find>#000000</find>
+      <find>statusty</find>
+      <find>text</find>
+      <find>background</find>
+      <find>fff</find>
+      <find>nissan</find>
+      <find>insurance option</find>
+      <find>drivers</find>
+      <find>change</find>
+      <find>price_per_day</find>
+      <find>naviga</find>
+      <find>modal</find>
+      <find>topb</find>
+      <find>hide mod</find>
+      <find>car name inf</find>
+      <find>hide modal</find>
+      <find>hide moda</find>
+      <find>hide mo</find>
+      <find>hide</find>
+      <find>5%</find>
+      <find>al jume</find>
+      <find>update car</find>
+      <find>orangeBtn</find>
+      <find>image</find>
     </findStrings>
     <replaceStrings>
       <replace>borderRadius: 4</replace>
       <replace>orange</replace>
+      <replace>#ffffff</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/screens</dir>
@@ -225,7 +213,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/assets/icons/user.svg" />
         <option value="$PROJECT_DIR$/assets/styles/introSlides.js" />
         <option value="$PROJECT_DIR$/components/Slide1.js" />
         <option value="$PROJECT_DIR$/components/Slide2.js" />
@@ -249,15 +236,10 @@
         <option value="$PROJECT_DIR$/screens/carsList.js" />
         <option value="$PROJECT_DIR$/components/searchBar.js" />
         <option value="$PROJECT_DIR$/screens/HomeScreen.js" />
-        <option value="$PROJECT_DIR$/components/Vip.js" />
-        <option value="$PROJECT_DIR$/components/updateCar.js" />
-        <option value="$PROJECT_DIR$/assets/styles/deals.js" />
         <option value="$PROJECT_DIR$/assets/styles/profileScreen.js" />
         <option value="$PROJECT_DIR$/assets/styles/homeTopSection.js" />
         <option value="$PROJECT_DIR$/navigation/DrawerApp.js" />
-        <option value="$PROJECT_DIR$/assets/styles/vip.js" />
         <option value="$PROJECT_DIR$/components/carsList.js" />
-        <option value="$PROJECT_DIR$/components/AddDeal.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app.json" />
         <option value="$PROJECT_DIR$/screens/Profile.js" />
@@ -268,14 +250,20 @@
         <option value="$PROJECT_DIR$/assets/styles/topNav.js" />
         <option value="$PROJECT_DIR$/assets/styles/dashboard.js" />
         <option value="$PROJECT_DIR$/screens/Leads.js" />
-        <option value="$PROJECT_DIR$/screens/Home.js" />
         <option value="$PROJECT_DIR$/assets/icons/arrow-back.svg" />
         <option value="$PROJECT_DIR$/assets/styles/modal.js" />
-        <option value="$PROJECT_DIR$/assets/styles/addCar.js" />
+        <option value="$PROJECT_DIR$/components/TopNav.js" />
         <option value="$PROJECT_DIR$/screens/Cars.js" />
         <option value="$PROJECT_DIR$/assets/styles/searchBar.js" />
-        <option value="$PROJECT_DIR$/components/TopNav.js" />
+        <option value="$PROJECT_DIR$/assets/styles/addCar.js" />
+        <option value="$PROJECT_DIR$/assets/icons/car-n-key.svg" />
+        <option value="$PROJECT_DIR$/components/AddDeal.js" />
+        <option value="$PROJECT_DIR$/assets/styles/deals.js" />
         <option value="$PROJECT_DIR$/components/addCar.js" />
+        <option value="$PROJECT_DIR$/screens/Home.js" />
+        <option value="$PROJECT_DIR$/components/updateCar.js" />
+        <option value="$PROJECT_DIR$/components/Vip.js" />
+        <option value="$PROJECT_DIR$/assets/styles/vip.js" />
       </list>
     </option>
   </component>
@@ -331,24 +319,24 @@
   </component>
   <component name="PropertiesComponent">
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="SearchEverywhereHistoryKey" value="topna&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/TopNav.js&#10;topn&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/TopNav.js&#10;deal&#9;FILE&#9;file:///tripjohn/tripJohn/components/AddDeal.js&#10;deals&#9;null&#9;null&#10;pro&#9;FILE&#9;file:///tripjohn/tripJohn/screens/Profile.js&#10;down&#9;FILE&#9;file:///tripjohn/tripJohn/assets/icons/down-chevron.svg&#10;back&#9;FILE&#9;file:///tripjohn/tripJohn/assets/icons/arrow-back.svg&#10;leads&#9;FILE&#9;file:///tripjohn/tripJohn/screens/Leads.js&#10;sear&#9;FILE&#9;file:///tripjohn/tripJohn/components/searchBar.js&#10;ap&#9;FILE&#9;file:///tripjohn/tripJohn/App.js&#10;app&#9;FILE&#9;file:///tripjohn/tripJohn/navigation/DrawerApp.js" />
+    <property name="SearchEverywhereHistoryKey" value="add&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/addCar.js&#10;update&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/updateCar.js&#10;home&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/screens/Home.js&#10;insurance op&#9;null&#9;null&#10;carlis&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/carsList.js&#10;vip&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/assets/styles/vip.js&#10;dea&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/AddDeal.js&#10;car&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/assets/icons/car-n-key.svg&#10;topna&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/TopNav.js&#10;topn&#9;FILE&#9;file:///Users/abdulmajid/WebstormProjects/tripJohn/components/TopNav.js&#10;deal&#9;FILE&#9;file:///tripjohn/tripJohn/components/AddDeal.js&#10;deals&#9;null&#9;null&#10;pro&#9;FILE&#9;file:///tripjohn/tripJohn/screens/Profile.js&#10;down&#9;FILE&#9;file:///tripjohn/tripJohn/assets/icons/down-chevron.svg&#10;back&#9;FILE&#9;file:///tripjohn/tripJohn/assets/icons/arrow-back.svg&#10;leads&#9;FILE&#9;file:///tripjohn/tripJohn/screens/Leads.js&#10;sear&#9;FILE&#9;file:///tripjohn/tripJohn/components/searchBar.js&#10;ap&#9;FILE&#9;file:///tripjohn/tripJohn/App.js&#10;app&#9;FILE&#9;file:///tripjohn/tripJohn/navigation/DrawerApp.js" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.chrisrm.idea.config" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/icons" />
-      <recent name="$PROJECT_DIR$/assets/images" />
-      <recent name="$PROJECT_DIR$/screens" />
-      <recent name="$PROJECT_DIR$/components" />
-      <recent name="$PROJECT_DIR$/navigation" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/assets/carBigImg.jpg" />
       <recent name="$PROJECT_DIR$/components/__tests__" />
       <recent name="$PROJECT_DIR$/assets/icons" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/components" />
+      <recent name="$PROJECT_DIR$/assets/icons" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/screens" />
+      <recent name="$PROJECT_DIR$/navigation" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -405,7 +393,11 @@
       <workItem from="1536495282655" duration="8803000" />
       <workItem from="1536657059630" duration="15000" />
       <workItem from="1536657105606" duration="2986000" />
-      <workItem from="1536661916074" duration="1507000" />
+      <workItem from="1536661916074" duration="2366000" />
+      <workItem from="1536749902274" duration="1049000" />
+      <workItem from="1536843165370" duration="2499000" />
+      <workItem from="1537122775163" duration="1547000" />
+      <workItem from="1537466881509" duration="322000" />
     </task>
     <task id="LOCAL-00001" summary="Added login screen styles">
       <created>1528134387763</created>
@@ -421,11 +413,32 @@
       <option name="project" value="LOCAL" />
       <updated>1528136692606</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Theme changes">
+      <created>1536663739899</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1536663739899</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Theme changes">
+      <created>1536751730766</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1536751730767</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Theme changes">
+      <created>1537248268249</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1537248268249</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172241000" />
+    <option name="totallyTimeSpent" value="178517000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -438,9 +451,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13530655" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13530655" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -495,7 +507,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added login screen styles" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added login screen styles" />
+    <MESSAGE value="Theme changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Theme changes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -512,27 +525,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/components/Slide2.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="48" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/Slide1.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="42" selection-start-line="9" selection-start-column="42" selection-end-line="9" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/introSlides.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-144">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/screens/tabinfobar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
@@ -659,38 +651,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/vip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1920">
-          <caret line="129" column="26" selection-start-line="129" selection-start-column="26" selection-end-line="129" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/updateCar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3360">
-          <caret line="224" column="35" selection-start-line="224" selection-start-column="35" selection-end-line="225" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/navigation/DrawerApp.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
           <caret line="4" column="35" lean-forward="true" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/Vip.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2910">
-          <caret line="194" column="15" selection-start-line="194" selection-start-column="15" selection-end-line="194" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/components/AddDeal.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="73" selection-start-line="1" selection-start-column="73" selection-end-line="1" selection-end-column="73" />
         </state>
       </provider>
     </entry>
@@ -748,30 +712,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/screens/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1245">
-          <caret line="92" column="55" selection-start-line="92" selection-start-column="55" selection-end-line="92" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/icons/arrow-back.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/modal.js">
+    <entry file="file://$PROJECT_DIR$/components/TopNav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="19" column="33" selection-start-line="19" selection-start-column="33" selection-end-line="19" selection-end-column="33" />
+        <state relative-caret-position="315">
+          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/assets/icons/car-n-key.svg">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/screens/Leads.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
+        <state relative-caret-position="3225">
+          <caret line="230" column="45" selection-start-line="230" selection-start-column="39" selection-end-line="230" selection-end-column="45" />
           <folding>
             <element signature="e#0#25#0" expanded="true" />
           </folding>
@@ -785,55 +742,113 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/components/carsList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="72" column="57" selection-start-line="72" selection-start-column="57" selection-end-line="72" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/searchBar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2295">
+          <caret line="154" column="33" selection-start-line="154" selection-start-column="27" selection-end-line="154" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/assets/styles/dashboard.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2310">
-          <caret line="155" column="8" selection-start-line="155" selection-start-column="8" selection-end-line="155" selection-end-column="35" />
+        <state relative-caret-position="150">
+          <caret line="11" column="33" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/addCar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="52" column="31" lean-forward="true" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/addCar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="225" column="19" lean-forward="true" selection-start-line="225" selection-start-column="19" selection-end-line="225" selection-end-column="19" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/screens/Cars.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
+        <state relative-caret-position="345">
+          <caret line="31" column="25" selection-start-line="31" selection-start-column="25" selection-end-line="31" selection-end-column="25" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/carsList.js">
+    <entry file="file://$PROJECT_DIR$/components/AddDeal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="165" column="38" selection-start-line="165" selection-start-column="38" selection-end-line="165" selection-end-column="38" />
+        <state relative-caret-position="1020">
+          <caret line="79" column="66" selection-start-line="79" selection-start-column="66" selection-end-line="79" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/searchBar.js">
+    <entry file="file://$PROJECT_DIR$/assets/styles/deals.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="603">
-          <caret line="298" column="33" selection-start-line="298" selection-start-column="33" selection-end-line="298" selection-end-column="33" />
+        <state relative-caret-position="1725">
+          <caret line="116" column="28" selection-start-line="116" selection-start-column="28" selection-end-line="116" selection-end-column="28" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/TopNav.js">
+    <entry file="file://$PROJECT_DIR$/components/Vip.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
+        <state relative-caret-position="1410">
+          <caret line="118" column="43" selection-start-line="118" selection-start-column="43" selection-end-line="118" selection-end-column="43" />
+          <folding>
+            <element signature="e#646#688#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/addCar.js">
+    <entry file="file://$PROJECT_DIR$/assets/styles/modal.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="12" column="33" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="33" />
+        <state relative-caret-position="150">
+          <caret line="11" column="6" lean-forward="true" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/components/addCar.js">
+    <entry file="file://$PROJECT_DIR$/screens/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="332" column="40" selection-start-line="332" selection-start-column="40" selection-end-line="332" selection-end-column="40" />
+        <state relative-caret-position="690">
+          <caret line="55" column="44" lean-forward="true" selection-start-line="55" selection-start-column="44" selection-end-line="55" selection-end-column="44" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/updateCar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3510">
+          <caret line="238" column="35" lean-forward="true" selection-start-line="238" selection-start-column="35" selection-end-line="238" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/updateCar-backup.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="34" lean-forward="true" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/vip.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="23" column="16" lean-forward="true" selection-start-line="23" selection-start-column="16" selection-end-line="23" selection-end-column="16" />
         </state>
       </provider>
     </entry>
