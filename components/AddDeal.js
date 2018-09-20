@@ -41,6 +41,8 @@ class Deals extends React.Component {
             start_date: this.state.start_date,
             end_date: this.state.end_date,
             status: this.state.statusTypes,
+            carSelected: '',
+            showCars: false
         })
             .then(response => {
                 const data = response;
@@ -66,12 +68,28 @@ class Deals extends React.Component {
             });
     }
 
-    componentDidCatch(err) {
-        console.log(err)
+    componentDidMount() {
+        this.getCars()
     }
 
     openDrawer = () => {
         this.props.navigation.openDrawer()
+    }
+    getCars = async () => {
+        let resp = {};
+        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_cars', {
+            access_token: this.props.token
+        })
+            .then(response => {
+                resp = response.data.cars;
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+        console.log(resp, this.props.token);
+        resp !== undefined && this.setState({cars: resp});
     }
     renderStatusOptions = (statusMethods) => {
         return _.map(statusMethods, item => {
@@ -87,6 +105,16 @@ class Deals extends React.Component {
             </TouchableOpacity>
         })
     }
+    renderCars = () => {
+        let arr = Object.keys(this.state.cars)
+        return _.map(arr, car => <TouchableOpacity key={car} onPress={()=>{this.setState({carSelected: this.state.cars[car].english_name, car_id: this.state.cars[car].id, showCars: false})}}>
+            <View>
+                <Text>
+                    {this.state.cars[car].english_name}
+                </Text>
+            </View>
+        </TouchableOpacity>)
+    }
 
     render() {
         return (<View style={{flex: 1, position: 'relative', backgroundColor: '#AC2733'}}>
@@ -95,15 +123,18 @@ class Deals extends React.Component {
                 <View style={[styles.profileInputGroup, {alignSelf: 'center'}]}>
                     <Text style={styles.sectionTitle}> Car deals information </Text>
                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                        <View style={[styles.textInputWrap, {
+                        <TouchableOpacity onPress={()=>{this.setState({showCars: true})}} style={[styles.textInputWrap, {
                             borderTopLeftRadius: 4,
                             borderTopRightRadius: 4
                         }]}>
-                            <TextInput placeholder={"Car Id"} value={this.state.car_id}
-                                       style={styles.textInput}
-                                       underlineColorAndroid="transparent"
-                                       onChangeText={car_id => this.setState({car_id})}/>
-                        </View>
+
+                            <Text
+                                style={styles.textInput}
+                            >
+                                {this.state.carSelected}
+                            </Text>
+                        </TouchableOpacity>
+                        {this.state.showCars && this.renderCars()}
                         <View style={styles.textInputWrap}><TextInput placeholder={"discount"}
                                                                       value={this.state.discount}
                                                                       style={styles.textInput}
