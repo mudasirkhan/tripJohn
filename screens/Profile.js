@@ -6,7 +6,8 @@ import SvgUri from 'react-native-svg-uri';
 import commonStyles from "../assets/styles/common";
 import styles from "../assets/styles/profileScreen";
 import axios from "axios/index";
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import * as _ from 'lodash';
 
 class Profile extends React.Component {
     constructor(props) {
@@ -36,6 +37,11 @@ class Profile extends React.Component {
             editPI: false,
             editPassword: false,
             editOtherInfo: false,
+            emirates: [],
+            locations: [],
+            showLocations: false,
+            showEmirates: false,
+            selectedEmirate: 'Select an Option'
         }
     }
 
@@ -48,14 +54,14 @@ class Profile extends React.Component {
         ),
     }
 
-    componentDidMount() {
+     componentDidMount() {
         console.log(this.props)
-        this.getDetails()
+         this.getDetails()
 
     }
 
-    getDetails = () => {
-        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
+    getDetails =  () => {
+         axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
             access_token: this.props.token
         })
             .then(response => {
@@ -81,7 +87,11 @@ class Profile extends React.Component {
                     description: data.description
 
 
+                },()=>{
+                    this.getEmirates()
+                    this.getLocations()
                 })
+
 
             })
             .catch((error) => {
@@ -121,6 +131,56 @@ class Profile extends React.Component {
     }
     openDrawer = () => {
         this.props.navigation.openDrawer()
+    }
+
+    getEmirates = () => {
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_emirates', {
+            access_token: this.props.token
+        })
+            .then(response => {
+                console.log(response)
+                this.setState({ emirates: response.data.emirates, emirateSelected: this.state.emiratesId ? response.data.emirates[this.state.emiratesId].english_name : "Select an emirate"})
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+    }
+
+    getLocations = () => {
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_locations', {
+            access_token: this.props.token
+        })
+            .then(response => {
+                console.log(response)
+                let loc = response.data.locations.filter(loc=> loc.id = this.state.location);
+                this.setState({ locations: response.data.locations,  locationSelected: (loc && loc[0]) ? loc[0].english_name : "Select an location"},() => { console.log(loc[0].english_name) })
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+    }
+    renderEmirates = () => {
+        let arr = Object.keys(this.state.emirates)
+        return _.map(arr, emirate => <TouchableOpacity key={emirate} onPress={()=>{this.setState({emirateSelected: this.state.emirates[emirate].english_name, emiratesId: this.state.emirates[emirate].id, showEmirates: false})}}>
+            <View>
+                <Text>
+                    {this.state.emirates[emirate].english_name}
+                </Text>
+            </View>
+        </TouchableOpacity>)
+    }
+    renderLocations = () => {
+        return _.map(this.state.locations, loc => <TouchableOpacity key={loc.id} onPress={()=>{this.setState({locationSelected: loc.english_name, location: loc.id, showLocations: false})}}>
+            <View>
+                <Text>
+                    {loc.english_name}
+                </Text>
+            </View>
+        </TouchableOpacity>)
     }
 
     render() {
@@ -372,37 +432,33 @@ class Profile extends React.Component {
                             </View>
                             <View style={styles.profileInputGroup}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                    <View style={[styles.textInputWrap, {
+                                    <TouchableOpacity onPress={()=>{this.setState({showEmirates: true})}} style={[styles.textInputWrap, {
                                         borderTopLeftRadius: 4,
                                         borderTopRightRadius: 4
                                     }]}>
 
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
+                                        <Text
                                             style={styles.textInput}
-                                            value={this.state.emiratesId}
-                                            placeholder="Emirates"
-                                            editable={this.state.editOtherInfo}
-                                            onChangeText={emiratesId => this.setState({emiratesId})}
-                                        />
-                                    </View>
+                                        >
+                                            {this.state.emirateSelected}
+                                        </Text>
+                                    </TouchableOpacity>
+                                    {this.state.showEmirates && this.renderEmirates()}
                                     <View style={commonStyles.graySeparator}>
                                         <View style={commonStyles.graySeparatorInner}></View>
                                     </View>
-                                    <View style={[styles.textInputWrap, {
-                                        borderBottomLeftRadius: 4,
-                                        borderBottomRightRadius: 4
+                                    <TouchableOpacity onPress={()=>{this.setState({showLocations: true})}} style={[styles.textInputWrap, {
+                                        borderTopLeftRadius: 4,
+                                        borderTopRightRadius: 4
                                     }]}>
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
+
+                                        <Text
                                             style={styles.textInput}
-                                            value={this.state.location}
-                                            editable={this.state.editOtherInfo}
-                                            placeholder="Location"
-                                            onChangeText={location => this.setState({location})}
-                                            secureTextEntry={false}
-                                        />
-                                    </View>
+                                        >
+                                            {this.state.locationSelected}
+                                        </Text>
+                                    </TouchableOpacity>
+                                    {this.state.showLocations && this.renderLocations()}
                                 </View>
                                 <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>

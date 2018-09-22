@@ -136,7 +136,7 @@ class CarsList extends React.Component {
                     <View style={{flexDirection: 'column', justifyContent: 'space-between'}}>
                         <View>
                             <Text style={styles.carTitle}>
-                                Nissan Sunny 2018
+                                {this.state.car.english_name}
                             </Text>
                             <View style={styles.carProviderContainer}>
                                 <View style={[styles.carProviderWrap, {paddingBottom: 6}]}>
@@ -177,6 +177,7 @@ class CarsList extends React.Component {
                                     style={styles.carPriceMonth}>AED 343/month</Text>
                             </View>
                             <Text style={styles.carPriceWeek}>AED 124/Week</Text>
+
                             <Text style={styles.taxText}>+ 5% VAT applicable</Text>
                         </View>
                         <TouchableOpacity
@@ -194,6 +195,10 @@ class CarsList extends React.Component {
                     </View>
                 </View>
             </View>
+            <Text>
+                {/*{_.values(Object.keys(this.state.car))}*/}
+                {JSON.stringify(this.state.car)}
+            </Text>
         </View>
     }
 
