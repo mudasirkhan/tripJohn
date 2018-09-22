@@ -15,25 +15,27 @@ const styles = StyleSheet.create({
         // width: 20
 
     },
-    modalTopBar: {
-        height: 54,
-        backgroundColor: '#AC2733',
-        flexDirection: 'row',
-        width: '100%',
-        alignItems: 'center',
-        overflow: 'visible',
-        // ...Platform.select({
-        //     ios: {
-        //         shadowColor: '#000',
-        //         shadowOffset: {width: 0, height: 2},
-        //         shadowOpacity: .11,
-        //         shadowRadius: 5,
-        //     },
-        //     android: {
-        //         elevation: 4
-        //     },
-        // }),
-    },
+    // modalTopBar: {
+    //     height: 54,
+    //     backgroundColor: '#AC2733',
+    //     flexDirection: 'row',
+    //     width: '100%',
+    //     alignSelf: 'flex-start',
+    //     alignItems: 'center',
+    //     justifyContent: 'center',
+    //     overflow: 'visible',
+    //     ...Platform.select({
+    //         ios: {
+    //             shadowColor: '#000',
+    //             shadowOffset: {width: 0, height: 2},
+    //             shadowOpacity: .11,
+    //             shadowRadius: 5,
+    //         },
+    //         android: {
+    //             elevation: 4
+    //         },
+    //     }),
+    // },
     backButton: {
         width: 54,
         justifyContent: 'center',

@@ -67,7 +67,7 @@ class CarsList extends React.Component {
                                           }}>
                             <View style={styles.topHalfSection}>
                                 <Image
-                                    source={{uri: 'https://tripjhon.insightssoftwares.com//api/v1/' + this.state.cars[resArr].car_image}}
+                                    source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.cars[resArr].car_image}}
                                     style={{height: 50, width: 120, marginTop: 6}}
                                 />
                                 <View style={styles.rightSection}>
@@ -90,14 +90,14 @@ class CarsList extends React.Component {
                                         <View style={{flexDirection: 'row'}}>
                                             <SvgUri source={require('../assets/icons/car-n-key.svg')}
                                                     style={styles.carKey}/>
-                                            <Text style={styles.providerName}>Al Jumeirah Travels</Text>
+                                            <Text style={styles.providerName}>{this.state.provider}</Text>
                                         </View>
                                     </View>
                                     <View style={styles.carProviderWrap}>
                                         <View style={{flexDirection: 'row'}}>
                                             <SvgUri source={require('../assets/icons/car-n-key.svg')}
                                                     style={styles.carKey}/>
-                                            <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
+                                            <Text style={styles.providerName}>{this.state.providerAddress}</Text>
                                         </View>
                                     </View>
                                 </View>

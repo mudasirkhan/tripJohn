@@ -46,6 +46,7 @@ const DrawerApp = createDrawerNavigator(
                     labelStyle: {},
                 },
             }
+            console.log(props)
             return (<View style={{flexDirection: 'column', flex: 1}}>
                 <View style={{width: '100%', backgroundColor: 'gray', flex: .25, justifyContent: 'center'}}>
                     <Image source={require('../assets/images/drawerbg.jpg')} style={styles.drawerTopBg}/>
@@ -63,12 +64,12 @@ const DrawerApp = createDrawerNavigator(
                                 borderRadius: 30,
                                 borderWidth: 1,
                                 borderColor: 'rgb(128, 77, 156)',
-                            }} source={require('../assets/images/photo.jpg')}/>
+                            }} source={{uri:'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + props.screenProps.user.dp}}/>
                         <View style={styles.profileInfoWrap}>
                             <Text
-                                numberOfLines={1} style={styles.profileName}>Abdul Majid</Text>
+                                numberOfLines={1} style={styles.profileName}>{props.screenProps.user.name}</Text>
                             <Text
-                                numberOfLines={1} style={styles.profileEmail}>maajidz@yahoo.com</Text>
+                                numberOfLines={1} style={styles.profileEmail}>{props.screenProps.user.email}</Text>
                         </View>
                     </View>
                 </View>

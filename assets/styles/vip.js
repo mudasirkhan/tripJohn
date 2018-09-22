@@ -4,7 +4,29 @@ import {StyleSheet, Platform} from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        width: '100%',
         backgroundColor: '#AC2733'
+    },
+    modalTopBar: {
+        backgroundColor: '#AC2733',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...Platform.select({
+            ios: {
+                shadowColor: 'rgba(0,0,0,0.09)',
+                shadowRadius: 4,
+                shadowOffset: {width: 0, height: -2}
+            },
+            android: {
+                elevation: 7,
+            },
+        }),
+    },
+    modalTopBarInner: {
+        backgroundColor: '#AC2733',
+        paddingTop: 16,
+        flexDirection: 'row',
+        width: '100%'
     },
     carImageContainer: {
         height: 200,
@@ -148,7 +170,7 @@ const styles = StyleSheet.create({
         color: '#fff',
     },
     rightSection: {
-        flex: .7,
+        flex: .9,
         overflow: 'visible',
         paddingLeft: 4,
         paddingBottom: 4,

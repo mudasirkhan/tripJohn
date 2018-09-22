@@ -245,7 +245,7 @@ class UpdateCar extends React.Component {
     }
 
     render() {
-        return (<ScrollView>
+        return (<ScrollView style={{paddingTop: 12}}>
             <View style={styles.profileDescContainer}>
                 <View style={styles.profileTitleInfo}>
                     <Text style={styles.profileTitleText}>Car Name Information</Text>
@@ -618,4 +618,4 @@ class UpdateCar extends React.Component {
     }
 }
 
-export default UpdateCar
+export default UpdateCar;

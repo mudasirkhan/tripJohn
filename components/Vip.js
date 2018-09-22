@@ -24,7 +24,8 @@ import SvgUri from 'react-native-svg-uri';
 // import commonStyles from '../assets/styles/common';
 import styles from '../assets/styles/vip';
 import axios from "axios/index";
-import UpadateCar from './updateCar'
+import UpdateCar from './updateCar'
+import modalStyles from "../assets/styles/modal";
 
 
 const initialLayout = {
@@ -97,23 +98,34 @@ class CarsList extends React.Component {
         return <View style={styles.container}>
             <Modal
                 animationType="slide"
+                style={{width: '100%'}}
                 transparent={false}
                 presentationStyle="formSheet"
                 visible={this.state.modalVisible}
                 onRequestClose={() => {
                     alert('Modal has been closed.');
                 }}>
-                <View style={{marginTop: 44, justifyContent: 'center', alignItems: 'center', flex: 1}}>
-                    <View style={{flex: 1}}>
+                <View style={styles.modalTopBar}>
+                    <View style={styles.modalTopBarInner}>
                         <TouchableHighlight
-                            style={styles.modalTopBar}
                             onPress={() => {
                                 this.setModalVisible(!this.state.modalVisible);
                             }}>
-                            <Text>Hide Modal</Text>
+                            <Text style={{
+                                fontFamily: 'Lato-B',
+                                paddingVertical: 16,
+                                paddingHorizontal: 24,
+                                fontSize: 18, color: '#fff',
+                            }}>X</Text>
                         </TouchableHighlight>
-                        <UpadateCar setModalVisible={this.setModalVisible} token={token} details={this.state.car}/>
+                        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+                            <Text style={{
+                                fontFamily: 'Lato-B',
+                                fontSize: 18, color: '#fff'
+                            }}>Update Car Details</Text>
+                        </View>
                     </View>
+                    <UpdateCar setModalVisible={this.setModalVisible} token={token} details={this.state.car}/>
                 </View>
             </Modal>
             <View style={styles.carImageContainer}>
@@ -156,13 +168,6 @@ class CarsList extends React.Component {
                                     </LinearGradient>
                                 </View>
                             </View>
-                            <TouchableOpacity
-                                style={{paddingVertical: 12}}
-                                onPress={() => {
-                                    this.setModalVisible(!this.state.modalVisible);
-                                }}>
-                                <Text style={styles.requestCallbackText}>Update Car</Text>
-                            </TouchableOpacity>
                         </View>
                     </View>
                     <View style={styles.rightSection}>
@@ -174,11 +179,18 @@ class CarsList extends React.Component {
                             <Text style={styles.carPriceWeek}>AED 124/Week</Text>
                             <Text style={styles.taxText}>+ 5% VAT applicable</Text>
                         </View>
-                        <TouchableOpacity onPress={() => {
-                            this.setModalVisible(!this.state.modalVisible);
-                        }} style={styles.bargainBtn}>
-                            <Text style={styles.bargainBtnText}>Want to bargain?</Text>
+                        <TouchableOpacity
+                            style={{paddingVertical: 12, justifyContent: 'center', alignItems: 'center'}}
+                            onPress={() => {
+                                this.setModalVisible(!this.state.modalVisible);
+                            }}>
+                            <Text style={styles.requestCallbackText}>Update Car</Text>
                         </TouchableOpacity>
+                        {/*<TouchableOpacity onPress={() => {*/}
+                        {/*this.setModalVisible(!this.state.modalVisible);*/}
+                        {/*}} style={styles.bargainBtn}>*/}
+                        {/*<Text style={styles.bargainBtnText}>Want to bargain?</Text>*/}
+                        {/*</TouchableOpacity>*/}
                     </View>
                 </View>
             </View>

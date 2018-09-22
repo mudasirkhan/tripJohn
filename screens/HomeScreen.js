@@ -1,9 +1,7 @@
 import React from 'react';
 import {
     Image,
-    Platform,
     ScrollView,
-    StyleSheet,
     Text,
     TouchableOpacity,
     View,
@@ -35,10 +33,11 @@ class HomeScreen extends React.Component {
             email: '',
             number: '',
             name: '',
+            dp: '',
             mismatch: false,
             newPassword: '',
             confirmPassword: '',
-            username: __DEV__ ? 'farrukh@alemad.ae' : '',
+            username: __DEV__ ? 'sales@almarayacars.com' : '',
             password: __DEV__ ? '123456' : '',
             loader: false,
             error: false,
@@ -46,7 +45,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidMount() {
-        console.log(this.props.logged, this.state.logged, this.props.token)
+        console.log(this.props.logged, this.state.logged, this.props.token);
     }
 
     componentDidCatch(err) {
@@ -60,13 +59,17 @@ class HomeScreen extends React.Component {
         this.props.change('LOGIN', false)
     }
 
+
+
+
+
     render() {
         const {logged, newUser, mismatch, loader, error} = this.state;
         const loginbg = '../assets/images/loginbg.png';
 
         return (
             logged ?
-                <DrawerApp screenProps={{logout: this.logout}}/>
+                <DrawerApp screenProps={{logout: this.logout, user: {name: this.state.name, email: this.state.email, dp: this.state.dp}}}/>
                 : newUser ?
                 //Registration Stuff
                 <View style={styles.container}>
@@ -310,8 +313,9 @@ class HomeScreen extends React.Component {
             email: this.state.username,
             password: this.state.password
         })
-            .then((response) => {
+            .then(async (response) => {
                 console.log(response);
+                await this.getDetails(response.data.access_token)
                 this.props.change("TOKEN", response.data.access_token)
                 loadDashboard();
             })
@@ -339,6 +343,26 @@ class HomeScreen extends React.Component {
         else {
             this.setState({mismatch: true})
         }
+    }
+    getDetails = (token) => {
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
+            access_token: token
+        })
+            .then(response => {
+                console.log(response)
+                const data = response.data.personal_details;
+                this.setState({
+                    name: data.english_name,
+                    email: data.email,
+                    dp: data.avatar,
+                })
+
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
     }
 }
 

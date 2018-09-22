@@ -258,7 +258,7 @@ class AddCar extends React.Component {
     }
 
     render() {
-        return (<View style={{flex: 6, zIndex: 9}}>
+        return (<View style={{flex: 1, zIndex: 99999}}>
                 <ScrollView>
                     <View style={styles.profileDescContainer}>
                         <View style={styles.profileTitleInfo}>
