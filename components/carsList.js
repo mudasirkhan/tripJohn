@@ -57,14 +57,14 @@ class CarsList extends React.Component {
             return resArr.map(resArr => {
                 return (<View style={styles.carListCardContainer} key={resArr}>
                         <TouchableOpacity
-                                          activeOpacity={.7}
-                                          style={styles.carListCard}
-                                          onPress={() => {
-                                              this.props.navigation.navigate('Vip', {
-                                                  token: this.props.token,
-                                                  id: this.state.cars[resArr].id
-                                              })
-                                          }}>
+                            activeOpacity={.7}
+                            style={styles.carListCard}
+                            onPress={() => {
+                                this.props.navigation.navigate('Vip', {
+                                    token: this.props.token,
+                                    id: this.state.cars[resArr].id
+                                })
+                            }}>
                             <View style={styles.topHalfSection}>
                                 <Image
                                     source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.cars[resArr].car_image}}
@@ -155,7 +155,7 @@ class CarsList extends React.Component {
                                         style={modalStyles.arrowBack}/>
                             </TouchableOpacity>
                             {/*</View>*/}
-                            <View styles={{paddingLeft: 16}}>
+                            <View style={{flex: 1,justifyContent: 'center', alignItems: 'center', }}>
                                 <Text style={modalStyles.modalTitleText}>Add a car</Text>
                             </View>
                         </View>

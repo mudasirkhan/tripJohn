@@ -59,8 +59,9 @@ const styles = StyleSheet.create({
         height: 80
     },
     welcomeContainer: {
-        flex: 2.5,
+        flex: 3,
         width: '100%',
+        backgroundColor: '#AC2733',
         position: 'relative',
         flexDirection: 'column',
         padding: 30,

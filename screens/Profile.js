@@ -54,14 +54,14 @@ class Profile extends React.Component {
         ),
     }
 
-     componentDidMount() {
+    componentDidMount() {
         console.log(this.props)
-         this.getDetails()
+        this.getDetails()
 
     }
 
-    getDetails =  () => {
-         axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
+    getDetails = () => {
+        axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_personal_details', {
             access_token: this.props.token
         })
             .then(response => {
@@ -87,7 +87,7 @@ class Profile extends React.Component {
                     description: data.description
 
 
-                },()=>{
+                }, () => {
                     this.getEmirates()
                     this.getLocations()
                 })
@@ -139,7 +139,10 @@ class Profile extends React.Component {
         })
             .then(response => {
                 console.log(response)
-                this.setState({ emirates: response.data.emirates, emirateSelected: this.state.emiratesId ? response.data.emirates[this.state.emiratesId].english_name : "Select an emirate"})
+                this.setState({
+                    emirates: response.data.emirates,
+                    emirateSelected: this.state.emiratesId ? response.data.emirates[this.state.emiratesId].english_name : "Select an emirate"
+                })
             })
             .catch((error) => {
                 console.log(error);
@@ -154,8 +157,13 @@ class Profile extends React.Component {
         })
             .then(response => {
                 console.log(response)
-                let loc = response.data.locations.filter(loc=> loc.id = this.state.location);
-                this.setState({ locations: response.data.locations,  locationSelected: (loc && loc[0]) ? loc[0].english_name : "Select an location"},() => { console.log(loc[0].english_name) })
+                let loc = response.data.locations.filter(loc => loc.id = this.state.location);
+                this.setState({
+                    locations: response.data.locations,
+                    locationSelected: (loc && loc[0]) ? loc[0].english_name : "Select an location"
+                }, () => {
+                    console.log(loc[0].english_name)
+                })
             })
             .catch((error) => {
                 console.log(error);
@@ -165,7 +173,13 @@ class Profile extends React.Component {
     }
     renderEmirates = () => {
         let arr = Object.keys(this.state.emirates)
-        return _.map(arr, emirate => <TouchableOpacity key={emirate} onPress={()=>{this.setState({emirateSelected: this.state.emirates[emirate].english_name, emiratesId: this.state.emirates[emirate].id, showEmirates: false})}}>
+        return _.map(arr, emirate => <TouchableOpacity key={emirate} onPress={() => {
+            this.setState({
+                emirateSelected: this.state.emirates[emirate].english_name,
+                emiratesId: this.state.emirates[emirate].id,
+                showEmirates: false
+            })
+        }}>
             <View>
                 <Text>
                     {this.state.emirates[emirate].english_name}
@@ -174,7 +188,9 @@ class Profile extends React.Component {
         </TouchableOpacity>)
     }
     renderLocations = () => {
-        return _.map(this.state.locations, loc => <TouchableOpacity key={loc.id} onPress={()=>{this.setState({locationSelected: loc.english_name, location: loc.id, showLocations: false})}}>
+        return _.map(this.state.locations, loc => <TouchableOpacity key={loc.id} onPress={() => {
+            this.setState({locationSelected: loc.english_name, location: loc.id, showLocations: false})
+        }}>
             <View>
                 <Text>
                     {loc.english_name}
@@ -187,16 +203,6 @@ class Profile extends React.Component {
         return (<View style={styles.container}>
                 <TopNav title={""} openDrawer={this.openDrawer} style={{zIndex: 9999999}}/>
                 <View style={styles.welcomeContainer}>
-                    <LinearGradient colors={['#9F19A9', '#F20C46']}
-                                    start={{x: 0, y: 0.25}}
-                                    end={{x: 1, y: 1}}
-                                    style={styles.welcomeGradient}/>
-                    <Image source={require('../assets/images/sunwaves.png')} style={styles.sunwaves}/>
-                    <Image style={styles.cloud} source={require('../assets/icons/cloud.png')}/>
-                    {/*<SvgUri style={styles.cloud} width="40" height="14" source={require('../assets/icons/cloud.png')} />*/}
-                    <SvgUri style={styles.dubaiskyline} width="400" height="200"
-                            source={require('../assets/icons/dubaiskyline.svg')}/>
-                    <View style={styles.blackTint}/>
                     <View style={styles.profileInfoTop}>
                         <Image source={require('../assets/images/photo.jpg')} style={styles.profilePhoto}/>
                         <View style={styles.profileNameWrap}>
@@ -257,7 +263,7 @@ class Profile extends React.Component {
                                             value={this.state.profileNameEnglish}
                                             placeholder="Full name"
                                             editable={this.state.editPI}
-                                            onChangeText={name => this.setState({profileNameEnglish:name})}
+                                            onChangeText={name => this.setState({profileNameEnglish: name})}
                                             secureTextEntry={false}
                                         />
                                     </View>
@@ -323,7 +329,7 @@ class Profile extends React.Component {
                                             value={this.state.phoneNumber}
                                             placeholder="Phone Number"
                                             editable={this.state.editPI}
-                                            onChangeText={name => this.setState({phoneNumber:name})}
+                                            onChangeText={name => this.setState({phoneNumber: name})}
                                             secureTextEntry={false}
                                         />
                                     </View>
@@ -345,7 +351,7 @@ class Profile extends React.Component {
                                             value={this.state.whatsappNumber}
                                             placeholder="Whatsapp Number"
                                             editable={this.state.editPI}
-                                            onChangeText={name => this.setState({whatsappNumber:name})}
+                                            onChangeText={name => this.setState({whatsappNumber: name})}
                                             secureTextEntry={false}
                                         />
                                     </View>
@@ -353,74 +359,74 @@ class Profile extends React.Component {
                             </View>
                         </View>
                         {/*<View style={styles.profileDescContainer}>*/}
-                            {/*<View style={styles.profileTitleInfo}>*/}
-                                {/*<Text style={styles.profileTitleText}>Change Password</Text>*/}
-                                {/*/!*<Text style={styles.editBtn}>EDIT</Text>*!/*/}
-                            {/*</View>*/}
-                            {/*<View style={styles.profileInputGroup}>*/}
-                                {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                                    {/*<View style={[styles.textInputWrap, {*/}
-                                        {/*borderTopLeftRadius: 4,*/}
-                                        {/*borderTopRightRadius: 4*/}
-                                    {/*}]}>*/}
-                                        {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
-                                        {/*</View>*/}
-                                        {/*<TextInput*/}
-                                            {/*underlineColorAndroid="transparent"*/}
-                                            {/*style={styles.textInput}*/}
-                                            {/*value={this.state.currentPassword}*/}
-                                            {/*placeholder="Current Password"*/}
-                                            {/*secureTextEntry*/}
-                                            {/*onChangeText={currentPassword => this.setState({currentPassword})}*/}
-                                        {/*/>*/}
-                                    {/*</View>*/}
-                                    {/*<View style={commonStyles.graySeparator}>*/}
-                                        {/*<View style={commonStyles.graySeparatorInner}></View>*/}
-                                    {/*</View>*/}
-                                    {/*<View style={[styles.textInputWrap, {*/}
-                                        {/*borderBottomLeftRadius: 4,*/}
-                                        {/*borderBottomRightRadius: 4*/}
-                                    {/*}]}>*/}
-                                        {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
-                                        {/*</View>*/}
-                                        {/*<TextInput*/}
-                                            {/*underlineColorAndroid="transparent"*/}
-                                            {/*style={styles.textInput}*/}
-                                            {/*value={this.state.newPassword}*/}
-                                            {/*placeholder="New Password"*/}
-                                            {/*secureTextEntry*/}
-                                            {/*onChangeText={newPassword => this.setState({newPassword})}*/}
-                                        {/*/>*/}
-                                    {/*</View>*/}
-                                    {/*<View style={commonStyles.graySeparator}>*/}
-                                        {/*<View style={commonStyles.graySeparatorInner}></View>*/}
-                                    {/*</View>*/}
-                                    {/*<View style={[styles.textInputWrap, {*/}
-                                        {/*borderBottomLeftRadius: 4,*/}
-                                        {/*borderBottomRightRadius: 4*/}
-                                    {/*}]}>*/}
-                                        {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
-                                        {/*</View>*/}
-                                        {/*<TextInput*/}
-                                            {/*underlineColorAndroid="transparent"*/}
-                                            {/*style={styles.textInput}*/}
-                                            {/*value={this.state.newPassword2}*/}
-                                            {/*placeholder="New Password"*/}
-                                            {/*onChangeText={newPassword2 => this.setState({newPassword2})}*/}
-                                            {/*secureTextEntry*/}
-                                        {/*/>*/}
-                                    {/*</View>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
+                        {/*<View style={styles.profileTitleInfo}>*/}
+                        {/*<Text style={styles.profileTitleText}>Change Password</Text>*/}
+                        {/*/!*<Text style={styles.editBtn}>EDIT</Text>*!/*/}
+                        {/*</View>*/}
+                        {/*<View style={styles.profileInputGroup}>*/}
+                        {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                        {/*<View style={[styles.textInputWrap, {*/}
+                        {/*borderTopLeftRadius: 4,*/}
+                        {/*borderTopRightRadius: 4*/}
+                        {/*}]}>*/}
+                        {/*<View style={styles.iconWrap}>*/}
+                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                        {/*height="18"*/}
+                        {/*source={require('../assets/icons/password.svg')}/>*/}
+                        {/*</View>*/}
+                        {/*<TextInput*/}
+                        {/*underlineColorAndroid="transparent"*/}
+                        {/*style={styles.textInput}*/}
+                        {/*value={this.state.currentPassword}*/}
+                        {/*placeholder="Current Password"*/}
+                        {/*secureTextEntry*/}
+                        {/*onChangeText={currentPassword => this.setState({currentPassword})}*/}
+                        {/*/>*/}
+                        {/*</View>*/}
+                        {/*<View style={commonStyles.graySeparator}>*/}
+                        {/*<View style={commonStyles.graySeparatorInner}></View>*/}
+                        {/*</View>*/}
+                        {/*<View style={[styles.textInputWrap, {*/}
+                        {/*borderBottomLeftRadius: 4,*/}
+                        {/*borderBottomRightRadius: 4*/}
+                        {/*}]}>*/}
+                        {/*<View style={styles.iconWrap}>*/}
+                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                        {/*height="18"*/}
+                        {/*source={require('../assets/icons/password.svg')}/>*/}
+                        {/*</View>*/}
+                        {/*<TextInput*/}
+                        {/*underlineColorAndroid="transparent"*/}
+                        {/*style={styles.textInput}*/}
+                        {/*value={this.state.newPassword}*/}
+                        {/*placeholder="New Password"*/}
+                        {/*secureTextEntry*/}
+                        {/*onChangeText={newPassword => this.setState({newPassword})}*/}
+                        {/*/>*/}
+                        {/*</View>*/}
+                        {/*<View style={commonStyles.graySeparator}>*/}
+                        {/*<View style={commonStyles.graySeparatorInner}></View>*/}
+                        {/*</View>*/}
+                        {/*<View style={[styles.textInputWrap, {*/}
+                        {/*borderBottomLeftRadius: 4,*/}
+                        {/*borderBottomRightRadius: 4*/}
+                        {/*}]}>*/}
+                        {/*<View style={styles.iconWrap}>*/}
+                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                        {/*height="18"*/}
+                        {/*source={require('../assets/icons/password.svg')}/>*/}
+                        {/*</View>*/}
+                        {/*<TextInput*/}
+                        {/*underlineColorAndroid="transparent"*/}
+                        {/*style={styles.textInput}*/}
+                        {/*value={this.state.newPassword2}*/}
+                        {/*placeholder="New Password"*/}
+                        {/*onChangeText={newPassword2 => this.setState({newPassword2})}*/}
+                        {/*secureTextEntry*/}
+                        {/*/>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
                         {/*</View>*/}
                         <View style={[styles.profileDescContainer, {paddingBottom: 64}]}>
                             <View style={styles.profileTitleInfo}>
@@ -432,7 +438,9 @@ class Profile extends React.Component {
                             </View>
                             <View style={styles.profileInputGroup}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                    <TouchableOpacity onPress={()=>{this.setState({showEmirates: true})}} style={[styles.textInputWrap, {
+                                    <TouchableOpacity onPress={() => {
+                                        this.setState({showEmirates: true})
+                                    }} style={[styles.textInputWrap, {
                                         borderTopLeftRadius: 4,
                                         borderTopRightRadius: 4
                                     }]}>
@@ -447,7 +455,9 @@ class Profile extends React.Component {
                                     <View style={commonStyles.graySeparator}>
                                         <View style={commonStyles.graySeparatorInner}></View>
                                     </View>
-                                    <TouchableOpacity onPress={()=>{this.setState({showLocations: true})}} style={[styles.textInputWrap, {
+                                    <TouchableOpacity onPress={() => {
+                                        this.setState({showLocations: true})
+                                    }} style={[styles.textInputWrap, {
                                         borderTopLeftRadius: 4,
                                         borderTopRightRadius: 4
                                     }]}>
@@ -514,38 +524,38 @@ class Profile extends React.Component {
                                     </View>
                                 </View>
                                 {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
-                                    {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                                        {/*<View style={[styles.textInputWrap, {*/}
-                                            {/*borderRadius: 4*/}
-                                        {/*}]}>*/}
+                                {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                                {/*<View style={[styles.textInputWrap, {*/}
+                                {/*borderRadius: 4*/}
+                                {/*}]}>*/}
 
-                                            {/*<TextInput*/}
-                                                {/*editable={this.state.editOtherInfo}*/}
-                                                {/*underlineColorAndroid="transparent"*/}
-                                                {/*style={styles.textArea}*/}
-                                                {/*value={this.state.englishAddress}*/}
-                                                {/*placeholder="English Address"*/}
-                                                {/*onChangeText={englishAddress => this.setState({englishAddress})}*/}
-                                            {/*/>*/}
-                                        {/*</View>*/}
-                                    {/*</View>*/}
+                                {/*<TextInput*/}
+                                {/*editable={this.state.editOtherInfo}*/}
+                                {/*underlineColorAndroid="transparent"*/}
+                                {/*style={styles.textArea}*/}
+                                {/*value={this.state.englishAddress}*/}
+                                {/*placeholder="English Address"*/}
+                                {/*onChangeText={englishAddress => this.setState({englishAddress})}*/}
+                                {/*/>*/}
+                                {/*</View>*/}
+                                {/*</View>*/}
                                 {/*</View>*/}
                                 {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
-                                    {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                                        {/*<View style={[styles.textInputWrap, {*/}
-                                            {/*borderRadius: 4*/}
-                                        {/*}]}>*/}
+                                {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                                {/*<View style={[styles.textInputWrap, {*/}
+                                {/*borderRadius: 4*/}
+                                {/*}]}>*/}
 
-                                            {/*<TextInput*/}
-                                                {/*underlineColorAndroid="transparent"*/}
-                                                {/*style={styles.textArea}*/}
-                                                {/*value={this.state.englishPickupAddress}*/}
-                                                {/*editable={this.state.editOtherInfo}*/}
-                                                {/*placeholder="English Pickup Address"*/}
-                                                {/*onChangeText={englishPickupAddress => this.setState({englishPickupAddress})}*/}
-                                            {/*/>*/}
-                                        {/*</View>*/}
-                                    {/*</View>*/}
+                                {/*<TextInput*/}
+                                {/*underlineColorAndroid="transparent"*/}
+                                {/*style={styles.textArea}*/}
+                                {/*value={this.state.englishPickupAddress}*/}
+                                {/*editable={this.state.editOtherInfo}*/}
+                                {/*placeholder="English Pickup Address"*/}
+                                {/*onChangeText={englishPickupAddress => this.setState({englishPickupAddress})}*/}
+                                {/*/>*/}
+                                {/*</View>*/}
+                                {/*</View>*/}
                                 {/*</View>*/}
                                 <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>

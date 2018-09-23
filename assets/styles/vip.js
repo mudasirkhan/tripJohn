@@ -9,6 +9,7 @@ const styles = StyleSheet.create({
     },
     modalTopBar: {
         backgroundColor: '#AC2733',
+        width: '100%',
         justifyContent: 'center',
         alignItems: 'center',
         ...Platform.select({
@@ -30,6 +31,7 @@ const styles = StyleSheet.create({
     },
     carImageContainer: {
         height: 200,
+        marginTop: 60,
         justifyContent: 'center',
         width: '100%'
     },
@@ -100,8 +102,27 @@ const styles = StyleSheet.create({
             },
         }),
     },
+    carDetailItemWrap: {
+        flexDirection: 'row',
+        paddingVertical: 4
+    },
+    carBottomDetailContainer: {
+        paddingVertical: 16,
+        marginTop: 16,
+        flex: 1,
+        borderTopColor: '#A21B24',
+        borderTopWidth: 1
+    },
     carProviderWrap: {
         flexDirection: 'column',
+    },
+    carDetailLabel: {
+        color: 'rgba(255,255,255, 0.75)',
+        flex: 1.25,
+    },
+    carDetailValue: {
+        color: '#fff',
+        flex: 1
     },
     providerName: {
         fontFamily: 'SSP-R',
@@ -153,11 +174,11 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     requestCallbackText: {
-        fontFamily: 'SSP-L',
+        fontFamily: 'SSP-R',
         color: '#fff',
         ...Platform.select({
             ios: {
-                fontSize: 14,
+                fontSize: 13,
             },
             android: {
                 fontSize: 12,
@@ -192,11 +213,11 @@ const styles = StyleSheet.create({
         paddingRight: 6,
         ...Platform.select({
             ios: {
-                fontSize: 19,
+                fontSize: 17,
                 marginBottom: -6
             },
             android: {
-                fontSize: 18,
+                fontSize: 16,
             },
         }),
     },

@@ -401,7 +401,6 @@ class AddCar extends React.Component {
                                         }}
                                         underlineColorAndroid="transparent"
                                         style={styles.textInput}
-                                        secureTextEntry
                                     />
                                 </View>
                                 <View style={styles.labelWrap}>
@@ -416,7 +415,6 @@ class AddCar extends React.Component {
                                         }}
                                         underlineColorAndroid="transparent"
                                         style={styles.textInput}
-                                        secureTextEntry
                                     />
                                 </View>
 
@@ -432,7 +430,6 @@ class AddCar extends React.Component {
                                         }}
                                         underlineColorAndroid="transparent"
                                         style={styles.textInput}
-                                        secureTextEntry
                                     />
                                 </View>
                             </View>
@@ -454,7 +451,6 @@ class AddCar extends React.Component {
                                         }}
                                         underlineColorAndroid="transparent"
                                         style={styles.textInput}
-                                        secureTextEntry={false}
                                     />
                                 </View>
                             </View>
@@ -469,7 +465,9 @@ class AddCar extends React.Component {
                                 {/*{this.renderPaymentOptions(this.state.paymentMethods)}*/}
 
                                 {/*<Text>{this.state.insurance_included}</Text>*/}
-                                {this.renderInsuranceOptions(this.state.insuranceTypes)}
+                                <View>
+                                    {this.renderInsuranceOptions(this.state.insuranceTypes)}
+                                </View>
                                 {/*<View style={[styles.textInputWrap]}>*/}
                                 {/*<TextInput*/}
                                 {/*placeholder="security_deposit" value={this.state.security_deposit}*/}

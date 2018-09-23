@@ -26,12 +26,14 @@ import styles from '../assets/styles/vip';
 import axios from "axios/index";
 import UpdateCar from './updateCar'
 import modalStyles from "../assets/styles/modal";
+import {TopNav} from "./TopNav";
 
 
 const initialLayout = {
     height: 0,
     width: Dimensions.get('window').width,
 }
+
 
 class CarsList extends React.Component {
 
@@ -54,7 +56,12 @@ class CarsList extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => null,
+        drawerLabel: () => 'Profile',
+        drawerIcon: ({tintColor}) => (
+            <SvgUri
+                source={require('../assets/icons/nav-icon-profile.svg')}
+            />
+        ),
     }
 
 
@@ -81,6 +88,10 @@ class CarsList extends React.Component {
             });
     }
 
+    openDrawer = () => {
+        this.props.navigation.openDrawer()
+    }
+
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
     }
@@ -96,6 +107,7 @@ class CarsList extends React.Component {
     render() {
         let token = this.props.navigation.getParam('token', '');
         return <View style={styles.container}>
+            <TopNav title={""} openDrawer={this.openDrawer} style={{zIndex: 9999999}}/>
             <Modal
                 animationType="slide"
                 style={{width: '100%'}}
@@ -111,16 +123,19 @@ class CarsList extends React.Component {
                             onPress={() => {
                                 this.setModalVisible(!this.state.modalVisible);
                             }}>
-                            <Text style={{
-                                fontFamily: 'Lato-B',
-                                paddingVertical: 16,
-                                paddingHorizontal: 24,
-                                fontSize: 18, color: '#fff',
-                            }}>X</Text>
+                            <SvgUri source={require('../assets/icons/arrow-back.svg')}
+                                    style={{
+                                        height: 24, width: 24,
+                                        paddingVertical: 16,
+                                        paddingHorizontal: 24,
+                                        marginTop: -12,
+                                    }}/>
                         </TouchableHighlight>
                         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{
                                 fontFamily: 'Lato-B',
+                                marginTop: -12,
+                                marginLeft: -24,
                                 fontSize: 18, color: '#fff'
                             }}>Update Car Details</Text>
                         </View>
@@ -129,7 +144,9 @@ class CarsList extends React.Component {
                 </View>
             </Modal>
             <View style={styles.carImageContainer}>
-                <Image style={styles.carFullSizeImage} source={require('../assets/images/carFullSize.png')}/>
+                <Image style={styles.carFullSizeImage}
+                       source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car.car_image}}
+                />
             </View>
             <View style={styles.carDetailContainer}>
                 <View style={{flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-start'}}>
@@ -144,14 +161,17 @@ class CarsList extends React.Component {
                                     <View style={{flexDirection: 'row'}}>
                                         <SvgUri source={require('../assets/icons/car-n-key.svg')}
                                                 style={styles.carKey}/>
-                                        <Text style={styles.providerName}>Al Jumeirah Travels</Text>
+                                        <Text style={styles.providerName}>{this.state.car.created_by} Al Jumeira
+                                            travels</Text>
                                     </View>
                                 </View>
                                 <View style={styles.carProviderWrap}>
                                     <View style={{flexDirection: 'row'}}>
                                         <SvgUri source={require('../assets/icons/car-n-key.svg')}
                                                 style={styles.carKey}/>
-                                        <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
+                                        <Text
+                                            style={styles.providerName}><Text>{this.state.car.created_by} Al Jumeira
+                                            travels</Text></Text>
                                     </View>
                                 </View>
                             </View>
@@ -174,14 +194,21 @@ class CarsList extends React.Component {
                         <View style={styles.carPriceWrap}>
                             <View style={{flexDirection: 'row', alignItems: 'flex-end'}}>
                                 <Text
-                                    style={styles.carPriceMonth}>AED 343/month</Text>
+                                    style={styles.carPriceMonth}>AED {this.state.car.price_per_month}/month</Text>
                             </View>
-                            <Text style={styles.carPriceWeek}>AED 124/Week</Text>
+                            <Text style={styles.carPriceWeek}>AED {this.state.car.price_per_week}/Week</Text>
 
                             <Text style={styles.taxText}>+ 5% VAT applicable</Text>
                         </View>
                         <TouchableOpacity
-                            style={{paddingVertical: 12, justifyContent: 'center', alignItems: 'center'}}
+                            style={{
+                                paddingVertical: 12,
+                                backgroundColor: '#A21B24',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                borderBottomLeftRadius: 4,
+                                borderBottomRightRadius: 4,
+                            }}
                             onPress={() => {
                                 this.setModalVisible(!this.state.modalVisible);
                             }}>
@@ -194,11 +221,67 @@ class CarsList extends React.Component {
                         {/*</TouchableOpacity>*/}
                     </View>
                 </View>
+                <View style={styles.carBottomDetailContainer}>
+                    <ScrollView style={{width: '100%', height: '100%', zIndex: 9}}>
+                        {/*<Text>*/}
+                        {/*{JSON.stringify(this.state.car)}*/}
+                        {/*</Text>*/}
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Arabic Name: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.arabic_name}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Description: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.description}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Colors: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.colours}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Security Deposit: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.security_deposit}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Accept In: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.accept_in}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Driver: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.driver}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Mileage Charge: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.additional_mileage_charge}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Mileage Daily Limit: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.mileage_limit_daily}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Mileage Weekly Limit: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.mileage_limit_weekly}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Mileage Weekly Monthly: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.mileage_limit_monthly}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Insurance Included: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.insurance_included}</Text>
+                        </View>
+                        <View style={styles.carDetailItemWrap}>
+                            <Text style={styles.carDetailLabel}>Car Type ID: </Text>
+                            <Text style={styles.carDetailValue}>{this.state.car.car_type_id}</Text>
+                        </View>
+                    </ScrollView>
+                    {/*<View style={styles.carDetailItemWrap}>*/}
+                    {/*<Text style={styles.carDetailLabel}>Featured: </Text>*/}
+                    {/*<Text style={styles.carDetailValue}>{this.state.car.is_featured}</Text>*/}
+                    {/*</View>*/}
+                </View>
             </View>
-            <Text>
-                {/*{_.values(Object.keys(this.state.car))}*/}
-                {JSON.stringify(this.state.car)}
-            </Text>
+            {/*{_.values(Object.keys(this.state.car))}*/}
         </View>
     }
 

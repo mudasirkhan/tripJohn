@@ -10,11 +10,21 @@ const styles = StyleSheet.create({
         backgroundColor: '#AC2733',
         paddingBottom: 6,
     },
+    modalTopBar: {
+        flexDirection: 'row',
+    },
+    backButton: {
+        width: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 72,
+    },
     arrowBack: {
         // height: 20,
         // width: 20
 
     },
+
     // modalTopBar: {
     //     height: 54,
     //     backgroundColor: '#AC2733',
@@ -36,15 +46,12 @@ const styles = StyleSheet.create({
     //         },
     //     }),
     // },
-    backButton: {
-        width: 54,
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100%',
-    },
+
     modalTitleText: {
         marginTop: -1,
+        marginLeft: -48,
         paddingRight: 16,
+        alignSelf: 'center',
         fontFamily: 'Lato-R',
         color: '#fff',
         ...Platform.select({
