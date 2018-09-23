@@ -24,10 +24,10 @@ const DrawerApp = createDrawerNavigator(
             path: '/',
             screen: Profile,
         },
-        Vip: {
-            path: '/',
-            screen: Vip
-        },
+        // Vip: {
+        //     path: '/',
+        //     screen: Vip
+        // },
         Deals: {
             path: '/',
             screen: Deals

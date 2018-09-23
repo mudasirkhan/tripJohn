@@ -54,7 +54,7 @@ class Deals extends React.Component {
                     [
                         {text: 'OK', onPress: () => console.log('OK Pressed')},
                     ],
-                    { cancelable: false }
+                    {cancelable: false}
                 )
                 this.setState({
                     car: data
@@ -107,8 +107,14 @@ class Deals extends React.Component {
     }
     renderCars = () => {
         let arr = Object.keys(this.state.cars)
-        return _.map(arr, car => <TouchableOpacity key={car} onPress={()=>{this.setState({carSelected: this.state.cars[car].english_name, car_id: this.state.cars[car].id, showCars: false})}}>
-            <View>
+        return _.map(arr, car => <TouchableOpacity key={car} onPress={() => {
+            this.setState({
+                carSelected: this.state.cars[car].english_name,
+                car_id: this.state.cars[car].id,
+                showCars: false
+            })
+        }}>
+            <View style={{zIndex: 99999, paddingVertical: 12, paddingLeft: 20, width: '100%'}}>
                 <Text>
                     {this.state.cars[car].english_name}
                 </Text>
@@ -123,18 +129,35 @@ class Deals extends React.Component {
                 <View style={[styles.profileInputGroup, {alignSelf: 'center'}]}>
                     <Text style={styles.sectionTitle}> Car deals information </Text>
                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                        <TouchableOpacity onPress={()=>{this.setState({showCars: true})}} style={[styles.textInputWrap, {
+                        <TouchableOpacity onPress={() => {
+                            this.setState({showCars: true})
+                        }} style={[styles.textInputWrap, {
                             borderTopLeftRadius: 4,
                             borderTopRightRadius: 4
                         }]}>
-
                             <Text
                                 style={styles.textInput}
                             >
-                                {this.state.carSelected}
+                                {this.state.carSelected ? this.state.carSelected : "Select a car"}
                             </Text>
                         </TouchableOpacity>
-                        {this.state.showCars && this.renderCars()}
+                        <View style={{
+                            position: 'absolute',
+                            top: 40,
+                            overflow: 'visible',
+                            left: 0,
+                            zIndex: 99999,
+                            backgroundColor: '#fff',
+                            width: '100%',
+                            elevation: 4,
+                            shadowColor: 'rgba(0,0,0,0.09)',
+                            shadowRadius: 4,
+                            shadowOffset: {width: 0, height: -2},
+                            borderBottomLeftRadius: 4,
+                            borderBottomRightRadius: 4
+                        }}>
+                            {this.state.showCars && this.renderCars()}
+                        </View>
                         <View style={styles.textInputWrap}><TextInput placeholder={"discount"}
                                                                       value={this.state.discount}
                                                                       style={styles.textInput}

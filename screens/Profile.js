@@ -180,7 +180,7 @@ class Profile extends React.Component {
                 showEmirates: false
             })
         }}>
-            <View>
+            <View style={{zIndex: 99999, paddingVertical: 12, paddingLeft: 20, width: '100%'}}>
                 <Text>
                     {this.state.emirates[emirate].english_name}
                 </Text>
@@ -191,7 +191,7 @@ class Profile extends React.Component {
         return _.map(this.state.locations, loc => <TouchableOpacity key={loc.id} onPress={() => {
             this.setState({locationSelected: loc.english_name, location: loc.id, showLocations: false})
         }}>
-            <View>
+            <View style={{zIndex: 99999, paddingVertical: 12, paddingLeft: 20, width: '100%'}}>
                 <Text>
                     {loc.english_name}
                 </Text>
@@ -238,7 +238,7 @@ class Profile extends React.Component {
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                             value={this.state.type}
                                             editable={this.state.editPI}
                                             placeholder="Account Type"
@@ -259,7 +259,7 @@ class Profile extends React.Component {
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                             value={this.state.profileNameEnglish}
                                             placeholder="Full name"
                                             editable={this.state.editPI}
@@ -281,7 +281,7 @@ class Profile extends React.Component {
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                             value={this.state.email}
                                             placeholder="Email Address"
                                             editable={this.state.editPI}
@@ -303,7 +303,7 @@ class Profile extends React.Component {
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                             value={this.state.profileNameArabic}
                                             placeholder="Arabic Name"
                                             editable={this.state.editPI}
@@ -325,7 +325,7 @@ class Profile extends React.Component {
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                             value={this.state.phoneNumber}
                                             placeholder="Phone Number"
                                             editable={this.state.editPI}
@@ -347,7 +347,7 @@ class Profile extends React.Component {
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                             value={this.state.whatsappNumber}
                                             placeholder="Whatsapp Number"
                                             editable={this.state.editPI}
@@ -376,7 +376,7 @@ class Profile extends React.Component {
                         {/*</View>*/}
                         {/*<TextInput*/}
                         {/*underlineColorAndroid="transparent"*/}
-                        {/*style={styles.textInput}*/}
+                        {/*style={[styles.textInput, styles.textInputWithoutIcon]}*/}
                         {/*value={this.state.currentPassword}*/}
                         {/*placeholder="Current Password"*/}
                         {/*secureTextEntry*/}
@@ -397,7 +397,7 @@ class Profile extends React.Component {
                         {/*</View>*/}
                         {/*<TextInput*/}
                         {/*underlineColorAndroid="transparent"*/}
-                        {/*style={styles.textInput}*/}
+                        {/*style={[styles.textInput, styles.textInputWithoutIcon]}*/}
                         {/*value={this.state.newPassword}*/}
                         {/*placeholder="New Password"*/}
                         {/*secureTextEntry*/}
@@ -418,7 +418,7 @@ class Profile extends React.Component {
                         {/*</View>*/}
                         {/*<TextInput*/}
                         {/*underlineColorAndroid="transparent"*/}
-                        {/*style={styles.textInput}*/}
+                        {/*style={[styles.textInput, styles.textInputWithoutIcon]}*/}
                         {/*value={this.state.newPassword2}*/}
                         {/*placeholder="New Password"*/}
                         {/*onChangeText={newPassword2 => this.setState({newPassword2})}*/}
@@ -444,31 +444,59 @@ class Profile extends React.Component {
                                         borderTopLeftRadius: 4,
                                         borderTopRightRadius: 4
                                     }]}>
-
                                         <Text
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                         >
                                             {this.state.emirateSelected}
                                         </Text>
                                     </TouchableOpacity>
-                                    {this.state.showEmirates && this.renderEmirates()}
+                                    <View style={{
+                                        position: 'absolute',
+                                        top: 40,
+                                        overflow: 'visible',
+                                        left: 0,
+                                        zIndex: 99999,
+                                        backgroundColor: '#fff',
+                                        width: '100%',
+                                        elevation: 4,
+                                        shadowColor: 'rgba(0,0,0,0.09)',
+                                        shadowRadius: 4,
+                                        shadowOffset: {width: 0, height: -2},
+                                        borderBottomLeftRadius: 4,
+                                        borderBottomRightRadius: 4
+                                    }}>
+                                        {this.state.showEmirates && this.renderEmirates()}
+                                    </View>
                                     <View style={commonStyles.graySeparator}>
                                         <View style={commonStyles.graySeparatorInner}></View>
                                     </View>
                                     <TouchableOpacity onPress={() => {
                                         this.setState({showLocations: true})
-                                    }} style={[styles.textInputWrap, {
-                                        borderTopLeftRadius: 4,
-                                        borderTopRightRadius: 4
-                                    }]}>
+                                    }} style={[styles.textInputWrap]}>
 
                                         <Text
-                                            style={styles.textInput}
+                                            style={[styles.textInput, styles.textInputWithoutIcon]}
                                         >
                                             {this.state.locationSelected}
                                         </Text>
                                     </TouchableOpacity>
-                                    {this.state.showLocations && this.renderLocations()}
+                                    <View style={{
+                                        position: 'absolute',
+                                        top: 80,
+                                        overflow: 'visible',
+                                        left: 0,
+                                        zIndex: 99999,
+                                        backgroundColor: '#fff',
+                                        width: '100%',
+                                        elevation: 4,
+                                        shadowColor: 'rgba(0,0,0,0.09)',
+                                        shadowRadius: 4,
+                                        shadowOffset: {width: 0, height: -2},
+                                        borderBottomLeftRadius: 4,
+                                        borderBottomRightRadius: 4
+                                    }}>
+                                        {this.state.showLocations && this.renderLocations()}
+                                    </View>
                                 </View>
                                 <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>

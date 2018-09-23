@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, ScrollView, Alert} from 'react-native'
 import axios from "axios/index"
 import * as _ from 'lodash'
 import SvgUri from 'react-native-svg-uri';
@@ -61,6 +61,16 @@ class AddCar extends React.Component {
             isFeaturedTypes: ["yes", "no"],
 
             statusTypes: ['publish', 'unpublish', 'deleted'],
+
+            carBrands: [],
+
+            car_brand_name: "",
+
+            carTypes: [],
+
+            car_type_name: "",
+
+
         }
     }
 
@@ -68,7 +78,7 @@ class AddCar extends React.Component {
         return _.map(paymentMethods, item => {
             return <TouchableOpacity
                 key={item}
-                style={this.state.paymentMethods !== item ? styles.statusOptions : styles.selectedStatusOption}
+                style={this.state.accept_in !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
                     this.setState({accept_in: item})
                 }}>
@@ -82,7 +92,7 @@ class AddCar extends React.Component {
         return _.map(insuranceTypes, item => {
             return <TouchableOpacity
                 key={item}
-                style={this.state.insuranceTypes !== item ? styles.statusOptions : styles.selectedStatusOption}
+                style={this.state.insurance_included !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
                     this.setState({insurance_included: item})
                 }}>
@@ -135,9 +145,12 @@ class AddCar extends React.Component {
         })
     }
 
+
     componentDidMount() {
         this.getPayment();
-        this.getInsuranceTypes()
+        this.getInsuranceTypes();
+        this.getBrands();
+        this.getTypes();
     }
 
     getPayment = async () => {
@@ -158,6 +171,73 @@ class AddCar extends React.Component {
         console.log(resp);
         resp !== undefined && this.setState({paymentMethods: resp});
     }
+    getBrands = async () => {
+        let resp = {};
+        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_car_brands', {
+            access_token: this.props.token
+        })
+            .then(response => {
+                console.log(response)
+                resp = response.data.car_brands;
+                this.setState({carBrands: resp})
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+        console.log(resp);
+    }
+
+    renderCarBrands = (carBrands) => {
+        return _.map(carBrands, item => {
+            return <TouchableOpacity
+                key={item.id}
+                style={this.state.car_brand_id !== item.id ? styles.statusOptions : styles.selectedStatusOption}
+                onPress={() => {
+                    this.setState({car_brand_id: item.id, car_brand_name: item.english_name})
+                }}>
+                <Text style={styles.statusOptionsText}>
+                    {item.english_name}
+                </Text>
+            </TouchableOpacity>
+        })
+    }
+
+    getTypes = async () => {
+        let resp = {};
+        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_car_types', {
+            access_token: this.props.token
+        })
+            .then(response => {
+                console.log(response)
+                resp = response.data.car_types;
+                this.setState({carTypes: resp})
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+        console.log(resp);
+    }
+
+    renderCarTypes = (carBrands) => {
+        return _.map(carBrands, item => {
+            return <TouchableOpacity
+                key={item.id}
+                style={this.state.car_type_id !== item.id ? styles.statusOptions : styles.selectedStatusOption}
+                onPress={() => {
+                    this.setState({car_type_id: item.id, car_type_name: item.english_name})
+                }}>
+                <Text style={styles.statusOptionsText}>
+                    {item.english_name}
+                </Text>
+            </TouchableOpacity>
+        })
+    }
+
+
     getInsuranceTypes = async () => {
         let resp = {};
         await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_insurance_types', {
@@ -218,7 +298,8 @@ class AddCar extends React.Component {
             description,
 
             status,
-        } = this.state
+        } = this.state;
+
         let resp = {};
         await axios.post('https://tripjhon.insightssoftwares.com//api/v1/add_car', {
             access_token: this.props.token,
@@ -245,8 +326,36 @@ class AddCar extends React.Component {
 
         })
             .then(response => {
-                console.log(response, "car added successfully")
-                alert("car added successfully" + JSON.stringify(response))
+                console.log(response, english_name,
+                    arabic_name,
+                    price_per_day,
+                    price_per_week,
+                    price_per_month,
+                    additional_mileage_charge,
+                    mileage_limit_daily,
+                    mileage_limit_monthly,
+                    mileage_limit_weekly,
+                    insurance_included,
+                    security_deposit,
+                    accept_in,
+                    driver,
+                    car_type_id,
+                    car_brand_id,
+                    is_featured,
+                    car_image,
+                    colours,
+                    description,
+                    status);
+
+                Alert.alert(
+                    'Add Car',
+                    'Car added successfully',
+                    [
+                        {text: 'OK', onPress: () => this.props.navigation.navigate('Cars')},
+                    ],
+                    { cancelable: false }
+                )
+
             })
             .catch((error) => {
                 console.log(error);
@@ -438,23 +547,23 @@ class AddCar extends React.Component {
 
                     <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
 
-                        <View style={styles.profileInputGroup}>
-                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                <View style={styles.labelWrap}>
-                                    <Text style={styles.inputLabelText}>Card Type</Text>
-                                </View>
-                                <View style={[styles.textInputWrap]}>
-                                    <TextInput
-                                        placeholder="car_type_id" value={this.state.car_type_id}
-                                        onChangeText={car_type_id => {
-                                            this.setState({car_type_id})
-                                        }}
-                                        underlineColorAndroid="transparent"
-                                        style={styles.textInput}
-                                    />
-                                </View>
-                            </View>
-                        </View>
+                        {/*<View style={styles.profileInputGroup}>*/}
+                            {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                                {/*<View style={styles.labelWrap}>*/}
+                                    {/*<Text style={styles.inputLabelText}>Card Type</Text>*/}
+                                {/*</View>*/}
+                                {/*<View style={[styles.textInputWrap]}>*/}
+                                    {/*<TextInput*/}
+                                        {/*placeholder="car_type_id" value={this.state.car_type_id}*/}
+                                        {/*onChangeText={car_type_id => {*/}
+                                            {/*this.setState({car_type_id})*/}
+                                        {/*}}*/}
+                                        {/*underlineColorAndroid="transparent"*/}
+                                        {/*style={styles.textInput}*/}
+                                    {/*/>*/}
+                                {/*</View>*/}
+                            {/*</View>*/}
+                        {/*</View>*/}
                         <View style={styles.profileInputGroup}>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                 <View style={styles.profileTitleInfo}>
@@ -486,27 +595,12 @@ class AddCar extends React.Component {
                                 </View>
                                 {/*<Text>{this.state.accept_in}</Text>*/}
                                 {this.renderPaymentOptions(this.state.paymentMethods)}
-
-                                {/*<View style={[styles.textInputWrap]}>*/}
-                                {/*<TextInput*/}
-                                {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
-                                {/*onChangeText={security_deposit => {*/}
-                                {/*this.setState({security_deposit})*/}
-                                {/*}}*/}
-                                {/*underlineColorAndroid="transparent"*/}
-                                {/*style={styles.textInput}*/}
-                                {/*/>*/}
-                                {/*</View>*/}
                             </View>
                         </View>
                         <View style={styles.profileInputGroup}>
 
                             <View style={styles.profileTitleInfo}>
                                 <Text style={styles.profileTitleText}>Drivers</Text>
-                            </View>
-
-                            <View style={styles.labelWrap}>
-                                <Text style={styles.inputLabelText}>Car name</Text>
                             </View>
                             <View style={[styles.textInputWrap]}>
                                 {this.renderDriverOptions(this.state.driverTypes)}
@@ -516,20 +610,29 @@ class AddCar extends React.Component {
                                 <Text style={styles.profileTitleText}>Featured</Text>
                             </View>
 
-                            <View style={styles.labelWrap}>
-                                <Text style={styles.inputLabelText}>Car name</Text>
-                            </View>
                             <View style={[styles.textInputWrap]}>
                                 {this.renderFeaturedOptions(this.state.isFeaturedTypes)}
+                            </View>
+
+                            <View style={styles.profileTitleInfo}>
+                                <Text style={styles.profileTitleText}>Car Brand</Text>
+                            </View>
+                            <View style={[styles.textInputWrap]}>
+                                {this.renderCarBrands(this.state.carBrands)}
+                            </View>
+
+                            <View style={styles.profileTitleInfo}>
+                                <Text style={styles.profileTitleText}>Car Type</Text>
+                            </View>
+
+                            <View style={[styles.textInputWrap]}>
+                                {this.renderCarTypes(this.state.carTypes)}
                             </View>
 
                             <View style={styles.profileTitleInfo}>
                                 <Text style={styles.profileTitleText}>Status</Text>
                             </View>
 
-                            <View style={styles.labelWrap}>
-                                <Text style={styles.inputLabelText}>Car Status</Text>
-                            </View>
                             <View style={[styles.textInputWrap]}>
                                 {this.renderStatusOptions(this.state.statusTypes)}
                             </View>
@@ -548,22 +651,22 @@ class AddCar extends React.Component {
 
                         </View>
                         <View style={styles.profileInputGroup}>
-                            <View style={[styles.profileInputGroup, {width: '100%'}]}>
-                                <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                    <View style={[styles.textInputWrap, {
-                                        borderRadius: 4,
-                                    }]}>
-                                        <TextInput
-                                            placeholder="car_brand_id" value={this.state.car_brand_id}
-                                            onChangeText={car_brand_id => {
-                                                this.setState({car_brand_id})
-                                            }}
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                        />
-                                    </View>
-                                </View>
-                            </View>
+                            {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
+                                {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                                    {/*<View style={[styles.textInputWrap, {*/}
+                                        {/*borderRadius: 4,*/}
+                                    {/*}]}>*/}
+                                        {/*<TextInput*/}
+                                            {/*placeholder="car_brand_id" value={this.state.car_brand_id}*/}
+                                            {/*onChangeText={car_brand_id => {*/}
+                                                {/*this.setState({car_brand_id})*/}
+                                            {/*}}*/}
+                                            {/*underlineColorAndroid="transparent"*/}
+                                            {/*style={styles.textInput}*/}
+                                        {/*/>*/}
+                                    {/*</View>*/}
+                                {/*</View>*/}
+                            {/*</View>*/}
                             <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                     <View style={[styles.textInputWrap, {
@@ -606,6 +709,23 @@ class AddCar extends React.Component {
                                             placeholder="description" value={this.state.description}
                                             onChangeText={description => {
                                                 this.setState({description})
+                                            }}
+                                            underlineColorAndroid="transparent"
+                                            style={styles.textInput}
+                                        />
+                                    </View>
+                                </View>
+                            </View>
+
+                            <View style={[styles.profileInputGroup, {width: '100%'}]}>
+                                <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                    <View style={[styles.textInputWrap, {
+                                        borderRadius: 4
+                                    }]}>
+                                        <TextInput
+                                            placeholder="security_deposit" value={this.state.security_deposit}
+                                            onChangeText={security_deposit => {
+                                                this.setState({security_deposit})
                                             }}
                                             underlineColorAndroid="transparent"
                                             style={styles.textInput}

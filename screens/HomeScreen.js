@@ -51,6 +51,7 @@ class HomeScreen extends React.Component {
     componentDidCatch(err) {
         console.log(err)
     }
+
     componentWillReceiveProps(nextProps) {
         this.setState({logged: nextProps.logged})
     }
@@ -60,169 +61,168 @@ class HomeScreen extends React.Component {
     }
 
 
-
-
-
     render() {
         const {logged, newUser, mismatch, loader, error} = this.state;
         const loginbg = '../assets/images/loginbg.png';
 
         return (
             logged ?
-                <DrawerApp screenProps={{logout: this.logout, user: {name: this.state.name, email: this.state.email, dp: this.state.dp}}}/>
+                <DrawerApp screenProps={{
+                    logout: this.logout,
+                    user: {name: this.state.name, email: this.state.email, dp: this.state.dp}
+                }}/>
                 : newUser ?
                 //Registration Stuff
                 <View style={styles.container}>
-                    <ScrollView style={styles.container} contentContainerStyle={styles.container}>
-                        <View style={[styles.welcomeContainer, {flex: 1}]}>
-                            <WelcomeRegistration/>
-                        </View>
-                        <View style={styles.registrationContainer}>
-                            <View style={styles.registrationWrap}>
-                                <View style={styles.regLinkWrap}>
-                                    <Text style={styles.regLinkText}>Not registered yet?</Text>
-                                    <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
-                                        <Text style={styles.regLinkText}>Register Here.</Text>
-                                    </TouchableOpacity>
+                    {/*<ScrollView style={styles.container} contentContainerStyle={styles.container}>*/}
+                    <View style={[styles.welcomeContainer, {flex: 1}]}>
+                        <WelcomeRegistration/>
+                    </View>
+                    <View style={styles.registrationContainer}>
+                        <View style={styles.registrationWrap}>
+                            <View style={styles.regLinkWrap}>
+                                <Text style={styles.regLinkText}>Not registered yet?</Text>
+                                <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
+                                    <Text style={styles.regLinkText}>Register Here.</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                <View style={[styles.textInputWrap, {
+                                    borderTopLeftRadius: 4,
+                                    borderTopRightRadius: 4
+                                }]}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
+                                                height="18"
+                                                source={require('../assets/icons/password.svg')}/>
+                                    </View>
+                                    <TextInput
+                                        underlineColorAndroid="transparent"
+                                        style={styles.textInput}
+                                        value={this.state.type}
+                                        onChangeText={type => this.setState({type})}
+                                    />
                                 </View>
-                                <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                    <View style={[styles.textInputWrap, {
-                                        borderTopLeftRadius: 4,
-                                        borderTopRightRadius: 4
-                                    }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                            value={this.state.type}
-                                            onChangeText={type => this.setState({type})}
-                                        />
-                                    </View>
-                                    <View style={commonStyles.graySeparator}>
-                                        <View style={commonStyles.graySeparatorInner}></View>
-                                    </View>
-                                    <View style={[styles.textInputWrap, {
-                                        borderBottomLeftRadius: 4,
-                                        borderBottomRightRadius: 4
-                                    }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                            value={this.state.name}
-                                            placeholder="Full name"
-                                            onChangeText={name => this.setState({name})}
-                                            secureTextEntry={false}
-                                        />
-                                    </View>
+                                <View style={commonStyles.graySeparator}>
+                                    <View style={commonStyles.graySeparatorInner}></View>
                                 </View>
-                                <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                    <View style={[styles.textInputWrap, {
-                                        borderTopLeftRadius: 4,
-                                        borderTopRightRadius: 4
-                                    }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                            value={this.state.email}
-                                            placeholder="Email address"
-                                            onChangeText={email => this.setState({email})}
-                                        />
+                                <View style={[styles.textInputWrap, {
+                                    borderBottomLeftRadius: 4,
+                                    borderBottomRightRadius: 4
+                                }]}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
+                                                height="18"
+                                                source={require('../assets/icons/password.svg')}/>
                                     </View>
-                                    <View style={commonStyles.graySeparator}>
-                                        <View style={commonStyles.graySeparatorInner}></View>
-                                    </View>
-                                    <View style={[styles.textInputWrap, {
-                                        borderBottomLeftRadius: 4,
-                                        borderBottomRightRadius: 4
-                                    }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                            value={this.state.number}
-                                            placeholder="Phone Number"
-                                            onChangeText={number => this.setState({number})}
-                                        />
-                                    </View>
+                                    <TextInput
+                                        underlineColorAndroid="transparent"
+                                        style={styles.textInput}
+                                        value={this.state.name}
+                                        placeholder="Full name"
+                                        onChangeText={name => this.setState({name})}
+                                        secureTextEntry={false}
+                                    />
                                 </View>
-                                <View
-                                    style={[styles.textInputContainer, styles.regTextInputContainer, {marginBottom: 0}]}>
-                                    <View style={[styles.textInputWrap, {
-                                        borderTopLeftRadius: 4,
-                                        borderTopRightRadius: 4
-                                    }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                            value={this.state.newPassword}
-                                            placeholder="Your password"
-                                            onChangeText={newPassword => this.setState({newPassword})}
-                                            secureTextEntry
-                                        />
+                            </View>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                <View style={[styles.textInputWrap, {
+                                    borderTopLeftRadius: 4,
+                                    borderTopRightRadius: 4
+                                }]}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
+                                                height="18"
+                                                source={require('../assets/icons/password.svg')}/>
                                     </View>
-                                    <View style={commonStyles.graySeparator}>
-                                        <View style={commonStyles.graySeparatorInner}></View>
-                                    </View>
-                                    <View style={[styles.textInputWrap]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
-                                        <TextInput
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                            placeholder="Password again"
-                                            value={this.state.confirmPassword}
-                                            onChangeText={confirmPassword => this.setState({confirmPassword})}
-                                            secureTextEntry
-                                        />
-                                    </View>
+                                    <TextInput
+                                        underlineColorAndroid="transparent"
+                                        style={styles.textInput}
+                                        value={this.state.email}
+                                        placeholder="Email address"
+                                        onChangeText={email => this.setState({email})}
+                                    />
                                 </View>
-                                {mismatch && <Text> password doesn't match</Text>}
-                                <View style={styles.orangeBtnShadow}>
-                                    <View style={styles.orangeBtn}>
-                                        <LinearGradient start={{x: 0, y: 0.75}}
-                                                        end={{x: 1, y: 1}} colors={['#F76B1C', '#FAD961']}>
-                                            <TouchableOpacity onPress={this._handleRegisterSubmit}
-                                                              style={styles.orangeBtnInner}>
-                                                <Text style={styles.orangeBtnText}>Register</Text>
-                                            </TouchableOpacity>
-                                        </LinearGradient>
+                                <View style={commonStyles.graySeparator}>
+                                    <View style={commonStyles.graySeparatorInner}></View>
+                                </View>
+                                <View style={[styles.textInputWrap, {
+                                    borderBottomLeftRadius: 4,
+                                    borderBottomRightRadius: 4
+                                }]}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
+                                                height="18"
+                                                source={require('../assets/icons/password.svg')}/>
                                     </View>
+                                    <TextInput
+                                        underlineColorAndroid="transparent"
+                                        style={styles.textInput}
+                                        value={this.state.number}
+                                        placeholder="Phone Number"
+                                        onChangeText={number => this.setState({number})}
+                                    />
                                 </View>
-                                <View style={styles.backBtn}>
-                                    <TouchableOpacity onPress={this._handleRegister} style={styles.backBtnTouch}>
-                                        <Text style={styles.backBtnText}>Go back</Text>
-                                    </TouchableOpacity>
+                            </View>
+                            <View
+                                style={[styles.textInputContainer, styles.regTextInputContainer, {marginBottom: 0}]}>
+                                <View style={[styles.textInputWrap, {
+                                    borderTopLeftRadius: 4,
+                                    borderTopRightRadius: 4
+                                }]}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
+                                                height="18"
+                                                source={require('../assets/icons/password.svg')}/>
+                                    </View>
+                                    <TextInput
+                                        underlineColorAndroid="transparent"
+                                        style={styles.textInput}
+                                        value={this.state.newPassword}
+                                        placeholder="Your password"
+                                        onChangeText={newPassword => this.setState({newPassword})}
+                                        secureTextEntry
+                                    />
                                 </View>
-
+                                <View style={commonStyles.graySeparator}>
+                                    <View style={commonStyles.graySeparatorInner}></View>
+                                </View>
+                                <View style={[styles.textInputWrap]}>
+                                    <View style={styles.iconWrap}>
+                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
+                                                height="18"
+                                                source={require('../assets/icons/password.svg')}/>
+                                    </View>
+                                    <TextInput
+                                        underlineColorAndroid="transparent"
+                                        style={styles.textInput}
+                                        placeholder="Password again"
+                                        value={this.state.confirmPassword}
+                                        onChangeText={confirmPassword => this.setState({confirmPassword})}
+                                        secureTextEntry
+                                    />
+                                </View>
+                            </View>
+                            {mismatch && <Text> password doesn't match</Text>}
+                            <View style={styles.orangeBtnShadow}>
+                                <View style={styles.orangeBtn}>
+                                    <LinearGradient start={{x: 0, y: 0.75}}
+                                                    end={{x: 1, y: 1}} colors={['#F76B1C', '#FAD961']}>
+                                        <TouchableOpacity onPress={this._handleRegisterSubmit}
+                                                          style={styles.orangeBtnInner}>
+                                            <Text style={styles.orangeBtnText}>Register</Text>
+                                        </TouchableOpacity>
+                                    </LinearGradient>
+                                </View>
+                            </View>
+                            <View style={styles.backBtn}>
+                                <TouchableOpacity onPress={this._handleRegister} style={styles.backBtnTouch}>
+                                    <Text style={styles.backBtnText}>Go back</Text>
+                                </TouchableOpacity>
                             </View>
                         </View>
-                    </ScrollView>
+                    </View>
+                    {/*</ScrollView>*/}
                     <View style={styles.tabBarInfoContainer}>
                         <Text style={styles.tabBarInfoText}>Already a user?</Text>
                         <View style={[styles.codeHighlightContainer, styles.navigationFilename]}>

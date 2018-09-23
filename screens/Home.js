@@ -124,7 +124,7 @@ class Home extends React.Component {
                     {/*/!*</TouchableOpacity>*!/*/}
                     {/*</View>*/}
                     <ScrollView
-                        style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%'}}
+                        style={{alignSelf: 'center', paddingBottom: 16, flex: 1, zIndex: 9, width: '92%', height: '100%'}}
                         contentContainerStyle={{flex: 1}}>
                         <LeadsList navigation={this.props.navigation} style={{zIndex: 9}}
                                    leadType={this.state.leadType}/>

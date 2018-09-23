@@ -54,8 +54,7 @@ const styles = StyleSheet.create({
     planName: {
         fontFamily: 'Lato-Black',
         color: '#fff',
-        textShadowColor: '#000',
-        shadowOpacity: 0.1,
+        textShadowColor: 'rgba(0,0,0,0.1)',
         textShadowOffset: {width: 0, height: 6},
         shadowRadius: 0,
         ...Platform.select({

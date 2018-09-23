@@ -56,7 +56,7 @@ class CarsList extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Profile',
+        drawerLabel: () => 'Cars',
         drawerIcon: ({tintColor}) => (
             <SvgUri
                 source={require('../assets/icons/nav-icon-profile.svg')}

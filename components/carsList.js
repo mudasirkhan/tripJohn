@@ -155,11 +155,11 @@ class CarsList extends React.Component {
                                         style={modalStyles.arrowBack}/>
                             </TouchableOpacity>
                             {/*</View>*/}
-                            <View style={{flex: 1,justifyContent: 'center', alignItems: 'center', }}>
+                            <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
                                 <Text style={modalStyles.modalTitleText}>Add a car</Text>
                             </View>
                         </View>
-                        <AddCar setModalVisible={this.setModalVisible} token={this.props.token}/>
+                        <AddCar setModalVisible={this.setModalVisible} token={this.props.token} navigation={this.props.navigation}/>
                     </View>
                 </View>
             </Modal>

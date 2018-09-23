@@ -51,6 +51,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 46,
         width: '100%'
     },
+    textInputWithoutIcon: {
+        paddingLeft: 16
+    },
     textArea: {
         fontSize: 16,
         paddingVertical: 12,

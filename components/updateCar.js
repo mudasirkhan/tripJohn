@@ -254,14 +254,13 @@ class UpdateCar extends React.Component {
                 console.log(error);
                 alert("car update failed")
                 this.setState({loader: false, error: true})
-
             });
         console.log(resp);
     }
 
     render() {
         return (<View style={{flex: 1}}>
-            <ScrollView style={{height: '100%', width: '100%', flex: 1}}>
+            <ScrollView style={{height: '100%', width: '100%', flex: 1, backgroundColor: 'green'}}>
                 <View style={styles.profileDescContainer}>
                     <View style={styles.profileTitleInfo}>
                         <Text style={styles.profileTitleText}>Car Name Information</Text>
