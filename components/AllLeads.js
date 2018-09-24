@@ -74,7 +74,7 @@ class Leads extends React.Component {
                                     {(this.state.cars && this.state.cars[resArr.car_id]) &&
                                     <Text
                                         style={[styles.carName, {marginBottom: 4}]}>{this.state.cars[resArr.car_id].english_name}</Text>}
-                                    <Text style={styles.carName}>Car ID: {resArr.car_id}</Text>
+                                    <Text style={styles.carName}>ID: {resArr.id}</Text>
                                     {/*<Text>{resArr.contact_number}</Text>*/}
                                     <Text style={styles.carMessage}>{resArr.message}</Text>
                                     <View style={styles.extraInfoWrap}>
@@ -117,7 +117,7 @@ class Leads extends React.Component {
                                     {(this.state.cars && this.state.cars[resArr.car_id]) &&
                                     <Text
                                         style={[styles.carName, {marginBottom: 4}]}>{this.state.cars[resArr.car_id].english_name}</Text>}
-                                    <Text style={styles.carName}>Car ID: {resArr.car_id}</Text>
+                                    <Text style={styles.carName}>ID: {resArr.id}</Text>
                                     {/*<Text>{resArr.contact_number}</Text>*/}
                                     <Text style={styles.carMessage}>{resArr.message}</Text>
                                     <View style={styles.extraInfoWrap}>
@@ -178,7 +178,7 @@ class Leads extends React.Component {
                                     {(this.state.cars && this.state.cars[resArr.car_id]) &&
                                     <Text
                                         style={[styles.carName, {marginBottom: 4}]}>{this.state.cars[resArr.car_id].english_name}</Text>}
-                                    <Text style={styles.carName}>Car ID: {resArr.car_id}</Text>
+                                    <Text style={styles.carName}>ID: {resArr.id}</Text>
                                     {/*<Text>{resArr.contact_number}</Text>*/}
                                     <Text style={styles.carMessage}>{resArr.message}</Text>
                                     <View style={styles.extraInfoWrap}>
