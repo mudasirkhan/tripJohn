@@ -56,12 +56,7 @@ class CarsList extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Cars',
-        drawerIcon: ({tintColor}) => (
-            <SvgUri
-                source={require('../assets/icons/nav-icon-profile.svg')}
-            />
-        ),
+        drawerLabel: () => null
     }
 
 
@@ -126,22 +121,20 @@ class CarsList extends React.Component {
                             <SvgUri source={require('../assets/icons/arrow-back.svg')}
                                     style={{
                                         height: 24, width: 24,
-                                        paddingVertical: 16,
                                         paddingHorizontal: 24,
-                                        marginTop: -12,
                                     }}/>
                         </TouchableHighlight>
                         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{
                                 fontFamily: 'Lato-B',
                                 marginTop: -12,
-                                marginLeft: -24,
+                                marginLeft: -16,
                                 fontSize: 18, color: '#fff'
                             }}>Update Car Details</Text>
                         </View>
                     </View>
-                    <UpdateCar setModalVisible={this.setModalVisible} token={token} details={this.state.car}/>
                 </View>
+                <UpdateCar setModalVisible={this.setModalVisible} token={token} details={this.state.car}/>
             </Modal>
             <View style={styles.carImageContainer}>
                 <Image style={styles.carFullSizeImage}

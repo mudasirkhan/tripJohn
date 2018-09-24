@@ -67,7 +67,7 @@ class UpdateCar extends React.Component {
         return _.map(paymentMethods, item => {
             return <TouchableOpacity
                 key={item}
-                style={this.state.paymentMethods !== item ? styles.statusOptions : styles.selectedStatusOption}
+                style={this.state.accept_in !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
                     this.setState({accept_in: item})
                 }}>
@@ -81,7 +81,7 @@ class UpdateCar extends React.Component {
         return _.map(insuranceTypes, item => {
             return <TouchableOpacity
                 key={item}
-                style={this.state.insuranceTypes !== item ? styles.statusOptions : styles.selectedStatusOption}
+                style={this.state.insurance_included !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
                     this.setState({insurance_included: item})
                 }}>
@@ -259,8 +259,8 @@ class UpdateCar extends React.Component {
     }
 
     render() {
-        return (<View style={{flex: 1}}>
-            <ScrollView style={{height: '100%', width: '100%', flex: 1, backgroundColor: 'green'}}>
+        return (<View style={{flex: 1, zIndex: 99999, height: '100%', width: '100%'}}>
+            <ScrollView>
                 <View style={styles.profileDescContainer}>
                     <View style={styles.profileTitleInfo}>
                         <Text style={styles.profileTitleText}>Car Name Information</Text>
@@ -301,7 +301,6 @@ class UpdateCar extends React.Component {
                                     onChangeText={arabic_name => {
                                         this.setState({arabic_name})
                                     }}
-                                    secureTextEntry={false}
                                 />
                             </View>
                         </View>
@@ -329,7 +328,6 @@ class UpdateCar extends React.Component {
                                     }}
                                     underlineColorAndroid="transparent"
                                     style={styles.textInput}
-                                    secureTextEntry={false}
                                 />
                             </View>
 
@@ -344,7 +342,6 @@ class UpdateCar extends React.Component {
                                     onChangeText={price_per_week => {
                                         this.setState({price_per_week})
                                     }} underlineColorAndroid={'transparent'}
-                                    secureTextEntry={false}
                                 />
                             </View>
                             <View style={styles.labelWrap}>
@@ -358,7 +355,6 @@ class UpdateCar extends React.Component {
                                         this.setState({price_per_month})
                                     }} underlineColorAndroid={'transparent'}
                                     style={styles.textInput}
-                                    secureTextEntry={false}
                                 />
                             </View>
                         </View>
@@ -385,7 +381,6 @@ class UpdateCar extends React.Component {
                                 }}
                                 underlineColorAndroid="transparent"
                                 style={styles.textInput}
-                                secureTextEntry={false}
                             />
                         </View>
                         <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
@@ -402,7 +397,6 @@ class UpdateCar extends React.Component {
                                     }}
                                     underlineColorAndroid="transparent"
                                     style={styles.textInput}
-                                    secureTextEntry
                                 />
                             </View>
                             <View style={styles.labelWrap}>
@@ -417,7 +411,6 @@ class UpdateCar extends React.Component {
                                     }}
                                     underlineColorAndroid="transparent"
                                     style={styles.textInput}
-                                    secureTextEntry
                                 />
                             </View>
 
@@ -433,7 +426,6 @@ class UpdateCar extends React.Component {
                                     }}
                                     underlineColorAndroid="transparent"
                                     style={styles.textInput}
-                                    secureTextEntry
                                 />
                             </View>
                         </View>
@@ -455,7 +447,6 @@ class UpdateCar extends React.Component {
                                     }}
                                     underlineColorAndroid="transparent"
                                     style={styles.textInput}
-                                    secureTextEntry={false}
                                 />
                             </View>
                         </View>
@@ -548,7 +539,6 @@ class UpdateCar extends React.Component {
                         }}>
                             {/*<Text style={styles.editBtn}>{!this.state.editOtherInfo ? 'EDIT' : 'Done'}</Text>*/}
                         </TouchableOpacity>
-
                     </View>
                     <View style={styles.profileInputGroup}>
                         <View style={[styles.profileInputGroup, {width: '100%'}]}>

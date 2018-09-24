@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     modalTopBar: {
         backgroundColor: '#AC2733',
         width: '100%',
+        paddingVertical: 16,
         justifyContent: 'center',
         alignItems: 'center',
         ...Platform.select({

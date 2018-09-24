@@ -6,7 +6,8 @@ import Home from "../screens/Home";
 import Car from "../screens/Cars";
 import Profile from "../screens/Profile";
 import Vip from '../components/Vip';
-import Deals from '../components/AddDeal'
+import Deals from '../components/AddDeal';
+import Leads from '../components/AllLeads';
 import styles from '../assets/styles/drawer';
 
 const dimen = Dimensions.get('window')
@@ -24,13 +25,17 @@ const DrawerApp = createDrawerNavigator(
             path: '/',
             screen: Profile,
         },
-        // Vip: {
-        //     path: '/',
-        //     screen: Vip
-        // },
+        Vip: {
+            path: '/',
+            screen: Vip
+        },
         Deals: {
             path: '/',
             screen: Deals
+        },
+        Leads: {
+            path: '/',
+            screen: Leads
         }
 
     },
@@ -64,7 +69,8 @@ const DrawerApp = createDrawerNavigator(
                                 borderRadius: 30,
                                 borderWidth: 1,
                                 borderColor: 'rgb(128, 77, 156)',
-                            }} source={{uri:'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + props.screenProps.user.dp}}/>
+                            }}
+                            source={{uri: 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + props.screenProps.user.dp}}/>
                         <View style={styles.profileInfoWrap}>
                             <Text
                                 numberOfLines={1} style={styles.profileName}>{props.screenProps.user.name}</Text>

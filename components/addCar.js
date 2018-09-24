@@ -353,7 +353,7 @@ class AddCar extends React.Component {
                     [
                         {text: 'OK', onPress: () => this.props.navigation.navigate('Cars')},
                     ],
-                    { cancelable: false }
+                    {cancelable: false}
                 )
 
             })
@@ -548,21 +548,21 @@ class AddCar extends React.Component {
                     <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
 
                         {/*<View style={styles.profileInputGroup}>*/}
-                            {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                                {/*<View style={styles.labelWrap}>*/}
-                                    {/*<Text style={styles.inputLabelText}>Card Type</Text>*/}
-                                {/*</View>*/}
-                                {/*<View style={[styles.textInputWrap]}>*/}
-                                    {/*<TextInput*/}
-                                        {/*placeholder="car_type_id" value={this.state.car_type_id}*/}
-                                        {/*onChangeText={car_type_id => {*/}
-                                            {/*this.setState({car_type_id})*/}
-                                        {/*}}*/}
-                                        {/*underlineColorAndroid="transparent"*/}
-                                        {/*style={styles.textInput}*/}
-                                    {/*/>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
+                        {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                        {/*<View style={styles.labelWrap}>*/}
+                        {/*<Text style={styles.inputLabelText}>Card Type</Text>*/}
+                        {/*</View>*/}
+                        {/*<View style={[styles.textInputWrap]}>*/}
+                        {/*<TextInput*/}
+                        {/*placeholder="car_type_id" value={this.state.car_type_id}*/}
+                        {/*onChangeText={car_type_id => {*/}
+                        {/*this.setState({car_type_id})*/}
+                        {/*}}*/}
+                        {/*underlineColorAndroid="transparent"*/}
+                        {/*style={styles.textInput}*/}
+                        {/*/>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
                         {/*</View>*/}
                         <View style={styles.profileInputGroup}>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
@@ -638,11 +638,9 @@ class AddCar extends React.Component {
                             </View>
                         </View>
                     </View>
-
                     <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
                         <View style={styles.profileTitleInfo}>
                             <Text style={styles.profileTitleText}>{'Extra Information'}</Text>
-
                             <TouchableOpacity onPress={() => {
                                 this.setState({editOtherInfo: !this.state.editOtherInfo})
                             }}>
@@ -652,20 +650,20 @@ class AddCar extends React.Component {
                         </View>
                         <View style={styles.profileInputGroup}>
                             {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
-                                {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                                    {/*<View style={[styles.textInputWrap, {*/}
-                                        {/*borderRadius: 4,*/}
-                                    {/*}]}>*/}
-                                        {/*<TextInput*/}
-                                            {/*placeholder="car_brand_id" value={this.state.car_brand_id}*/}
-                                            {/*onChangeText={car_brand_id => {*/}
-                                                {/*this.setState({car_brand_id})*/}
-                                            {/*}}*/}
-                                            {/*underlineColorAndroid="transparent"*/}
-                                            {/*style={styles.textInput}*/}
-                                        {/*/>*/}
-                                    {/*</View>*/}
-                                {/*</View>*/}
+                            {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                            {/*<View style={[styles.textInputWrap, {*/}
+                            {/*borderRadius: 4,*/}
+                            {/*}]}>*/}
+                            {/*<TextInput*/}
+                            {/*placeholder="car_brand_id" value={this.state.car_brand_id}*/}
+                            {/*onChangeText={car_brand_id => {*/}
+                            {/*this.setState({car_brand_id})*/}
+                            {/*}}*/}
+                            {/*underlineColorAndroid="transparent"*/}
+                            {/*style={styles.textInput}*/}
+                            {/*/>*/}
+                            {/*</View>*/}
+                            {/*</View>*/}
                             {/*</View>*/}
                             <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>

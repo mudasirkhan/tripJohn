@@ -24,6 +24,28 @@ const styles = StyleSheet.create({
             },
         }),
     },
+    topTabContainer: {
+        flexDirection: 'row',
+        height: 60,
+        marginTop: 60,
+        alignItems: 'center',
+        width: '100%',
+        shadowColor: '#000',
+        shadowOpacity: 0.09,
+        shadowRadius: 4,
+        shadowOffset: {width: 0, height: -2}
+    },
+    tabTextWrap: {
+        flex: 1,
+        height: '100%',
+        borderBottomColor: '#fff',
+        borderBottomWidth: 2,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    tabText: {
+        color: '#fff',
+    },
     leadsListCard: {
         position: 'relative',
         flexDirection: 'row',
@@ -170,10 +192,12 @@ const styles = StyleSheet.create({
     cardLeftSide: {
         backgroundColor: '#8C1E24',
         padding: 8,
+        flexDirection: 'column',
+        justifyContent: 'space-between',
         borderTopLeftRadius: 4,
         borderBottomLeftRadius: 4
     },
-    cardRightSide:{
+    cardRightSide: {
         borderRadius: 4,
         padding: 8,
     },
