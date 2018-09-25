@@ -436,12 +436,14 @@ class Profile extends React.Component {
                                 }}><Text
                                     style={styles.editBtn}>{!this.state.editOtherInfo ? 'EDIT' : 'Done'}</Text></TouchableOpacity>
                             </View>
-                            <View style={styles.profileInputGroup}>
-                                <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                            <View style={[styles.profileInputGroup, {overflow: 'visible',}]}>
+                                <View
+                                    style={[styles.textInputContainer, styles.regTextInputContainer, {overflow: 'visible',}]}>
                                     <TouchableOpacity onPress={() => {
                                         this.setState({showEmirates: true})
                                     }} style={[styles.textInputWrap, {
                                         borderTopLeftRadius: 4,
+                                        overflow: 'visible',
                                         borderTopRightRadius: 4
                                     }]}>
                                         <Text
@@ -472,7 +474,7 @@ class Profile extends React.Component {
                                     </View>
                                     <TouchableOpacity onPress={() => {
                                         this.setState({showLocations: true})
-                                    }} style={[styles.textInputWrap]}>
+                                    }} style={[styles.textInputWrap, {overflow: 'visible'},]}>
 
                                         <Text
                                             style={[styles.textInput, styles.textInputWithoutIcon]}
