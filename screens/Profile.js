@@ -13,12 +13,12 @@ class Profile extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            profileType: 'Individual',
-            profileNameEnglish: 'Abdul Majid Zargar',
-            email: 'maajidz@yahoo.com',
-            profileNameArabic: 'Zain',
-            phoneNumber: '+91 7006917548',
-            whatsappNumber: '+91 7006917548',
+            profileType: '',
+            profileNameEnglish: '',
+            email: '',
+            profileNameArabic: '',
+            phoneNumber: '',
+            whatsappNumber: '',
             currentPassword: '',
             newPassword2: '',
             newPassword: '',
@@ -201,7 +201,7 @@ class Profile extends React.Component {
 
     render() {
         return (<View style={styles.container}>
-                <TopNav title={""} openDrawer={this.openDrawer} style={{zIndex: 9999999}}/>
+                <TopNav title={""} openDrawer={this.openDrawer} style={{zIndex: 9999999, elevation: 4}}/>
                 <View style={styles.welcomeContainer}>
                     <View style={styles.profileInfoTop}>
                         <Image source={require('../assets/images/photo.jpg')} style={styles.profilePhoto}/>
@@ -231,11 +231,11 @@ class Profile extends React.Component {
                                         borderTopLeftRadius: 4,
                                         borderTopRightRadius: 4
                                     }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
+                                        {/*<View style={styles.iconWrap}>*/}
+                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                                    {/*height="18"*/}
+                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={[styles.textInput, styles.textInputWithoutIcon]}
@@ -252,11 +252,11 @@ class Profile extends React.Component {
                                         borderBottomLeftRadius: 4,
                                         borderBottomRightRadius: 4
                                     }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
+                                        {/*<View style={styles.iconWrap}>*/}
+                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                                    {/*height="18"*/}
+                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={[styles.textInput, styles.textInputWithoutIcon]}
@@ -274,11 +274,11 @@ class Profile extends React.Component {
                                         borderBottomLeftRadius: 4,
                                         borderBottomRightRadius: 4
                                     }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/user.svg')}/>
-                                        </View>
+                                        {/*<View style={styles.iconWrap}>*/}
+                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                                    {/*height="18"*/}
+                                                    {/*source={require('../assets/icons/user.svg')}/>*/}
+                                        {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={[styles.textInput, styles.textInputWithoutIcon]}
@@ -296,11 +296,11 @@ class Profile extends React.Component {
                                         borderBottomLeftRadius: 4,
                                         borderBottomRightRadius: 4
                                     }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
+                                        {/*<View style={styles.iconWrap}>*/}
+                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                                    {/*height="18"*/}
+                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={[styles.textInput, styles.textInputWithoutIcon]}
@@ -318,11 +318,11 @@ class Profile extends React.Component {
                                         borderBottomLeftRadius: 4,
                                         borderBottomRightRadius: 4
                                     }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
+                                        {/*<View style={styles.iconWrap}>*/}
+                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                                    {/*height="18"*/}
+                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={[styles.textInput, styles.textInputWithoutIcon]}
@@ -340,11 +340,11 @@ class Profile extends React.Component {
                                         borderBottomLeftRadius: 4,
                                         borderBottomRightRadius: 4
                                     }]}>
-                                        <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18"
-                                                    source={require('../assets/icons/password.svg')}/>
-                                        </View>
+                                        {/*<View style={styles.iconWrap}>*/}
+                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                                    {/*height="18"*/}
+                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
                                             style={[styles.textInput, styles.textInputWithoutIcon]}

@@ -90,12 +90,12 @@ class LeadsList extends React.Component {
     renderNewLeads = () => {
         if (this.state.new_leads && this.state.new_leads.length > 0) {
             return this.state.new_leads.map(resArr => {
-                return (<View style={{backgroundColor: 'transparent', paddingHorizontal: 8}} key={resArr.id}>
-                        <View style={[styles.topDateBadgeGradient]}>
-                            <View style={styles.topInfoSeparator}></View>
+                return (<View style={{overflow: 'visible', paddingTop: 12, paddingHorizontal: 8}} key={resArr.id}>
+                        {/*<View style={[styles.topDateBadgeGradient]}>*/}
+                        {/*<View style={styles.topInfoSeparator}></View>*/}
 
-                            {/*<View><Text style={styles.statusText}>DONE</Text></View>*/}
-                        </View>
+                        {/*<View><Text style={styles.statusText}>DONE</Text></View>*/}
+                        {/*</View>*/}
                         <View style={styles.leadsListCardContainer}>
                             <TouchableOpacity
                                 activeOpacity={.7}
@@ -254,19 +254,20 @@ class LeadsList extends React.Component {
 
     render() {
         return <View style={styles.container}>
-            <View>
+            <View style={{paddingHorizontal: 12,}}>
+                <Text style={{color: 'white', marginBottom: 12}}>Recent Leads</Text>
                 <ScrollView style={{
-                    paddingVertical: 16,
-                    paddingHorizontal: 12,
+                    paddingTop: 4,
+                    paddingHorizontal: 8,
+                    paddingBottom: 24,
                     alignSelf: 'center',
                     backgroundColor: '#821B24',
-                    width: '92%',
+                    width: '100%',
                     height: '100%',
                     zIndex: 9,
                     borderRadius: 12
                 }}>
                     {/*{this.renderNewLeads()}*/}
-                    <Text style={{color: 'white'}}>Recent Leads</Text>
                     {/*{this.props.leadType !== 'all' ? this.props.leadType === 'cancelled' ? this.renderCanceledLeads() : this.renderNewLeads() : this.renderLeads()}*/}
                     {/*<View><Text style={styles.statusText}>Approved Leads</Text></View>*/}
                     {/*{this.renderLeads()}*/}

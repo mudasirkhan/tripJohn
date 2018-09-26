@@ -4,8 +4,8 @@ import {StyleSheet, Platform} from 'react-native';
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection: 'column',
-        position: 'relative'
+        // flexDirection: 'column',
+        // position: 'relative'
     },
     profileDescContainer: {
         flex: 3,

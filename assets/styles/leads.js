@@ -8,21 +8,21 @@ const styles = StyleSheet.create({
     leadsListCardContainer: {
         backgroundColor: '#70161D',
         position: 'relative',
+        overflow: 'visible',
         borderRadius: 4,
-        borderTopLeftRadius: 0,
         width: '100%',
         alignSelf: 'center',
-        ...Platform.select({
-            ios: {
-                shadowColor: '#000',
-                shadowOffset: {width: 0, height: 2},
-                shadowOpacity: .11,
-                shadowRadius: 5,
-            },
-            android: {
-                elevation: 2
-            },
-        }),
+        // ...Platform.select({
+        //     ios: {
+        //         shadowColor: '#000',
+        //         shadowOffset: {width: 0, height: 2},
+        //         shadowOpacity: .11,
+        //         shadowRadius: 5,
+        //     },
+        //     android: {
+        //         elevation: 4
+        //     },
+        // }),
     },
     topTabContainer: {
         flexDirection: 'row',
@@ -49,15 +49,16 @@ const styles = StyleSheet.create({
     leadsListCard: {
         position: 'relative',
         flexDirection: 'row',
+        overflow: 'visible',
         ...Platform.select({
             ios: {
-                // shadowColor: '#000',
-                // shadowOffset: {width: 0, height: 2},
-                // shadowOpacity: .16,
-                // shadowRadius: 5,
+                shadowColor: '#000',
+                shadowOffset: {width: 0, height: 2},
+                shadowOpacity: .16,
+                shadowRadius: 5,
             },
             android: {
-                // elevation: 4
+                elevation: 4
             },
         }),
     },
