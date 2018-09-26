@@ -128,6 +128,8 @@ class CarsList extends React.Component {
 
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
+        this.getCars();
+
     }
 
     render() {
@@ -159,7 +161,7 @@ class CarsList extends React.Component {
                                 <Text style={modalStyles.modalTitleText}>Add a car</Text>
                             </View>
                         </View>
-                        <AddCar setModalVisible={this.setModalVisible} token={this.props.token} navigation={this.props.navigation}/>
+                        <AddCar setModalVisible={this.setModalVisible.bind(this,!this.state.modalVisible)} token={this.props.token} navigation={this.props.navigation}/>
                     </View>
                 </View>
             </Modal>

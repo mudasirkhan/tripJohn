@@ -248,7 +248,9 @@ class UpdateCar extends React.Component {
         })
             .then(response => {
                 console.log(response, "car updated successfully")
-                alert("car updated successfully")
+                //alert("car updated successfully");
+                this.props.setModalVisible();
+
             })
             .catch((error) => {
                 console.log(error);
@@ -610,7 +612,7 @@ class UpdateCar extends React.Component {
                         <View style={[styles.greyBorderBtnWrap, {backgroundColor: 'black', borderColor: 'black'}]}>
                             <TouchableOpacity style={styles.greyBorderBtn}
                                               onPress={() => {
-                                                  this.addCar();
+                                                  this.updateCar();
                                                   // this.props.setModalVisible(false);
                                               }}>
                                 <Text style={{color: 'white'}}>Update</Text>

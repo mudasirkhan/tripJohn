@@ -64,6 +64,10 @@ class CarsList extends React.Component {
         console.log(this.props, this.state, this.props.navigation.getParam('token', ''))
         let token = await this.props.navigation.getParam('token', '');
         let id = await this.props.navigation.getParam('id', '');
+        this.getCar(id, token);
+    }
+
+    getCar = (id, token) => {
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_cars_details', {
             car_id: id,
             access_token: token
@@ -89,6 +93,9 @@ class CarsList extends React.Component {
 
     setModalVisible(visible) {
         this.setState({modalVisible: visible});
+        let token = this.props.navigation.getParam('token', '');
+        let id = this.props.navigation.getParam('id', '');
+        !visible && this.getCar(id, token);
     }
 
     showNumber = () => {
@@ -134,7 +141,7 @@ class CarsList extends React.Component {
                         </View>
                     </View>
                 </View>
-                <UpdateCar setModalVisible={this.setModalVisible} token={token} details={this.state.car}/>
+                <UpdateCar setModalVisible={this.setModalVisible.bind(this,!this.state.modalVisible)} token={token} details={this.state.car} />
             </Modal>
             <View style={styles.carImageContainer}>
                 <Image style={styles.carFullSizeImage}

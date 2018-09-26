@@ -299,6 +299,7 @@ class AddCar extends React.Component {
 
             status,
         } = this.state;
+        let nav = this.props.navigation;
 
         let resp = {};
         await axios.post('https://tripjhon.insightssoftwares.com//api/v1/add_car', {
@@ -351,7 +352,7 @@ class AddCar extends React.Component {
                     'Add Car',
                     'Car added successfully',
                     [
-                        {text: 'OK', onPress: () => this.props.navigation.navigate('Cars')},
+                        {text: 'OK', onPress: () => this.props.setModalVisible()},
                     ],
                     {cancelable: false}
                 )
