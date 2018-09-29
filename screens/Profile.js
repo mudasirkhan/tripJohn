@@ -1,6 +1,7 @@
 import React from 'react';
 import {Text, StyleSheet, Platform, Image, View, TextInput, ScrollView, TouchableOpacity} from 'react-native'
 import {LinearGradient} from 'expo';
+import { ImagePicker, Permissions } from 'expo';
 import {TopNav} from "../components/TopNav";
 import SvgUri from 'react-native-svg-uri';
 import commonStyles from "../assets/styles/common";
@@ -41,7 +42,8 @@ class Profile extends React.Component {
             locations: [],
             showLocations: false,
             showEmirates: false,
-            selectedEmirate: 'Select an Option'
+            selectedEmirate: 'Select an Option',
+            base64: null,
         }
     }
 
@@ -83,7 +85,7 @@ class Profile extends React.Component {
                     englishOfficeTimings: data.english_office_timings,
                     latitude: data.latitude,
                     longitude: data.longitude,
-                    avatar: data.avatar,
+                    avatar: 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
                     description: data.description
 
 
@@ -116,7 +118,7 @@ class Profile extends React.Component {
             arabic_pickup_address: this.state.arabicPickupAddress,
             english_office_timings: this.state.officeTimingsEnglish,
             arabic_office_timings: this.state.englishOfficeTimings,
-            avatar: this.state.avatar,
+            avatar: this.state.base64 ? this.state.base64 : this.state.avatar ,
             description: this.state.description,
         })
             .then(response => {
@@ -198,13 +200,63 @@ class Profile extends React.Component {
             </View>
         </TouchableOpacity>)
     }
+    // base64toBlob = b64Image => {
+    //     // Split the base64 string in data and contentType
+    //     const block = b64Image.split(';');
+    //     // Get the content type of the image
+    //     const contentType = block[0].split(':')[1];
+    //     // get the real base64 content of the file
+    //     const b64Data = block[1].split(',')[1];
+    //     const sliceSize = 512;
+    //
+    //     const byteCharacters = atob(b64Data);
+    //     const byteArrays = [];
+    //
+    //     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+    //         const slice = byteCharacters.slice(offset, offset + sliceSize);
+    //
+    //         const byteNumbers = new Array(slice.length);
+    //         for (let i = 0; i < slice.length; i++) {
+    //             byteNumbers[i] = slice.charCodeAt(i);
+    //         }
+    //
+    //         const byteArray = new Uint8Array(byteNumbers);
+    //
+    //         byteArrays.push(byteArray);
+    //     }
+    //
+    //     const blob = new Blob(byteArrays, { type: contentType });
+    //     return blob;
+    // }
+
+    pickImage = async () => {
+        console.log('coming');
+        if (Platform.OS === 'ios') { const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL); }
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                allowsEditing: true,
+                aspect: [4, 3],
+                base64: true,
+                quality: 0.4
+            });
+            console.log(result);
+
+            if (!result.cancelled) {
+                this.setState({ avatar: result.uri, base64: `data:image/jpeg;base64,${result.base64}` });
+
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
 
     render() {
         return (<View style={styles.container}>
                 <TopNav title={""} openDrawer={this.openDrawer} style={{zIndex: 9999999, elevation: 4}}/>
                 <View style={styles.welcomeContainer}>
                     <View style={styles.profileInfoTop}>
-                        <Image source={require('../assets/images/photo.jpg')} style={styles.profilePhoto}/>
+                        <Image source={{uri: this.state.avatar}} style={styles.profilePhoto}/>
                         <View style={styles.profileNameWrap}>
                             <Text style={styles.profileNameText}>{this.state.profileNameEnglish}</Text>
                             <Text style={styles.profileTypeText}>{this.state.profileType}</Text>
@@ -601,6 +653,17 @@ class Profile extends React.Component {
                                                 placeholder="Office Timings (English)"
                                                 onChangeText={englishOfficeTimings => this.setState({englishOfficeTimings})}
                                             />
+                                        </View>
+                                    </View>
+                                </View>
+                                <View style={[styles.profileInputGroup, {width: '100%'}]}>
+                                    <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                        <View style={[styles.textInputWrap, {
+                                            borderRadius: 4
+                                        }]}>
+                                            <TouchableOpacity onPress={()=>{this.pickImage()}}>
+                                                <Text>Upload Image</Text>
+                                            </TouchableOpacity>
                                         </View>
                                     </View>
                                 </View>
