@@ -1,8 +1,9 @@
 import React from 'react'
-import {View, Text, TextInput, TouchableOpacity, ScrollView} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, ScrollView, Platform, Image} from 'react-native'
 import axios from "axios/index"
 import * as _ from 'lodash'
 import styles from "../assets/styles/addCar";
+import {ImagePicker, Permissions} from "expo";
 
 class UpdateCar extends React.Component {
     constructor(props) {
@@ -81,7 +82,9 @@ class UpdateCar extends React.Component {
 
             showCarTypes: false,
 
-            showStatusMethods: false
+            showStatusMethods: false,
+
+            avatar: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.props.details.car_image,
         }
     }
 
@@ -362,6 +365,26 @@ class UpdateCar extends React.Component {
                 this.setState({loader: false, error: true})
             });
         console.log(resp);
+    }
+    pickImage = async () => {
+        console.log('coming');
+        if (Platform.OS === 'ios') { const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL); }
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                allowsEditing: true,
+                aspect: [4, 3],
+                base64: true,
+                quality: 0.4
+            });
+            console.log(result);
+
+            if (!result.cancelled) {
+                this.setState({ avatar: result.uri, car_image: `data:image/jpeg;base64,${result.base64}` });
+
+            }
+        } catch (err) {
+            console.log(err);
+        }
     }
 
     render() {
@@ -700,14 +723,10 @@ class UpdateCar extends React.Component {
                                 <View style={[styles.textInputWrap, {
                                     borderRadius: 4,
                                 }]}>
-                                    <TextInput
-                                        placeholder="car_brand_id" value={this.state.car_brand_id}
-                                        onChangeText={car_brand_id => {
-                                            this.setState({car_brand_id})
-                                        }}
-                                        underlineColorAndroid="transparent"
-                                        style={styles.textInput}
-                                    />
+                                    <TouchableOpacity onPress={()=>{this.pickImage()}}>
+                                        <Text>Car Image</Text>
+                                    </TouchableOpacity>
+                                    <Image source={{uri: !this.state.avatar ? 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car_image : this.state.avatar}} style={{height: 40, width: 40}}/>
                                 </View>
                             </View>
                         </View>

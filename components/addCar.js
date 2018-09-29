@@ -1,10 +1,11 @@
 import React from 'react'
-import {View, Text, TextInput, TouchableOpacity, ScrollView, Alert} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, ScrollView, Alert, Platform, Image} from 'react-native'
 import axios from "axios/index"
 import * as _ from 'lodash'
 import SvgUri from 'react-native-svg-uri';
 import commonStyles from "../assets/styles/common";
 import styles from "../assets/styles/addCar";
+import {ImagePicker, Permissions} from "expo";
 
 class AddCar extends React.Component {
     constructor(props) {
@@ -384,6 +385,29 @@ class AddCar extends React.Component {
         console.log(resp);
     }
 
+    pickImage = async () => {
+        console.log('coming');
+        if (Platform.OS === 'ios') { const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL); }
+        try {
+            const result = await ImagePicker.launchImageLibraryAsync({
+                allowsEditing: true,
+                aspect: [4, 3],
+                base64: true,
+                quality: 0.4
+            });
+            console.log(result);
+
+            if (!result.cancelled) {
+                this.setState({ avatar: result.uri, car_image: `data:image/jpeg;base64,${result.base64}` });
+
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+
+
     render() {
         return (<View style={{flex: 1, zIndex: 99999}}>
                 <ScrollView>
@@ -718,14 +742,27 @@ class AddCar extends React.Component {
                                     <View style={[styles.textInputWrap, {
                                         borderRadius: 4
                                     }]}>
-                                        <TextInput
-                                            placeholder="car_image" value={this.state.car_image}
-                                            onChangeText={car_image => {
-                                                this.setState({car_image})
-                                            }}
-                                            underlineColorAndroid="transparent"
-                                            style={styles.textInput}
-                                        />
+                                        {/*<TextInput*/}
+                                            {/*placeholder="car_image" value={this.state.car_image}*/}
+                                            {/*onChangeText={car_image => {*/}
+                                                {/*this.setState({car_image})*/}
+                                            {/*}}*/}
+                                            {/*underlineColorAndroid="transparent"*/}
+                                            {/*style={styles.textInput}*/}
+                                        {/*/>*/}
+                                        <View style={[styles.profileInputGroup, {width: '100%'}]}>
+                                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                                <View style={[styles.textInputWrap, {
+                                                    borderRadius: 4
+                                                }]}>
+                                                    <TouchableOpacity onPress={()=>{this.pickImage()}}>
+                                                        <Text>Car Image</Text>
+                                                    </TouchableOpacity>
+                                                </View>
+                                            </View>
+                                            <Image source={{uri: this.state.avatar}} style={{height: 60, width: 60, backgroundColor: 'red'}}/>
+
+                                        </View>
                                     </View>
                                 </View>
                             </View>
