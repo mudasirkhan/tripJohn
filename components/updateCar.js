@@ -352,7 +352,9 @@ class UpdateCar extends React.Component {
         })
             .then(response => {
                 console.log(response, "car updated successfully")
-                alert("car updated successfully")
+                //alert("car updated successfully");
+                this.props.setModalVisible();
+
             })
             .catch((error) => {
                 console.log(error);
