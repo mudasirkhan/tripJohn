@@ -8,14 +8,14 @@ const styles = StyleSheet.create({
     leadsListCardContainer: {
         backgroundColor: '#70161D',
         position: 'relative',
-        overflow: 'visible',
+        overflow: 'hidden',
         borderRadius: 4,
         width: '100%',
         alignSelf: 'center',
         // ...Platform.select({
         //     ios: {
         //         shadowColor: '#000',
-        //         shadowOffset: {width: 0, height: 2},
+        //         shadowOffset: {width: 0, wheight: 2},
         //         shadowOpacity: .11,
         //         shadowRadius: 5,
         //     },
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     leadsListCard: {
         position: 'relative',
         flexDirection: 'row',
-        overflow: 'visible',
+        overflow: 'hidden',
         ...Platform.select({
             ios: {
                 shadowColor: '#000',
@@ -76,6 +76,9 @@ const styles = StyleSheet.create({
     },
     carMessage: {
         color: '#fff',
+        overflow: 'hidden',
+        width: '100%',
+        paddingRight: 8,
         marginTop: 6,
         fontFamily: 'Lato-R',
         ...Platform.select({

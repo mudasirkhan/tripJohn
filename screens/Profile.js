@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet, Platform, Image, View, TextInput, ScrollView, TouchableOpacity} from 'react-native'
+import {Text, StyleSheet, Platform, Image, View, TextInput, ScrollView, TouchableOpacity, ActivityIndicator, Alert} from 'react-native'
 import {LinearGradient} from 'expo';
 import {TopNav} from "../components/TopNav";
 import SvgUri from 'react-native-svg-uri';
@@ -84,7 +84,8 @@ class Profile extends React.Component {
                     latitude: data.latitude,
                     longitude: data.longitude,
                     avatar: data.avatar,
-                    description: data.description
+                    description: data.description,
+                    loading: false,
 
 
                 }, () => {
@@ -102,6 +103,7 @@ class Profile extends React.Component {
     }
 
     updateDetails = () => {
+        this.setState({loading: true},()=> {
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_personal_details', {
             access_token: this.props.token,
             english_name: this.state.profileNameEnglish,
@@ -121,13 +123,16 @@ class Profile extends React.Component {
         })
             .then(response => {
                 console.log(response)
+                Alert.alert('Update Profile', 'Profile Updated Successfully' )
                 this.getDetails()
             })
             .catch((error) => {
                 console.log(error);
+                Alert.alert('Update Profile', 'Update failed' )
                 this.setState({loader: false, error: true})
 
             });
+        })
     }
     openDrawer = () => {
         this.props.navigation.openDrawer()
@@ -141,7 +146,7 @@ class Profile extends React.Component {
                 console.log(response)
                 this.setState({
                     emirates: response.data.emirates,
-                    emirateSelected: this.state.emiratesId ? response.data.emirates[this.state.emiratesId].english_name : "Select an emirate"
+                    emirateSelected:( this.state.emiratesId && (this.state.emiratesId != 0) && response.data.emirates && response.data.emirates[this.state.emiratesId].english_name ) ? response.data.emirates[this.state.emiratesId].english_name : "Select an emirate"
                 })
             })
             .catch((error) => {
@@ -157,12 +162,12 @@ class Profile extends React.Component {
         })
             .then(response => {
                 console.log(response)
-                let loc = response.data.locations.filter(loc => loc.id = this.state.location);
+                let loc = response.data.locations.filter(loc => loc.id === this.state.location);
                 this.setState({
                     locations: response.data.locations,
                     locationSelected: (loc && loc[0]) ? loc[0].english_name : "Select an location"
                 }, () => {
-                    console.log(loc[0].english_name)
+                    console.log((loc && loc[0] && loc[0].english_name) ? loc[0].english_name: this.state.location)
                 })
             })
             .catch((error) => {
@@ -173,12 +178,14 @@ class Profile extends React.Component {
     }
     renderEmirates = () => {
         let arr = Object.keys(this.state.emirates)
+
         return _.map(arr, emirate => <TouchableOpacity key={emirate} onPress={() => {
             this.setState({
                 emirateSelected: this.state.emirates[emirate].english_name,
                 emiratesId: this.state.emirates[emirate].id,
                 showEmirates: false
             })
+
         }}>
             <View style={{zIndex: 99999, paddingVertical: 12, paddingLeft: 20, width: '100%'}}>
                 <Text>
@@ -444,7 +451,7 @@ class Profile extends React.Component {
                                     }} style={[styles.textInputWrap, {
                                         borderTopLeftRadius: 4,
                                         overflow: 'visible',
-                                        borderTopRightRadius: 4
+                                        borderTopRightRadius: 4,
                                     }]}>
                                         <Text
                                             style={[styles.textInput, styles.textInputWithoutIcon]}
@@ -647,7 +654,7 @@ class Profile extends React.Component {
                     <TouchableOpacity style={styles.greyBorderBtn} onPress={() => {
                         this.updateDetails()
                     }}>
-                        <Text style={styles.saveBtnText}>Save</Text>
+                        {this.state.loading? <ActivityIndicator /> : <Text style={styles.saveBtnText}>Save</Text>}
                     </TouchableOpacity>
 
                 </View>

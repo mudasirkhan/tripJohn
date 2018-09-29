@@ -81,6 +81,15 @@ class Leads extends React.Component {
                                         <Text style={styles.extraInfoText}>{resArr.name}</Text>
                                     </View>
                                 </View>
+                                <View style={[styles.buttonWrap, {right: 2}]}>
+                                    <TouchableOpacity onPress={() => {
+                                        this.cancell(resArr.id)
+                                    }}>
+                                        <SvgUri width={21}
+                                                height={27}
+                                                source={require('../assets/icons/decline.svg')}/>
+                                    </TouchableOpacity>
+                                </View>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -191,7 +200,7 @@ class Leads extends React.Component {
                                     }}>
                                         <SvgUri width="21"
                                                 height="27"
-                                                source={require('../assets/icons/approve.svg')}/>
+                                                source={require('../assets/icons/complete.svg')}/>
                                     </TouchableOpacity>
                                     <TouchableOpacity onPress={() => {
                                         this.cancell(resArr.id)
@@ -209,7 +218,6 @@ class Leads extends React.Component {
         }
     };
     approve = async (id) => {
-        alert(id)
         await axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_lead', {
             access_token: this.props.token,
             lead_id: id,
@@ -231,7 +239,6 @@ class Leads extends React.Component {
             access_token: this.props.token,
             lead_id: id,
             status: "canceled"
-
         })
             .then(response => {
                 console.log(response.data)
@@ -240,7 +247,6 @@ class Leads extends React.Component {
             .catch((error) => {
                 console.log(error);
                 this.setState({loader: false, error: true})
-
             });
     }
     getLeads = async () => {

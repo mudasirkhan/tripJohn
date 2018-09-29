@@ -96,7 +96,7 @@ class LeadsList extends React.Component {
 
                         {/*<View><Text style={styles.statusText}>DONE</Text></View>*/}
                         {/*</View>*/}
-                        <View style={styles.leadsListCardContainer}>
+                        <View style={styles.leadcsListCardContainer}>
                             <TouchableOpacity
                                 activeOpacity={.7}
                                 style={styles.leadsListCard}
@@ -112,7 +112,8 @@ class LeadsList extends React.Component {
                                 <View style={styles.cardRightSide}>
                                     <Text style={styles.carName}>Car ID: {resArr.car_id}</Text>
                                     {/*<Text>{resArr.contact_number}</Text>*/}
-                                    <Text style={styles.carMessage}>{resArr.message}</Text>
+                                    <Text style={styles.carMessage} numberOfLines={2}
+                                          ellipsizeMode='tail'>{resArr.message}</Text>
                                     <View style={styles.extraInfoWrap}>
                                         <Text style={styles.extraInfoText}>{resArr.name}</Text>
                                     </View>
@@ -138,6 +139,11 @@ class LeadsList extends React.Component {
                     </View>
                 )
             })
+        }
+        else {
+            return <Text style={{color: 'white', textAlign: 'center', flex: 1}}>
+                No Leads
+            </Text>
         }
     };
 

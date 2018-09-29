@@ -40,7 +40,7 @@ class Deals extends React.Component {
             discount: this.state.discount,
             start_date: this.state.start_date,
             end_date: this.state.end_date,
-            status: this.state.statusTypes,
+            status: 'newdeal',
             carSelected: '',
             showCars: false
         })
@@ -176,16 +176,16 @@ class Deals extends React.Component {
                                        underlineColorAndroid="transparent"
                                        onChangeText={end_date => this.setState({end_date})}/></View>
 
-                        <TouchableOpacity onPress={() => {
-                            this.renderStatusOptions(this.state.statusTypes)
-                        }}><Text
-                            style={styles.sectionTitle}> {!this.state.status ? 'Select Status' : null} </Text></TouchableOpacity>
+                        {/*<TouchableOpacity onPress={() => {*/}
+                            {/*this.renderStatusOptions(this.state.statusTypes)*/}
+                        {/*}}><Text*/}
+                            {/*style={styles.sectionTitle}> {!this.state.status ? 'Select Status' : null} </Text></TouchableOpacity>*/}
 
-                        <View style={{
-                            width: '100%',
-                            borderRadius: 4,
-                            overflow: 'hidden'
-                        }}>{this.renderStatusOptions(this.state.statusTypes)}</View>
+                        {/*<View style={{*/}
+                            {/*width: '100%',*/}
+                            {/*borderRadius: 4,*/}
+                            {/*overflow: 'hidden'*/}
+                        {/*}}>{this.renderStatusOptions(this.state.statusTypes)}</View>*/}
 
                         <TouchableOpacity onPress={() => {
                             this.submitDeal()

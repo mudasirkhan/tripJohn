@@ -3,13 +3,14 @@ import {StyleSheet, Platform} from 'react-native';
 
 const styles = StyleSheet.create({
     topContainer: {
-        flex: 2,
+        flex: 1,
         position: 'relative',
+        backgroundColor: '#AC2733',
+
     },
     topInfo: {
         flex: 2,
         paddingTop: 32,
-        backgroundColor: '#AC2733',
         flexDirection: 'column',
         alignItems: 'center',
         paddingHorizontal: 28,
@@ -151,7 +152,7 @@ const styles = StyleSheet.create({
         }),
     },
     bottomContainer: {
-        flex: 1,
+        flex: .5,
         backgroundColor: '#AC2733',
         overflow: 'visible',
         position: 'relative'

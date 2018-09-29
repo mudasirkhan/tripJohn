@@ -74,7 +74,7 @@ class Home extends React.Component {
             : <View style={{flex: 1, position: 'relative'}}>
                 <TopNav title={""} openDrawer={this.openDrawer}/>
                 <View style={styles.topContainer}>
-                    {this.state.plans &&
+                    {this.state.plans ?
                     <View style={styles.topInfo}>
                         {/*<TouchableOpacity*/}
                         {/*style={styles.changePlanBtn}*/}
@@ -110,7 +110,9 @@ class Home extends React.Component {
                                 </View>
                             </View>
                         </View>
-                    </View>}
+                    </View> :
+                        <Text style={{color: 'white'}}>Please login again</Text>
+                    }
                 </View>
                 <View style={styles.bottomContainer}>
                     {/*<View style={styles.leadsListHeader}>*/}
