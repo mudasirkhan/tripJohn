@@ -60,6 +60,28 @@ class UpdateCar extends React.Component {
             isFeaturedTypes: ["yes", "no"],
 
             statusTypes: ['publish', 'unpublish', 'deleted'],
+
+            carBrands: [],
+
+            car_brand_name: "",
+
+            carTypes: [],
+
+            car_type_name: "",
+
+            showInsuranceOptions: false,
+
+            showPaymentMethods: false,
+
+            showDriverMethods: false,
+
+            showFeaturedMethods: false,
+
+            showCarBrands: false,
+
+            showCarTypes: false,
+
+            showStatusMethods: false
         }
     }
 
@@ -69,7 +91,7 @@ class UpdateCar extends React.Component {
                 key={item}
                 style={this.state.accept_in !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({accept_in: item})
+                    this.setState({accept_in: item, showPaymentMethods: false})
                 }}>
                 <Text>
                     {item}
@@ -83,7 +105,7 @@ class UpdateCar extends React.Component {
                 key={item}
                 style={this.state.insurance_included !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({insurance_included: item})
+                    this.setState({insurance_included: item, showInsuranceOptions: false})
                 }}>
                 <Text style={styles.statusOptionsText}>
                     {item}
@@ -97,7 +119,7 @@ class UpdateCar extends React.Component {
                 key={item}
                 style={this.state.is_featured !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({is_featured: item})
+                    this.setState({is_featured: item, showFeaturedMethods: false})
                 }}>
                 <Text style={styles.statusOptionsText}>
                     {item}
@@ -111,7 +133,9 @@ class UpdateCar extends React.Component {
                 key={item}
                 style={this.state.status !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({status: item})
+                    this.setState({
+                        status: item, showStatusMethods: false
+                    })
                 }}>
                 <Text style={styles.statusOptionsText}>
                     {item}
@@ -125,7 +149,7 @@ class UpdateCar extends React.Component {
                 key={item}
                 style={this.state.driver !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({driver: item})
+                    this.setState({driver: item, showDriverMethods: false})
                 }}>
                 <Text style={styles.statusOptionsText}>
                     {item}
@@ -136,7 +160,9 @@ class UpdateCar extends React.Component {
 
     componentDidMount() {
         this.getPayment();
-        this.getInsuranceTypes()
+        this.getInsuranceTypes();
+        this.getBrands();
+        this.getTypes();
     }
 
     getPayment = async () => {
@@ -174,6 +200,84 @@ class UpdateCar extends React.Component {
             });
         console.log(resp);
         resp !== undefined && this.setState({insuranceTypes: resp});
+    }
+
+    getBrands = async () => {
+        let resp = {};
+        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_car_brands', {
+            access_token: this.props.token
+        })
+            .then(response => {
+                console.log(response)
+                resp = response.data.car_brands;
+                let name = resp.filter(item => item.id === this.state.car_brand_id)
+                this.setState({
+                    carBrands: resp,
+                    car_brand_name: (name && name.length > 0) ? name[0].english_name : 'Select Car Brand'
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+        console.log(resp);
+    }
+
+    renderCarBrands = (carBrands) => {
+        return _.map(carBrands, item => {
+            return <TouchableOpacity
+                key={item.id}
+                style={this.state.car_brand_id !== item.id ? styles.statusOptions : styles.selectedStatusOption}
+                onPress={() => {
+                    this.setState({
+                        car_brand_id: item.id, car_brand_name: item.english_name, showCarBrands: false
+                    })
+                }}>
+                <Text style={styles.statusOptionsText}>
+                    {item.english_name}
+                </Text>
+            </TouchableOpacity>
+        })
+    }
+
+    getTypes = async () => {
+        let resp = {};
+        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_car_types', {
+            access_token: this.props.token
+        })
+            .then(response => {
+                console.log(response)
+                resp = response.data.car_types;
+                let name = resp.filter(item => item.id === this.state.car_type_id)
+                this.setState({
+                    carTypes: resp,
+                    car_type_name: (name && name.length > 0) ? name[0].english_name : 'Select Car Type'
+                })
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+        console.log(resp);
+    }
+
+    renderCarTypes = (carBrands) => {
+        return _.map(carBrands, item => {
+            return <TouchableOpacity
+                key={item.id}
+                style={this.state.car_type_id !== item.id ? styles.statusOptions : styles.selectedStatusOption}
+                onPress={() => {
+                    this.setState({
+                        car_type_id: item.id, car_type_name: item.english_name, showCarTypes: false
+                    })
+                }}>
+                <Text style={styles.statusOptionsText}>
+                    {item.english_name}
+                </Text>
+            </TouchableOpacity>
+        })
     }
 
     updateCar = async () => {
@@ -435,35 +539,45 @@ class UpdateCar extends React.Component {
                 </View>
 
                 <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
+                    {/*<View style={styles.profileInputGroup}>*/}
+                    {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                    {/*<View style={styles.labelWrap}>*/}
+                    {/*<Text style={styles.inputLabelText}>Card Type</Text>*/}
+                    {/*</View>*/}
+                    {/*<View style={[styles.textInputWrap]}>*/}
+                    {/*<TextInput*/}
+                    {/*placeholder="car_type_id" value={this.state.car_type_id}*/}
+                    {/*onChangeText={car_type_id => {*/}
+                    {/*this.setState({car_type_id})*/}
+                    {/*}}*/}
+                    {/*underlineColorAndroid="transparent"*/}
+                    {/*style={styles.textInput}*/}
+                    {/*/>*/}
+                    {/*</View>*/}
+                    {/*</View>*/}
+                    {/*</View>*/}
+                    <View style={styles.profileInputGroup}>
+                        <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                            <TouchableOpacity
+                                style={[styles.profileTitleInfo, styles.fullWidth]}
+                                onPress={() => {
+                                    this.setState({showInsuranceOptions: true})
+                                }}
+                            >
+                                <View style={styles.selectDropdown}>
+                                    <Text style={[styles.selectDropdownText, {color: '#484848'}]}>Insurance Type:</Text>
+                                    <Text style={styles.selectDropdownText}>{this.state.insurance_included}</Text>
+                                </View>
 
-                    <View style={styles.profileInputGroup}>
-                        <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                            <View style={styles.labelWrap}>
-                                <Text style={styles.inputLabelText}>Card Type</Text>
-                            </View>
-                            <View style={[styles.textInputWrap]}>
-                                <TextInput
-                                    placeholder="car_type_id" value={this.state.car_type_id}
-                                    onChangeText={car_type_id => {
-                                        this.setState({car_type_id})
-                                    }}
-                                    underlineColorAndroid="transparent"
-                                    style={styles.textInput}
-                                />
-                            </View>
-                        </View>
-                    </View>
-                    <View style={styles.profileInputGroup}>
-                        <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                            <View style={styles.profileTitleInfo}>
-                                <Text style={styles.profileTitleText}>Insurance Options</Text>
                                 {/*<Text style={styles.editBtn}>EDIT</Text>*/}
-                            </View>
+                            </TouchableOpacity>
                             {/*<Text>{this.state.accept_in}</Text>*/}
                             {/*{this.renderPaymentOptions(this.state.paymentMethods)}*/}
 
                             {/*<Text>{this.state.insurance_included}</Text>*/}
-                            {this.renderInsuranceOptions(this.state.insuranceTypes)}
+                            <View>
+                                {this.state.showInsuranceOptions && this.renderInsuranceOptions(this.state.insuranceTypes)}
+                            </View>
                             {/*<View style={[styles.textInputWrap]}>*/}
                             {/*<TextInput*/}
                             {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
@@ -476,58 +590,96 @@ class UpdateCar extends React.Component {
                             {/*</View>*/}
                         </View>
                         <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                            <View style={styles.profileTitleInfo}>
-                                <Text style={styles.profileTitleText}>Payment Method</Text>
+                            <TouchableOpacity style={[styles.profileTitleInfo, styles.fullWidth]}
+                                              onPress={() => {
+                                                  this.setState({showPaymentMethods: true})
+                                              }}
+                            >
+                                <View style={styles.selectDropdown}>
+                                    <Text style={[styles.selectDropdownText, {color: '#484848'}]}>Payment Method:</Text>
+                                    <Text style={styles.selectDropdownText}>{this.state.accept_in}</Text>
+                                </View>
                                 {/*<Text style={styles.editBtn}>EDIT</Text>*/}
-                            </View>
+                            </TouchableOpacity>
                             {/*<Text>{this.state.accept_in}</Text>*/}
-                            {this.renderPaymentOptions(this.state.paymentMethods)}
-
-                            {/*<View style={[styles.textInputWrap]}>*/}
-                            {/*<TextInput*/}
-                            {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
-                            {/*onChangeText={security_deposit => {*/}
-                            {/*this.setState({security_deposit})*/}
-                            {/*}}*/}
-                            {/*underlineColorAndroid="transparent"*/}
-                            {/*style={styles.textInput}*/}
-                            {/*/>*/}
-                            {/*</View>*/}
+                            {this.state.showPaymentMethods && this.renderPaymentOptions(this.state.paymentMethods)}
                         </View>
                     </View>
                     <View style={styles.profileInputGroup}>
 
-                        <View style={styles.profileTitleInfo}>
-                            <Text style={styles.profileTitleText}>Drivers</Text>
-                        </View>
+                        <TouchableOpacity style={[styles.profileTitleInfo, styles.fullWidth]}
+                                          onPress={() => {
+                                              this.setState({showDriverMethods: true})
+                                          }}
+                        >
+                            <View style={styles.selectDropdown}>
+                                <Text style={[styles.selectDropdownText, {color: '#484848'}]}>Drivers:</Text>
+                                <Text style={styles.selectDropdownText}>{this.state.driver}</Text>
+                            </View>
 
-                        <View style={styles.labelWrap}>
-                            <Text style={styles.inputLabelText}>Car name</Text>
-                        </View>
+                        </TouchableOpacity>
                         <View style={[styles.textInputWrap]}>
-                            {this.renderDriverOptions(this.state.driverTypes)}
+                            {this.state.showDriverMethods && this.renderDriverOptions(this.state.driverTypes)}
                         </View>
 
-                        <View style={styles.profileTitleInfo}>
-                            <Text style={styles.profileTitleText}>Featured</Text>
-                        </View>
+                        <TouchableOpacity style={[styles.profileTitleInfo, styles.fullWidth]}
+                                          onPress={() => {
+                                              this.setState({showFeaturedMethods: true})
+                                          }}
+                        >
+                            <View style={styles.selectDropdown}>
+                                <Text style={[styles.selectDropdownText, {color: '#484848'}]}>Featured:</Text>
+                                <Text style={styles.selectDropdownText}>{this.state.is_featured}</Text>
+                            </View>
+                        </TouchableOpacity>
 
-                        <View style={styles.labelWrap}>
-                            <Text style={styles.inputLabelText}>Car name</Text>
-                        </View>
                         <View style={[styles.textInputWrap]}>
-                            {this.renderFeaturedOptions(this.state.isFeaturedTypes)}
+                            {this.state.showFeaturedMethods && this.renderFeaturedOptions(this.state.isFeaturedTypes)}
                         </View>
 
-                        <View style={styles.profileTitleInfo}>
-                            <Text style={styles.profileTitleText}>Status</Text>
+                        <TouchableOpacity style={[styles.profileTitleInfo, styles.fullWidth]}
+                                          onPress={() => {
+                                              this.setState({showCarBrands: true})
+                                          }}
+                        ><View style={styles.selectDropdown}>
+                            <Text style={[styles.selectDropdownText, {color: '#484848'}]}>Car Brand:</Text>
+                            <Text style={styles.selectDropdownText}>{this.state.car_brand_name}</Text>
                         </View>
 
-                        <View style={styles.labelWrap}>
-                            <Text style={styles.inputLabelText}>Car Status</Text>
-                        </View>
+
+                        </TouchableOpacity>
                         <View style={[styles.textInputWrap]}>
-                            {this.renderStatusOptions(this.state.statusTypes)}
+                            {this.state.showCarBrands && this.renderCarBrands(this.state.carBrands)}
+                        </View>
+
+                        <TouchableOpacity style={[styles.profileTitleInfo, styles.fullWidth]}
+                                          onPress={() => {
+                                              this.setState({showCarTypes: true})
+                                          }}
+                        >
+                            <View style={styles.selectDropdown}>
+                                <Text style={[styles.selectDropdownText, {color: '#484848'}]}>Car Type:</Text>
+                                <Text style={styles.selectDropdownText}>{this.state.car_type_name}</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                        <View style={[styles.textInputWrap]}>
+                            {this.state.showCarTypes && this.renderCarTypes(this.state.carTypes)}
+                        </View>
+
+                        <TouchableOpacity style={[styles.profileTitleInfo, styles.fullWidth]}
+                                          onPress={() => {
+                                              this.setState({showStatusMethods: true})
+                                          }}>
+                            <View style={styles.selectDropdown}>
+                                <Text style={[styles.selectDropdownText, {color: '#484848'}]}>Status:</Text>
+                                <Text style={styles.selectDropdownText}>{this.state.status}</Text>
+                            </View>
+
+                        </TouchableOpacity>
+
+                        <View style={[styles.textInputWrap]}>
+                            {this.state.showStatusMethods && this.renderStatusOptions(this.state.statusTypes)}
                         </View>
                     </View>
                 </View>

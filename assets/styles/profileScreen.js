@@ -279,7 +279,9 @@ const styles = StyleSheet.create({
                 fontSize: 14,
             },
         }),
-        fontFamily: 'Lato-R'
+        fontFamily: 'Lato-R',
+        flex: 1,
+        textAlign: 'center'
     }
 
 });

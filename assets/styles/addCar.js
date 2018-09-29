@@ -126,6 +126,17 @@ const styles = StyleSheet.create({
         paddingTop: 18,
         paddingBottom: 12
     },
+    fullWidth: {
+        width: '100%',
+    },
+    selectDropdown: {
+        borderRadius: 4,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        width: '100%',
+        padding: 12,
+        backgroundColor: '#fff'
+    },
     editBtn: {
         fontFamily: 'Lato-B',
         color: '#ACA8B6',
@@ -135,6 +146,11 @@ const styles = StyleSheet.create({
         fontFamily: 'Lato-B',
         fontSize: 18,
         color: '#fff'
+    },
+    selectDropdownText: {
+        fontFamily: 'Lato-B',
+        fontSize: 18,
+        color: '#333'
     },
     profileNameWrap: {
         flex: 1,
