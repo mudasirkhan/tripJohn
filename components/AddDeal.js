@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert} from 'react-native'
+import {Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert, ActivityIndicator} from 'react-native'
 import {TopNav} from "../components/TopNav";
 import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
@@ -20,7 +20,8 @@ class Deals extends React.Component {
             resp: {},
             selectedLocation: '',
             cars: [],
-            statusTypes: ["newdeal", "approved", "canceled", "paused", "active"]
+            statusTypes: ["newdeal", "approved", "canceled", "paused", "active"],
+            loading: false,
         }
     }
 
@@ -34,6 +35,7 @@ class Deals extends React.Component {
     }
 
     submitDeal() {
+        this.setState({loading: true},()=> {
         axios.post('https://tripjhon.insightssoftwares.com//api/v1/add_deal', {
             access_token: this.props.token,
             car_id: this.state.car_id,
@@ -52,13 +54,19 @@ class Deals extends React.Component {
                     'Adding Deal',
                     response.data.message,
                     [
-                        {text: 'OK', onPress: () => console.log('OK Pressed')},
+                        {text: 'OK', onPress: () => this.setState({
+                                car: data,
+                                loading: false,
+                                car_id: '',
+                                discount: '',
+                                start_date: '',
+                                end_date: '',
+                                carSelected: '',
+                            })},
                     ],
                     {cancelable: false}
                 )
-                this.setState({
-                    car: data
-                })
+
 
             })
             .catch((error) => {
@@ -66,6 +74,7 @@ class Deals extends React.Component {
                 this.setState({loader: false, error: true})
 
             });
+        })
     }
 
     componentDidMount() {
@@ -177,20 +186,21 @@ class Deals extends React.Component {
                                        onChangeText={end_date => this.setState({end_date})}/></View>
 
                         {/*<TouchableOpacity onPress={() => {*/}
-                            {/*this.renderStatusOptions(this.state.statusTypes)*/}
+                        {/*this.renderStatusOptions(this.state.statusTypes)*/}
                         {/*}}><Text*/}
-                            {/*style={styles.sectionTitle}> {!this.state.status ? 'Select Status' : null} </Text></TouchableOpacity>*/}
+                        {/*style={styles.sectionTitle}> {!this.state.status ? 'Select Status' : null} </Text></TouchableOpacity>*/}
 
                         {/*<View style={{*/}
-                            {/*width: '100%',*/}
-                            {/*borderRadius: 4,*/}
-                            {/*overflow: 'hidden'*/}
+                        {/*width: '100%',*/}
+                        {/*borderRadius: 4,*/}
+                        {/*overflow: 'hidden'*/}
                         {/*}}>{this.renderStatusOptions(this.state.statusTypes)}</View>*/}
 
                         <TouchableOpacity onPress={() => {
                             this.submitDeal()
-                        }} style={styles.addDealBtn}><Text style={styles.addDealBtnText}>Add
-                            Deal</Text></TouchableOpacity>
+                        }} style={styles.addDealBtn}>
+                            {this.state.loading ? <ActivityIndicator/> : <Text>Add deal</Text>}
+                        </TouchableOpacity>
 
                     </View>
                 </View>

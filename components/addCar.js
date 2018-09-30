@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, TextInput, TouchableOpacity, ScrollView, Alert, Platform, Image} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, ScrollView, Alert, Platform, Image, ActivityIndicator} from 'react-native'
 import axios from "axios/index"
 import * as _ from 'lodash'
 import SvgUri from 'react-native-svg-uri';
@@ -83,7 +83,9 @@ class AddCar extends React.Component {
 
             showCarTypes: false,
 
-            showStatusMethods: false
+            showStatusMethods: false,
+
+            loading: false,
 
 
         }
@@ -276,6 +278,7 @@ class AddCar extends React.Component {
     }
 
     addCar = async () => {
+        this.setState({loading: true}, async ()=>{
         const {
             english_name,
 
@@ -368,9 +371,9 @@ class AddCar extends React.Component {
 
                 Alert.alert(
                     'Add Car',
-                    'Car added successfully',
+                    response.data.message,
                     [
-                        {text: 'OK', onPress: () => this.props.setModalVisible()},
+                        {text: 'OK', onPress: () => response.data.status === 200 ? this.props.setModalVisible() : this.setState({loading: false})},
                     ],
                     {cancelable: false}
                 )
@@ -378,11 +381,12 @@ class AddCar extends React.Component {
             })
             .catch((error) => {
                 console.log(error);
-                alert("car add failed")
-                this.setState({loader: false, error: true})
+                alert(response.data.message)
+                this.setState({loading: false, error: true})
 
             });
         console.log(resp);
+        })
     }
 
     pickImage = async () => {
@@ -823,7 +827,7 @@ class AddCar extends React.Component {
                                                       this.addCar();
                                                       // this.props.setModalVisible(false);
                                                   }}>
-                                    <Text style={{color: 'white'}}>Update</Text>
+                                    {this.state.loading ? <ActivityIndicator /> : <Text style={{color: 'white'}}>Update</Text>}
                                 </TouchableOpacity>
                             </View>
 
