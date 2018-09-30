@@ -53,6 +53,7 @@ class HomeScreen extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        console.log(nextProps.userInfo)
         this.setState({logged: nextProps.logged})
     }
 
@@ -69,7 +70,7 @@ class HomeScreen extends React.Component {
             logged ?
                 <DrawerApp screenProps={{
                     logout: this.logout,
-                    user: {name: this.state.name, email: this.state.email, dp: this.state.dp}
+                    user: {name: this.props.userInfo.english_name, email: this.props.userInfo.email, dp: this.props.userInfo.avatar}
                 }}/>
                 : newUser ?
                 //Registration Stuff
@@ -351,11 +352,12 @@ class HomeScreen extends React.Component {
             .then(response => {
                 console.log(response)
                 const data = response.data.personal_details;
-                this.setState({
-                    name: data.english_name,
-                    email: data.email,
-                    dp: data.avatar,
-                })
+                this.props.change('SET_USER', data);
+                // this.setState({
+                //     name: data.english_name,
+                //     email: data.email,
+                //     dp: data.avatar,
+                // })
 
             })
             .catch((error) => {
