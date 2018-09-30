@@ -49,6 +49,8 @@ const styles = StyleSheet.create({
     leadsListCard: {
         position: 'relative',
         flexDirection: 'row',
+        borderRadius: 4,
+        backgroundColor: '#9C1E24',
         overflow: 'hidden',
         ...Platform.select({
             ios: {
@@ -194,7 +196,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 9
     },
     cardLeftSide: {
-        backgroundColor: '#8C1E24',
         padding: 8,
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -202,7 +203,9 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: 4
     },
     cardRightSide: {
-        borderRadius: 4,
+        // borderRadius: 4,
+        borderLeftColor: '#7C1E24',
+        borderLeftWidth: 1,
         padding: 8,
     },
     dateText: {

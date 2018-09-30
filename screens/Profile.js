@@ -1,7 +1,18 @@
 import React from 'react';
-import {Text, StyleSheet, Platform, Image, View, TextInput, ScrollView, TouchableOpacity, ActivityIndicator, Alert} from 'react-native'
+import {
+    Text,
+    StyleSheet,
+    Platform,
+    Image,
+    View,
+    TextInput,
+    ScrollView,
+    TouchableOpacity,
+    ActivityIndicator,
+    Alert
+} from 'react-native'
 import {LinearGradient} from 'expo';
-import { ImagePicker, Permissions } from 'expo';
+import {ImagePicker, Permissions} from 'expo';
 import {TopNav} from "../components/TopNav";
 import SvgUri from 'react-native-svg-uri';
 import commonStyles from "../assets/styles/common";
@@ -86,10 +97,13 @@ class Profile extends React.Component {
                     latitude: data.latitude,
                     longitude: data.longitude,
                     avatar: 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
+                    avatar_new: 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
                     description: data.description,
                     loading: false,
+                    editPI : false,
+                    editOtherInfo: false
 
-                }, () => {
+            }, () => {
                     this.getEmirates()
                     this.getLocations()
                 })
@@ -104,35 +118,35 @@ class Profile extends React.Component {
     }
 
     updateDetails = () => {
-        this.setState({loading: true},()=> {
-        axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_personal_details', {
-            access_token: this.props.token,
-            english_name: this.state.profileNameEnglish,
-            arabic_name: this.state.profileNameArabic,
-            whatsapp_number: this.state.whatsappNumber,
-            mobile_no: this.state.phoneNumber,
-            emirate_id: this.state.emiratesId,
-            location_id: this.state.location,
-            english_address: this.state.englishAddress,
-            arabic_address: this.state.arabicAddress,
-            english_pickup_address: this.state.englishPickupAddress,
-            arabic_pickup_address: this.state.arabicPickupAddress,
-            english_office_timings: this.state.officeTimingsEnglish,
-            arabic_office_timings: this.state.englishOfficeTimings,
-            avatar: this.state.base64 ? this.state.base64 : this.state.avatar ,
-            description: this.state.description,
-        })
-            .then(response => {
-                console.log(response)
-                Alert.alert('Update Profile', 'Profile Updated Successfully' )
-                this.getDetails()
+        this.setState({loading: true}, () => {
+            axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_personal_details', {
+                access_token: this.props.token,
+                english_name: this.state.profileNameEnglish,
+                arabic_name: this.state.profileNameArabic,
+                whatsapp_number: this.state.whatsappNumber,
+                mobile_no: this.state.phoneNumber,
+                emirate_id: this.state.emiratesId,
+                location_id: this.state.location,
+                english_address: this.state.englishAddress,
+                arabic_address: this.state.arabicAddress,
+                english_pickup_address: this.state.englishPickupAddress,
+                arabic_pickup_address: this.state.arabicPickupAddress,
+                english_office_timings: this.state.officeTimingsEnglish,
+                arabic_office_timings: this.state.englishOfficeTimings,
+                avatar: this.state.base64 ? this.state.base64 : this.state.avatar,
+                description: this.state.description,
             })
-            .catch((error) => {
-                console.log(error);
-                Alert.alert('Update Profile', 'Update failed' )
-                this.setState({loader: false, error: true})
+                .then(response => {
+                    console.log(response)
+                    Alert.alert('Update Profile', 'Profile Updated Successfully')
+                    this.getDetails()
+                })
+                .catch((error) => {
+                    console.log(error);
+                    Alert.alert('Update Profile', 'Update failed')
+                    this.setState({loader: false, error: true})
 
-            });
+                });
         })
     }
     openDrawer = () => {
@@ -146,8 +160,9 @@ class Profile extends React.Component {
             .then(response => {
                 console.log(response)
                 this.setState({
+                    avatar_new: null,
                     emirates: response.data.emirates,
-                    emirateSelected:( this.state.emiratesId && (this.state.emiratesId != 0) && response.data.emirates && response.data.emirates[this.state.emiratesId].english_name ) ? response.data.emirates[this.state.emiratesId].english_name : "Select an emirate"
+                    emirateSelected: (this.state.emiratesId && (this.state.emiratesId != 0) && response.data.emirates && response.data.emirates[this.state.emiratesId].english_name) ? response.data.emirates[this.state.emiratesId].english_name : "Select an emirate"
                 })
             })
             .catch((error) => {
@@ -168,7 +183,7 @@ class Profile extends React.Component {
                     locations: response.data.locations,
                     locationSelected: (loc && loc[0]) ? loc[0].english_name : "Select an location"
                 }, () => {
-                    console.log((loc && loc[0] && loc[0].english_name) ? loc[0].english_name: this.state.location)
+                    console.log((loc && loc[0] && loc[0].english_name) ? loc[0].english_name : this.state.location)
                 })
             })
             .catch((error) => {
@@ -237,7 +252,9 @@ class Profile extends React.Component {
 
     pickImage = async () => {
         console.log('coming');
-        if (Platform.OS === 'ios') { const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL); }
+        if (Platform.OS === 'ios') {
+            const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        }
         try {
             const result = await ImagePicker.launchImageLibraryAsync({
                 allowsEditing: true,
@@ -248,7 +265,7 @@ class Profile extends React.Component {
             console.log(result);
 
             if (!result.cancelled) {
-                this.setState({ avatar: result.uri, base64: `data:image/jpeg;base64,${result.base64}` });
+                this.setState({avatar_new: result.uri, base64: `data:image/jpeg;base64,${result.base64}`});
 
             }
         } catch (err) {
@@ -290,9 +307,9 @@ class Profile extends React.Component {
                                         borderTopRightRadius: 4
                                     }]}>
                                         {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                         {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -311,9 +328,9 @@ class Profile extends React.Component {
                                         borderBottomRightRadius: 4
                                     }]}>
                                         {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                         {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -333,9 +350,9 @@ class Profile extends React.Component {
                                         borderBottomRightRadius: 4
                                     }]}>
                                         {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/user.svg')}/>*/}
+                                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/user.svg')}/>*/}
                                         {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -355,9 +372,9 @@ class Profile extends React.Component {
                                         borderBottomRightRadius: 4
                                     }]}>
                                         {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                         {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -377,9 +394,9 @@ class Profile extends React.Component {
                                         borderBottomRightRadius: 4
                                     }]}>
                                         {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                         {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -399,9 +416,9 @@ class Profile extends React.Component {
                                         borderBottomRightRadius: 4
                                     }]}>
                                         {/*<View style={styles.iconWrap}>*/}
-                                            {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                                    {/*height="18"*/}
-                                                    {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                         {/*</View>*/}
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -498,7 +515,9 @@ class Profile extends React.Component {
                                 <View
                                     style={[styles.textInputContainer, styles.regTextInputContainer, {overflow: 'visible',}]}>
                                     <TouchableOpacity onPress={() => {
-                                        this.setState({showEmirates: true})
+                                        this.state.editOtherInfo ?
+                                            this.setState({showEmirates: true})
+                                            : null
                                     }} style={[styles.textInputWrap, {
                                         borderTopLeftRadius: 4,
                                         overflow: 'visible',
@@ -531,7 +550,8 @@ class Profile extends React.Component {
                                         <View style={commonStyles.graySeparatorInner}></View>
                                     </View>
                                     <TouchableOpacity onPress={() => {
-                                        this.setState({showLocations: true})
+                                        this.state.editOtherInfo ?
+                                            this.setState({showLocations: true}) : null
                                     }} style={[styles.textInputWrap, {overflow: 'visible'},]}>
 
                                         <Text
@@ -584,6 +604,7 @@ class Profile extends React.Component {
                                         }]}>
 
                                             <TextInput
+                                                multiline={true}
                                                 editable={this.state.editOtherInfo}
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
@@ -601,6 +622,7 @@ class Profile extends React.Component {
                                         }]}>
 
                                             <TextInput
+                                                multiline={true}
                                                 editable={this.state.editOtherInfo}
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
@@ -652,6 +674,7 @@ class Profile extends React.Component {
                                         }]}>
 
                                             <TextInput
+                                                multiline={true}
                                                 underlineColorAndroid="transparent"
                                                 style={styles.textArea}
                                                 value={this.state.englishOfficeTimings}
@@ -664,11 +687,21 @@ class Profile extends React.Component {
                                 </View>
                                 <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                        <View style={[styles.textInputWrap, {
-                                            borderRadius: 4
-                                        }]}>
-                                            <TouchableOpacity onPress={()=>{this.pickImage()}}>
-                                                <Text>Upload Image</Text>
+                                        <View style={[styles.textInputWrap, {}]}>
+                                            <TouchableOpacity
+                                                style={[styles.textInput, {
+                                                    paddingLeft: 16,
+                                                    borderRadius: 4,
+                                                    flexDirection: 'row',
+                                                    justifyContent: 'space-between',
+                                                    alignItems: 'center'
+                                                }]}
+                                                onPress={() => {
+                                                    this.state.editOtherInfo ? this.pickImage() : null
+                                                }}>
+                                                <Text>Upload new profile picture</Text>
+                                                {this.state.avatar_new && <Image source={{uri: this.state.avatar_new}}
+                                                       style={{width: 24, height: 24, borderRadius: 4}}/>}
                                             </TouchableOpacity>
                                         </View>
                                     </View>
@@ -716,7 +749,7 @@ class Profile extends React.Component {
                     <TouchableOpacity style={styles.greyBorderBtn} onPress={() => {
                         this.updateDetails()
                     }}>
-                        {this.state.loading? <ActivityIndicator /> : <Text style={styles.saveBtnText}>Save</Text>}
+                        {this.state.loading ? <ActivityIndicator/> : <Text style={styles.saveBtnText}>Save</Text>}
                     </TouchableOpacity>
 
                 </View>

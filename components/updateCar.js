@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, TextInput, TouchableOpacity, ScrollView, Platform, Image} from 'react-native'
+import {View, Text, TextInput, TouchableOpacity, ScrollView, Platform, Image, Alert, ActivityIndicator} from 'react-native'
 import axios from "axios/index"
 import * as _ from 'lodash'
 import styles from "../assets/styles/addCar";
@@ -85,6 +85,8 @@ class UpdateCar extends React.Component {
             showStatusMethods: false,
 
             avatar: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.props.details.car_image,
+
+            loading: false,
         }
     }
 
@@ -284,6 +286,7 @@ class UpdateCar extends React.Component {
     }
 
     updateCar = async () => {
+        this.setState({loading: true},async ()=>{
         const {
             id,
 
@@ -354,21 +357,50 @@ class UpdateCar extends React.Component {
 
         })
             .then(response => {
-                console.log(response, "car updated successfully")
-                //alert("car updated successfully");
-                this.props.setModalVisible();
+                console.log(response, id,
+                    english_name,
+                    arabic_name,
+                    price_per_day,
+                    price_per_week,
+                    price_per_month,
+                    additional_mileage_charge,
+                    mileage_limit_daily,
+                    mileage_limit_monthly,
+                    mileage_limit_weekly,
+                    insurance_included,
+                    security_deposit,
+                    accept_in,
+                    driver,
+                    car_type_id,
+                    car_brand_id,
+                    is_featured,
+                    car_image,
+                    colours,
+                    description,
+                    status,)
+                Alert.alert(
+                    'Update Car',
+                    response.data.message,
+                    [
+                        {text: 'OK', onPress: () => response.data.status === 200 ? this.props.setModalVisible() : this.setState({loading: false})},
+                    ],
+                    { cancelable: false }
+                )
 
             })
             .catch((error) => {
                 console.log(error);
-                alert("car update failed")
+                alert(response.data.message);
                 this.setState({loader: false, error: true})
             });
         console.log(resp);
+        })
     }
     pickImage = async () => {
         console.log('coming');
-        if (Platform.OS === 'ios') { const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL); }
+        if (Platform.OS === 'ios') {
+            const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        }
         try {
             const result = await ImagePicker.launchImageLibraryAsync({
                 allowsEditing: true,
@@ -379,7 +411,7 @@ class UpdateCar extends React.Component {
             console.log(result);
 
             if (!result.cancelled) {
-                this.setState({ avatar: result.uri, car_image: `data:image/jpeg;base64,${result.base64}` });
+                this.setState({avatar: result.uri, car_image: `data:image/jpeg;base64,${result.base64}`});
 
             }
         } catch (err) {
@@ -722,30 +754,39 @@ class UpdateCar extends React.Component {
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                 <View style={[styles.textInputWrap, {
                                     borderRadius: 4,
+                                    flexDirection: 'row',
+                                    alignItems: 'center',
+                                    justifyContents: 'space-between'
                                 }]}>
-                                    <TouchableOpacity onPress={()=>{this.pickImage()}}>
-                                        <Text>Car Image</Text>
+                                    <TouchableOpacity
+                                        style={{flex: 1}}
+                                        onPress={() => {
+                                            this.pickImage()
+                                        }}>
+                                        <Text style={[styles.textInput]}>Car Image</Text>
                                     </TouchableOpacity>
-                                    <Image source={{uri: !this.state.avatar ? 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car_image : this.state.avatar}} style={{height: 40, width: 40}}/>
+                                    <Image
+                                        source={{uri: !this.state.avatar ? 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car_image : this.state.avatar}}
+                                        style={{height: 40, width: 40, borderRadius: 4, marginRight: 2}}/>
                                 </View>
                             </View>
                         </View>
-                        <View style={[styles.profileInputGroup, {width: '100%'}]}>
-                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                <View style={[styles.textInputWrap, {
-                                    borderRadius: 4
-                                }]}>
-                                    <TextInput
-                                        placeholder="Car Image" value={this.state.car_image}
-                                        onChangeText={car_image => {
-                                            this.setState({car_image})
-                                        }}
-                                        underlineColorAndroid="transparent"
-                                        style={styles.textInput}
-                                    />
-                                </View>
-                            </View>
-                        </View>
+                        {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
+                        {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
+                        {/*<View style={[styles.textInputWrap, {*/}
+                        {/*borderRadius: 4*/}
+                        {/*}]}>*/}
+                        {/*<TextInput*/}
+                        {/*placeholder="Car Image" value={this.state.car_image}*/}
+                        {/*onChangeText={car_image => {*/}
+                        {/*this.setState({car_image})*/}
+                        {/*}}*/}
+                        {/*underlineColorAndroid="transparent"*/}
+                        {/*style={styles.textInput}*/}
+                        {/*/>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
+                        {/*</View>*/}
                         <View style={[styles.profileInputGroup, {width: '100%'}]}>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                 <View style={[styles.textInputWrap, {
@@ -773,8 +814,9 @@ class UpdateCar extends React.Component {
                                         onChangeText={description => {
                                             this.setState({description})
                                         }}
+                                        multiline={true}
                                         underlineColorAndroid="transparent"
-                                        style={styles.textInput}
+                                        style={[styles.textInput, {height: 144, paddingTop: 12}]}
                                     />
                                 </View>
                             </View>
@@ -786,7 +828,8 @@ class UpdateCar extends React.Component {
                                                   this.updateCar();
                                                   // this.props.setModalVisible(false);
                                               }}>
-                                <Text style={{color: 'white'}}>Update</Text>
+                                {this.state.loading ?  <ActivityIndicator /> :
+                                <Text style={{color: 'white'}}>Update</Text>}
                             </TouchableOpacity>
                         </View>
 
