@@ -411,8 +411,7 @@ class UpdateCar extends React.Component {
             console.log(result);
 
             if (!result.cancelled) {
-                this.setState({avatar: result.uri, car_image: `data:image/jpeg;base64,${result.base64}`});
-
+                this.setState({avatar: result.uri, car_image: result.base64});
             }
         } catch (err) {
             console.log(err);

@@ -68,7 +68,8 @@ class CarsList extends React.Component {
                             <View style={styles.topHalfSection}>
                                 <Image
                                     source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.cars[resArr].car_image}}
-                                    style={{height: 50, width: 120, marginTop: 6}}
+                                    style={{height: 94, width: 120, marginTop: 6}}
+                                    resizeMode={'cover'}
                                 />
                                 <View style={styles.rightSection}>
                                     <Text style={styles.carTitle}>{this.state.cars[resArr].english_name}</Text>

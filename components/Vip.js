@@ -77,7 +77,7 @@ class CarsList extends React.Component {
                 console.log(data)
                 this.setState({
                     car: data
-                })
+                }, ()=>console.log(this.state.car.car_image))
 
             })
             .catch((error) => {
@@ -145,7 +145,8 @@ class CarsList extends React.Component {
             </Modal>
             <View style={styles.carImageContainer}>
                 <Image style={styles.carFullSizeImage}
-                       source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car.car_image}}
+                       resizeMode={'cover'}
+                       source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/'+this.state.car.car_image}}
                 />
             </View>
             <View style={styles.carDetailContainer}>

@@ -21,6 +21,7 @@ import axios from "axios/index";
 import {connect} from 'react-redux';
 import * as _ from 'lodash';
 
+
 class Profile extends React.Component {
     constructor(props) {
         super(props)
@@ -221,34 +222,34 @@ class Profile extends React.Component {
             </View>
         </TouchableOpacity>)
     }
-    // base64toBlob = b64Image => {
-    //     // Split the base64 string in data and contentType
-    //     const block = b64Image.split(';');
-    //     // Get the content type of the image
-    //     const contentType = block[0].split(':')[1];
-    //     // get the real base64 content of the file
-    //     const b64Data = block[1].split(',')[1];
-    //     const sliceSize = 512;
-    //
-    //     const byteCharacters = atob(b64Data);
-    //     const byteArrays = [];
-    //
-    //     for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
-    //         const slice = byteCharacters.slice(offset, offset + sliceSize);
-    //
-    //         const byteNumbers = new Array(slice.length);
-    //         for (let i = 0; i < slice.length; i++) {
-    //             byteNumbers[i] = slice.charCodeAt(i);
-    //         }
-    //
-    //         const byteArray = new Uint8Array(byteNumbers);
-    //
-    //         byteArrays.push(byteArray);
-    //     }
-    //
-    //     const blob = new Blob(byteArrays, { type: contentType });
-    //     return blob;
-    // }
+    base64toBlob = b64Image => {
+        // Split the base64 string in data and contentType
+        const block = b64Image.split(';');
+        // Get the content type of the image
+        const contentType = block[0].split(':')[1];
+        // get the real base64 content of the file
+        const b64Data = block[1].split(',')[1];
+        const sliceSize = 512;
+
+        const byteCharacters = atob(b64Data);
+        const byteArrays = [];
+
+        for (let offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            const slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
+        }
+
+        const blob = new Blob(byteArrays, { type: contentType });
+        return blob;
+    }
 
     pickImage = async () => {
         console.log('coming');
@@ -260,12 +261,13 @@ class Profile extends React.Component {
                 allowsEditing: true,
                 aspect: [4, 3],
                 base64: true,
-                quality: 0.4
+                quality: 0.4,
+                base64Encoded: true
             });
-            console.log(result);
+            console.log(result.base64);
 
             if (!result.cancelled) {
-                this.setState({avatar_new: result.uri, base64: `data:image/jpeg;base64,${result.base64}`});
+                this.setState({avatar_new: result.uri, base64: result.base64});
 
             }
         } catch (err) {

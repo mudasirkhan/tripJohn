@@ -196,7 +196,7 @@ class Leads extends React.Component {
                                 </View>
                                 <View style={styles.buttonWrap}>
                                     <TouchableOpacity onPress={() => {
-                                        this.approve(resArr.id)
+                                        this.complete(resArr.id)
                                     }}>
                                         <SvgUri width="21"
                                                 height="27"
@@ -222,6 +222,23 @@ class Leads extends React.Component {
             access_token: this.props.token,
             lead_id: id,
             status: "approved"
+
+        })
+            .then(response => {
+                console.log(response.data)
+                this.getLeads()
+            })
+            .catch((error) => {
+                console.log(error);
+                this.setState({loader: false, error: true})
+
+            });
+    }
+    complete = async (id) => {
+        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/update_lead', {
+            access_token: this.props.token,
+            lead_id: id,
+            status: "completed"
 
         })
             .then(response => {
