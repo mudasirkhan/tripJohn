@@ -29,12 +29,12 @@ class Leads extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Leads'
-        // drawerIcon: ({tintColor}) => (
-        //     <SvgUri
-        //         source={require('../assets/icons/nav-icon-leads.svg')}
-        //     />
-        // ),
+        drawerLabel: () => 'Leads',
+        drawerIcon: ({tintColor}) => (
+            <Image
+                source={require('../assets/icons/nav-icon-leads.png')}
+            />
+        ),
     }
 
     componentDidMount() {
@@ -84,9 +84,7 @@ class Leads extends React.Component {
                                     <TouchableOpacity onPress={() => {
                                         this.cancell(resArr.id)
                                     }}>
-                                        <SvgUri width={21}
-                                                height={27}
-                                                source={require('../assets/icons/decline.svg')}/>
+                                        <Image source={require('../assets/icons/decline.png')}/>
                                     </TouchableOpacity>
                                 </View>
                             </TouchableOpacity>
@@ -136,16 +134,12 @@ class Leads extends React.Component {
                                     <TouchableOpacity onPress={() => {
                                         this.approve(resArr.id)
                                     }}>
-                                        <SvgUri width="21"
-                                                height="27"
-                                                source={require('../assets/icons/approve.svg')}/>
+                                        <Image source={require('../assets/icons/approve.png')}/>
                                     </TouchableOpacity>
                                     <TouchableOpacity onPress={() => {
                                         this.cancell(resArr.id)
                                     }}>
-                                        <SvgUri width="21"
-                                                height="27"
-                                                source={require('../assets/icons/decline.svg')}/>
+                                        <Image source={require('../assets/icons/decline.png')}/>
                                     </TouchableOpacity>
                                 </View>
                             </TouchableOpacity>
@@ -197,16 +191,12 @@ class Leads extends React.Component {
                                     <TouchableOpacity onPress={() => {
                                         this.complete(resArr.id)
                                     }}>
-                                        <SvgUri width="21"
-                                                height="27"
-                                                source={require('../assets/icons/complete.svg')}/>
+                                        <Image source={require('../assets/icons/approve.png')}/>
                                     </TouchableOpacity>
                                     <TouchableOpacity onPress={() => {
                                         this.cancell(resArr.id)
                                     }}>
-                                        <SvgUri width="21"
-                                                height="27"
-                                                source={require('../assets/icons/decline.svg')}/>
+                                        <Image source={require('../assets/icons/decline.png')}/>
                                     </TouchableOpacity>
                                 </View>
                             </TouchableOpacity>

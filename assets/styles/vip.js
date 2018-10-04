@@ -128,6 +128,8 @@ const styles = StyleSheet.create({
     providerName: {
         fontFamily: 'SSP-R',
         color: '#fff',
+        marginTop: -2,
+        paddingLeft: 4,
         ...Platform.select({
             ios: {
                 fontSize: 12

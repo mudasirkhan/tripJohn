@@ -1,5 +1,15 @@
 import React from 'react'
-import {View, Text, TextInput, TouchableOpacity, ScrollView, Alert, Platform, Image, ActivityIndicator} from 'react-native'
+import {
+    View,
+    Text,
+    TextInput,
+    TouchableOpacity,
+    ScrollView,
+    Alert,
+    Platform,
+    Image,
+    ActivityIndicator
+} from 'react-native'
 import axios from "axios/index"
 import * as _ from 'lodash'
 import SvgUri from 'react-native-svg-uri';
@@ -139,7 +149,8 @@ class AddCar extends React.Component {
                 key={item}
                 style={this.state.status !== item ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({status: item, showStatusMethods: false
+                    this.setState({
+                        status: item, showStatusMethods: false
                     })
                 }}>
                 <Text style={styles.statusOptionsText}>
@@ -213,7 +224,8 @@ class AddCar extends React.Component {
                 key={item.id}
                 style={this.state.car_brand_id !== item.id ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({car_brand_id: item.id, car_brand_name: item.english_name, showCarBrands: false
+                    this.setState({
+                        car_brand_id: item.id, car_brand_name: item.english_name, showCarBrands: false
                     })
                 }}>
                 <Text style={styles.statusOptionsText}>
@@ -247,7 +259,8 @@ class AddCar extends React.Component {
                 key={item.id}
                 style={this.state.car_type_id !== item.id ? styles.statusOptions : styles.selectedStatusOption}
                 onPress={() => {
-                    this.setState({car_type_id: item.id, car_type_name: item.english_name, showCarTypes: false
+                    this.setState({
+                        car_type_id: item.id, car_type_name: item.english_name, showCarTypes: false
                     })
                 }}>
                 <Text style={styles.statusOptionsText}>
@@ -278,120 +291,125 @@ class AddCar extends React.Component {
     }
 
     addCar = async () => {
-        this.setState({loading: true}, async ()=>{
-        const {
-            english_name,
+        this.setState({loading: true}, async () => {
+            const {
+                english_name,
 
-            arabic_name,
+                arabic_name,
 
-            price_per_day,
+                price_per_day,
 
-            price_per_week,
+                price_per_week,
 
-            price_per_month,
+                price_per_month,
 
-            additional_mileage_charge,
+                additional_mileage_charge,
 
-            mileage_limit_daily,
+                mileage_limit_daily,
 
-            mileage_limit_monthly,
+                mileage_limit_monthly,
 
-            mileage_limit_weekly,
+                mileage_limit_weekly,
 
-            insurance_included,
+                insurance_included,
 
-            security_deposit,
+                security_deposit,
 
-            accept_in,
+                accept_in,
 
-            driver,
+                driver,
 
-            car_type_id,
+                car_type_id,
 
-            car_brand_id,
+                car_brand_id,
 
-            is_featured,
+                is_featured,
 
-            car_image,
+                car_image,
 
-            colours,
+                colours,
 
-            description,
+                description,
 
-            status,
-        } = this.state;
-        let nav = this.props.navigation;
+                status,
+            } = this.state;
+            let nav = this.props.navigation;
 
-        let resp = {};
-        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/add_car', {
-            access_token: this.props.token,
-            english_name,
-            arabic_name,
-            price_per_day,
-            price_per_week,
-            price_per_month,
-            additional_mileage_charge,
-            mileage_limit_daily,
-            mileage_limit_monthly,
-            mileage_limit_weekly,
-            insurance_included,
-            security_deposit,
-            accept_in,
-            driver,
-            car_type_id,
-            car_brand_id,
-            is_featured,
-            car_image,
-            colours,
-            description,
-            status,
-
-        })
-            .then(response => {
-                console.log(response, english_name,
-                    arabic_name,
-                    price_per_day,
-                    price_per_week,
-                    price_per_month,
-                    additional_mileage_charge,
-                    mileage_limit_daily,
-                    mileage_limit_monthly,
-                    mileage_limit_weekly,
-                    insurance_included,
-                    security_deposit,
-                    accept_in,
-                    driver,
-                    car_type_id,
-                    car_brand_id,
-                    is_featured,
-                    car_image,
-                    colours,
-                    description,
-                    status);
-
-                Alert.alert(
-                    'Add Car',
-                    response.data.message,
-                    [
-                        {text: 'OK', onPress: () => response.data.status === 200 ? this.props.setModalVisible() : this.setState({loading: false})},
-                    ],
-                    {cancelable: false}
-                )
+            let resp = {};
+            await axios.post('https://tripjhon.insightssoftwares.com//api/v1/add_car', {
+                access_token: this.props.token,
+                english_name,
+                arabic_name,
+                price_per_day,
+                price_per_week,
+                price_per_month,
+                additional_mileage_charge,
+                mileage_limit_daily,
+                mileage_limit_monthly,
+                mileage_limit_weekly,
+                insurance_included,
+                security_deposit,
+                accept_in,
+                driver,
+                car_type_id,
+                car_brand_id,
+                is_featured,
+                car_image,
+                colours,
+                description,
+                status,
 
             })
-            .catch((error) => {
-                console.log(error);
-                alert(response.data.message)
-                this.setState({loading: false, error: true})
+                .then(response => {
+                    console.log(response, english_name,
+                        arabic_name,
+                        price_per_day,
+                        price_per_week,
+                        price_per_month,
+                        additional_mileage_charge,
+                        mileage_limit_daily,
+                        mileage_limit_monthly,
+                        mileage_limit_weekly,
+                        insurance_included,
+                        security_deposit,
+                        accept_in,
+                        driver,
+                        car_type_id,
+                        car_brand_id,
+                        is_featured,
+                        car_image,
+                        colours,
+                        description,
+                        status);
 
-            });
-        console.log(resp);
+                    Alert.alert(
+                        'Add Car',
+                        response.data.message,
+                        [
+                            {
+                                text: 'OK',
+                                onPress: () => response.data.status === 200 ? this.props.setModalVisible() : this.setState({loading: false})
+                            },
+                        ],
+                        {cancelable: false}
+                    )
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                    alert(response.data.message)
+                    this.setState({loading: false, error: true})
+
+                });
+            console.log(resp);
         })
     }
 
     pickImage = async () => {
         console.log('coming');
-        if (Platform.OS === 'ios') { const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL); }
+        if (Platform.OS === 'ios') {
+            const {status} = await Permissions.askAsync(Permissions.CAMERA_ROLL);
+        }
         try {
             const result = await ImagePicker.launchImageLibraryAsync({
                 allowsEditing: true,
@@ -402,14 +420,13 @@ class AddCar extends React.Component {
             console.log(result);
 
             if (!result.cancelled) {
-                this.setState({ avatar: result.uri, car_image: result.base64 });
+                this.setState({avatar: result.uri, car_image: result.base64});
 
             }
         } catch (err) {
             console.log(err);
         }
     }
-
 
 
     render() {
@@ -591,125 +608,145 @@ class AddCar extends React.Component {
                         </View>
                     </View>
 
-                    <View style={[styles.profileDescContainer, {paddingBottom: 16}]}>
-
-                        {/*<View style={styles.profileInputGroup}>*/}
-                        {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                        {/*<View style={styles.labelWrap}>*/}
-                        {/*<Text style={styles.inputLabelText}>Card Type</Text>*/}
-                        {/*</View>*/}
-                        {/*<View style={[styles.textInputWrap]}>*/}
-                        {/*<TextInput*/}
-                        {/*placeholder="car_type_id" value={this.state.car_type_id}*/}
-                        {/*onChangeText={car_type_id => {*/}
-                        {/*this.setState({car_type_id})*/}
-                        {/*}}*/}
-                        {/*underlineColorAndroid="transparent"*/}
-                        {/*style={styles.textInput}*/}
-                        {/*/>*/}
-                        {/*</View>*/}
-                        {/*</View>*/}
-                        {/*</View>*/}
+                    <View style={[styles.profileDescContainer, {paddingTop: 16}]}>
                         <View style={styles.profileInputGroup}>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                 <TouchableOpacity
-                                    style={styles.profileTitleInfo}
-                                    onPress={()=>{this.setState({showInsuranceOptions: true})}}
-                                >
-                                    <Text style={styles.profileTitleText}>Insurance Type</Text>
-                                    <Text style={styles.editBtn}>{this.state.insurance_included}</Text>
-
-                                    {/*<Text style={styles.editBtn}>EDIT</Text>*/}
+                                    onPress={() => {
+                                        this.setState({showInsuranceOptions: true})
+                                    }}>
+                                    <View style={styles.selectableTypes}>
+                                        <Text style={[styles.selectableTypesText]}>Insurance
+                                            Type</Text>
+                                    </View>
+                                    <Text stylpe={[styles.selectableTypesText, {
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 12
+                                    }]}>{this.state.insurance_included}</Text>
                                 </TouchableOpacity>
-                                {/*<Text>{this.state.accept_in}</Text>*/}
-                                {/*{this.renderPaymentOptions(this.state.paymentMethods)}*/}
-
-                                {/*<Text>{this.state.insurance_included}</Text>*/}
-                                <View>
+                                <View style={[styles.textInputWrap, {marginBottom: 16}]}>
                                     {this.state.showInsuranceOptions && this.renderInsuranceOptions(this.state.insuranceTypes)}
                                 </View>
-                                {/*<View style={[styles.textInputWrap]}>*/}
-                                {/*<TextInput*/}
-                                {/*placeholder="security_deposit" value={this.state.security_deposit}*/}
-                                {/*onChangeText={security_deposit => {*/}
-                                {/*this.setState({security_deposit})*/}
-                                {/*}}*/}
-                                {/*underlineColorAndroid="transparent"*/}
-                                {/*style={styles.textInput}*/}
-                                {/*/>*/}
-                                {/*</View>*/}
+
                             </View>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                <TouchableOpacity style={styles.profileTitleInfo}
-                                    onPress={()=>{this.setState({showPaymentMethods: true})}}
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.setState({showPaymentMethods: true})
+                                    }}
                                 >
-                                    <Text style={styles.profileTitleText}>Payment Method</Text>
-                                    <Text style={styles.profileTitleText}>{this.state.accept_in}</Text>
-                                    {/*<Text style={styles.editBtn}>EDIT</Text>*/}
+                                    <View style={styles.selectableTypes}>
+                                        <Text style={[styles.selectableTypesText]}>Payment Method</Text>
+                                    </View>
+                                    <Text style={[styles.selectableTypesText, {
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 12
+                                    }]}>{this.state.accept_in}</Text>
                                 </TouchableOpacity>
-                                {/*<Text>{this.state.accept_in}</Text>*/}
-                                {this.state.showPaymentMethods && this.renderPaymentOptions(this.state.paymentMethods)}
+                                <View style={[styles.textInputWrap, {marginBottom: 16}]}>
+                                    {this.state.showPaymentMethods && this.renderPaymentOptions(this.state.paymentMethods)}
+                                </View>
                             </View>
                         </View>
                         <View style={styles.profileInputGroup}>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
 
-                            <TouchableOpacity style={styles.profileTitleInfo}
-                                              onPress={()=>{this.setState({showDriverMethods: true})}}
-                            >
-                                <Text style={styles.profileTitleText}>Drivers</Text>
-                                <Text style={styles.profileTitleText}>{this.state.driver}</Text>
-
-                            </TouchableOpacity>
-                            <View style={[styles.textInputWrap]}>
-                                {this.state.showDriverMethods && this.renderDriverOptions(this.state.driverTypes)}
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.setState({showDriverMethods: true})
+                                    }}>
+                                    <View style={styles.selectableTypes}>
+                                        <Text style={[styles.selectableTypesText]}>Drivers</Text>
+                                    </View>
+                                    <Text style={[styles.selectableTypesText, {
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 12
+                                    }]}>{this.state.driver}</Text>
+                                </TouchableOpacity>
+                                <View style={[styles.textInputWrap, {marginBottom: 16}]}>
+                                    {this.state.showDriverMethods && this.renderDriverOptions(this.state.driverTypes)}
+                                </View>
                             </View>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.setState({showFeaturedMethods: true})
+                                    }}>
+                                    <View style={styles.selectableTypes}>
+                                        <Text style={[styles.selectableTypesText]}>Featured</Text>
+                                    </View>
+                                    <Text style={[styles.selectableTypesText, {
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 12
+                                    }]}>{this.state.is_featured}</Text>
 
-                            <TouchableOpacity style={styles.profileTitleInfo}
-                                              onPress={()=>{this.setState({showFeaturedMethods: true})}}
-                            >
-                                <Text style={styles.profileTitleText}>Featured</Text>
-                                <Text style={styles.profileTitleText}>{this.state.is_featured}</Text>
-
-                            </TouchableOpacity>
-
-                            <View style={[styles.textInputWrap]}>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={[styles.textInputWrap, {marginBottom: 16}]}>
                                 {this.state.showFeaturedMethods && this.renderFeaturedOptions(this.state.isFeaturedTypes)}
                             </View>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
 
-                            <TouchableOpacity style={styles.profileTitleInfo}
-                                              onPress={()=>{this.setState({showCarBrands: true})}}
-                            >
-                                <Text style={styles.profileTitleText}>Car Brand</Text>
-                                <Text style={styles.profileTitleText}>{this.state.car_brand_name}</Text>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.setState({showCarBrands: true})
+                                    }}>
+                                    <View style={styles.selectableTypes}>
+                                        <Text style={[styles.selectableTypesText]}>Car Brand</Text>
+                                    </View>
+                                    <Text style={[styles.selectableTypesText, {
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 12
+                                    }]}>{this.state.car_brand_name}</Text>
 
-                            </TouchableOpacity>
-                            <View style={[styles.textInputWrap]}>
-                                { this.state.showCarBrands && this.renderCarBrands(this.state.carBrands)}
+                                </TouchableOpacity>
                             </View>
-
-                            <TouchableOpacity style={styles.profileTitleInfo}
-                                              onPress={()=>{this.setState({showCarTypes: true})}}
-                            >
-                                <Text style={styles.profileTitleText}>Car Type</Text>
-                                <Text style={styles.profileTitleText}>{this.state.car_type_name}</Text>
-
-
-                            </TouchableOpacity>
-
-                            <View style={[styles.textInputWrap]}>
-                                { this.state.showCarTypes && this.renderCarTypes(this.state.carTypes)}
+                            <View style={[styles.textInputWrap, {marginBottom: 16}]}>
+                                {this.state.showCarBrands && this.renderCarBrands(this.state.carBrands)}
                             </View>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
 
-                            <TouchableOpacity style={styles.profileTitleInfo}
-                                              onPress={()=>{this.setState({showStatusMethods: true})}}
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.setState({showCarTypes: true})
+                                    }}
+                                >
+                                    <View style={styles.selectableTypes}>
+                                        <Text style={[styles.selectableTypesText]}>Car Type</Text>
+                                    </View>
+                                    <Text style={[styles.selectableTypesText, {
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 12
+                                    }]}>{this.state.car_type_name}</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={[styles.textInputWrap, {marginBottom: 16}]}>
+                                {this.state.showCarTypes && this.renderCarTypes(this.state.carTypes)}
+                            </View>
+                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
 
-                            >
-                                <Text style={styles.profileTitleText}>Status</Text>
-                                <Text style={styles.profileTitleText}>{this.state.status}</Text>
-
-                            </TouchableOpacity>
-
-                            <View style={[styles.textInputWrap]}>
+                                <TouchableOpacity
+                                    onPress={() => {
+                                        this.setState({showStatusMethods: true})
+                                    }}
+                                >
+                                    <View style={styles.selectableTypes}>
+                                        <Text style={[styles.selectableTypesText]}>Status</Text>
+                                    </View>
+                                    <Text style={[styles.selectableTypesText, {
+                                        position: 'absolute',
+                                        top: 8,
+                                        right: 12
+                                    }]}>{this.state.status}</Text>
+                                </TouchableOpacity>
+                            </View>
+                            <View style={[styles.textInputWrap, {marginBottom: 16}]}>
                                 {this.state.showStatusMethods && this.renderStatusOptions(this.state.statusTypes)}
                             </View>
                         </View>
@@ -725,48 +762,27 @@ class AddCar extends React.Component {
 
                         </View>
                         <View style={styles.profileInputGroup}>
-                            {/*<View style={[styles.profileInputGroup, {width: '100%'}]}>*/}
-                            {/*<View style={[styles.textInputContainer, styles.regTextInputContainer]}>*/}
-                            {/*<View style={[styles.textInputWrap, {*/}
-                            {/*borderRadius: 4,*/}
-                            {/*}]}>*/}
-                            {/*<TextInput*/}
-                            {/*placeholder="car_brand_id" value={this.state.car_brand_id}*/}
-                            {/*onChangeText={car_brand_id => {*/}
-                            {/*this.setState({car_brand_id})*/}
-                            {/*}}*/}
-                            {/*underlineColorAndroid="transparent"*/}
-                            {/*style={styles.textInput}*/}
-                            {/*/>*/}
-                            {/*</View>*/}
-                            {/*</View>*/}
-                            {/*</View>*/}
                             <View style={[styles.profileInputGroup, {width: '100%'}]}>
                                 <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                     <View style={[styles.textInputWrap, {
-                                        borderRadius: 4
+                                        borderRadius: 4,
+                                        position: 'relative'
                                     }]}>
-                                        {/*<TextInput*/}
-                                            {/*placeholder="car_image" value={this.state.car_image}*/}
-                                            {/*onChangeText={car_image => {*/}
-                                                {/*this.setState({car_image})*/}
-                                            {/*}}*/}
-                                            {/*underlineColorAndroid="transparent"*/}
-                                            {/*style={styles.textInput}*/}
-                                        {/*/>*/}
-                                        <View style={[styles.profileInputGroup, {width: '100%'}]}>
-                                            <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
-                                                <View style={[styles.textInputWrap, {
-                                                    borderRadius: 4
-                                                }]}>
-                                                    <TouchableOpacity onPress={()=>{this.pickImage()}}>
-                                                        <Text>Car Image</Text>
-                                                    </TouchableOpacity>
-                                                </View>
-                                            </View>
-                                            <Image source={{uri: this.state.avatar}} style={{height: 60, width: 60, backgroundColor: 'red'}}/>
-
-                                        </View>
+                                        <TouchableOpacity
+                                            style={{height: 40, justifyContent: 'center', paddingLeft: 8}}
+                                            onPress={() => {
+                                                this.pickImage()
+                                            }}>
+                                            <Text>Car Image</Text>
+                                        </TouchableOpacity>
+                                        <Image source={{uri: this.state.avatar}}
+                                               style={{
+                                                   position: 'absolute',
+                                                   right: 4,
+                                                   top: 4,
+                                                   height: 32,
+                                                   width: 32,
+                                               }}/>
                                     </View>
                                 </View>
                             </View>
@@ -827,7 +843,8 @@ class AddCar extends React.Component {
                                                       this.addCar();
                                                       // this.props.setModalVisible(false);
                                                   }}>
-                                    {this.state.loading ? <ActivityIndicator /> : <Text style={{color: 'white'}}>Update</Text>}
+                                    {this.state.loading ? <ActivityIndicator/> :
+                                        <Text style={{color: 'white'}}>Update</Text>}
                                 </TouchableOpacity>
                             </View>
 

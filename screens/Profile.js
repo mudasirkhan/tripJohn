@@ -60,12 +60,12 @@ class Profile extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Profile'
-        // drawerIcon: ({tintColor}) => (
-        //     <SvgUri
-        //         source={require('../assets/icons/nav-icon-profile.svg')}
-        //     />
-        // ),
+        drawerLabel: () => 'Profile',
+        drawerIcon: ({tintColor}) => (
+            <Image
+                source={require('../assets/icons/nav-icon-profile.png')}
+            />
+        ),
     }
 
     componentDidMount() {
@@ -101,10 +101,10 @@ class Profile extends React.Component {
                     avatar_new: 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
                     description: data.description,
                     loading: false,
-                    editPI : false,
+                    editPI: false,
                     editOtherInfo: false
 
-            }, () => {
+                }, () => {
                     this.getEmirates()
                     this.getLocations()
                 })
@@ -247,7 +247,7 @@ class Profile extends React.Component {
             byteArrays.push(byteArray);
         }
 
-        const blob = new Blob(byteArrays, { type: contentType });
+        const blob = new Blob(byteArrays, {type: contentType});
         return blob;
     }
 
@@ -692,18 +692,25 @@ class Profile extends React.Component {
                                         <View style={[styles.textInputWrap, {}]}>
                                             <TouchableOpacity
                                                 style={[styles.textInputWrap, {
-                                                    paddingLeft: 16,
+                                                    paddingHorizontal: 16,
                                                     borderRadius: 4,
+                                                    height: 40,
                                                     flexDirection: 'row',
                                                     justifyContent: 'space-between',
                                                     alignItems: 'center'
                                                 }]}
+                                                activeOpacity={1}
                                                 onPress={() => {
                                                     this.state.editOtherInfo ? this.pickImage() : null
                                                 }}>
                                                 <Text>Upload new profile picture</Text>
                                                 {this.state.avatar_new && <Image source={{uri: this.state.avatar_new}}
-                                                       style={{width: 24, height: 24, borderRadius: 4}}/>}
+                                                                                 style={{
+                                                                                     width: 24,
+                                                                                     height: 24,
+                                                                                     maringRight: 8,
+                                                                                     borderRadius: 4
+                                                                                 }}/>}
                                             </TouchableOpacity>
                                         </View>
                                     </View>

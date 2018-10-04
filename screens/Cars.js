@@ -20,12 +20,12 @@ export default class Car extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Your cars'
-        // drawerIcon: ({tintColor}) => (
-        //     <SvgUri
-        //         source={require('../assets/icons/nav-icon-car.svg')}
-        //     />
-        // ),
+        drawerLabel: () => 'Your cars',
+        drawerIcon: ({tintColor}) => (
+            <Image
+                source={require('../assets/icons/nav-icon-car.png')}
+            />
+        ),
     }
 
     componentDidMount() {
@@ -42,9 +42,10 @@ export default class Car extends React.Component {
 
     render() {
         return (<View style={{flex: 1, position: 'relative'}}>
-            <TopNav title={"All your cars"} openDrawer={this.openDrawer} />
+            <TopNav title={"All your cars"} openDrawer={this.openDrawer}/>
             {/*<HomeTopSection/>*/}
-            <ScrollView style={{backgroundColor: '#AC2733', paddingBottom: 16, flex: 1, zIndex: 9}} contentContainerStyle={{flex: 1}}>
+            <ScrollView style={{backgroundColor: '#AC2733', paddingBottom: 16, flex: 1, zIndex: 9}}
+                        contentContainerStyle={{flex: 1}}>
                 <CarsList navigation={this.props.navigation} style={{zIndex: 9}}/>
 
                 {/*<Image*/}

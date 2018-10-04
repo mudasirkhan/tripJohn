@@ -88,13 +88,13 @@ class CarsList extends React.Component {
                                     <View style={[styles.carProviderWrap, {paddingRight: 24}]}>
                                         <Text style={styles.providedByText}>Provided by:</Text>
                                         <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
+                                            <Image source={require('../assets/icons/car-n-key.png')}/>
                                             <Text style={styles.providerName}>{this.state.provider}</Text>
                                         </View>
                                     </View>
                                     <View style={styles.carProviderWrap}>
                                         <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
+                                            <Image source={require('../assets/icons/car-n-key.png')}/>
                                             <Text style={styles.providerName}>{this.state.providerAddress}</Text>
                                         </View>
                                     </View>
@@ -137,8 +137,9 @@ class CarsList extends React.Component {
                 transparent={false}
                 presentationStyle="fullScreen"
                 visible={this.state.modalVisible}
-                onRequestClose={()=>{}}
-                >
+                onRequestClose={() => {
+                }}
+            >
                 <View style={modalStyles.modalWrap}>
                     <View style={{flex: 1}}>
                         <View style={modalStyles.modalTopBar}>
@@ -151,14 +152,15 @@ class CarsList extends React.Component {
                                 <SvgUri source={require('../assets/icons/arrow-back.svg')}
                                         height='20.9'
                                         width='18.7'
-                                        />
+                                />
                             </TouchableOpacity>
                             {/*</View>*/}
                             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>
                                 <Text style={modalStyles.modalTitleText}>Add a car</Text>
                             </View>
                         </View>
-                        <AddCar setModalVisible={this.setModalVisible.bind(this,!this.state.modalVisible)} token={this.props.token} navigation={this.props.navigation}/>
+                        <AddCar setModalVisible={this.setModalVisible.bind(this, !this.state.modalVisible)}
+                                token={this.props.token} navigation={this.props.navigation}/>
                     </View>
                 </View>
             </Modal>

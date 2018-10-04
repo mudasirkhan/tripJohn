@@ -70,7 +70,11 @@ class HomeScreen extends React.Component {
             logged ?
                 <DrawerApp screenProps={{
                     logout: this.logout,
-                    user: {name: this.props.userInfo.english_name, email: this.props.userInfo.email, dp: this.props.userInfo.avatar}
+                    user: {
+                        name: this.props.userInfo.english_name,
+                        email: this.props.userInfo.email,
+                        dp: this.props.userInfo.avatar
+                    }
                 }}/>
                 : newUser ?
                 //Registration Stuff
@@ -82,10 +86,10 @@ class HomeScreen extends React.Component {
                     <View style={styles.registrationContainer}>
                         <View style={styles.registrationWrap}>
                             <View style={styles.regLinkWrap}>
-                                <Text style={styles.regLinkText}>Not registered yet?</Text>
-                                <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
-                                    <Text style={styles.regLinkText}>Register Here.</Text>
-                                </TouchableOpacity>
+                                <Text style={styles.regLinkText}>Login here.</Text>
+                                {/*<TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>*/}
+                                {/*<Text style={styles.regLinkText}>Register Here.</Text>*/}
+                                {/*</TouchableOpacity>*/}
                             </View>
                             <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                 <View style={[styles.textInputWrap, {
@@ -93,9 +97,8 @@ class HomeScreen extends React.Component {
                                     borderTopRightRadius: 4
                                 }]}>
                                     <View style={styles.iconWrap}>
-                                        {/*<SvgUri width="14"*/}
-                                                {/*height="18"*/}
-                                                {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        <Image style={{width: 14, height: 18}}
+                                               source={require('../assets/icons/password.png')}/>
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -113,8 +116,8 @@ class HomeScreen extends React.Component {
                                 }]}>
                                     <View style={styles.iconWrap}>
                                         {/*<SvgUri width="14"*/}
-                                                {/*height="18"*/}
-                                                {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -133,8 +136,8 @@ class HomeScreen extends React.Component {
                                 }]}>
                                     <View style={styles.iconWrap}>
                                         {/*<SvgUri width="14"*/}
-                                                {/*height="18"*/}
-                                                {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -153,8 +156,8 @@ class HomeScreen extends React.Component {
                                 }]}>
                                     <View style={styles.iconWrap}>
                                         {/*<SvgUri width="14"*/}
-                                                {/*height="18"*/}
-                                                {/*source={require('../assets/icons/password.svg')}/>*/}
+                                        {/*height="18"*/}
+                                        {/*source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -233,16 +236,17 @@ class HomeScreen extends React.Component {
                 <View style={styles.container}>
                     <View style={styles.container} contentContainerStyle={styles.contentContainer}>
                         <View style={styles.welcomeContainer}>
-                            <IntroSlider/>
+                            {/*<IntroSlider/>*/}
+                            <Image source={require('../assets/icons/home_bg.png')} style={{width: '101%', flex: 1, resizeMode: 'cover'}}/>
                         </View>
                         <View style={styles.loginContainer}>
                             <Image style={styles.loginbg} source={require(loginbg)}/>
                             <View style={styles.loginWrap}>
                                 <View style={styles.regLinkWrap}>
-                                    <Text style={styles.regLinkText}>Not registered yet?</Text>
-                                    <TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>
-                                        <Text style={styles.regLinkText}>Register Here.</Text>
-                                    </TouchableOpacity>
+                                    <Text style={styles.regLinkText}>Login here:</Text>
+                                    {/*<TouchableOpacity onPress={this._handleRegister} style={styles.helpLink}>*/}
+                                    {/*<Text style={styles.regLinkText}>Register Here.</Text>*/}
+                                    {/*</TouchableOpacity>*/}
                                 </View>
                                 <View style={styles.textInputContainer}>
                                     <View style={[styles.textInputWrap, {
@@ -250,8 +254,9 @@ class HomeScreen extends React.Component {
                                         borderTopRightRadius: 4,
                                     }]}>
                                         <View style={styles.iconWrap}>
-                                            {/*<SvgUri width="16" height="18"*/}
-                                                    {/*source={require('../assets/icons/user.svg')}/>*/}
+                                            <Image style={{width: 16, height: 19}}
+                                                   source={require('../assets/icons/user.png')}/>
+
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -267,8 +272,9 @@ class HomeScreen extends React.Component {
                                     </View>
                                     <View style={styles.textInputWrap}>
                                         <View style={styles.iconWrap}>
-                                            {/*<SvgUri width="14"*/}
-                                                    {/*height="18" source={require('../assets/icons/password.svg')}/>*/}
+                                            <Image style={{width: 14, height: 18}}
+                                                   source={require('../assets/icons/password.png')}/>
+
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"

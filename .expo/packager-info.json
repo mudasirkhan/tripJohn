@@ -1,8 +1,8 @@
 {
   "expoServerPort": 19000,
-  "packagerPort": 19003,
-  "packagerPid": 42596,
-  "expoServerNgrokUrl": "https://rk-8na.mudasirkhan.tripjohn.exp.direct",
-  "packagerNgrokUrl": "https://packager.rk-8na.mudasirkhan.tripjohn.exp.direct",
-  "ngrokPid": 42622
+  "packagerPort": 19001,
+  "packagerPid": 9479,
+  "expoServerNgrokUrl": "https://rk-8na.maajidz.tripjohn.exp.direct",
+  "packagerNgrokUrl": "https://packager.rk-8na.maajidz.tripjohn.exp.direct",
+  "ngrokPid": 9496
 }

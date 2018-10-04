@@ -147,6 +147,19 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#fff'
     },
+    selectableTypesText: {
+        fontFamily: 'Lato-R',
+        fontSize: 16,
+        color: '#333'
+    },
+    selectableTypes: {
+        backgroundColor: 'white',
+        borderRadius: 4,
+        width: '100%',
+        paddingVertical: 8,
+        paddingHorizontal: 16,
+        color: '#333'
+    },
     selectDropdownText: {
         fontFamily: 'Lato-B',
         fontSize: 18,

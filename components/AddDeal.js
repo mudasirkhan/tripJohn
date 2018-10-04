@@ -25,12 +25,12 @@ class Deals extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Deals'
-        // drawerIcon: ({tintColor}) => (
-        //     <SvgUri
-        //         source={require('../assets/icons/nav-icon-deals.svg')}
-        //     />
-        // ),
+        drawerLabel: () => 'Deals',
+        drawerIcon: ({tintColor}) => (
+            <Image
+                source={require('../assets/icons/nav-icon-deals.png')}
+            />
+        ),
     }
 
     submitDeal() {

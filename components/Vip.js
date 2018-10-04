@@ -76,7 +76,7 @@ class CarsList extends React.Component {
                 console.log(data)
                 this.setState({
                     car: data
-                }, ()=>console.log(this.state.car.car_image))
+                }, () => console.log(this.state.car.car_image))
 
             })
             .catch((error) => {
@@ -115,7 +115,8 @@ class CarsList extends React.Component {
                 transparent={false}
                 presentationStyle="formSheet"
                 visible={this.state.modalVisible}
-                onRequestClose={()=>{}}
+                onRequestClose={() => {
+                }}
             >
                 <View style={styles.modalTopBar}>
                     <View style={styles.modalTopBarInner}>
@@ -135,12 +136,13 @@ class CarsList extends React.Component {
                         </View>
                     </View>
                 </View>
-                <UpdateCar setModalVisible={this.setModalVisible.bind(this,!this.state.modalVisible)} token={token} details={this.state.car} />
+                <UpdateCar setModalVisible={this.setModalVisible.bind(this, !this.state.modalVisible)} token={token}
+                           details={this.state.car}/>
             </Modal>
             <View style={styles.carImageContainer}>
                 <Image style={styles.carFullSizeImage}
                        resizeMode={'cover'}
-                       source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/'+this.state.car.car_image}}
+                       source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car.car_image}}
                 />
             </View>
             <View style={styles.carDetailContainer}>
@@ -154,14 +156,14 @@ class CarsList extends React.Component {
                                 <View style={[styles.carProviderWrap, {paddingBottom: 6}]}>
                                     {/*<Text style={styles.providedByText}>Provided by:</Text>*/}
                                     <View style={{flexDirection: 'row'}}>
-                                        <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
+                                        <Image source={require('../assets/icons/car-n-key.png')}/>
                                         <Text style={styles.providerName}>{this.state.car.created_by} Al Jumeira
                                             travels</Text>
                                     </View>
                                 </View>
                                 <View style={styles.carProviderWrap}>
                                     <View style={{flexDirection: 'row'}}>
-                                        <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
+                                        <Image source={require('../assets/icons/car-n-key.png')}/>
                                         <Text
                                             style={styles.providerName}><Text>{this.state.car.created_by} Al Jumeira
                                             travels</Text></Text>
