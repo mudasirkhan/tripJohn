@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert, ActivityIndicator} from 'react-native'
 import {TopNav} from "../components/TopNav";
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
 import LeadsList from '../screens/Leads'
@@ -26,12 +25,12 @@ class Deals extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Deals',
-        drawerIcon: ({tintColor}) => (
-            <SvgUri
-                source={require('../assets/icons/nav-icon-deals.svg')}
-            />
-        ),
+        drawerLabel: () => 'Deals'
+        // drawerIcon: ({tintColor}) => (
+        //     <SvgUri
+        //         source={require('../assets/icons/nav-icon-deals.svg')}
+        //     />
+        // ),
     }
 
     submitDeal() {

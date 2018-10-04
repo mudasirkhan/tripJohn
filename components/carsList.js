@@ -9,7 +9,6 @@ import {
     Image,
     Modal
 } from 'react-native'
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import {connect} from 'react-redux'
 import SvgUri from 'react-native-svg-uri';
 import modalStyles from '../assets/styles/modal';
@@ -89,15 +88,13 @@ class CarsList extends React.Component {
                                     <View style={[styles.carProviderWrap, {paddingRight: 24}]}>
                                         <Text style={styles.providedByText}>Provided by:</Text>
                                         <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                    style={styles.carKey}/>
+                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
                                             <Text style={styles.providerName}>{this.state.provider}</Text>
                                         </View>
                                     </View>
                                     <View style={styles.carProviderWrap}>
                                         <View style={{flexDirection: 'row'}}>
-                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                    style={styles.carKey}/>
+                                            <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
                                             <Text style={styles.providerName}>{this.state.providerAddress}</Text>
                                         </View>
                                     </View>
@@ -140,9 +137,8 @@ class CarsList extends React.Component {
                 transparent={false}
                 presentationStyle="fullScreen"
                 visible={this.state.modalVisible}
-                onRequestClose={() => {
-                    alert('Modal has been closed.');
-                }}>
+                onRequestClose={()=>{}}
+                >
                 <View style={modalStyles.modalWrap}>
                     <View style={{flex: 1}}>
                         <View style={modalStyles.modalTopBar}>
@@ -155,7 +151,7 @@ class CarsList extends React.Component {
                                 <SvgUri source={require('../assets/icons/arrow-back.svg')}
                                         height='20.9'
                                         width='18.7'
-                                        style={modalStyles.arrowBack}/>
+                                        />
                             </TouchableOpacity>
                             {/*</View>*/}
                             <View style={{flex: 1, justifyContent: 'center', alignItems: 'center',}}>

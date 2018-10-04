@@ -13,7 +13,6 @@ import {
     Platform
 } from 'react-native'
 import {LinearGradient} from 'expo';
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import * as _ from 'lodash';
 import {connect} from 'react-redux'
 import Slide1 from '../components/Slide1'
@@ -93,7 +92,7 @@ class CarsList extends React.Component {
                         <View style={styles.carProviderContainer}>
                             <Text style={styles.providedByText}>Provided by:</Text>
                             <View style={styles.carProviderWrap}>
-                                <SvgUri source={require('../assets/icons/car-n-key.svg')} style={styles.carKey}/>
+                                <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
                                 <Text style={styles.providerName}>Al Jumeirah Travels</Text>
                             </View>
                         </View>
@@ -108,7 +107,7 @@ class CarsList extends React.Component {
                         </View>
                         <View style={styles.carProviderContainer}>
                             <View style={styles.carProviderWrap}>
-                                <SvgUri source={require('../assets/icons/pin.svg')} style={styles.pin}/>
+                                <SvgUri source={require('../assets/icons/pin.svg')}/>
                                 <Text style={styles.providerName}>Jumeriah Lakes Towers</Text>
                                 <Text>
 

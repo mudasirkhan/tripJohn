@@ -755,7 +755,7 @@ class UpdateCar extends React.Component {
                                     borderRadius: 4,
                                     flexDirection: 'row',
                                     alignItems: 'center',
-                                    justifyContents: 'space-between'
+                                    justifyContent: 'space-between'
                                 }]}>
                                     <TouchableOpacity
                                         style={{flex: 1}}

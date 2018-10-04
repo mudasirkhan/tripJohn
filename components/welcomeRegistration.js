@@ -11,7 +11,6 @@ import {
     Platform
 } from 'react-native'
 import { LinearGradient } from 'expo';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import Slide1 from '../components/Slide1'
 import Slide2 from '../components/Slide2'
 import Slide3 from '../components/Slide3.js'
@@ -59,7 +58,7 @@ class welcomeRegistration extends React.Component {
                 <Image source={require('../assets/images/sunwaves.png')}  style={styles.sunwaves} />
                 <Image style={styles.cloud} source={require('../assets/icons/cloud.png')} />
                 {/*<SvgUri style={styles.cloud} width="40" height="14" source={require('../assets/icons/cloud.png')} />*/}
-                <SvgUri style={styles.dubaiskyline} width="400" height="200" source={require('../assets/icons/dubaiskyline.svg')} />
+                <SvgUri width="400" height="200" source={require('../assets/icons/dubaiskyline.svg')} />
                 <View style={styles.blackTint}/>
                 <View style={{elevation: 4,zIndex:99, overflow:'visible', flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%', flexDirection: 'row' }}>
                     <View style={styles.headlineWrap}>

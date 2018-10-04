@@ -100,7 +100,6 @@ const styles = StyleSheet.create({
     profilePhoto: {
         width: 100,
         height: 100,
-        elevation: 4,
         borderRadius: 50,
         ...Platform.select({
             ios: {

@@ -1,7 +1,6 @@
 import React from 'react'
 import { View, TouchableHighlight, Text, TextInput, ScrollView, StyleSheet, Dimensions, Image } from 'react-native'
 import { LinearGradient } from 'expo';
-import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import Slide1 from '../components/Slide1'
 import Slide2 from '../components/Slide2'
 import Slide3 from '../components/Slide3.js'
@@ -14,9 +13,9 @@ const initialLayout = {
 }
 
 class IntroSlider extends React.Component {
-    FirstRoute = () => <Slide1 style={{flex: 1}} next={this._handleIndexChange}  />
-    SecondRoute = () => <Slide2 style={{flex: 1}} next={this._handleIndexChange} />
-    ThirdRoute = () => <Slide3 style={{flex: 1}} next={this._handleIndexChange} />
+    // FirstRoute = () => <Slide1 style={{flex: 1}} next={this._handleIndexChange}  />
+    // SecondRoute = () => <Slide2 style={{flex: 1}} next={this._handleIndexChange} />
+    // ThirdRoute = () => <Slide3 style={{flex: 1}} next={this._handleIndexChange} />
 
     constructor (props) {
         super(props)
@@ -33,12 +32,12 @@ class IntroSlider extends React.Component {
     componentDidMount () {
         console.log(this.props)
     }
-    _handleIndexChange = index => this.setState({ index });
-    _renderScene = SceneMap({
-        first: this.FirstRoute,
-        second: this.SecondRoute,
-        third: this.ThirdRoute
-    });
+    // _handleIndexChange = index => this.setState({ index });
+    // _renderScene = SceneMap({
+    //     first: this.FirstRoute,
+    //     second: this.SecondRoute,
+    //     third: this.ThirdRoute
+    // });
     render () {
         return (
             <View style={{ flex: 1, height: '100%', width: '100%', position: 'relative', flexDirection: 'row'}}>
@@ -49,7 +48,7 @@ class IntroSlider extends React.Component {
                 <Image source={require('../assets/images/sunwaves.png')}  style={styles.sunwaves} />
                 <Image style={styles.cloud} source={require('../assets/icons/cloud.png')} />
                 {/*<SvgUri style={styles.cloud} width="40" height="14" source={require('../assets/icons/cloud.png')} />*/}
-                <SvgUri style={styles.dubaiskyline} width="400" height="200" source={require('../assets/icons/dubaiskyline.svg')} />
+                <SvgUri width="400" height="200" source={require('../assets/icons/dubaiskyline.svg')} />
                 <View style={styles.blackTint}/>
                     <View style={{elevation: 4,zIndex:99, overflow:'visible', flex: 1, justifyContent: 'center', alignItems: 'center', width: '100%', flexDirection: 'row' }}>
                         <View style={styles.headlineWrap}>
@@ -57,14 +56,15 @@ class IntroSlider extends React.Component {
                             <Text style={styles.boldLineOrange}>AWESOME GUY</Text>
                             <Text style={styles.boldLine}>HURRY UP.</Text>
                         </View>
-                        <TabViewAnimated
-                            navigationState={this.state}
-                            renderScene={this._renderScene}
-                            renderHeader={this._renderHeader}
-                            onIndexChange={this._handleIndexChange}
-                            initialLayout={initialLayout}
-                            style={{flex: 1, height: '100%' }}
-                        />
+                        {/*<TabViewAnimated*/}
+                            {/*navigationState={this.state}*/}
+                            {/*renderScene={this._renderScene}*/}
+                            {/*renderHeader={this._renderHeader}*/}
+                            {/*onIndexChange={this._handleIndexChange}*/}
+                            {/*initialLayout={initialLayout}*/}
+                            {/*style={{flex: 1, height: '100%' }}*/}
+                        {/*/>*/}
+                        <Slide1/>
                     </View>
             </View>)
     }

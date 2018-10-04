@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert} from 'react-native'
 import {TopNav} from "../components/TopNav";
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
 import LeadsList from '../screens/Leads'
@@ -30,12 +29,12 @@ class Leads extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Leads',
-        drawerIcon: ({tintColor}) => (
-            <SvgUri
-                source={require('../assets/icons/nav-icon-leads.svg')}
-            />
-        ),
+        drawerLabel: () => 'Leads'
+        // drawerIcon: ({tintColor}) => (
+        //     <SvgUri
+        //         source={require('../assets/icons/nav-icon-leads.svg')}
+        //     />
+        // ),
     }
 
     componentDidMount() {

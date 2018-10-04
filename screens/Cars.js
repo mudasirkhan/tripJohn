@@ -1,7 +1,6 @@
 import React from 'react';
 import {Text, View, TextInput, Image, ScrollView} from 'react-native'
 import {TopNav} from "../components/TopNav";
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
 import LeadsList from '../screens/Leads'
@@ -21,12 +20,12 @@ export default class Car extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Your cars',
-        drawerIcon: ({tintColor}) => (
-            <SvgUri
-                source={require('../assets/icons/nav-icon-car.svg')}
-            />
-        ),
+        drawerLabel: () => 'Your cars'
+        // drawerIcon: ({tintColor}) => (
+        //     <SvgUri
+        //         source={require('../assets/icons/nav-icon-car.svg')}
+        //     />
+        // ),
     }
 
     componentDidMount() {

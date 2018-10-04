@@ -38,13 +38,13 @@ jest
   .mock('../Libraries/Components/TextInput/TextInput', () => mockComponent('../Libraries/Components/TextInput/TextInput'))
   .mock('../Libraries/Modal/Modal', () => mockComponent('../Libraries/Modal/Modal'))
   .mock('../Libraries/Components/View/View', () => mockComponent('../Libraries/Components/View/View'))
-  .mock('../Libraries/Components/RefreshControl/RefreshControl', () => require.requireMock('RefreshControlMock'))
-  .mock('../Libraries/Components/ScrollView/ScrollView', () => require.requireMock('ScrollViewMock'))
+  .mock('../Libraries/Components/RefreshControl/RefreshControl', () => require.requireMock('../Libraries/Components/RefreshControl/__mocks__/RefreshControlMock'))
+  .mock('../Libraries/Components/ScrollView/ScrollView', () => require.requireMock('../Libraries/Components/ScrollView/__mocks__/ScrollViewMock'))
   .mock(
     '../Libraries/Components/ActivityIndicator/ActivityIndicator',
     () => mockComponent('../Libraries/Components/ActivityIndicator/ActivityIndicator'),
   )
-  .mock('../Libraries/Lists/ListView/ListView', () => require.requireMock('ListViewMock'))
+  .mock('../Libraries/Lists/ListView/ListView', () => require.requireMock('../Libraries/Lists/ListView/__mocks__/ListViewMock'))
   .mock('../Libraries/Lists/ListView/ListViewDataSource', () => {
     const DataSource = require.requireActual('../Libraries/Lists/ListView/ListViewDataSource');
     DataSource.prototype.toJSON = function() {

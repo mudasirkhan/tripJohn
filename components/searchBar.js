@@ -13,7 +13,6 @@ import {
     Platform
 } from 'react-native'
 import {LinearGradient} from 'expo';
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import * as _ from 'lodash';
 import {connect} from 'react-redux'
 import Slide1 from '../components/Slide1'
@@ -118,7 +117,7 @@ class SearchBar extends React.Component {
                     }} style={styles.selectLocationWrap}>
                         <Text
                             style={styles.selectLocationText}>{this.state.selectedLocation === '' ? 'Select Location' : this.state.selectedLocation}</Text>
-                        <SvgUri source={require('../assets/icons/down-chevron.svg')} style={styles.chevronDown}/>
+                        <SvgUri source={require('../assets/icons/down-chevron.svg')}/>
                     </TouchableOpacity>
                     {this.state.showLocation &&
                     <View style={styles.locationListContainer}>
@@ -132,7 +131,7 @@ class SearchBar extends React.Component {
                         <View style={commonStyles.graySeparatorVerInner}/>
                     </View>
                     <View style={[styles.nearMeWrap, commonStyles.center]}>
-                        <SvgUri source={require('../assets/icons/near-me.svg')} styles={styles.nearMeIcon}/>
+                        <SvgUri source={require('../assets/icons/near-me.svg')}/>
                         <Text style={styles.nearMeText}>
                             Near me
                         </Text>

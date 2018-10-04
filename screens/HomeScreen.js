@@ -16,8 +16,8 @@ import IntroSlider from "../components/introSlider";
 import {DrawerApp} from "../navigation/DrawerApp"
 import commonStyles from '../assets/styles/common.js'
 import styles from '../assets/styles/homeScreen.js'
-import SvgUri from 'react-native-svg-uri';
-import WelcomeRegistration from "../components/welcomeRegistration";
+// import SvgUri from 'react-native-svg-uri';
+//import WelcomeRegistration from "../components/welcomeRegistration";
 
 
 class HomeScreen extends React.Component {
@@ -49,7 +49,7 @@ class HomeScreen extends React.Component {
     }
 
     componentDidCatch(err) {
-        console.log(err)
+        console.log("error", err)
     }
 
     componentWillReceiveProps(nextProps) {
@@ -77,7 +77,7 @@ class HomeScreen extends React.Component {
                 <View style={styles.container}>
                     {/*<ScrollView style={styles.container} contentContainerStyle={styles.container}>*/}
                     <View style={[styles.welcomeContainer, {flex: 1}]}>
-                        <WelcomeRegistration/>
+                        {/*<WelcomeRegistration/>*/}
                     </View>
                     <View style={styles.registrationContainer}>
                         <View style={styles.registrationWrap}>
@@ -93,9 +93,9 @@ class HomeScreen extends React.Component {
                                     borderTopRightRadius: 4
                                 }]}>
                                     <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
+                                        {/*<SvgUri width="14"*/}
+                                                {/*height="18"*/}
+                                                {/*source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -112,9 +112,9 @@ class HomeScreen extends React.Component {
                                     borderBottomRightRadius: 4
                                 }]}>
                                     <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
+                                        {/*<SvgUri width="14"*/}
+                                                {/*height="18"*/}
+                                                {/*source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -132,9 +132,9 @@ class HomeScreen extends React.Component {
                                     borderTopRightRadius: 4
                                 }]}>
                                     <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
+                                        {/*<SvgUri width="14"*/}
+                                                {/*height="18"*/}
+                                                {/*source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -152,9 +152,9 @@ class HomeScreen extends React.Component {
                                     borderBottomRightRadius: 4
                                 }]}>
                                     <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
+                                        {/*<SvgUri width="14"*/}
+                                                {/*height="18"*/}
+                                                {/*source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -172,9 +172,7 @@ class HomeScreen extends React.Component {
                                     borderTopRightRadius: 4
                                 }]}>
                                     <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
+                                        {/*<SvgUri height="18" source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -190,9 +188,7 @@ class HomeScreen extends React.Component {
                                 </View>
                                 <View style={[styles.textInputWrap]}>
                                     <View style={styles.iconWrap}>
-                                        <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                height="18"
-                                                source={require('../assets/icons/password.svg')}/>
+                                        {/*<SvgUri height="18" source={require('../assets/icons/password.svg')}/>*/}
                                     </View>
                                     <TextInput
                                         underlineColorAndroid="transparent"
@@ -254,8 +250,8 @@ class HomeScreen extends React.Component {
                                         borderTopRightRadius: 4,
                                     }]}>
                                         <View style={styles.iconWrap}>
-                                            <SvgUri style={styles.textInputIcon} width="16" height="18"
-                                                    source={require('../assets/icons/user.svg')}/>
+                                            {/*<SvgUri width="16" height="18"*/}
+                                                    {/*source={require('../assets/icons/user.svg')}/>*/}
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"
@@ -271,8 +267,8 @@ class HomeScreen extends React.Component {
                                     </View>
                                     <View style={styles.textInputWrap}>
                                         <View style={styles.iconWrap}>
-                                            <SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"
-                                                    height="18" source={require('../assets/icons/password.svg')}/>
+                                            {/*<SvgUri width="14"*/}
+                                                    {/*height="18" source={require('../assets/icons/password.svg')}/>*/}
                                         </View>
                                         <TextInput
                                             underlineColorAndroid="transparent"

@@ -4,7 +4,12 @@ import { AppLoading, Asset, Font } from 'expo';
 import { Ionicons } from '@expo/vector-icons';
 import { Provider, connect } from 'react-redux'
 import store from './reducers'
-import RootNavigation from './navigation/RootNavigation';
+import Sentry from 'sentry-expo';
+import RootNavigation from './screens/HomeScreen';
+
+Sentry.enableInExpoDevelopment = true;
+Sentry.config('https://b96120b6e3a44b42ad537d97c6a89912@sentry.io/1294056').install();
+
 
 
 export default class App extends React.Component {

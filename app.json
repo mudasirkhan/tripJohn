@@ -4,11 +4,23 @@
     "description": "A very interesting project.",
     "slug": "tripjohn",
     "privacy": "public",
-    "sdkVersion": "27.0.0",
+    "sdkVersion": "30.0.0",
     "platforms": ["ios", "android"],
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "graphicweave-q1",
+            "project": "tripjohn",
+            "authToken": "1ca155d30b684bd0a72e795c1927b0b2e0d98a75baa042c4b1956ba52a8a6121"
+          }
+        }
+      ]
+    },
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",

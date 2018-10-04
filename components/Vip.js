@@ -14,7 +14,6 @@ import {
     Modal
 } from 'react-native'
 import {LinearGradient} from 'expo';
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import * as _ from 'lodash';
 import {connect} from 'react-redux'
 import Slide1 from '../components/Slide1'
@@ -116,20 +115,15 @@ class CarsList extends React.Component {
                 transparent={false}
                 presentationStyle="formSheet"
                 visible={this.state.modalVisible}
-                onRequestClose={() => {
-                    alert('Modal has been closed.');
-                }}>
+                onRequestClose={()=>{}}
+            >
                 <View style={styles.modalTopBar}>
                     <View style={styles.modalTopBarInner}>
                         <TouchableHighlight
                             onPress={() => {
                                 this.setModalVisible(!this.state.modalVisible);
                             }}>
-                            <SvgUri source={require('../assets/icons/arrow-back.svg')}
-                                    style={{
-                                        height: 24, width: 24,
-                                        paddingHorizontal: 24,
-                                    }}/>
+                            <SvgUri source={require('../assets/icons/arrow-back.svg')}/>
                         </TouchableHighlight>
                         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{
@@ -160,16 +154,14 @@ class CarsList extends React.Component {
                                 <View style={[styles.carProviderWrap, {paddingBottom: 6}]}>
                                     {/*<Text style={styles.providedByText}>Provided by:</Text>*/}
                                     <View style={{flexDirection: 'row'}}>
-                                        <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                style={styles.carKey}/>
+                                        <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
                                         <Text style={styles.providerName}>{this.state.car.created_by} Al Jumeira
                                             travels</Text>
                                     </View>
                                 </View>
                                 <View style={styles.carProviderWrap}>
                                     <View style={{flexDirection: 'row'}}>
-                                        <SvgUri source={require('../assets/icons/car-n-key.svg')}
-                                                style={styles.carKey}/>
+                                        <SvgUri source={require('../assets/icons/car-n-key.svg')}/>
                                         <Text
                                             style={styles.providerName}><Text>{this.state.car.created_by} Al Jumeira
                                             travels</Text></Text>

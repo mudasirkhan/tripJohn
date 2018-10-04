@@ -60,12 +60,12 @@ class Profile extends React.Component {
     }
 
     static navigationOptions = {
-        drawerLabel: () => 'Profile',
-        drawerIcon: ({tintColor}) => (
-            <SvgUri
-                source={require('../assets/icons/nav-icon-profile.svg')}
-            />
-        ),
+        drawerLabel: () => 'Profile'
+        // drawerIcon: ({tintColor}) => (
+        //     <SvgUri
+        //         source={require('../assets/icons/nav-icon-profile.svg')}
+        //     />
+        // ),
     }
 
     componentDidMount() {
@@ -691,7 +691,7 @@ class Profile extends React.Component {
                                     <View style={[styles.textInputContainer, styles.regTextInputContainer]}>
                                         <View style={[styles.textInputWrap, {}]}>
                                             <TouchableOpacity
-                                                style={[styles.textInput, {
+                                                style={[styles.textInputWrap, {
                                                     paddingLeft: 16,
                                                     borderRadius: 4,
                                                     flexDirection: 'row',

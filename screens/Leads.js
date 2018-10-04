@@ -6,7 +6,6 @@ import {
     ScrollView,
     Dimensions,
 } from 'react-native'
-import {TabViewAnimated, TabBar, SceneMap} from 'react-native-tab-view';
 import {connect} from 'react-redux'
 import SvgUri from 'react-native-svg-uri';
 import styles from '../assets/styles/leads';
@@ -141,9 +140,10 @@ class LeadsList extends React.Component {
             })
         }
         else {
-            return <Text style={{color: 'white', textAlign: 'center', flex: 1}}>
-                No Leads
+            return <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'white', textAlign: 'center', flex: 1, paddingVertical: 16 }}>
+                No new leads.
             </Text>
+            </View>
         }
     };
 
@@ -261,7 +261,7 @@ class LeadsList extends React.Component {
     render() {
         return <View style={styles.container}>
             <View style={{paddingHorizontal: 12,}}>
-                <Text style={{color: 'white', marginBottom: 12}}>Recent Leads</Text>
+                <Text style={{color: 'white', marginBottom: 12}}>New Leads</Text>
                 <ScrollView style={{
                     paddingTop: 4,
                     paddingHorizontal: 8,
