@@ -12,7 +12,6 @@ import {
 } from 'react-native'
 import axios from "axios/index"
 import * as _ from 'lodash'
-import SvgUri from 'react-native-svg-uri';
 import commonStyles from "../assets/styles/common";
 import styles from "../assets/styles/addCar";
 import {ImagePicker, Permissions} from "expo";
@@ -460,11 +459,6 @@ class AddCar extends React.Component {
                                     <Text style={styles.inputLabelText}>Car name (Arabic)</Text>
                                 </View>
                                 <View style={[styles.textInputWrap]}>
-                                    {/*<View style={styles.iconWrap}>*/}
-                                    {/*<SvgUri style={[styles.textInputIcon, {marginLeft: 2}]} width="14"*/}
-                                    {/*height="18"*/}
-                                    {/*source={require('../assets/icons/password.svg')}/>*/}
-                                    {/*</View>*/}
                                     <TextInput
                                         underlineColorAndroid="transparent"
                                         style={styles.textInput}

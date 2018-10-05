@@ -53,6 +53,9 @@ class Home extends React.Component {
             })
                 .then(response => {
                     console.log(response.data)
+                    if (response.data.status === 500) {
+                        this.props.change('LOGIN', false)
+                    }
                     //let a = response.data.filter()
                     this.setState({
                         plans: response.data.plans,
@@ -62,7 +65,7 @@ class Home extends React.Component {
                 })
                 .catch((error) => {
                     console.log(error);
-                    this.setState({loader: false, error: true})
+                    this.setState({loading: false, error: true},()=> {this.props.change('LOGIN', false)})
 
                 });
             console.log(resp, this.props.token);

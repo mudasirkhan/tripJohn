@@ -124,7 +124,7 @@ class CarsList extends React.Component {
                             onPress={() => {
                                 this.setModalVisible(!this.state.modalVisible);
                             }}>
-                            <SvgUri source={require('../assets/icons/arrow-back.svg')}/>
+                            <Image source={require('../assets/icons/backBlack.png')} style={{ height: 18, width: 12}}/>
                         </TouchableHighlight>
                         <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
                             <Text style={{
