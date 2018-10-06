@@ -7,7 +7,8 @@ import {
     Dimensions,
     PixelRatio,
     Image,
-    Modal
+    Modal,
+    ActivityIndicator
 } from 'react-native'
 import {connect} from 'react-redux'
 import SvgUri from 'react-native-svg-uri';
@@ -105,23 +106,31 @@ class CarsList extends React.Component {
                 )
             })
         }
+        else if (this.state.loading){
+            return <ActivityIndicator style={{ paddingVertical: 16 }} />
+        }
+        else {
+
+        }
     };
 
     getCars = async () => {
-        let resp = {};
-        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_cars', {
-            access_token: this.props.token
-        })
-            .then(response => {
-                resp = response.data.cars;
+        this.setState({loading: true}, async ()=>{
+            let resp = {};
+            await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_cars', {
+                access_token: this.props.token
             })
-            .catch((error) => {
-                console.log(error);
-                this.setState({loader: false, error: true})
+                .then(response => {
+                    resp = response.data.cars;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    this.setState({loading: false, error: true})
 
-            });
-        console.log(resp, this.props.token);
-        resp !== undefined && this.setState({cars: resp});
+                });
+            console.log(resp, this.props.token);
+            resp !== undefined && this.setState({cars: resp, loading: false});
+        })
     }
 
     setModalVisible(visible) {

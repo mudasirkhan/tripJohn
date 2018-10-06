@@ -5,6 +5,8 @@ import {
     Text,
     ScrollView,
     Dimensions,
+    Image,
+    ActivityIndicator
 } from 'react-native'
 import {connect} from 'react-redux'
 import SvgUri from 'react-native-svg-uri';
@@ -37,6 +39,7 @@ class LeadsList extends React.Component {
             approved_leads: [],
             canceled_leads: [],
             new_leads: [],
+            loading: true,
         }
     }
 
@@ -121,16 +124,12 @@ class LeadsList extends React.Component {
                                     <TouchableOpacity onPress={() => {
                                         this.approve(resArr.id)
                                     }}>
-                                        <SvgUri width="21"
-                                                height="27"
-                                                source={require('../assets/icons/approve.svg')}/>
+                                        <Image source={require('../assets/icons/approve.png')}/>
                                     </TouchableOpacity>
                                     <TouchableOpacity onPress={() => {
                                         this.cancell(resArr.id)
                                     }}>
-                                        <SvgUri width="21"
-                                                height="27"
-                                                source={require('../assets/icons/decline.svg')}/>
+                                        <Image source={require('../assets/icons/decline.png')}/>
                                     </TouchableOpacity>
                                 </View>
                             </TouchableOpacity>
@@ -138,6 +137,9 @@ class LeadsList extends React.Component {
                     </View>
                 )
             })
+        }
+        else if (this.state.loading) {
+            return <ActivityIndicator />
         }
         else {
             return <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'white', textAlign: 'center', flex: 1, paddingVertical: 16 }}>
@@ -189,9 +191,7 @@ class LeadsList extends React.Component {
                                     <TouchableOpacity onPress={() => {
                                         this.cancell(resArr.id)
                                     }}>
-                                        <SvgUri width="21"
-                                                height="27"
-                                                source={require('../assets/icons/decline.svg')}/>
+                                        <Image source={require('../assets/icons/decline.png')}/>
                                     </TouchableOpacity>
                                 </View>
                             </TouchableOpacity>
@@ -237,25 +237,28 @@ class LeadsList extends React.Component {
             });
     }
     getLeads = async () => {
-        let resp = {};
-        await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_dashboard_data', {
-            access_token: this.props.token
-        })
-            .then(response => {
-                console.log(response.data)
-                resp = response.data.leads;
+        this.setState({ loading: true }, async ()=> {
+            let resp = {};
+            await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_dashboard_data', {
+                access_token: this.props.token
             })
-            .catch((error) => {
-                console.log(error);
-                this.setState({loader: false, error: true})
+                .then(response => {
+                    console.log(response.data)
+                    resp = response.data.leads;
+                })
+                .catch((error) => {
+                    console.log(error);
+                    this.setState({loader: false, error: true})
 
+                });
+            console.log(resp, this.props.token);
+            resp !== undefined && this.setState({
+                approved_leads: resp.approved_leads,
+                canceled_leads: resp.canceled_leads,
+                new_leads: resp.new_leads,
+                loading: false
             });
-        console.log(resp, this.props.token);
-        resp !== undefined && this.setState({
-            approved_leads: resp.approved_leads,
-            canceled_leads: resp.canceled_leads,
-            new_leads: resp.new_leads
-        });
+        })
     }
 
     render() {

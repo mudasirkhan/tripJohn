@@ -97,8 +97,8 @@ class Profile extends React.Component {
                     englishOfficeTimings: data.english_office_timings,
                     latitude: data.latitude,
                     longitude: data.longitude,
-                    avatar: 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
-                    avatar_new: 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
+                    avatar: this.state.avatar_new ? this.state.avatar_new : 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
+                    avatar_new: this.state.base64 ? this.state.base64 : 'https://tripjhon.insightssoftwares.com/storage/profile_pics/' + data.avatar,
                     description: data.description,
                     loading: false,
                     editPI: false,
@@ -278,10 +278,10 @@ class Profile extends React.Component {
 
     render() {
         return (<View style={styles.container}>
-                <TopNav title={""} openDrawer={this.openDrawer} style={{zIndex: 9999999, elevation: 4}}/>
+                <TopNav title={"Profile"} openDrawer={this.openDrawer} style={{zIndex: 9999999, elevation: 4}}/>
                 <View style={styles.welcomeContainer}>
                     <View style={styles.profileInfoTop}>
-                        <Image source={{uri: this.state.avatar}} style={styles.profilePhoto}/>
+                        <Image source={{uri: this.state.avatar, cache: 'reload'}} style={styles.profilePhoto}/>
                         <View style={styles.profileNameWrap}>
                             <Text style={styles.profileNameText}>{this.state.profileNameEnglish}</Text>
                             <Text style={styles.profileTypeText}>{this.state.profileType}</Text>

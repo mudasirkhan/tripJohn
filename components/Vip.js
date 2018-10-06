@@ -142,7 +142,7 @@ class CarsList extends React.Component {
             <View style={styles.carImageContainer}>
                 <Image style={styles.carFullSizeImage}
                        resizeMode={'cover'}
-                       source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car.car_image}}
+                       source={{uri: 'https://tripjhon.insightssoftwares.com/storage/car_images/' + this.state.car.car_image, cache: 'reload'}}
                 />
             </View>
             <View style={styles.carDetailContainer}>

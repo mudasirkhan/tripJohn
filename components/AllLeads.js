@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert} from 'react-native'
+import {Text, View, TextInput, Image, ScrollView, TouchableOpacity, Alert, ActivityIndicator} from 'react-native'
 import {TopNav} from "../components/TopNav";
 import HomeTopSection from '../components/homeTopSection'
 import CarsList from '../components/carsList'
@@ -25,6 +25,7 @@ class Leads extends React.Component {
             approved_leads: [],
             canceled_leads: [],
             new_leads: [],
+            loading: true
         }
     }
 
@@ -80,18 +81,27 @@ class Leads extends React.Component {
                                         <Text style={styles.extraInfoText}>{resArr.name}</Text>
                                     </View>
                                 </View>
-                                <View style={[styles.buttonWrap, {right: 2}]}>
-                                    <TouchableOpacity onPress={() => {
-                                        this.cancell(resArr.id)
-                                    }}>
-                                        <Image source={require('../assets/icons/decline.png')}/>
-                                    </TouchableOpacity>
-                                </View>
+                                {/*<View style={[styles.buttonWrap, {right: 2}]}>*/}
+                                    {/*<TouchableOpacity onPress={() => {*/}
+                                        {/*this.cancell(resArr.id)*/}
+                                    {/*}}>*/}
+                                        {/*<Image source={require('../assets/icons/decline.png')}/>*/}
+                                    {/*</TouchableOpacity>*/}
+                                {/*</View>*/}
                             </TouchableOpacity>
                         </View>
                     </View>
                 )
             })
+        }
+        else if (this.state.loading) {
+            return <ActivityIndicator />
+        }
+        else if (!this.state.showApprovedLeads && this.state.showCancelledLeads && !this.state.showNewLeads) {
+            return <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'white', textAlign: 'center', flex: 1, paddingVertical: 16 }}>
+                No cancelled leads.
+            </Text>
+            </View>
         }
     };
     renderNewLeads = () => {
@@ -148,6 +158,15 @@ class Leads extends React.Component {
                 )
             })
         }
+        else if (this.state.loading) {
+            return <ActivityIndicator />
+        }
+        else if (!this.state.showApprovedLeads && !this.state.showCancelledLeads) {
+            return <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'white', textAlign: 'center', flex: 1, paddingVertical: 16 }}>
+                No new leads.
+            </Text>
+            </View>
+        }
     };
 
 
@@ -187,23 +206,32 @@ class Leads extends React.Component {
                                         <Text style={styles.extraInfoText}>{resArr.name}</Text>
                                     </View>
                                 </View>
-                                <View style={styles.buttonWrap}>
-                                    <TouchableOpacity onPress={() => {
-                                        this.complete(resArr.id)
-                                    }}>
-                                        <Image source={require('../assets/icons/approve.png')}/>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity onPress={() => {
-                                        this.cancell(resArr.id)
-                                    }}>
-                                        <Image source={require('../assets/icons/decline.png')}/>
-                                    </TouchableOpacity>
-                                </View>
+                                {/*<View style={styles.buttonWrap}>*/}
+                                    {/*<TouchableOpacity onPress={() => {*/}
+                                        {/*this.complete(resArr.id)*/}
+                                    {/*}}>*/}
+                                        {/*<Image source={require('../assets/icons/approve.png')}/>*/}
+                                    {/*</TouchableOpacity>*/}
+                                    {/*<TouchableOpacity onPress={() => {*/}
+                                        {/*this.cancell(resArr.id)*/}
+                                    {/*}}>*/}
+                                        {/*<Image source={require('../assets/icons/decline.png')}/>*/}
+                                    {/*</TouchableOpacity>*/}
+                                {/*</View>*/}
                             </TouchableOpacity>
                         </View>
                     </View>
                 )
             })
+        }
+        else if (this.state.loading) {
+            return <ActivityIndicator />
+        }
+        else if(this.state.showApprovedLeads && !this.state.showCancelledLeads && !this.state.showNewLeads) {
+            return <View style={{flex:1, justifyContent: 'center', alignItems: 'center'}}><Text style={{color: 'white', textAlign: 'center', flex: 1, paddingVertical: 16 }}>
+                No approved leads.
+            </Text>
+            </View>
         }
     };
     approve = async (id) => {
@@ -273,10 +301,12 @@ class Leads extends React.Component {
         resp !== undefined && this.setState({
             approved_leads: resp.approved_leads,
             canceled_leads: resp.canceled_leads,
-            new_leads: resp.new_leads
+            new_leads: resp.new_leads,
+            loading: false
         });
     }
     getCarDetails = async (id) => {
+        this.setState({loading: true}, async ()=>{
         let resp = {};
         await axios.post('https://tripjhon.insightssoftwares.com//api/v1/get_cars', {
             access_token: this.props.token
@@ -293,6 +323,7 @@ class Leads extends React.Component {
                 this.setState({loader: false, error: true})
 
             });
+        })
     }
 
     render() {

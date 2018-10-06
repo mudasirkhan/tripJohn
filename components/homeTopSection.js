@@ -52,8 +52,8 @@ class HomeTopSection extends React.Component {
                 <Image source={require('../assets/images/sunwaves.png')} style={styles.sunwaves}/>
                 <Image style={styles.cloud} source={require('../assets/icons/cloud.png')}/>
                 {/*<SvgUri style={styles.cloud} width="40" height="14" source={require('../assets/icons/cloud.png')} />*/}
-                <SvgUri width="400" height="200"
-                        source={require('../assets/icons/dubaiskyline.svg')}/>
+                {/*<SvgUri width="400" height="200"*/}
+                        {/*source={require('../assets/icons/dubaiskyline.svg')}/>*/}
                 <View style={styles.blackTint}/>
                 <View style={{
                     elevation: 4,

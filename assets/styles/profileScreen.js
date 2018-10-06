@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
         paddingTop: 48,
         justifyContent: 'flex-end',
         alignItems: 'flex-start',
-        zIndex: 99,
         ...Platform.select({
             ios: {
                 shadowColor: 'black',
